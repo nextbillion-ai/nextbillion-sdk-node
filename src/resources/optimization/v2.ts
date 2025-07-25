@@ -10,7 +10,10 @@ export class V2 extends APIResource {
   /**
    * Flexible GET
    */
-  getResult(query: V2GetResultParams, options?: RequestOptions): APIPromise<V2GetResultResponse> {
+  retrieveResult(
+    query: V2RetrieveResultParams,
+    options?: RequestOptions,
+  ): APIPromise<V2RetrieveResultResponse> {
     return this._client.get('/optimization/v2/result', { query, ...options });
   }
 
@@ -782,7 +785,7 @@ export namespace Shipment {
   }
 }
 
-export interface V2GetResultResponse {
+export interface V2RetrieveResultResponse {
   /**
    * Returns the `description` of the optimization job as given in the input POST
    * optimization request. This field will not be present in the response if no
@@ -799,7 +802,7 @@ export interface V2GetResultResponse {
   /**
    * An object containing the details of the optimized routes.
    */
-  result?: V2GetResultResponse.Result;
+  result?: V2RetrieveResultResponse.Result;
 
   /**
    * It indicates the overall status or result of the API request denoting whether
@@ -808,7 +811,7 @@ export interface V2GetResultResponse {
   status?: '`Ok`' | '`Error`';
 }
 
-export namespace V2GetResultResponse {
+export namespace V2RetrieveResultResponse {
   /**
    * An object containing the details of the optimized routes.
    */
@@ -1284,7 +1287,7 @@ export namespace V2GetResultResponse {
   }
 }
 
-export interface V2GetResultParams {
+export interface V2RetrieveResultParams {
   /**
    * The unique ID that was returned on successful submission of the Optimization
    * POST request.
@@ -2426,8 +2429,8 @@ export declare namespace V2 {
   export {
     type Job as Job,
     type Shipment as Shipment,
-    type V2GetResultResponse as V2GetResultResponse,
-    type V2GetResultParams as V2GetResultParams,
+    type V2RetrieveResultResponse as V2RetrieveResultResponse,
+    type V2RetrieveResultParams as V2RetrieveResultParams,
     type V2SubmitParams as V2SubmitParams,
   };
 }

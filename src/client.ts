@@ -37,7 +37,7 @@ import {
   DirectionComputeRouteResponse,
   Directions,
 } from './resources/directions';
-import { Discover, DiscoverListParams, DiscoverListResponse } from './resources/discover';
+import { Discover, DiscoverRetrieveParams, DiscoverRetrieveResponse } from './resources/discover';
 import {
   Access,
   Address,
@@ -45,17 +45,17 @@ import {
   ContactObject,
   Contacts,
   Geocode,
-  GeocodeBatchCreateParams,
-  GeocodeBatchCreateResponse,
+  GeocodeCreateBatchParams,
+  GeocodeCreateBatchResponse,
   GeocodeRetrieveParams,
   GeocodeRetrieveResponse,
-  GeocodeStructuredRetrieveParams,
-  GeocodeStructuredRetrieveResponse,
+  GeocodeRetrieveStructuredParams,
+  GeocodeRetrieveStructuredResponse,
   MapView,
   Position,
 } from './resources/geocode';
 import { Isochrone, IsochroneComputeParams, IsochroneComputeResponse } from './resources/isochrone';
-import { Lookup, LookupRetrieveParams, LookupRetrieveResponse } from './resources/lookup';
+import { Lookup, LookupByIDParams, LookupByIDResponse } from './resources/lookup';
 import { Map } from './resources/map';
 import {
   Mdm,
@@ -78,8 +78,8 @@ import {
   RestrictionCreateParams,
   RestrictionDeleteParams,
   RestrictionDeleteResponse,
-  RestrictionListByBboxParams,
-  RestrictionListByBboxResponse,
+  RestrictionListPaginatedParams,
+  RestrictionListPaginatedResponse,
   RestrictionListParams,
   RestrictionListResponse,
   RestrictionRetrieveParams,
@@ -886,11 +886,11 @@ export declare namespace NextbillionSDK {
     type MapView as MapView,
     type Position as Position,
     type GeocodeRetrieveResponse as GeocodeRetrieveResponse,
-    type GeocodeBatchCreateResponse as GeocodeBatchCreateResponse,
-    type GeocodeStructuredRetrieveResponse as GeocodeStructuredRetrieveResponse,
+    type GeocodeCreateBatchResponse as GeocodeCreateBatchResponse,
+    type GeocodeRetrieveStructuredResponse as GeocodeRetrieveStructuredResponse,
     type GeocodeRetrieveParams as GeocodeRetrieveParams,
-    type GeocodeBatchCreateParams as GeocodeBatchCreateParams,
-    type GeocodeStructuredRetrieveParams as GeocodeStructuredRetrieveParams,
+    type GeocodeCreateBatchParams as GeocodeCreateBatchParams,
+    type GeocodeRetrieveStructuredParams as GeocodeRetrieveStructuredParams,
   };
 
   export {
@@ -919,8 +919,8 @@ export declare namespace NextbillionSDK {
 
   export {
     Discover as Discover,
-    type DiscoverListResponse as DiscoverListResponse,
-    type DiscoverListParams as DiscoverListParams,
+    type DiscoverRetrieveResponse as DiscoverRetrieveResponse,
+    type DiscoverRetrieveParams as DiscoverRetrieveParams,
   };
 
   export {
@@ -949,13 +949,13 @@ export declare namespace NextbillionSDK {
     type RichGroupDtoResponse as RichGroupDtoResponse,
     type RestrictionListResponse as RestrictionListResponse,
     type RestrictionDeleteResponse as RestrictionDeleteResponse,
-    type RestrictionListByBboxResponse as RestrictionListByBboxResponse,
+    type RestrictionListPaginatedResponse as RestrictionListPaginatedResponse,
     type RestrictionCreateParams as RestrictionCreateParams,
     type RestrictionRetrieveParams as RestrictionRetrieveParams,
     type RestrictionUpdateParams as RestrictionUpdateParams,
     type RestrictionListParams as RestrictionListParams,
     type RestrictionDeleteParams as RestrictionDeleteParams,
-    type RestrictionListByBboxParams as RestrictionListByBboxParams,
+    type RestrictionListPaginatedParams as RestrictionListPaginatedParams,
     type RestrictionSetStateParams as RestrictionSetStateParams,
   };
 
@@ -1035,7 +1035,7 @@ export declare namespace NextbillionSDK {
 
   export {
     Lookup as Lookup,
-    type LookupRetrieveResponse as LookupRetrieveResponse,
-    type LookupRetrieveParams as LookupRetrieveParams,
+    type LookupByIDResponse as LookupByIDResponse,
+    type LookupByIDParams as LookupByIDParams,
   };
 }

@@ -33,8 +33,8 @@ describe('resource geocode', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('batchCreate: only required params', async () => {
-    const responsePromise = client.geocode.batchCreate({
+  test.skip('createBatch: only required params', async () => {
+    const responsePromise = client.geocode.createBatch({
       key: 'key=API_KEY',
       body: [{ q: '"q":"125, Berliner, berlin"' }],
     });
@@ -48,8 +48,8 @@ describe('resource geocode', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('batchCreate: required and optional params', async () => {
-    const response = await client.geocode.batchCreate({
+  test.skip('createBatch: required and optional params', async () => {
+    const response = await client.geocode.createBatch({
       key: 'key=API_KEY',
       body: [
         {
@@ -64,8 +64,8 @@ describe('resource geocode', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('structuredRetrieve: only required params', async () => {
-    const responsePromise = client.geocode.structuredRetrieve({
+  test.skip('retrieveStructured: only required params', async () => {
+    const responsePromise = client.geocode.retrieveStructured({
       countryCode: 'countryCode',
       key: 'key=API_KEY',
     });
@@ -79,8 +79,8 @@ describe('resource geocode', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('structuredRetrieve: required and optional params', async () => {
-    const response = await client.geocode.structuredRetrieve({
+  test.skip('retrieveStructured: required and optional params', async () => {
+    const response = await client.geocode.retrieveStructured({
       countryCode: 'countryCode',
       key: 'key=API_KEY',
       at: 'at=52.5308,13.3856',

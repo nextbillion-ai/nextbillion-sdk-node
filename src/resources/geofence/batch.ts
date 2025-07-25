@@ -16,18 +16,18 @@ export class Batch extends APIResource {
   }
 
   /**
-   * Batch Query of Geofence
-   */
-  list(query: BatchListParams, options?: RequestOptions): APIPromise<BatchListResponse> {
-    return this._client.get('/geofence/batch', { query, ...options });
-  }
-
-  /**
    * Delete Batch Geofence
    */
   delete(params: BatchDeleteParams, options?: RequestOptions): APIPromise<AssetAPI.SimpleResp> {
     const { key, ...body } = params;
     return this._client.delete('/geofence/batch', { query: { key }, body, ...options });
+  }
+
+  /**
+   * Batch Query of Geofence
+   */
+  query(query: BatchQueryParams, options?: RequestOptions): APIPromise<BatchQueryResponse> {
+    return this._client.get('/geofence/batch', { query, ...options });
   }
 }
 
@@ -54,8 +54,8 @@ export namespace BatchCreateResponse {
   }
 }
 
-export interface BatchListResponse {
-  data: BatchListResponse.Data;
+export interface BatchQueryResponse {
+  data: BatchQueryResponse.Data;
 
   /**
    * A string indicating the state of the response. On successful responses, the
@@ -65,7 +65,7 @@ export interface BatchListResponse {
   status: string;
 }
 
-export namespace BatchListResponse {
+export namespace BatchQueryResponse {
   export interface Data {
     /**
      * An array of objects containing the details of the geofences returned matching
@@ -89,19 +89,6 @@ export interface BatchCreateParams {
   geofences?: Array<GeofenceAPI.GeofenceEntityCreate>;
 }
 
-export interface BatchListParams {
-  /**
-   * Comma(`,`) separated list of IDs of the geofences to be searched.
-   */
-  ids: string;
-
-  /**
-   * A key is a unique identifier that is required to authenticate a request to the
-   * API.
-   */
-  key: string;
-}
-
 export interface BatchDeleteParams {
   /**
    * Query param: A key is a unique identifier that is required to authenticate a
@@ -116,12 +103,25 @@ export interface BatchDeleteParams {
   ids?: Array<string>;
 }
 
+export interface BatchQueryParams {
+  /**
+   * Comma(`,`) separated list of IDs of the geofences to be searched.
+   */
+  ids: string;
+
+  /**
+   * A key is a unique identifier that is required to authenticate a request to the
+   * API.
+   */
+  key: string;
+}
+
 export declare namespace Batch {
   export {
     type BatchCreateResponse as BatchCreateResponse,
-    type BatchListResponse as BatchListResponse,
+    type BatchQueryResponse as BatchQueryResponse,
     type BatchCreateParams as BatchCreateParams,
-    type BatchListParams as BatchListParams,
     type BatchDeleteParams as BatchDeleteParams,
+    type BatchQueryParams as BatchQueryParams,
   };
 }

@@ -207,14 +207,14 @@ Types:
 - <code><a href="./src/resources/geocode.ts">MapView</a></code>
 - <code><a href="./src/resources/geocode.ts">Position</a></code>
 - <code><a href="./src/resources/geocode.ts">GeocodeRetrieveResponse</a></code>
-- <code><a href="./src/resources/geocode.ts">GeocodeBatchCreateResponse</a></code>
-- <code><a href="./src/resources/geocode.ts">GeocodeStructuredRetrieveResponse</a></code>
+- <code><a href="./src/resources/geocode.ts">GeocodeCreateBatchResponse</a></code>
+- <code><a href="./src/resources/geocode.ts">GeocodeRetrieveStructuredResponse</a></code>
 
 Methods:
 
 - <code title="get /geocode">client.geocode.<a href="./src/resources/geocode.ts">retrieve</a>({ ...params }) -> GeocodeRetrieveResponse</code>
-- <code title="post /geocode/batch">client.geocode.<a href="./src/resources/geocode.ts">batchCreate</a>([ ...body ]) -> GeocodeBatchCreateResponse</code>
-- <code title="get /geocode/structured">client.geocode.<a href="./src/resources/geocode.ts">structuredRetrieve</a>({ ...params }) -> GeocodeStructuredRetrieveResponse</code>
+- <code title="post /geocode/batch">client.geocode.<a href="./src/resources/geocode.ts">createBatch</a>([ ...body ]) -> GeocodeCreateBatchResponse</code>
+- <code title="get /geocode/structured">client.geocode.<a href="./src/resources/geocode.ts">retrieveStructured</a>({ ...params }) -> GeocodeRetrieveStructuredResponse</code>
 
 # Optimization
 
@@ -246,11 +246,11 @@ Types:
 
 - <code><a href="./src/resources/optimization/v2.ts">Job</a></code>
 - <code><a href="./src/resources/optimization/v2.ts">Shipment</a></code>
-- <code><a href="./src/resources/optimization/v2.ts">V2GetResultResponse</a></code>
+- <code><a href="./src/resources/optimization/v2.ts">V2RetrieveResultResponse</a></code>
 
 Methods:
 
-- <code title="get /optimization/v2/result">client.optimization.v2.<a href="./src/resources/optimization/v2.ts">getResult</a>({ ...params }) -> V2GetResultResponse</code>
+- <code title="get /optimization/v2/result">client.optimization.v2.<a href="./src/resources/optimization/v2.ts">retrieveResult</a>({ ...params }) -> V2RetrieveResultResponse</code>
 - <code title="post /optimization/v2">client.optimization.v2.<a href="./src/resources/optimization/v2.ts">submit</a>({ ...params }) -> PostResponse</code>
 
 # Geofence
@@ -291,23 +291,23 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/geofence/batch.ts">BatchCreateResponse</a></code>
-- <code><a href="./src/resources/geofence/batch.ts">BatchListResponse</a></code>
+- <code><a href="./src/resources/geofence/batch.ts">BatchQueryResponse</a></code>
 
 Methods:
 
 - <code title="post /geofence/batch">client.geofence.batch.<a href="./src/resources/geofence/batch.ts">create</a>({ ...params }) -> BatchCreateResponse</code>
-- <code title="get /geofence/batch">client.geofence.batch.<a href="./src/resources/geofence/batch.ts">list</a>({ ...params }) -> BatchListResponse</code>
 - <code title="delete /geofence/batch">client.geofence.batch.<a href="./src/resources/geofence/batch.ts">delete</a>({ ...params }) -> SimpleResp</code>
+- <code title="get /geofence/batch">client.geofence.batch.<a href="./src/resources/geofence/batch.ts">query</a>({ ...params }) -> BatchQueryResponse</code>
 
 # Discover
 
 Types:
 
-- <code><a href="./src/resources/discover.ts">DiscoverListResponse</a></code>
+- <code><a href="./src/resources/discover.ts">DiscoverRetrieveResponse</a></code>
 
 Methods:
 
-- <code title="get /discover">client.discover.<a href="./src/resources/discover.ts">list</a>({ ...params }) -> DiscoverListResponse</code>
+- <code title="get /discover">client.discover.<a href="./src/resources/discover.ts">retrieve</a>({ ...params }) -> DiscoverRetrieveResponse</code>
 
 # Browse
 
@@ -349,16 +349,16 @@ Types:
 - <code><a href="./src/resources/restrictions.ts">RichGroupDtoResponse</a></code>
 - <code><a href="./src/resources/restrictions.ts">RestrictionListResponse</a></code>
 - <code><a href="./src/resources/restrictions.ts">RestrictionDeleteResponse</a></code>
-- <code><a href="./src/resources/restrictions.ts">RestrictionListByBboxResponse</a></code>
+- <code><a href="./src/resources/restrictions.ts">RestrictionListPaginatedResponse</a></code>
 
 Methods:
 
 - <code title="post /restrictions/{restriction_type}">client.restrictions.<a href="./src/resources/restrictions.ts">create</a>(restrictionType, { ...params }) -> RichGroupDtoResponse</code>
 - <code title="get /restrictions/{id}">client.restrictions.<a href="./src/resources/restrictions.ts">retrieve</a>(id, { ...params }) -> RichGroupDtoResponse</code>
 - <code title="patch /restrictions/{id}">client.restrictions.<a href="./src/resources/restrictions.ts">update</a>(id, { ...params }) -> RichGroupDtoResponse</code>
-- <code title="get /restrictions/list">client.restrictions.<a href="./src/resources/restrictions.ts">list</a>({ ...params }) -> RestrictionListResponse</code>
+- <code title="get /restrictions">client.restrictions.<a href="./src/resources/restrictions.ts">list</a>({ ...params }) -> RestrictionListResponse</code>
 - <code title="delete /restrictions/{id}">client.restrictions.<a href="./src/resources/restrictions.ts">delete</a>(id, { ...params }) -> RestrictionDeleteResponse</code>
-- <code title="get /restrictions">client.restrictions.<a href="./src/resources/restrictions.ts">listByBbox</a>({ ...params }) -> RestrictionListByBboxResponse</code>
+- <code title="get /restrictions/list">client.restrictions.<a href="./src/resources/restrictions.ts">listPaginated</a>({ ...params }) -> RestrictionListPaginatedResponse</code>
 - <code title="put /restrictions/{id}/state">client.restrictions.<a href="./src/resources/restrictions.ts">setState</a>(id, { ...params }) -> RichGroupDtoResponse</code>
 
 # RestrictionsItems
@@ -523,8 +523,8 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/lookup.ts">LookupRetrieveResponse</a></code>
+- <code><a href="./src/resources/lookup.ts">LookupByIDResponse</a></code>
 
 Methods:
 
-- <code title="get /lookup">client.lookup.<a href="./src/resources/lookup.ts">retrieve</a>({ ...params }) -> LookupRetrieveResponse</code>
+- <code title="get /lookup">client.lookup.<a href="./src/resources/lookup.ts">byID</a>({ ...params }) -> LookupByIDResponse</code>
