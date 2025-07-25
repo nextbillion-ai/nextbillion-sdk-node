@@ -6,21 +6,21 @@ export {
   type SimpleResp,
   type AssetCreateResponse,
   type AssetRetrieveResponse,
-  type AssetListResponse,
+  type AssetRetrieveListResponse,
   type AssetCreateParams,
   type AssetRetrieveParams,
   type AssetUpdateParams,
-  type AssetListParams,
   type AssetDeleteParams,
+  type AssetRetrieveListParams,
   type AssetTrackParams,
   type AssetUpdateAttributesParams,
 } from './asset';
-export { Event, type EventListResponse, type EventListParams } from './event';
+export { Event, type EventRetrieveListResponse, type EventRetrieveListParams } from './event';
 export {
   Location,
   type TrackLocation,
-  type LocationListResponse,
-  type LocationGetLastResponse,
-  type LocationListParams,
-  type LocationGetLastParams,
+  type LocationRetrieveLastResponse,
+  type LocationRetrieveListResponse,
+  type LocationRetrieveLastParams,
+  type LocationRetrieveListParams,
 } from './location';

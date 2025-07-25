@@ -24,7 +24,7 @@ import {
   RouteRedispatchParams,
   RouteRedispatchResponse,
   Routes,
-  Routing,
+  RoutingResponse,
 } from './routes/routes';
 
 export class Fleetify extends APIResource {
@@ -40,7 +40,7 @@ Fleetify.DocumentTemplates = DocumentTemplates;
 export declare namespace Fleetify {
   export {
     Routes as Routes,
-    type Routing as Routing,
+    type RoutingResponse as RoutingResponse,
     type RouteCreateResponse as RouteCreateResponse,
     type RouteRedispatchResponse as RouteRedispatchResponse,
     type RouteCreateParams as RouteCreateParams,

@@ -36,18 +36,21 @@ export class MonitorResource extends APIResource {
   }
 
   /**
-   * Get Monitor List
-   */
-  list(query: MonitorListParams, options?: RequestOptions): APIPromise<MonitorListResponse> {
-    return this._client.get('/skynet/monitor/list', { query, ...options });
-  }
-
-  /**
    * Delete a Monitor
    */
   delete(id: string, params: MonitorDeleteParams, options?: RequestOptions): APIPromise<AssetAPI.SimpleResp> {
     const { key } = params;
     return this._client.delete(path`/skynet/monitor/${id}`, { query: { key }, ...options });
+  }
+
+  /**
+   * Get Monitor List
+   */
+  retrieveList(
+    query: MonitorRetrieveListParams,
+    options?: RequestOptions,
+  ): APIPromise<MonitorRetrieveListResponse> {
+    return this._client.get('/skynet/monitor/list', { query, ...options });
   }
 }
 
@@ -333,11 +336,11 @@ export namespace MonitorRetrieveResponse {
   }
 }
 
-export interface MonitorListResponse {
+export interface MonitorRetrieveListResponse {
   /**
    * A data object containing the result.
    */
-  data?: MonitorListResponse.Data;
+  data?: MonitorRetrieveListResponse.Data;
 
   /**
    * Displays the error message in case of a failed request. If the request is
@@ -353,7 +356,7 @@ export interface MonitorListResponse {
   status?: string;
 }
 
-export namespace MonitorListResponse {
+export namespace MonitorRetrieveListResponse {
   /**
    * A data object containing the result.
    */
@@ -906,7 +909,15 @@ export namespace MonitorUpdateParams {
   }
 }
 
-export interface MonitorListParams {
+export interface MonitorDeleteParams {
+  /**
+   * A key is a unique identifier that is required to authenticate a request to the
+   * API.
+   */
+  key: string;
+}
+
+export interface MonitorRetrieveListParams {
   /**
    * A key is a unique identifier that is required to authenticate a request to the
    * API.
@@ -950,14 +961,6 @@ export interface MonitorListParams {
   tags?: string;
 }
 
-export interface MonitorDeleteParams {
-  /**
-   * A key is a unique identifier that is required to authenticate a request to the
-   * API.
-   */
-  key: string;
-}
-
 export declare namespace MonitorResource {
   export {
     type Metadata as Metadata,
@@ -965,11 +968,11 @@ export declare namespace MonitorResource {
     type Pagination as Pagination,
     type MonitorCreateResponse as MonitorCreateResponse,
     type MonitorRetrieveResponse as MonitorRetrieveResponse,
-    type MonitorListResponse as MonitorListResponse,
+    type MonitorRetrieveListResponse as MonitorRetrieveListResponse,
     type MonitorCreateParams as MonitorCreateParams,
     type MonitorRetrieveParams as MonitorRetrieveParams,
     type MonitorUpdateParams as MonitorUpdateParams,
-    type MonitorListParams as MonitorListParams,
     type MonitorDeleteParams as MonitorDeleteParams,
+    type MonitorRetrieveListParams as MonitorRetrieveListParams,
   };
 }

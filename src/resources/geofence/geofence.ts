@@ -8,8 +8,8 @@ import {
   BatchCreateParams,
   BatchCreateResponse,
   BatchDeleteParams,
-  BatchQueryParams,
-  BatchQueryResponse,
+  BatchListParams,
+  BatchListResponse,
 } from './batch';
 import * as ConsoleAPI from './console';
 import {
@@ -1100,9 +1100,9 @@ export declare namespace GeofenceResource {
   export {
     Batch as Batch,
     type BatchCreateResponse as BatchCreateResponse,
-    type BatchQueryResponse as BatchQueryResponse,
+    type BatchListResponse as BatchListResponse,
     type BatchCreateParams as BatchCreateParams,
+    type BatchListParams as BatchListParams,
     type BatchDeleteParams as BatchDeleteParams,
-    type BatchQueryParams as BatchQueryParams,
   };
 }
