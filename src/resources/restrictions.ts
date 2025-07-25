@@ -76,20 +76,22 @@ export class Restrictions extends APIResource {
   }
 
   /**
-   * Get the paginated list of restrictions
+   * Get restrictions by bbox
    *
    * @example
    * ```ts
-   * const restrictions = await client.restrictions.list({
-   *   area: 'area',
-   *   key: 'key=API_KEY',
-   *   limit: 0,
-   *   offset: 0,
-   * });
+   * const richGroupDtoResponses =
+   *   await client.restrictions.list({
+   *     key: 'key=API_KEY',
+   *     max_lat: 0,
+   *     max_lon: 0,
+   *     min_lat: 0,
+   *     min_lon: 0,
+   *   });
    * ```
    */
   list(query: RestrictionListParams, options?: RequestOptions): APIPromise<RestrictionListResponse> {
-    return this._client.get('/restrictions/list', { query, ...options });
+    return this._client.get('/restrictions', { query, ...options });
   }
 
   /**
@@ -112,25 +114,23 @@ export class Restrictions extends APIResource {
   }
 
   /**
-   * Get restrictions by bbox
+   * Get the paginated list of restrictions
    *
    * @example
    * ```ts
-   * const richGroupDtoResponses =
-   *   await client.restrictions.listByBbox({
-   *     key: 'key=API_KEY',
-   *     max_lat: 0,
-   *     max_lon: 0,
-   *     min_lat: 0,
-   *     min_lon: 0,
-   *   });
+   * const response = await client.restrictions.listPaginated({
+   *   area: 'area',
+   *   key: 'key=API_KEY',
+   *   limit: 0,
+   *   offset: 0,
+   * });
    * ```
    */
-  listByBbox(
-    query: RestrictionListByBboxParams,
+  listPaginated(
+    query: RestrictionListPaginatedParams,
     options?: RequestOptions,
-  ): APIPromise<RestrictionListByBboxResponse> {
-    return this._client.get('/restrictions', { query, ...options });
+  ): APIPromise<RestrictionListPaginatedResponse> {
+    return this._client.get('/restrictions/list', { query, ...options });
   }
 
   /**
@@ -451,17 +451,31 @@ export interface RichGroupDtoResponse {
   update_at?: string;
 }
 
-export interface RestrictionListResponse {
+export type RestrictionListResponse = Array<RichGroupDtoResponse>;
+
+export interface RestrictionDeleteResponse {
+  /**
+   * It is the unique ID of the restriction.
+   */
+  id?: number;
+
+  /**
+   * Returns the state of the restriction. It would always be `deleted`.
+   */
+  state?: string;
+}
+
+export interface RestrictionListPaginatedResponse {
   /**
    * An array of objects containing the details of the restrictions returned. Each
    * object represents one restriction.
    */
   data?: Array<RichGroupDtoResponse>;
 
-  meta?: RestrictionListResponse.Meta;
+  meta?: RestrictionListPaginatedResponse.Meta;
 }
 
-export namespace RestrictionListResponse {
+export namespace RestrictionListPaginatedResponse {
   export interface Meta {
     /**
      * An integer value indicating the maximum number of items retrieved per "page".
@@ -482,20 +496,6 @@ export namespace RestrictionListResponse {
     total?: number;
   }
 }
-
-export interface RestrictionDeleteResponse {
-  /**
-   * It is the unique ID of the restriction.
-   */
-  id?: number;
-
-  /**
-   * Returns the state of the restriction. It would always be `deleted`.
-   */
-  state?: string;
-}
-
-export type RestrictionListByBboxResponse = Array<RichGroupDtoResponse>;
 
 export interface RestrictionCreateParams {
   /**
@@ -900,6 +900,85 @@ export namespace RestrictionUpdateParams {
 
 export interface RestrictionListParams {
   /**
+   * A key is a unique identifier that is required to authenticate a request to the
+   * API.
+   */
+  key: string;
+
+  /**
+   * Specifies the maximum latitude value for the bounding box.
+   */
+  max_lat: number;
+
+  /**
+   * Specifies the maximum longitude value for the bounding box.
+   */
+  max_lon: number;
+
+  /**
+   * Specifies the minimum latitude value for the bounding box.
+   */
+  min_lat: number;
+
+  /**
+   * Specifies the minimum longitude value for the bounding box.
+   */
+  min_lon: number;
+
+  /**
+   * Specify the modes of travel that the restriction pertains to.
+   */
+  mode?: Array<'0w' | '2w' | '3w' | '4w' | '6w'>;
+
+  /**
+   * Specify the type of restrictions to fetch.
+   */
+  restriction_type?: 'turn' | 'parking' | 'fixedspeed' | 'maxspeed' | 'closure' | 'truck';
+
+  /**
+   * This parameter represents where the restriction comes from and cannot be
+   * modified by clients sending requests to the API endpoint.
+   *
+   * For example, an API endpoint that returns a list of restrictions could include
+   * the source parameter to indicate where each item comes from. This parameter can
+   * be useful for filtering, sorting, or grouping the results based on their source.
+   */
+  source?: 'rrt' | 'pbf';
+
+  /**
+   * This parameter is used to filter restrictions based on their state i.e. whether
+   * the restriction is currently enabled, disabled, or deleted. For example, users
+   * can retrieve a list of all the deleted restrictions by setting `state=deleted`.
+   */
+  state?: '`enabled`' | '`disabled`' | '`deleted`';
+
+  /**
+   * Restrictions can be active or inactive at a given time by virtue of their
+   * nature. For example, maximum speed limits can be active on the roads leading to
+   * schools during school hours and be inactive afterwards or certain road closure
+   * restrictions be active during holidays/concerts and be inactive otherwise.
+   *
+   * Use this parameter to filter the restrictions based on their status at the time
+   * of making the request i.e. whether they are in force or not.
+   */
+  status?: '`active`' | '`inactive`';
+
+  /**
+   * This is internal parameter with a default value as `false`.
+   */
+  transform?: boolean;
+}
+
+export interface RestrictionDeleteParams {
+  /**
+   * A key is a unique identifier that is required to authenticate a request to the
+   * API.
+   */
+  key: string;
+}
+
+export interface RestrictionListPaginatedParams {
+  /**
    * Specify the area name. It represents a region where restrictions can be applied.
    *
    * _The area it belongs to. See Area API_
@@ -975,85 +1054,6 @@ export interface RestrictionListParams {
   transform?: boolean;
 }
 
-export interface RestrictionDeleteParams {
-  /**
-   * A key is a unique identifier that is required to authenticate a request to the
-   * API.
-   */
-  key: string;
-}
-
-export interface RestrictionListByBboxParams {
-  /**
-   * A key is a unique identifier that is required to authenticate a request to the
-   * API.
-   */
-  key: string;
-
-  /**
-   * Specifies the maximum latitude value for the bounding box.
-   */
-  max_lat: number;
-
-  /**
-   * Specifies the maximum longitude value for the bounding box.
-   */
-  max_lon: number;
-
-  /**
-   * Specifies the minimum latitude value for the bounding box.
-   */
-  min_lat: number;
-
-  /**
-   * Specifies the minimum longitude value for the bounding box.
-   */
-  min_lon: number;
-
-  /**
-   * Specify the modes of travel that the restriction pertains to.
-   */
-  mode?: Array<'0w' | '2w' | '3w' | '4w' | '6w'>;
-
-  /**
-   * Specify the type of restrictions to fetch.
-   */
-  restriction_type?: 'turn' | 'parking' | 'fixedspeed' | 'maxspeed' | 'closure' | 'truck';
-
-  /**
-   * This parameter represents where the restriction comes from and cannot be
-   * modified by clients sending requests to the API endpoint.
-   *
-   * For example, an API endpoint that returns a list of restrictions could include
-   * the source parameter to indicate where each item comes from. This parameter can
-   * be useful for filtering, sorting, or grouping the results based on their source.
-   */
-  source?: 'rrt' | 'pbf';
-
-  /**
-   * This parameter is used to filter restrictions based on their state i.e. whether
-   * the restriction is currently enabled, disabled, or deleted. For example, users
-   * can retrieve a list of all the deleted restrictions by setting `state=deleted`.
-   */
-  state?: '`enabled`' | '`disabled`' | '`deleted`';
-
-  /**
-   * Restrictions can be active or inactive at a given time by virtue of their
-   * nature. For example, maximum speed limits can be active on the roads leading to
-   * schools during school hours and be inactive afterwards or certain road closure
-   * restrictions be active during holidays/concerts and be inactive otherwise.
-   *
-   * Use this parameter to filter the restrictions based on their status at the time
-   * of making the request i.e. whether they are in force or not.
-   */
-  status?: '`active`' | '`inactive`';
-
-  /**
-   * This is internal parameter with a default value as `false`.
-   */
-  transform?: boolean;
-}
-
 export interface RestrictionSetStateParams {
   /**
    * Query param: A key is a unique identifier that is required to authenticate a
@@ -1075,13 +1075,13 @@ export declare namespace Restrictions {
     type RichGroupDtoResponse as RichGroupDtoResponse,
     type RestrictionListResponse as RestrictionListResponse,
     type RestrictionDeleteResponse as RestrictionDeleteResponse,
-    type RestrictionListByBboxResponse as RestrictionListByBboxResponse,
+    type RestrictionListPaginatedResponse as RestrictionListPaginatedResponse,
     type RestrictionCreateParams as RestrictionCreateParams,
     type RestrictionRetrieveParams as RestrictionRetrieveParams,
     type RestrictionUpdateParams as RestrictionUpdateParams,
     type RestrictionListParams as RestrictionListParams,
     type RestrictionDeleteParams as RestrictionDeleteParams,
-    type RestrictionListByBboxParams as RestrictionListByBboxParams,
+    type RestrictionListPaginatedParams as RestrictionListPaginatedParams,
     type RestrictionSetStateParams as RestrictionSetStateParams,
   };
 }

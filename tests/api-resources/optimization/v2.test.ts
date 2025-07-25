@@ -9,8 +9,8 @@ const client = new NextbillionSDK({
 
 describe('resource v2', () => {
   // skipped: tests are disabled for the time being
-  test.skip('getResult: only required params', async () => {
-    const responsePromise = client.optimization.v2.getResult({ id: 'id', key: 'key=API_KEY' });
+  test.skip('retrieveResult: only required params', async () => {
+    const responsePromise = client.optimization.v2.retrieveResult({ id: 'id', key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,8 +21,8 @@ describe('resource v2', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('getResult: required and optional params', async () => {
-    const response = await client.optimization.v2.getResult({ id: 'id', key: 'key=API_KEY' });
+  test.skip('retrieveResult: required and optional params', async () => {
+    const response = await client.optimization.v2.retrieveResult({ id: 'id', key: 'key=API_KEY' });
   });
 
   // skipped: tests are disabled for the time being

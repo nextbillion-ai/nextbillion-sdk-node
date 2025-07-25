@@ -108,10 +108,11 @@ describe('resource restrictions', () => {
   // skipped: tests are disabled for the time being
   test.skip('list: only required params', async () => {
     const responsePromise = client.restrictions.list({
-      area: 'area',
       key: 'key=API_KEY',
-      limit: 0,
-      offset: 0,
+      max_lat: 0,
+      max_lon: 0,
+      min_lat: 0,
+      min_lon: 0,
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -125,13 +126,13 @@ describe('resource restrictions', () => {
   // skipped: tests are disabled for the time being
   test.skip('list: required and optional params', async () => {
     const response = await client.restrictions.list({
-      area: 'area',
       key: 'key=API_KEY',
-      limit: 0,
-      offset: 0,
-      mode: '`0w`',
-      name: 'name',
-      restriction_type: '`turn`',
+      max_lat: 0,
+      max_lon: 0,
+      min_lat: 0,
+      min_lon: 0,
+      mode: ['0w'],
+      restriction_type: 'turn',
       source: 'rrt',
       state: '`enabled`',
       status: '`active`',
@@ -157,13 +158,12 @@ describe('resource restrictions', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('listByBbox: only required params', async () => {
-    const responsePromise = client.restrictions.listByBbox({
+  test.skip('listPaginated: only required params', async () => {
+    const responsePromise = client.restrictions.listPaginated({
+      area: 'area',
       key: 'key=API_KEY',
-      max_lat: 0,
-      max_lon: 0,
-      min_lat: 0,
-      min_lon: 0,
+      limit: 0,
+      offset: 0,
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -175,15 +175,15 @@ describe('resource restrictions', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('listByBbox: required and optional params', async () => {
-    const response = await client.restrictions.listByBbox({
+  test.skip('listPaginated: required and optional params', async () => {
+    const response = await client.restrictions.listPaginated({
+      area: 'area',
       key: 'key=API_KEY',
-      max_lat: 0,
-      max_lon: 0,
-      min_lat: 0,
-      min_lon: 0,
-      mode: ['0w'],
-      restriction_type: 'turn',
+      limit: 0,
+      offset: 0,
+      mode: '`0w`',
+      name: 'name',
+      restriction_type: '`turn`',
       source: 'rrt',
       state: '`enabled`',
       status: '`active`',
