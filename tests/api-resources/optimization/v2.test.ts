@@ -9,8 +9,25 @@ const client = new NextbillionSDK({
 
 describe('resource v2', () => {
   // skipped: tests are disabled for the time being
-  test.skip('createRequest: only required params', async () => {
-    const responsePromise = client.optimization.v2.createRequest({
+  test.skip('retrieveResult: only required params', async () => {
+    const responsePromise = client.optimization.v2.retrieveResult({ id: 'id', key: 'key=API_KEY' });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('retrieveResult: required and optional params', async () => {
+    const response = await client.optimization.v2.retrieveResult({ id: 'id', key: 'key=API_KEY' });
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('submit: only required params', async () => {
+    const responsePromise = client.optimization.v2.submit({
       key: 'key=API_KEY',
       locations: { location: ['string'] },
       vehicles: [{ id: 'id', location: {} }],
@@ -25,8 +42,8 @@ describe('resource v2', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('createRequest: required and optional params', async () => {
-    const response = await client.optimization.v2.createRequest({
+  test.skip('submit: required and optional params', async () => {
+    const response = await client.optimization.v2.submit({
       key: 'key=API_KEY',
       locations: { location: ['string'], id: 0, approaches: ['`unrestricted`'] },
       vehicles: [
@@ -200,22 +217,5 @@ describe('resource v2', () => {
         },
       ],
     });
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('retrieveResult: only required params', async () => {
-    const responsePromise = client.optimization.v2.retrieveResult({ id: 'id', key: 'key=API_KEY' });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('retrieveResult: required and optional params', async () => {
-    const response = await client.optimization.v2.retrieveResult({ id: 'id', key: 'key=API_KEY' });
   });
 });

@@ -10,21 +10,17 @@ export class Event extends APIResource {
   /**
    * Event History of an Asset
    */
-  retrieveList(
-    id: string,
-    query: EventRetrieveListParams,
-    options?: RequestOptions,
-  ): APIPromise<EventRetrieveListResponse> {
+  list(id: string, query: EventListParams, options?: RequestOptions): APIPromise<EventListResponse> {
     return this._client.get(path`/skynet/asset/${id}/event/list`, { query, ...options });
   }
 }
 
-export interface EventRetrieveListResponse {
+export interface EventListResponse {
   /**
    * An object containing the information about the event history for the requested
    * `asset`.
    */
-  data?: EventRetrieveListResponse.Data;
+  data?: EventListResponse.Data;
 
   /**
    * Displays the error message in case of a failed request. If the request is
@@ -40,7 +36,7 @@ export interface EventRetrieveListResponse {
   status?: string;
 }
 
-export namespace EventRetrieveListResponse {
+export namespace EventListResponse {
   /**
    * An object containing the information about the event history for the requested
    * `asset`.
@@ -238,7 +234,7 @@ export namespace EventRetrieveListResponse {
   }
 }
 
-export interface EventRetrieveListParams {
+export interface EventListParams {
   /**
    * A key is a unique identifier that is required to authenticate a request to the
    * API.
@@ -286,8 +282,5 @@ export interface EventRetrieveListParams {
 }
 
 export declare namespace Event {
-  export {
-    type EventRetrieveListResponse as EventRetrieveListResponse,
-    type EventRetrieveListParams as EventRetrieveListParams,
-  };
+  export { type EventListResponse as EventListResponse, type EventListParams as EventListParams };
 }

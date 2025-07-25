@@ -2,7 +2,7 @@
 
 export {
   Routes,
-  type RoutingResponse,
+  type Response,
   type RouteCreateResponse,
   type RouteRedispatchResponse,
   type RouteCreateParams,

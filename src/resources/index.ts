@@ -33,11 +33,11 @@ export {
   type MapView,
   type Position,
   type GeocodeRetrieveResponse,
-  type GeocodeBatchCreateResponse,
-  type GeocodeStructuredRetrieveResponse,
+  type GeocodeCreateBatchResponse,
+  type GeocodeRetrieveStructuredResponse,
   type GeocodeRetrieveParams,
-  type GeocodeBatchCreateParams,
-  type GeocodeStructuredRetrieveParams,
+  type GeocodeCreateBatchParams,
+  type GeocodeRetrieveStructuredParams,
 } from './geocode';
 export {
   GeofenceResource,
@@ -55,7 +55,7 @@ export {
   type GeofenceContainsParams,
 } from './geofence/geofence';
 export { Isochrone, type IsochroneComputeResponse, type IsochroneComputeParams } from './isochrone';
-export { Lookup, type LookupRetrieveResponse, type LookupRetrieveParams } from './lookup';
+export { Lookup, type LookupRetrieveByIDResponse, type LookupRetrieveByIDParams } from './lookup';
 export { Map } from './map';
 export {
   Mdm,

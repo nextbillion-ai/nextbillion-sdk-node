@@ -10,14 +10,7 @@ import {
   Vehicle,
 } from './driver-assignment';
 import * as V2API from './v2';
-import {
-  Job,
-  Shipment,
-  V2,
-  V2CreateRequestParams,
-  V2RetrieveResultParams,
-  V2RetrieveResultResponse,
-} from './v2';
+import { Job, Shipment, V2, V2RetrieveResultParams, V2RetrieveResultResponse, V2SubmitParams } from './v2';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
 
@@ -548,7 +541,7 @@ export declare namespace Optimization {
     type Job as Job,
     type Shipment as Shipment,
     type V2RetrieveResultResponse as V2RetrieveResultResponse,
-    type V2CreateRequestParams as V2CreateRequestParams,
     type V2RetrieveResultParams as V2RetrieveResultParams,
+    type V2SubmitParams as V2SubmitParams,
   };
 }

@@ -8,17 +8,6 @@ import { RequestOptions } from '../../internal/request-options';
 
 export class V2 extends APIResource {
   /**
-   * Flexible POST
-   */
-  createRequest(
-    params: V2CreateRequestParams,
-    options?: RequestOptions,
-  ): APIPromise<OptimizationAPI.PostResponse> {
-    const { key, ...body } = params;
-    return this._client.post('/optimization/v2', { query: { key }, body, ...options });
-  }
-
-  /**
    * Flexible GET
    */
   retrieveResult(
@@ -26,6 +15,14 @@ export class V2 extends APIResource {
     options?: RequestOptions,
   ): APIPromise<V2RetrieveResultResponse> {
     return this._client.get('/optimization/v2/result', { query, ...options });
+  }
+
+  /**
+   * Flexible POST
+   */
+  submit(params: V2SubmitParams, options?: RequestOptions): APIPromise<OptimizationAPI.PostResponse> {
+    const { key, ...body } = params;
+    return this._client.post('/optimization/v2', { query: { key }, body, ...options });
   }
 }
 
@@ -1290,7 +1287,21 @@ export namespace V2RetrieveResultResponse {
   }
 }
 
-export interface V2CreateRequestParams {
+export interface V2RetrieveResultParams {
+  /**
+   * The unique ID that was returned on successful submission of the Optimization
+   * POST request.
+   */
+  id: string;
+
+  /**
+   * A key is a unique identifier that is required to authenticate a request to the
+   * API.
+   */
+  key: string;
+}
+
+export interface V2SubmitParams {
   /**
    * Query param: A key is a unique identifier that is required to authenticate a
    * request to the API.
@@ -1302,7 +1313,7 @@ export interface V2CreateRequestParams {
    * be used during the optimization process. Read more about this attribute in the
    * [Location Object](#location-object) section.
    */
-  locations: V2CreateRequestParams.Locations;
+  locations: V2SubmitParams.Locations;
 
   /**
    * Body param: The `vehicles` attribute describes the characteristics and
@@ -1330,7 +1341,7 @@ export interface V2CreateRequestParams {
    * picked-up from task locations will be delivered back to the depots. A depot can
    * be configured using the following fields:
    */
-  depots?: Array<V2CreateRequestParams.Depot>;
+  depots?: Array<V2SubmitParams.Depot>;
 
   /**
    * Body param: Define the optimization job using any custom message. This
@@ -1403,7 +1414,7 @@ export interface V2CreateRequestParams {
    * optimization algorithms so that the solver provides a solution that meets the
    * desired business objectives.
    */
-  options?: V2CreateRequestParams.Options;
+  options?: V2SubmitParams.Options;
 
   /**
    * Body param: `relations` attribute is an array of individual relation objects.
@@ -1419,7 +1430,7 @@ export interface V2CreateRequestParams {
    * Read more about this attribute in the [Relations Object](#relations-object)
    * section.
    */
-  relations?: Array<V2CreateRequestParams.Relation>;
+  relations?: Array<V2SubmitParams.Relation>;
 
   /**
    * Body param: The `shipments` object is used to collect the details of shipments
@@ -1439,7 +1450,7 @@ export interface V2CreateRequestParams {
    * should contain the same routes as the previous optimization result. `solution`
    * attribute is an array of objects with each object corresponding to one route.
    */
-  solution?: Array<V2CreateRequestParams.Solution>;
+  solution?: Array<V2SubmitParams.Solution>;
 
   /**
    * Body param: `unassigned` attribute is related to the re-optimization feature.
@@ -1458,7 +1469,7 @@ export interface V2CreateRequestParams {
    * Ultimately, the goal is to minimize the number of unassigned tasks while still
    * meeting all the necessary constraints and objectives.
    */
-  unassigned?: V2CreateRequestParams.Unassigned;
+  unassigned?: V2SubmitParams.Unassigned;
 
   /**
    * Body param: An array of objects to specify geometry of all the zones involved.
@@ -1478,10 +1489,10 @@ export interface V2CreateRequestParams {
    *   provided while configuring individual tasks, the zone IDs will override the
    *   geometries provided here.
    */
-  zones?: Array<V2CreateRequestParams.Zone>;
+  zones?: Array<V2SubmitParams.Zone>;
 }
 
-export namespace V2CreateRequestParams {
+export namespace V2SubmitParams {
   /**
    * The `locations` object is used to define all the locations that will be used
    * during the optimization process. Read more about this attribute in the
@@ -2414,26 +2425,12 @@ export namespace V2CreateRequestParams {
   }
 }
 
-export interface V2RetrieveResultParams {
-  /**
-   * The unique ID that was returned on successful submission of the Optimization
-   * POST request.
-   */
-  id: string;
-
-  /**
-   * A key is a unique identifier that is required to authenticate a request to the
-   * API.
-   */
-  key: string;
-}
-
 export declare namespace V2 {
   export {
     type Job as Job,
     type Shipment as Shipment,
     type V2RetrieveResultResponse as V2RetrieveResultResponse,
-    type V2CreateRequestParams as V2CreateRequestParams,
     type V2RetrieveResultParams as V2RetrieveResultParams,
+    type V2SubmitParams as V2SubmitParams,
   };
 }
