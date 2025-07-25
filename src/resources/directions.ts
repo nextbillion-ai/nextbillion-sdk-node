@@ -9,10 +9,11 @@ export class Directions extends APIResource {
    * Directions API is a service that computes a route with given coordinates.
    */
   computeRoute(
-    body: DirectionComputeRouteParams,
+    params: DirectionComputeRouteParams,
     options?: RequestOptions,
   ): APIPromise<DirectionComputeRouteResponse> {
-    return this._client.post('/directions/json', { body, ...options });
+    const { query_key, ...body } = params;
+    return this._client.post('/directions/json', { query: { key: query_key }, body, ...options });
   }
 }
 
@@ -423,19 +424,30 @@ export namespace DirectionComputeRouteResponse {
 }
 
 export interface DirectionComputeRouteParams {
+  /**
+   * Query param: API Key
+   */
+  query_key: string;
+
+  /**
+   * Body param:
+   */
   destination: string;
 
   /**
-   * A key is a unique identifier that is required to authenticate a request to the
-   * API.
+   * Body param: A key is a unique identifier that is required to authenticate a
+   * request to the API.
    */
-  key: string;
+  body_key: string;
 
+  /**
+   * Body param:
+   */
   origin: string;
 
   /**
-   * Sets the number of alternative routes to return. It is effective only when
-   * alternatives=true. Default to 3.
+   * Body param: Sets the number of alternative routes to return. It is effective
+   * only when alternatives=true. Default to 3.
    *
    * Please note that adding alternative route count does not guarantee matching
    * number of routes to be returned if potential alternative routes do not exist.
@@ -443,7 +455,7 @@ export interface DirectionComputeRouteParams {
   altcount?: number;
 
   /**
-   * When true the API will return alternate routes.
+   * Body param: When true the API will return alternate routes.
    *
    * The alternatives is effective only when there are no waypoints included in the
    * request.
@@ -454,8 +466,8 @@ export interface DirectionComputeRouteParams {
   alternatives?: boolean;
 
   /**
-   * A semicolon-separated list indicating the side of the road from which to
-   * approach waypoints in a requested route.
+   * Body param: A semicolon-separated list indicating the side of the road from
+   * which to approach waypoints in a requested route.
    *
    * When set to unrestricted a route can arrive at the waypoint from either side of
    * the road and when set to curb the route will arrive at the waypoint on the
@@ -469,7 +481,7 @@ export interface DirectionComputeRouteParams {
   approaches?: string;
 
   /**
-   * When option=fast (by default):
+   * Body param: When option=fast (by default):
    *
    * Setting this will ensure the route avoids ferries, tolls, highways or nothing.
    * Multiple values should be separated by a pipe "|". If none is provided along
@@ -522,9 +534,9 @@ export interface DirectionComputeRouteParams {
     | 'tunnel';
 
   /**
-   * Limits the search to road segments with given bearing, in degrees, towards true
-   * north in clockwise direction. Each bearings should be in the format of
-   * degree,range, where the degree should be a value between \[0, 360\] and range
+   * Body param: Limits the search to road segments with given bearing, in degrees,
+   * towards true north in clockwise direction. Each bearings should be in the format
+   * of degree,range, where the degree should be a value between \[0, 360\] and range
    * should be a value between \[0, 180\].
    *
    * Please note that the number of bearings should be two more than the number of
@@ -535,7 +547,7 @@ export interface DirectionComputeRouteParams {
   bearings?: string;
 
   /**
-   * Requires option=flexible.
+   * Body param: Requires option=flexible.
    *
    * Specify if crossing an international border is expected for operations near
    * border areas. When set to false, the API will prohibit routes crossing the
@@ -550,7 +562,7 @@ export interface DirectionComputeRouteParams {
   cross_border?: boolean;
 
   /**
-   * Requires option=flexible.
+   * Body param: Requires option=flexible.
    *
    * Use this parameter to set a departure time, expressed as UNIX epoch timestamp in
    * seconds, for calculating the isochrone contour. The response will consider the
@@ -563,7 +575,7 @@ export interface DirectionComputeRouteParams {
   departure_time?: number;
 
   /**
-   * Requires option=flexible.
+   * Body param: Requires option=flexible.
    *
    * An array of durations, in seconds, for which the driver can drive continuously
    * before taking a rest. Multiple drive time limits can be separated by a comma
@@ -587,7 +599,7 @@ export interface DirectionComputeRouteParams {
   drive_time_limits?: string;
 
   /**
-   * Requires option=flexible.
+   * Body param: Requires option=flexible.
    *
    * Specify the emission class to which the vehicle (engine) belongs to. The service
    * will use this setting to generate routes that are permissible for that engine
@@ -609,7 +621,7 @@ export interface DirectionComputeRouteParams {
     | 'euro9';
 
   /**
-   * Requires option=flexible.
+   * Body param: Requires option=flexible.
    *
    * This parameter serves as a mandatory filter, ensuring the service returns only
    * those routes that strictly avoid the object(s) indicated. Multiple values should
@@ -636,7 +648,7 @@ export interface DirectionComputeRouteParams {
     | 'none';
 
   /**
-   * Sets the output format of the route geometry in the response.
+   * Body param: Sets the output format of the route geometry in the response.
    *
    * On providing polyline and polyline6 as input, respective encoded geometry is
    * returned. However, when geojson is provided as the input value, polyline encoded
@@ -646,7 +658,7 @@ export interface DirectionComputeRouteParams {
   geometry?: 'polyline' | 'polyline6' | 'geojson';
 
   /**
-   * Requires option=flexible.
+   * Body param: Requires option=flexible.
    *
    * Specify the type of hazardous material being carried and the service will avoid
    * roads which are not suitable for the type of goods specified. Multiple values
@@ -657,10 +669,10 @@ export interface DirectionComputeRouteParams {
   hazmat_type?: 'general' | 'circumstantial' | 'explosive' | 'harmful_to_water';
 
   /**
-   * Set the driving mode the service should use to determine a route. In "car" mode,
-   * the API will return a route that a car can take. Using "truck" mode will return
-   * a route a truck can use, taking into account appropriate truck routing
-   * restrictions.
+   * Body param: Set the driving mode the service should use to determine a route. In
+   * "car" mode, the API will return a route that a car can take. Using "truck" mode
+   * will return a route a truck can use, taking into account appropriate truck
+   * routing restrictions.
    *
    * When mode=truck, following are the default dimensions that are used:
    *
@@ -682,16 +694,16 @@ export interface DirectionComputeRouteParams {
   mode?: 'car' | 'truck';
 
   /**
-   * The option parameter specifies the version of the directions service to use.
-   * Setting option=flexible activates the Flexible API, which supports advanced
-   * features like truck routing, time-based routing, route type selection
+   * Body param: The option parameter specifies the version of the directions service
+   * to use. Setting option=flexible activates the Flexible API, which supports
+   * advanced features like truck routing, time-based routing, route type selection
    * (fastest/shortest), and segment-wise speed limits. If not set, the API defaults
    * to the Fast version for real-time routing.
    */
   option?: 'fast' | 'flexible';
 
   /**
-   * Specify the verbosity of route geometry.
+   * Body param: Specify the verbosity of route geometry.
    *
    * When set to full, the most detailed geometry available is returned. When set to
    * simplified, a simplified version of the full geometry is returned. No overview
@@ -700,7 +712,7 @@ export interface DirectionComputeRouteParams {
   overview?: 'full' | 'simplified' | 'false';
 
   /**
-   * Requires option=flexible.
+   * Body param: Requires option=flexible.
    *
    * An array of durations, in seconds, for which the driver should rest after
    * completing the corresponding continuous driving interval (provided in
@@ -722,7 +734,7 @@ export interface DirectionComputeRouteParams {
   rest_times?: string;
 
   /**
-   * Requires option=flexible.
+   * Body param: Requires option=flexible.
    *
    * Use this parameter to receive additional information about the road segments
    * returned in the response. Currently, following inputs are supported:
@@ -737,20 +749,20 @@ export interface DirectionComputeRouteParams {
   road_info?: 'max_speed' | 'toll_distance' | 'toll_cost';
 
   /**
-   * Requires option=flexible.
+   * Body param: Requires option=flexible.
    *
    * Set the route type that needs to be returned.
    */
   route_type?: 'fastest' | 'shortest';
 
   /**
-   * Set this to true to receive additional details about the routes and each of its
-   * legs (details of geometry, start & end locations) in the response.
+   * Body param: Set this to true to receive additional details about the routes and
+   * each of its legs (details of geometry, start & end locations) in the response.
    */
   steps?: boolean;
 
   /**
-   * Requires option=flexible.
+   * Body param: Requires option=flexible.
    *
    * Specify the total load per axle (including the weight of trailers and shipped
    * goods) of the truck, in tonnes. When used, the service will return routes which
@@ -761,7 +773,7 @@ export interface DirectionComputeRouteParams {
   truck_axle_load?: number;
 
   /**
-   * Requires option=flexible.
+   * Body param: Requires option=flexible.
    *
    * This defines the dimensions of a truck in centimeters (CM). This parameter is
    * effective only when the mode=truck. Maximum dimensions are as follows:
@@ -773,7 +785,7 @@ export interface DirectionComputeRouteParams {
   truck_size?: string;
 
   /**
-   * Requires option=flexible.
+   * Body param: Requires option=flexible.
    *
    * This parameter defines the weight of the truck including trailers and shipped
    * goods in kilograms (KG). This parameter is effective only when mode=truck.
@@ -781,7 +793,7 @@ export interface DirectionComputeRouteParams {
   truck_weight?: number;
 
   /**
-   * Requires option=flexible.
+   * Body param: Requires option=flexible.
    *
    * Specify the turn angles that can be taken safely by the vehicle. The permissible
    * turn angles are calculated as \[0 + turn_angle_range , 360 - turn_angle_range\].
@@ -794,7 +806,7 @@ export interface DirectionComputeRouteParams {
   turn_angle_range?: number;
 
   /**
-   * Pipe-separated list of coordinate pairs
+   * Body param: Pipe-separated list of coordinate pairs
    */
   waypoints?: string;
 }
