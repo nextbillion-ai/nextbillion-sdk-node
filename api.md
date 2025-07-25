@@ -207,14 +207,14 @@ Types:
 - <code><a href="./src/resources/geocode.ts">MapView</a></code>
 - <code><a href="./src/resources/geocode.ts">Position</a></code>
 - <code><a href="./src/resources/geocode.ts">GeocodeRetrieveResponse</a></code>
-- <code><a href="./src/resources/geocode.ts">GeocodeCreateBatchResponse</a></code>
-- <code><a href="./src/resources/geocode.ts">GeocodeRetrieveStructuredResponse</a></code>
+- <code><a href="./src/resources/geocode.ts">GeocodeBatchCreateResponse</a></code>
+- <code><a href="./src/resources/geocode.ts">GeocodeStructuredRetrieveResponse</a></code>
 
 Methods:
 
 - <code title="get /geocode">client.geocode.<a href="./src/resources/geocode.ts">retrieve</a>({ ...params }) -> GeocodeRetrieveResponse</code>
-- <code title="post /geocode/batch">client.geocode.<a href="./src/resources/geocode.ts">createBatch</a>([ ...body ]) -> GeocodeCreateBatchResponse</code>
-- <code title="get /geocode/structured">client.geocode.<a href="./src/resources/geocode.ts">retrieveStructured</a>({ ...params }) -> GeocodeRetrieveStructuredResponse</code>
+- <code title="post /geocode/batch">client.geocode.<a href="./src/resources/geocode.ts">batchCreate</a>([ ...body ]) -> GeocodeBatchCreateResponse</code>
+- <code title="get /geocode/structured">client.geocode.<a href="./src/resources/geocode.ts">structuredRetrieve</a>({ ...params }) -> GeocodeStructuredRetrieveResponse</code>
 
 # Optimization
 
@@ -291,13 +291,13 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/geofence/batch.ts">BatchCreateResponse</a></code>
-- <code><a href="./src/resources/geofence/batch.ts">BatchQueryResponse</a></code>
+- <code><a href="./src/resources/geofence/batch.ts">BatchListResponse</a></code>
 
 Methods:
 
 - <code title="post /geofence/batch">client.geofence.batch.<a href="./src/resources/geofence/batch.ts">create</a>({ ...params }) -> BatchCreateResponse</code>
+- <code title="get /geofence/batch">client.geofence.batch.<a href="./src/resources/geofence/batch.ts">list</a>({ ...params }) -> BatchListResponse</code>
 - <code title="delete /geofence/batch">client.geofence.batch.<a href="./src/resources/geofence/batch.ts">delete</a>({ ...params }) -> SimpleResp</code>
-- <code title="get /geofence/batch">client.geofence.batch.<a href="./src/resources/geofence/batch.ts">query</a>({ ...params }) -> BatchQueryResponse</code>
 
 # Discover
 
@@ -523,8 +523,8 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/lookup.ts">LookupByIDResponse</a></code>
+- <code><a href="./src/resources/lookup.ts">LookupRetrieveResponse</a></code>
 
 Methods:
 
-- <code title="get /lookup">client.lookup.<a href="./src/resources/lookup.ts">byID</a>({ ...params }) -> LookupByIDResponse</code>
+- <code title="get /lookup">client.lookup.<a href="./src/resources/lookup.ts">retrieve</a>({ ...params }) -> LookupRetrieveResponse</code>
