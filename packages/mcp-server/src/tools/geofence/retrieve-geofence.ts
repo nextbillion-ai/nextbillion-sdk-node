@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   tags: [],
   httpMethod: 'get',
   httpPath: '/geofence/{id}',
-  operationId: '{id}-GET-Wsbq0paH',
+  operationId: '{id}-GET-JebtxMxZ',
 };
 
 export const tool: Tool = {

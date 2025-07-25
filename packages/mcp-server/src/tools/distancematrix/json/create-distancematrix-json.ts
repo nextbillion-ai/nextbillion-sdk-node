@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   tags: [],
   httpMethod: 'post',
   httpPath: '/distancematrix/json',
-  operationId: 'json-qk51yeQy',
+  operationId: 'json-HH25U9aj',
 };
 
 export const tool: Tool = {
