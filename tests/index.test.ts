@@ -312,13 +312,13 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['NEXTBILLION_SDK_BASE_URL'] = ''; // empty
       const client = new NextbillionSDK({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://api.example.com');
+      expect(client.baseURL).toEqual('https://api.nextbillion.io');
     });
 
     test('blank env variable', () => {
       process.env['NEXTBILLION_SDK_BASE_URL'] = '  '; // blank
       const client = new NextbillionSDK({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://api.example.com');
+      expect(client.baseURL).toEqual('https://api.nextbillion.io');
     });
 
     test('in request options', () => {

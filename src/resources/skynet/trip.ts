@@ -47,11 +47,11 @@ export class Trip extends APIResource {
   /**
    * Get summary of an ended trip
    */
-  retrieveSummary(
+  getSummary(
     id: string,
-    query: TripRetrieveSummaryParams,
+    query: TripGetSummaryParams,
     options?: RequestOptions,
-  ): APIPromise<TripRetrieveSummaryResponse> {
+  ): APIPromise<TripGetSummaryResponse> {
     return this._client.get(path`/skynet/trip/${id}/summary`, { query, ...options });
   }
 
@@ -357,11 +357,11 @@ export namespace TripRetrieveResponse {
   }
 }
 
-export interface TripRetrieveSummaryResponse {
+export interface TripGetSummaryResponse {
   /**
    * An container for the trip returned by the service.
    */
-  data?: TripRetrieveSummaryResponse.Data;
+  data?: TripGetSummaryResponse.Data;
 
   /**
    * Displays the error message in case of a failed request. If the request is
@@ -377,7 +377,7 @@ export interface TripRetrieveSummaryResponse {
   status?: string;
 }
 
-export namespace TripRetrieveSummaryResponse {
+export namespace TripGetSummaryResponse {
   /**
    * An container for the trip returned by the service.
    */
@@ -661,7 +661,7 @@ export interface TripEndParams {
   cluster?: 'america';
 }
 
-export interface TripRetrieveSummaryParams {
+export interface TripGetSummaryParams {
   /**
    * A key is a unique identifier that is required to authenticate a request to the
    * API.
@@ -767,13 +767,13 @@ export declare namespace Trip {
     type Asset as Asset,
     type TripStop as TripStop,
     type TripRetrieveResponse as TripRetrieveResponse,
-    type TripRetrieveSummaryResponse as TripRetrieveSummaryResponse,
+    type TripGetSummaryResponse as TripGetSummaryResponse,
     type TripStartResponse as TripStartResponse,
     type TripRetrieveParams as TripRetrieveParams,
     type TripUpdateParams as TripUpdateParams,
     type TripDeleteParams as TripDeleteParams,
     type TripEndParams as TripEndParams,
-    type TripRetrieveSummaryParams as TripRetrieveSummaryParams,
+    type TripGetSummaryParams as TripGetSummaryParams,
     type TripStartParams as TripStartParams,
   };
 }

@@ -55,7 +55,7 @@ export {
   type GeofenceContainsParams,
 } from './geofence/geofence';
 export { Isochrone, type IsochroneComputeResponse, type IsochroneComputeParams } from './isochrone';
-export { Lookup, type LookupRetrieveResponse, type LookupRetrieveParams } from './lookup';
+export { Lookup, type LookupByIDResponse, type LookupByIDParams } from './lookup';
 export { Map } from './map';
 export {
   Mdm,
