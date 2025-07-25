@@ -11,9 +11,8 @@ describe('resource directions', () => {
   // skipped: tests are disabled for the time being
   test.skip('computeRoute: only required params', async () => {
     const responsePromise = client.directions.computeRoute({
-      query_key: 'key',
       destination: '41.349302,2.136480',
-      body_key: 'key',
+      key: 'key',
       origin: '41.349302,2.136480',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -28,9 +27,8 @@ describe('resource directions', () => {
   // skipped: tests are disabled for the time being
   test.skip('computeRoute: required and optional params', async () => {
     const response = await client.directions.computeRoute({
-      query_key: 'key',
       destination: '41.349302,2.136480',
-      body_key: 'key',
+      key: 'key',
       origin: '41.349302,2.136480',
       altcount: 1,
       alternatives: true,
