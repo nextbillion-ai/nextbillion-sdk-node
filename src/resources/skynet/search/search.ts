@@ -5,7 +5,7 @@ import * as MonitorAPI from '../monitor';
 import * as AssetAPI from '../asset/asset';
 import * as LocationAPI from '../asset/location';
 import * as PolygonAPI from './polygon';
-import { Polygon, PolygonCreateParams, PolygonGetParams } from './polygon';
+import { Polygon, PolygonCreateParams, PolygonListParams } from './polygon';
 import { APIPromise } from '../../../core/api-promise';
 import { RequestOptions } from '../../../internal/request-options';
 
@@ -15,14 +15,14 @@ export class Search extends APIResource {
   /**
    * Around Search
    */
-  around(query: SearchAroundParams, options?: RequestOptions): APIPromise<SearchResponse> {
+  retrieveAround(query: SearchRetrieveAroundParams, options?: RequestOptions): APIPromise<SearchResponse> {
     return this._client.get('/skynet/search/around', { query, ...options });
   }
 
   /**
    * Bound Search
    */
-  bound(query: SearchBoundParams, options?: RequestOptions): APIPromise<SearchResponse> {
+  retrieveBound(query: SearchRetrieveBoundParams, options?: RequestOptions): APIPromise<SearchResponse> {
     return this._client.get('/skynet/search/bound', { query, ...options });
   }
 }
@@ -157,7 +157,7 @@ export namespace SearchResponse {
   }
 }
 
-export interface SearchAroundParams {
+export interface SearchRetrieveAroundParams {
   /**
    * Location coordinates of the point which would act as the center of the circular
    * area to be searched.
@@ -259,7 +259,7 @@ export interface SearchAroundParams {
   sort_driving_mode?: '`car`' | '`truck`';
 }
 
-export interface SearchBoundParams {
+export interface SearchRetrieveBoundParams {
   /**
    * Specify two, pipe (|) delimited location coordinates which would act as corners
    * of the bounding box area to be searched. The first one should be the southwest
@@ -363,13 +363,13 @@ Search.Polygon = Polygon;
 export declare namespace Search {
   export {
     type SearchResponse as SearchResponse,
-    type SearchAroundParams as SearchAroundParams,
-    type SearchBoundParams as SearchBoundParams,
+    type SearchRetrieveAroundParams as SearchRetrieveAroundParams,
+    type SearchRetrieveBoundParams as SearchRetrieveBoundParams,
   };
 
   export {
     Polygon as Polygon,
     type PolygonCreateParams as PolygonCreateParams,
-    type PolygonGetParams as PolygonGetParams,
+    type PolygonListParams as PolygonListParams,
   };
 }

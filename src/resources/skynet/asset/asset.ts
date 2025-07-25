@@ -4,14 +4,14 @@ import { APIResource } from '../../../core/resource';
 import * as MonitorAPI from '../monitor';
 import * as TripAPI from '../trip';
 import * as EventAPI from './event';
-import { Event, EventListParams, EventListResponse } from './event';
+import { Event, EventRetrieveListParams, EventRetrieveListResponse } from './event';
 import * as LocationAPI from './location';
 import {
   Location as LocationAPILocation,
-  LocationGetLastParams,
-  LocationGetLastResponse,
-  LocationListParams,
-  LocationListResponse,
+  LocationRetrieveLastParams,
+  LocationRetrieveLastResponse,
+  LocationRetrieveListParams,
+  LocationRetrieveListResponse,
   TrackLocation,
 } from './location';
 import { APIPromise } from '../../../core/api-promise';
@@ -50,18 +50,21 @@ export class Asset extends APIResource {
   }
 
   /**
-   * Get Asset List
-   */
-  list(query: AssetListParams, options?: RequestOptions): APIPromise<AssetListResponse> {
-    return this._client.get('/skynet/asset/list', { query, ...options });
-  }
-
-  /**
    * Delete an Asset
    */
   delete(id: string, params: AssetDeleteParams, options?: RequestOptions): APIPromise<SimpleResp> {
     const { key, cluster } = params;
     return this._client.delete(path`/skynet/asset/${id}`, { query: { key, cluster }, ...options });
+  }
+
+  /**
+   * Get Asset List
+   */
+  retrieveList(
+    query: AssetRetrieveListParams,
+    options?: RequestOptions,
+  ): APIPromise<AssetRetrieveListResponse> {
+    return this._client.get('/skynet/asset/list', { query, ...options });
   }
 
   /**
@@ -171,11 +174,11 @@ export namespace AssetRetrieveResponse {
   }
 }
 
-export interface AssetListResponse {
+export interface AssetRetrieveListResponse {
   /**
    * A data object containing the list of assets.
    */
-  data?: AssetListResponse.Data;
+  data?: AssetRetrieveListResponse.Data;
 
   /**
    * Displays the error message in case of a failed request. If the request is
@@ -191,7 +194,7 @@ export interface AssetListResponse {
   status?: string;
 }
 
-export namespace AssetListResponse {
+export namespace AssetRetrieveListResponse {
   /**
    * A data object containing the list of assets.
    */
@@ -343,7 +346,20 @@ export interface AssetUpdateParams {
   tags?: Array<string>;
 }
 
-export interface AssetListParams {
+export interface AssetDeleteParams {
+  /**
+   * A key is a unique identifier that is required to authenticate a request to the
+   * API.
+   */
+  key: string;
+
+  /**
+   * the cluster of the region you want to use
+   */
+  cluster?: 'america';
+}
+
+export interface AssetRetrieveListParams {
   /**
    * A key is a unique identifier that is required to authenticate a request to the
    * API.
@@ -409,19 +425,6 @@ export interface AssetListParams {
    * be specified, use `,` to separate them.
    */
   tags?: string;
-}
-
-export interface AssetDeleteParams {
-  /**
-   * A key is a unique identifier that is required to authenticate a request to the
-   * API.
-   */
-  key: string;
-
-  /**
-   * the cluster of the region you want to use
-   */
-  cluster?: 'america';
 }
 
 export interface AssetTrackParams {
@@ -574,28 +577,28 @@ export declare namespace Asset {
     type SimpleResp as SimpleResp,
     type AssetCreateResponse as AssetCreateResponse,
     type AssetRetrieveResponse as AssetRetrieveResponse,
-    type AssetListResponse as AssetListResponse,
+    type AssetRetrieveListResponse as AssetRetrieveListResponse,
     type AssetCreateParams as AssetCreateParams,
     type AssetRetrieveParams as AssetRetrieveParams,
     type AssetUpdateParams as AssetUpdateParams,
-    type AssetListParams as AssetListParams,
     type AssetDeleteParams as AssetDeleteParams,
+    type AssetRetrieveListParams as AssetRetrieveListParams,
     type AssetTrackParams as AssetTrackParams,
     type AssetUpdateAttributesParams as AssetUpdateAttributesParams,
   };
 
   export {
     Event as Event,
-    type EventListResponse as EventListResponse,
-    type EventListParams as EventListParams,
+    type EventRetrieveListResponse as EventRetrieveListResponse,
+    type EventRetrieveListParams as EventRetrieveListParams,
   };
 
   export {
     LocationAPILocation as Location,
     type TrackLocation as TrackLocation,
-    type LocationListResponse as LocationListResponse,
-    type LocationGetLastResponse as LocationGetLastResponse,
-    type LocationListParams as LocationListParams,
-    type LocationGetLastParams as LocationGetLastParams,
+    type LocationRetrieveLastResponse as LocationRetrieveLastResponse,
+    type LocationRetrieveListResponse as LocationRetrieveListResponse,
+    type LocationRetrieveLastParams as LocationRetrieveLastParams,
+    type LocationRetrieveListParams as LocationRetrieveListParams,
   };
 }

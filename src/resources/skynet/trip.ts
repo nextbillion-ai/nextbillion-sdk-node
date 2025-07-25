@@ -47,11 +47,11 @@ export class Trip extends APIResource {
   /**
    * Get summary of an ended trip
    */
-  getSummary(
+  retrieveSummary(
     id: string,
-    query: TripGetSummaryParams,
+    query: TripRetrieveSummaryParams,
     options?: RequestOptions,
-  ): APIPromise<TripGetSummaryResponse> {
+  ): APIPromise<TripRetrieveSummaryResponse> {
     return this._client.get(path`/skynet/trip/${id}/summary`, { query, ...options });
   }
 
@@ -357,11 +357,11 @@ export namespace TripRetrieveResponse {
   }
 }
 
-export interface TripGetSummaryResponse {
+export interface TripRetrieveSummaryResponse {
   /**
    * An container for the trip returned by the service.
    */
-  data?: TripGetSummaryResponse.Data;
+  data?: TripRetrieveSummaryResponse.Data;
 
   /**
    * Displays the error message in case of a failed request. If the request is
@@ -377,7 +377,7 @@ export interface TripGetSummaryResponse {
   status?: string;
 }
 
-export namespace TripGetSummaryResponse {
+export namespace TripRetrieveSummaryResponse {
   /**
    * An container for the trip returned by the service.
    */
@@ -661,7 +661,7 @@ export interface TripEndParams {
   cluster?: 'america';
 }
 
-export interface TripGetSummaryParams {
+export interface TripRetrieveSummaryParams {
   /**
    * A key is a unique identifier that is required to authenticate a request to the
    * API.
@@ -767,13 +767,13 @@ export declare namespace Trip {
     type Asset as Asset,
     type TripStop as TripStop,
     type TripRetrieveResponse as TripRetrieveResponse,
-    type TripGetSummaryResponse as TripGetSummaryResponse,
+    type TripRetrieveSummaryResponse as TripRetrieveSummaryResponse,
     type TripStartResponse as TripStartResponse,
     type TripRetrieveParams as TripRetrieveParams,
     type TripUpdateParams as TripUpdateParams,
     type TripDeleteParams as TripDeleteParams,
     type TripEndParams as TripEndParams,
-    type TripGetSummaryParams as TripGetSummaryParams,
+    type TripRetrieveSummaryParams as TripRetrieveSummaryParams,
     type TripStartParams as TripStartParams,
   };
 }

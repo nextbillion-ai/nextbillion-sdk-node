@@ -37,7 +37,7 @@ import {
   DirectionComputeRouteResponse,
   Directions,
 } from './resources/directions';
-import { Discover, DiscoverRetrieveParams, DiscoverRetrieveResponse } from './resources/discover';
+import { Discover, DiscoverListParams, DiscoverListResponse } from './resources/discover';
 import {
   Access,
   Address,
@@ -45,17 +45,17 @@ import {
   ContactObject,
   Contacts,
   Geocode,
-  GeocodeCreateBatchParams,
-  GeocodeCreateBatchResponse,
+  GeocodeBatchCreateParams,
+  GeocodeBatchCreateResponse,
   GeocodeRetrieveParams,
   GeocodeRetrieveResponse,
-  GeocodeRetrieveStructuredParams,
-  GeocodeRetrieveStructuredResponse,
+  GeocodeStructuredRetrieveParams,
+  GeocodeStructuredRetrieveResponse,
   MapView,
   Position,
 } from './resources/geocode';
 import { Isochrone, IsochroneComputeParams, IsochroneComputeResponse } from './resources/isochrone';
-import { Lookup, LookupRetrieveByIDParams, LookupRetrieveByIDResponse } from './resources/lookup';
+import { Lookup, LookupRetrieveParams, LookupRetrieveResponse } from './resources/lookup';
 import { Map } from './resources/map';
 import {
   Mdm,
@@ -886,11 +886,11 @@ export declare namespace NextbillionSDK {
     type MapView as MapView,
     type Position as Position,
     type GeocodeRetrieveResponse as GeocodeRetrieveResponse,
-    type GeocodeCreateBatchResponse as GeocodeCreateBatchResponse,
-    type GeocodeRetrieveStructuredResponse as GeocodeRetrieveStructuredResponse,
+    type GeocodeBatchCreateResponse as GeocodeBatchCreateResponse,
+    type GeocodeStructuredRetrieveResponse as GeocodeStructuredRetrieveResponse,
     type GeocodeRetrieveParams as GeocodeRetrieveParams,
-    type GeocodeCreateBatchParams as GeocodeCreateBatchParams,
-    type GeocodeRetrieveStructuredParams as GeocodeRetrieveStructuredParams,
+    type GeocodeBatchCreateParams as GeocodeBatchCreateParams,
+    type GeocodeStructuredRetrieveParams as GeocodeStructuredRetrieveParams,
   };
 
   export {
@@ -919,8 +919,8 @@ export declare namespace NextbillionSDK {
 
   export {
     Discover as Discover,
-    type DiscoverRetrieveResponse as DiscoverRetrieveResponse,
-    type DiscoverRetrieveParams as DiscoverRetrieveParams,
+    type DiscoverListResponse as DiscoverListResponse,
+    type DiscoverListParams as DiscoverListParams,
   };
 
   export {
@@ -1035,7 +1035,7 @@ export declare namespace NextbillionSDK {
 
   export {
     Lookup as Lookup,
-    type LookupRetrieveByIDResponse as LookupRetrieveByIDResponse,
-    type LookupRetrieveByIDParams as LookupRetrieveByIDParams,
+    type LookupRetrieveResponse as LookupRetrieveResponse,
+    type LookupRetrieveParams as LookupRetrieveParams,
   };
 }

@@ -9,23 +9,20 @@ export class Lookup extends APIResource {
   /**
    * Lookup By ID
    */
-  retrieveByID(
-    query: LookupRetrieveByIDParams,
-    options?: RequestOptions,
-  ): APIPromise<LookupRetrieveByIDResponse> {
+  retrieve(query: LookupRetrieveParams, options?: RequestOptions): APIPromise<LookupRetrieveResponse> {
     return this._client.get('/lookup', { query, ...options });
   }
 }
 
-export interface LookupRetrieveByIDResponse {
+export interface LookupRetrieveResponse {
   /**
    * The results are presented as a JSON list of candidates in ranked order
    * (most-likely to least-likely) based on the matched location criteria.
    */
-  items?: Array<LookupRetrieveByIDResponse.Item>;
+  items?: Array<LookupRetrieveResponse.Item>;
 }
 
-export namespace LookupRetrieveByIDResponse {
+export namespace LookupRetrieveResponse {
   export interface Item {
     /**
      * The unique identifier for the result item.
@@ -71,7 +68,7 @@ export namespace LookupRetrieveByIDResponse {
   }
 }
 
-export interface LookupRetrieveByIDParams {
+export interface LookupRetrieveParams {
   /**
    * Specify the unique identifier of a specific POI, Street, Geography, Point
    * Address or other entities to retrieve its details.
@@ -87,7 +84,7 @@ export interface LookupRetrieveByIDParams {
 
 export declare namespace Lookup {
   export {
-    type LookupRetrieveByIDResponse as LookupRetrieveByIDResponse,
-    type LookupRetrieveByIDParams as LookupRetrieveByIDParams,
+    type LookupRetrieveResponse as LookupRetrieveResponse,
+    type LookupRetrieveParams as LookupRetrieveParams,
   };
 }
