@@ -16,10 +16,10 @@ export class Geocode extends APIResource {
   /**
    * Batch Geocode
    */
-  batchCreate(
-    params: GeocodeBatchCreateParams,
+  createBatch(
+    params: GeocodeCreateBatchParams,
     options?: RequestOptions,
-  ): APIPromise<GeocodeBatchCreateResponse> {
+  ): APIPromise<GeocodeCreateBatchResponse> {
     const { key, body } = params;
     return this._client.post('/geocode/batch', { query: { key }, body: body, ...options });
   }
@@ -27,10 +27,10 @@ export class Geocode extends APIResource {
   /**
    * Structured Geocode
    */
-  structuredRetrieve(
-    query: GeocodeStructuredRetrieveParams,
+  retrieveStructured(
+    query: GeocodeRetrieveStructuredParams,
     options?: RequestOptions,
-  ): APIPromise<GeocodeStructuredRetrieveResponse> {
+  ): APIPromise<GeocodeRetrieveStructuredResponse> {
     return this._client.get('/geocode/structured', { query, ...options });
   }
 }
@@ -373,15 +373,15 @@ export namespace GeocodeRetrieveResponse {
   }
 }
 
-export interface GeocodeBatchCreateResponse {
+export interface GeocodeCreateBatchResponse {
   /**
    * The results are presented as a JSON list of candidates in ranked order
    * (most-likely to least-likely) based on the matched location criteria.
    */
-  items?: Array<GeocodeBatchCreateResponse.Item>;
+  items?: Array<GeocodeCreateBatchResponse.Item>;
 }
 
-export namespace GeocodeBatchCreateResponse {
+export namespace GeocodeCreateBatchResponse {
   export interface Item {
     /**
      * The unique identifier for the result item.
@@ -457,15 +457,15 @@ export namespace GeocodeBatchCreateResponse {
   }
 }
 
-export interface GeocodeStructuredRetrieveResponse {
+export interface GeocodeRetrieveStructuredResponse {
   /**
    * The results are presented as a JSON list of candidates in ranked order
    * (most-likely to least-likely) based on the matched location criteria.
    */
-  items?: Array<GeocodeStructuredRetrieveResponse.Item>;
+  items?: Array<GeocodeRetrieveStructuredResponse.Item>;
 }
 
-export namespace GeocodeStructuredRetrieveResponse {
+export namespace GeocodeRetrieveStructuredResponse {
   export interface Item {
     /**
      * The unique identifier for the result item.
@@ -679,7 +679,7 @@ export interface GeocodeRetrieveParams {
   limit?: number;
 }
 
-export interface GeocodeBatchCreateParams {
+export interface GeocodeCreateBatchParams {
   /**
    * Query param: A key is a unique identifier that is required to authenticate a
    * request to the API.
@@ -689,10 +689,10 @@ export interface GeocodeBatchCreateParams {
   /**
    * Body param:
    */
-  body: Array<GeocodeBatchCreateParams.Body>;
+  body: Array<GeocodeCreateBatchParams.Body>;
 }
 
-export namespace GeocodeBatchCreateParams {
+export namespace GeocodeCreateBatchParams {
   export interface Body {
     /**
      * Specify the free-text search query. Please note that whitespace, urls, email
@@ -753,7 +753,7 @@ export namespace GeocodeBatchCreateParams {
   }
 }
 
-export interface GeocodeStructuredRetrieveParams {
+export interface GeocodeRetrieveStructuredParams {
   /**
    * Specify a valid
    * [ISO 3166-1 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country
@@ -847,10 +847,10 @@ export declare namespace Geocode {
     type MapView as MapView,
     type Position as Position,
     type GeocodeRetrieveResponse as GeocodeRetrieveResponse,
-    type GeocodeBatchCreateResponse as GeocodeBatchCreateResponse,
-    type GeocodeStructuredRetrieveResponse as GeocodeStructuredRetrieveResponse,
+    type GeocodeCreateBatchResponse as GeocodeCreateBatchResponse,
+    type GeocodeRetrieveStructuredResponse as GeocodeRetrieveStructuredResponse,
     type GeocodeRetrieveParams as GeocodeRetrieveParams,
-    type GeocodeBatchCreateParams as GeocodeBatchCreateParams,
-    type GeocodeStructuredRetrieveParams as GeocodeStructuredRetrieveParams,
+    type GeocodeCreateBatchParams as GeocodeCreateBatchParams,
+    type GeocodeRetrieveStructuredParams as GeocodeRetrieveStructuredParams,
   };
 }

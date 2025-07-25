@@ -6,48 +6,32 @@ import { RequestOptions } from '../../internal/request-options';
 
 export class NamespacedApikeys extends APIResource {
   /**
+   * Create namespace under a parent key
+   */
+  create(
+    params: NamespacedApikeyCreateParams,
+    options?: RequestOptions,
+  ): APIPromise<NamespacedApikeyCreateResponse> {
+    const { key, namespace, ...body } = params;
+    return this._client.post('/skynet/namespaced-apikeys', { query: { key, namespace }, body, ...options });
+  }
+
+  /**
    * Delete namespace under a parent key
    */
-  deleteNamespacedApikeys(
-    params: NamespacedApikeyDeleteNamespacedApikeysParams,
+  delete(
+    params: NamespacedApikeyDeleteParams,
     options?: RequestOptions,
-  ): APIPromise<NamespacedApikeyDeleteNamespacedApikeysResponse> {
+  ): APIPromise<NamespacedApikeyDeleteResponse> {
     const { key, key_to_delete, namespace } = params;
     return this._client.delete('/skynet/namespaced-apikeys', {
       query: { key, key_to_delete, namespace },
       ...options,
     });
   }
-
-  /**
-   * Create namespace under a parent key
-   */
-  namespacedApikeys(
-    params: NamespacedApikeyNamespacedApikeysParams,
-    options?: RequestOptions,
-  ): APIPromise<NamespacedApikeyNamespacedApikeysResponse> {
-    const { key, namespace, ...body } = params;
-    return this._client.post('/skynet/namespaced-apikeys', { query: { key, namespace }, body, ...options });
-  }
 }
 
-export interface NamespacedApikeyDeleteNamespacedApikeysResponse {
-  /**
-   * Its value is `OK` in case of a successful delete operation. Indicative error
-   * messages are returned otherwise, for different errors.
-   */
-  msg?: string;
-
-  /**
-   * A string indicating the state of the response. A successful delete operation ins
-   * indicated by an HTTP code of`200`. See the
-   * [API Error Codes](https://docs.nextbillion.ai/docs/tracking/api/live-tracking-api#api-error-codes)
-   * section below for possible values in case of errors.
-   */
-  status?: number;
-}
-
-export interface NamespacedApikeyNamespacedApikeysResponse {
+export interface NamespacedApikeyCreateResponse {
   /**
    * Returns the error type in case of any error. If there is no error, then this
    * field is absent in the response.
@@ -63,7 +47,7 @@ export interface NamespacedApikeyNamespacedApikeysResponse {
   /**
    * An object to return the details about the namespace key created.
    */
-  result?: NamespacedApikeyNamespacedApikeysResponse.Result;
+  result?: NamespacedApikeyCreateResponse.Result;
 
   /**
    * Returns the API response code.
@@ -71,7 +55,7 @@ export interface NamespacedApikeyNamespacedApikeysResponse {
   status?: number;
 }
 
-export namespace NamespacedApikeyNamespacedApikeysResponse {
+export namespace NamespacedApikeyCreateResponse {
   /**
    * An object to return the details about the namespace key created.
    */
@@ -105,7 +89,40 @@ export namespace NamespacedApikeyNamespacedApikeysResponse {
   }
 }
 
-export interface NamespacedApikeyDeleteNamespacedApikeysParams {
+export interface NamespacedApikeyDeleteResponse {
+  /**
+   * Its value is `OK` in case of a successful delete operation. Indicative error
+   * messages are returned otherwise, for different errors.
+   */
+  msg?: string;
+
+  /**
+   * A string indicating the state of the response. A successful delete operation ins
+   * indicated by an HTTP code of`200`. See the
+   * [API Error Codes](https://docs.nextbillion.ai/docs/tracking/api/live-tracking-api#api-error-codes)
+   * section below for possible values in case of errors.
+   */
+  status?: number;
+}
+
+export interface NamespacedApikeyCreateParams {
+  /**
+   * A key is a unique identifier that is required to authenticate a request to the
+   * API.
+   */
+  key: string;
+
+  /**
+   * Specify a name for the `namespace`. If the namespace specified is unique then a
+   * new namespace along with a new key is created. Whereas if the specified
+   * `namespace` is not unique, a new key will be created in the existing
+   * `namespace`. Please note that a `namespace` cannot be created using another
+   * namespace key.
+   */
+  namespace: string;
+}
+
+export interface NamespacedApikeyDeleteParams {
   /**
    * A key is a unique identifier that is required to authenticate a request to the
    * API. Please note for the delete namespace key operation another namespace key
@@ -129,28 +146,11 @@ export interface NamespacedApikeyDeleteNamespacedApikeysParams {
   namespace: string;
 }
 
-export interface NamespacedApikeyNamespacedApikeysParams {
-  /**
-   * A key is a unique identifier that is required to authenticate a request to the
-   * API.
-   */
-  key: string;
-
-  /**
-   * Specify a name for the `namespace`. If the namespace specified is unique then a
-   * new namespace along with a new key is created. Whereas if the specified
-   * `namespace` is not unique, a new key will be created in the existing
-   * `namespace`. Please note that a `namespace` cannot be created using another
-   * namespace key.
-   */
-  namespace: string;
-}
-
 export declare namespace NamespacedApikeys {
   export {
-    type NamespacedApikeyDeleteNamespacedApikeysResponse as NamespacedApikeyDeleteNamespacedApikeysResponse,
-    type NamespacedApikeyNamespacedApikeysResponse as NamespacedApikeyNamespacedApikeysResponse,
-    type NamespacedApikeyDeleteNamespacedApikeysParams as NamespacedApikeyDeleteNamespacedApikeysParams,
-    type NamespacedApikeyNamespacedApikeysParams as NamespacedApikeyNamespacedApikeysParams,
+    type NamespacedApikeyCreateResponse as NamespacedApikeyCreateResponse,
+    type NamespacedApikeyDeleteResponse as NamespacedApikeyDeleteResponse,
+    type NamespacedApikeyCreateParams as NamespacedApikeyCreateParams,
+    type NamespacedApikeyDeleteParams as NamespacedApikeyDeleteParams,
   };
 }

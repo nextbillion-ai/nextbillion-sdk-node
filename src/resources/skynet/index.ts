@@ -6,22 +6,22 @@ export {
   type SimpleResp,
   type AssetCreateResponse,
   type AssetRetrieveResponse,
-  type AssetRetrieveListResponse,
+  type AssetListResponse,
   type AssetCreateParams,
   type AssetRetrieveParams,
   type AssetUpdateParams,
+  type AssetListParams,
   type AssetDeleteParams,
-  type AssetRetrieveListParams,
   type AssetTrackParams,
   type AssetUpdateAttributesParams,
 } from './asset/index';
 export {
   Config,
-  type ConfigListResponse,
-  type ConfigTestwebhookResponse,
-  type ConfigCreateParams,
-  type ConfigListParams,
-  type ConfigTestwebhookParams,
+  type ConfigRetrieveResponse,
+  type ConfigTestWebhookResponse,
+  type ConfigRetrieveParams,
+  type ConfigUpdateParams,
+  type ConfigTestWebhookParams,
 } from './config';
 export {
   MonitorResource,
@@ -30,37 +30,32 @@ export {
   type Pagination,
   type MonitorCreateResponse,
   type MonitorRetrieveResponse,
-  type MonitorRetrieveListResponse,
+  type MonitorListResponse,
   type MonitorCreateParams,
   type MonitorRetrieveParams,
   type MonitorUpdateParams,
+  type MonitorListParams,
   type MonitorDeleteParams,
-  type MonitorRetrieveListParams,
 } from './monitor';
 export {
   NamespacedApikeys,
-  type NamespacedApikeyDeleteNamespacedApikeysResponse,
-  type NamespacedApikeyNamespacedApikeysResponse,
-  type NamespacedApikeyDeleteNamespacedApikeysParams,
-  type NamespacedApikeyNamespacedApikeysParams,
+  type NamespacedApikeyCreateResponse,
+  type NamespacedApikeyDeleteResponse,
+  type NamespacedApikeyCreateParams,
+  type NamespacedApikeyDeleteParams,
 } from './namespaced-apikeys';
-export {
-  Search,
-  type SearchResponse,
-  type SearchRetrieveAroundParams,
-  type SearchRetrieveBoundParams,
-} from './search/index';
+export { Search, type SearchResponse, type SearchAroundParams, type SearchBoundParams } from './search/index';
 export { Skynet, type SkynetSubscribeResponse, type SkynetSubscribeParams } from './skynet';
 export {
   Trip,
   type TripStop,
   type TripRetrieveResponse,
-  type TripRetrieveSummaryResponse,
+  type TripGetSummaryResponse,
   type TripStartResponse,
   type TripRetrieveParams,
   type TripUpdateParams,
   type TripDeleteParams,
   type TripEndParams,
-  type TripRetrieveSummaryParams,
+  type TripGetSummaryParams,
   type TripStartParams,
 } from './trip';

@@ -19,12 +19,12 @@ import {
 } from './document-templates';
 import * as RoutesAPI from './routes/routes';
 import {
+  Response,
   RouteCreateParams,
   RouteCreateResponse,
   RouteRedispatchParams,
   RouteRedispatchResponse,
   Routes,
-  RoutingResponse,
 } from './routes/routes';
 
 export class Fleetify extends APIResource {
@@ -40,7 +40,7 @@ Fleetify.DocumentTemplates = DocumentTemplates;
 export declare namespace Fleetify {
   export {
     Routes as Routes,
-    type RoutingResponse as RoutingResponse,
+    type Response as Response,
     type RouteCreateResponse as RouteCreateResponse,
     type RouteRedispatchResponse as RouteRedispatchResponse,
     type RouteCreateParams as RouteCreateParams,
