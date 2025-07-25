@@ -9,8 +9,8 @@ const client = new NextbillionSDK({
 
 describe('resource search', () => {
   // skipped: tests are disabled for the time being
-  test.skip('around: only required params', async () => {
-    const responsePromise = client.skynet.search.around({
+  test.skip('retrieveAround: only required params', async () => {
+    const responsePromise = client.skynet.search.retrieveAround({
       center: '56.597801,43.967836',
       key: 'key=API_KEY',
       radius: 0,
@@ -25,8 +25,8 @@ describe('resource search', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('around: required and optional params', async () => {
-    const response = await client.skynet.search.around({
+  test.skip('retrieveAround: required and optional params', async () => {
+    const response = await client.skynet.search.retrieveAround({
       center: '56.597801,43.967836',
       key: 'key=API_KEY',
       radius: 0,
@@ -43,8 +43,8 @@ describe('resource search', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('bound: only required params', async () => {
-    const responsePromise = client.skynet.search.bound({
+  test.skip('retrieveBound: only required params', async () => {
+    const responsePromise = client.skynet.search.retrieveBound({
       bound: 'bounds=44.7664,-0.6941|44.9206,-0.4639',
       key: 'key=API_KEY',
     });
@@ -58,8 +58,8 @@ describe('resource search', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('bound: required and optional params', async () => {
-    const response = await client.skynet.search.bound({
+  test.skip('retrieveBound: required and optional params', async () => {
+    const response = await client.skynet.search.retrieveBound({
       bound: 'bounds=44.7664,-0.6941|44.9206,-0.4639',
       key: 'key=API_KEY',
       filter: 'filter=tag:delivery,truck',

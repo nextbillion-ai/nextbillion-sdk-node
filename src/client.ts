@@ -55,7 +55,7 @@ import {
   Position,
 } from './resources/geocode';
 import { Isochrone, IsochroneComputeParams, IsochroneComputeResponse } from './resources/isochrone';
-import { Lookup, LookupByIDParams, LookupByIDResponse } from './resources/lookup';
+import { Lookup, LookupRetrieveParams, LookupRetrieveResponse } from './resources/lookup';
 import { Map } from './resources/map';
 import {
   Mdm,
@@ -1035,7 +1035,7 @@ export declare namespace NextbillionSDK {
 
   export {
     Lookup as Lookup,
-    type LookupByIDResponse as LookupByIDResponse,
-    type LookupByIDParams as LookupByIDParams,
+    type LookupRetrieveResponse as LookupRetrieveResponse,
+    type LookupRetrieveParams as LookupRetrieveParams,
   };
 }

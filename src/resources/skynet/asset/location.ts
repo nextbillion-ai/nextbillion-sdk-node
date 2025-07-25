@@ -9,21 +9,25 @@ import { path } from '../../../internal/utils/path';
 
 export class Location extends APIResource {
   /**
-   * Track locations of an asset
+   * Track the last location of an asset
    */
-  list(id: string, query: LocationListParams, options?: RequestOptions): APIPromise<LocationListResponse> {
-    return this._client.get(path`/skynet/asset/${id}/location/list`, { query, ...options });
+  retrieveLast(
+    id: string,
+    query: LocationRetrieveLastParams,
+    options?: RequestOptions,
+  ): APIPromise<LocationRetrieveLastResponse> {
+    return this._client.get(path`/skynet/asset/${id}/location/last`, { query, ...options });
   }
 
   /**
-   * Track the last location of an asset
+   * Track locations of an asset
    */
-  getLast(
+  retrieveList(
     id: string,
-    query: LocationGetLastParams,
+    query: LocationRetrieveListParams,
     options?: RequestOptions,
-  ): APIPromise<LocationGetLastResponse> {
-    return this._client.get(path`/skynet/asset/${id}/location/last`, { query, ...options });
+  ): APIPromise<LocationRetrieveListResponse> {
+    return this._client.get(path`/skynet/asset/${id}/location/list`, { query, ...options });
   }
 }
 
@@ -108,8 +112,12 @@ export namespace TrackLocation {
   }
 }
 
-export interface LocationListResponse {
-  data?: LocationListResponse.Data;
+export interface LocationRetrieveLastResponse {
+  /**
+   * An object containing the information about the last tracked location of the
+   * requested `asset`.
+   */
+  data?: LocationRetrieveLastResponse.Data;
 
   /**
    * Displays the error message in case of a failed request. If the request is
@@ -125,7 +133,38 @@ export interface LocationListResponse {
   status?: string;
 }
 
-export namespace LocationListResponse {
+export namespace LocationRetrieveLastResponse {
+  /**
+   * An object containing the information about the last tracked location of the
+   * requested `asset`.
+   */
+  export interface Data {
+    /**
+     * An object with details of the tracked location. Please note that if there are no
+     * tracking records for an asset, no location data will be returned.
+     */
+    location?: LocationAPI.TrackLocation;
+  }
+}
+
+export interface LocationRetrieveListResponse {
+  data?: LocationRetrieveListResponse.Data;
+
+  /**
+   * Displays the error message in case of a failed request. If the request is
+   * successful, this field is not present in the response.
+   */
+  message?: string;
+
+  /**
+   * A string indicating the state of the response. On successful responses, the
+   * value will be `Ok`. Indicative error messages are returned for different errors.
+   * See the [API Error Codes](#api-error-codes) section below for more information.
+   */
+  status?: string;
+}
+
+export namespace LocationRetrieveListResponse {
   export interface Data {
     /**
      * Distance of the path, in meters, formed by connecting all tracked locations
@@ -258,42 +297,20 @@ export namespace LocationListResponse {
   }
 }
 
-export interface LocationGetLastResponse {
+export interface LocationRetrieveLastParams {
   /**
-   * An object containing the information about the last tracked location of the
-   * requested `asset`.
+   * A key is a unique identifier that is required to authenticate a request to the
+   * API.
    */
-  data?: LocationGetLastResponse.Data;
+  key: string;
 
   /**
-   * Displays the error message in case of a failed request. If the request is
-   * successful, this field is not present in the response.
+   * the cluster of the region you want to use
    */
-  message?: string;
-
-  /**
-   * A string indicating the state of the response. On successful responses, the
-   * value will be `Ok`. Indicative error messages are returned for different errors.
-   * See the [API Error Codes](#api-error-codes) section below for more information.
-   */
-  status?: string;
+  cluster?: 'america';
 }
 
-export namespace LocationGetLastResponse {
-  /**
-   * An object containing the information about the last tracked location of the
-   * requested `asset`.
-   */
-  export interface Data {
-    /**
-     * An object with details of the tracked location. Please note that if there are no
-     * tracking records for an asset, no location data will be returned.
-     */
-    location?: LocationAPI.TrackLocation;
-  }
-}
-
-export interface LocationListParams {
+export interface LocationRetrieveListParams {
   /**
    * A key is a unique identifier that is required to authenticate a request to the
    * API.
@@ -355,25 +372,12 @@ export interface LocationListParams {
   start_time?: number;
 }
 
-export interface LocationGetLastParams {
-  /**
-   * A key is a unique identifier that is required to authenticate a request to the
-   * API.
-   */
-  key: string;
-
-  /**
-   * the cluster of the region you want to use
-   */
-  cluster?: 'america';
-}
-
 export declare namespace Location {
   export {
     type TrackLocation as TrackLocation,
-    type LocationListResponse as LocationListResponse,
-    type LocationGetLastResponse as LocationGetLastResponse,
-    type LocationListParams as LocationListParams,
-    type LocationGetLastParams as LocationGetLastParams,
+    type LocationRetrieveLastResponse as LocationRetrieveLastResponse,
+    type LocationRetrieveListResponse as LocationRetrieveListResponse,
+    type LocationRetrieveLastParams as LocationRetrieveLastParams,
+    type LocationRetrieveListParams as LocationRetrieveListParams,
   };
 }

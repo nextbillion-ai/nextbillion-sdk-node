@@ -3,10 +3,10 @@
 export {
   Batch,
   type BatchCreateResponse,
-  type BatchQueryResponse,
+  type BatchListResponse,
   type BatchCreateParams,
+  type BatchListParams,
   type BatchDeleteParams,
-  type BatchQueryParams,
 } from './batch';
 export {
   Console,

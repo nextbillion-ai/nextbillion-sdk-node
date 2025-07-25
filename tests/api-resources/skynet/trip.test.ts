@@ -92,8 +92,8 @@ describe('resource trip', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('getSummary: only required params', async () => {
-    const responsePromise = client.skynet.trip.getSummary('id', { key: 'key=API_KEY' });
+  test.skip('retrieveSummary: only required params', async () => {
+    const responsePromise = client.skynet.trip.retrieveSummary('id', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -104,8 +104,11 @@ describe('resource trip', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('getSummary: required and optional params', async () => {
-    const response = await client.skynet.trip.getSummary('id', { key: 'key=API_KEY', cluster: 'america' });
+  test.skip('retrieveSummary: required and optional params', async () => {
+    const response = await client.skynet.trip.retrieveSummary('id', {
+      key: 'key=API_KEY',
+      cluster: 'america',
+    });
   });
 
   // skipped: tests are disabled for the time being

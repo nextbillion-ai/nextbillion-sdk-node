@@ -17,7 +17,7 @@ export class Polygon extends APIResource {
   /**
    * Polygon Search
    */
-  get(query: PolygonGetParams, options?: RequestOptions): APIPromise<SearchAPI.SearchResponse> {
+  list(query: PolygonListParams, options?: RequestOptions): APIPromise<SearchAPI.SearchResponse> {
     return this._client.get('/skynet/search/polygon', { query, ...options });
   }
 }
@@ -203,7 +203,7 @@ export namespace PolygonCreateParams {
   }
 }
 
-export interface PolygonGetParams {
+export interface PolygonListParams {
   /**
    * A key is a unique identifier that is required to authenticate a request to the
    * API.
@@ -308,5 +308,5 @@ export interface PolygonGetParams {
 }
 
 export declare namespace Polygon {
-  export { type PolygonCreateParams as PolygonCreateParams, type PolygonGetParams as PolygonGetParams };
+  export { type PolygonCreateParams as PolygonCreateParams, type PolygonListParams as PolygonListParams };
 }
