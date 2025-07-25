@@ -19,6 +19,6 @@ export {
   type Job,
   type Shipment,
   type V2RetrieveResultResponse,
+  type V2CreateRequestParams,
   type V2RetrieveResultParams,
-  type V2SubmitParams,
 } from './v2';

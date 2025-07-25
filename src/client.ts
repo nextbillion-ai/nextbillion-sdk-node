@@ -55,7 +55,7 @@ import {
   Position,
 } from './resources/geocode';
 import { Isochrone, IsochroneComputeParams, IsochroneComputeResponse } from './resources/isochrone';
-import { Lookup, LookupRetrieveParams, LookupRetrieveResponse } from './resources/lookup';
+import { Lookup, LookupByIDParams, LookupByIDResponse } from './resources/lookup';
 import { Map } from './resources/map';
 import {
   Mdm,
@@ -237,7 +237,7 @@ export class NextbillionSDK {
    * API Client for interfacing with the Nextbillion SDK API.
    *
    * @param {string | null | undefined} [opts.apiKey=process.env['NEXTBILLION_SDK_API_KEY'] ?? null]
-   * @param {string} [opts.baseURL=process.env['NEXTBILLION_SDK_BASE_URL'] ?? https://api.example.com] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['NEXTBILLION_SDK_BASE_URL'] ?? https://api.nextbillion.io] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
    * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -253,7 +253,7 @@ export class NextbillionSDK {
     const options: ClientOptions = {
       apiKey,
       ...opts,
-      baseURL: baseURL || `https://api.example.com`,
+      baseURL: baseURL || `https://api.nextbillion.io`,
     };
 
     this.baseURL = options.baseURL!;
@@ -299,7 +299,7 @@ export class NextbillionSDK {
    * Check whether the base URL is set to its default.
    */
   #baseURLOverridden(): boolean {
-    return this.baseURL !== 'https://api.example.com';
+    return this.baseURL !== 'https://api.nextbillion.io';
   }
 
   protected defaultQuery(): Record<string, string | undefined> | undefined {
@@ -1035,7 +1035,7 @@ export declare namespace NextbillionSDK {
 
   export {
     Lookup as Lookup,
-    type LookupRetrieveResponse as LookupRetrieveResponse,
-    type LookupRetrieveParams as LookupRetrieveParams,
+    type LookupByIDResponse as LookupByIDResponse,
+    type LookupByIDParams as LookupByIDParams,
   };
 }

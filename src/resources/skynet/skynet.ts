@@ -4,11 +4,11 @@ import { APIResource } from '../../core/resource';
 import * as ConfigAPI from './config';
 import {
   Config,
-  ConfigCreateParams,
-  ConfigListParams,
-  ConfigListResponse,
-  ConfigTestwebhookParams,
-  ConfigTestwebhookResponse,
+  ConfigRetrieveParams,
+  ConfigRetrieveResponse,
+  ConfigTestWebhookParams,
+  ConfigTestWebhookResponse,
+  ConfigUpdateParams,
 } from './config';
 import * as MonitorAPI from './monitor';
 import {
@@ -17,9 +17,9 @@ import {
   MonitorCreateParams,
   MonitorCreateResponse,
   MonitorDeleteParams,
+  MonitorListParams,
+  MonitorListResponse,
   MonitorResource,
-  MonitorRetrieveListParams,
-  MonitorRetrieveListResponse,
   MonitorRetrieveParams,
   MonitorRetrieveResponse,
   MonitorUpdateParams,
@@ -27,10 +27,10 @@ import {
 } from './monitor';
 import * as NamespacedApikeysAPI from './namespaced-apikeys';
 import {
-  NamespacedApikeyDeleteNamespacedApikeysParams,
-  NamespacedApikeyDeleteNamespacedApikeysResponse,
-  NamespacedApikeyNamespacedApikeysParams,
-  NamespacedApikeyNamespacedApikeysResponse,
+  NamespacedApikeyCreateParams,
+  NamespacedApikeyCreateResponse,
+  NamespacedApikeyDeleteParams,
+  NamespacedApikeyDeleteResponse,
   NamespacedApikeys,
 } from './namespaced-apikeys';
 import * as TripAPI from './trip';
@@ -39,10 +39,10 @@ import {
   Trip,
   TripDeleteParams,
   TripEndParams,
+  TripGetSummaryParams,
+  TripGetSummaryResponse,
   TripRetrieveParams,
   TripRetrieveResponse,
-  TripRetrieveSummaryParams,
-  TripRetrieveSummaryResponse,
   TripStartParams,
   TripStartResponse,
   TripStop,
@@ -54,8 +54,8 @@ import {
   AssetCreateParams,
   AssetCreateResponse,
   AssetDeleteParams,
-  AssetRetrieveListParams,
-  AssetRetrieveListResponse,
+  AssetListParams,
+  AssetListResponse,
   AssetRetrieveParams,
   AssetRetrieveResponse,
   AssetTrackParams,
@@ -65,12 +65,7 @@ import {
   SimpleResp,
 } from './asset/asset';
 import * as SearchAPI from './search/search';
-import {
-  Search,
-  SearchResponse,
-  SearchRetrieveAroundParams,
-  SearchRetrieveBoundParams,
-} from './search/search';
+import { Search, SearchAroundParams, SearchBoundParams, SearchResponse } from './search/search';
 import * as SkynetSkynetAPI from './skynet_/skynet_';
 import { Skynet as SkynetAPISkynet } from './skynet_/skynet_';
 import { APIPromise } from '../../core/api-promise';
@@ -177,12 +172,12 @@ export declare namespace Skynet {
     type SimpleResp as SimpleResp,
     type AssetCreateResponse as AssetCreateResponse,
     type AssetRetrieveResponse as AssetRetrieveResponse,
-    type AssetRetrieveListResponse as AssetRetrieveListResponse,
+    type AssetListResponse as AssetListResponse,
     type AssetCreateParams as AssetCreateParams,
     type AssetRetrieveParams as AssetRetrieveParams,
     type AssetUpdateParams as AssetUpdateParams,
+    type AssetListParams as AssetListParams,
     type AssetDeleteParams as AssetDeleteParams,
-    type AssetRetrieveListParams as AssetRetrieveListParams,
     type AssetTrackParams as AssetTrackParams,
     type AssetUpdateAttributesParams as AssetUpdateAttributesParams,
   };
@@ -194,12 +189,12 @@ export declare namespace Skynet {
     type Pagination as Pagination,
     type MonitorCreateResponse as MonitorCreateResponse,
     type MonitorRetrieveResponse as MonitorRetrieveResponse,
-    type MonitorRetrieveListResponse as MonitorRetrieveListResponse,
+    type MonitorListResponse as MonitorListResponse,
     type MonitorCreateParams as MonitorCreateParams,
     type MonitorRetrieveParams as MonitorRetrieveParams,
     type MonitorUpdateParams as MonitorUpdateParams,
+    type MonitorListParams as MonitorListParams,
     type MonitorDeleteParams as MonitorDeleteParams,
-    type MonitorRetrieveListParams as MonitorRetrieveListParams,
   };
 
   export {
@@ -207,38 +202,38 @@ export declare namespace Skynet {
     type Asset as Asset,
     type TripStop as TripStop,
     type TripRetrieveResponse as TripRetrieveResponse,
-    type TripRetrieveSummaryResponse as TripRetrieveSummaryResponse,
+    type TripGetSummaryResponse as TripGetSummaryResponse,
     type TripStartResponse as TripStartResponse,
     type TripRetrieveParams as TripRetrieveParams,
     type TripUpdateParams as TripUpdateParams,
     type TripDeleteParams as TripDeleteParams,
     type TripEndParams as TripEndParams,
-    type TripRetrieveSummaryParams as TripRetrieveSummaryParams,
+    type TripGetSummaryParams as TripGetSummaryParams,
     type TripStartParams as TripStartParams,
   };
 
   export {
     NamespacedApikeys as NamespacedApikeys,
-    type NamespacedApikeyDeleteNamespacedApikeysResponse as NamespacedApikeyDeleteNamespacedApikeysResponse,
-    type NamespacedApikeyNamespacedApikeysResponse as NamespacedApikeyNamespacedApikeysResponse,
-    type NamespacedApikeyDeleteNamespacedApikeysParams as NamespacedApikeyDeleteNamespacedApikeysParams,
-    type NamespacedApikeyNamespacedApikeysParams as NamespacedApikeyNamespacedApikeysParams,
+    type NamespacedApikeyCreateResponse as NamespacedApikeyCreateResponse,
+    type NamespacedApikeyDeleteResponse as NamespacedApikeyDeleteResponse,
+    type NamespacedApikeyCreateParams as NamespacedApikeyCreateParams,
+    type NamespacedApikeyDeleteParams as NamespacedApikeyDeleteParams,
   };
 
   export {
     Config as Config,
-    type ConfigListResponse as ConfigListResponse,
-    type ConfigTestwebhookResponse as ConfigTestwebhookResponse,
-    type ConfigCreateParams as ConfigCreateParams,
-    type ConfigListParams as ConfigListParams,
-    type ConfigTestwebhookParams as ConfigTestwebhookParams,
+    type ConfigRetrieveResponse as ConfigRetrieveResponse,
+    type ConfigTestWebhookResponse as ConfigTestWebhookResponse,
+    type ConfigRetrieveParams as ConfigRetrieveParams,
+    type ConfigUpdateParams as ConfigUpdateParams,
+    type ConfigTestWebhookParams as ConfigTestWebhookParams,
   };
 
   export {
     Search as Search,
     type SearchResponse as SearchResponse,
-    type SearchRetrieveAroundParams as SearchRetrieveAroundParams,
-    type SearchRetrieveBoundParams as SearchRetrieveBoundParams,
+    type SearchAroundParams as SearchAroundParams,
+    type SearchBoundParams as SearchBoundParams,
   };
 
   export { SkynetAPISkynet as Skynet };

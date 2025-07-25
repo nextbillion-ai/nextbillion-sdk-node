@@ -18,7 +18,7 @@ export {
 export { Fleetify } from './fleetify';
 export {
   Routes,
-  type RoutingResponse,
+  type Routing,
   type RouteCreateResponse,
   type RouteRedispatchResponse,
   type RouteCreateParams,
