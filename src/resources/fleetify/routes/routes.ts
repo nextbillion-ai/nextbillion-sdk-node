@@ -59,7 +59,7 @@ export class Routes extends APIResource {
  * configured in the input request. The fields which were not specified in the
  * input will be returned as blanks.
  */
-export interface Response {
+export interface Routing {
   /**
    * Returns the configuration of approaches for each step, that is used when
    * generating the route to help the driver with turn-by-turn navigation.
@@ -169,7 +169,7 @@ export namespace RouteCreateResponse {
      * configured in the input request. The fields which were not specified in the
      * input will be returned as blanks.
      */
-    routing?: RoutesAPI.Response;
+    routing?: RoutesAPI.Routing;
 
     /**
      * Returns a shorter unique ID of the dispatched route for easier referencing and
@@ -309,7 +309,7 @@ export namespace RouteRedispatchResponse {
      * configured in the input request. The fields which were not specified in the
      * input will be returned as blanks.
      */
-    routing?: RoutesAPI.Response;
+    routing?: RoutesAPI.Routing;
 
     /**
      * Returns a shorter unique ID of the route for easier referencing and displaying
@@ -717,7 +717,7 @@ Routes.Steps = StepsAPISteps;
 
 export declare namespace Routes {
   export {
-    type Response as Response,
+    type Routing as Routing,
     type RouteCreateResponse as RouteCreateResponse,
     type RouteRedispatchResponse as RouteRedispatchResponse,
     type RouteCreateParams as RouteCreateParams,

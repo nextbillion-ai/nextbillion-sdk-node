@@ -9,20 +9,20 @@ export class Discover extends APIResource {
   /**
    * Discover matching places
    */
-  retrieve(query: DiscoverRetrieveParams, options?: RequestOptions): APIPromise<DiscoverRetrieveResponse> {
+  list(query: DiscoverListParams, options?: RequestOptions): APIPromise<DiscoverListResponse> {
     return this._client.get('/discover', { query, ...options });
   }
 }
 
-export interface DiscoverRetrieveResponse {
+export interface DiscoverListResponse {
   /**
    * The results are presented as a JSON list of candidates in ranked order
    * (most-likely to least-likely) based on the matched location criteria.
    */
-  items?: Array<DiscoverRetrieveResponse.Item>;
+  items?: Array<DiscoverListResponse.Item>;
 }
 
-export namespace DiscoverRetrieveResponse {
+export namespace DiscoverListResponse {
   export interface Item {
     /**
      * The unique identifier for the result item.
@@ -170,7 +170,7 @@ export namespace DiscoverRetrieveResponse {
   }
 }
 
-export interface DiscoverRetrieveParams {
+export interface DiscoverListParams {
   /**
    * A key is a unique identifier that is required to authenticate a request to the
    * API.
@@ -237,8 +237,5 @@ export interface DiscoverRetrieveParams {
 }
 
 export declare namespace Discover {
-  export {
-    type DiscoverRetrieveResponse as DiscoverRetrieveResponse,
-    type DiscoverRetrieveParams as DiscoverRetrieveParams,
-  };
+  export { type DiscoverListResponse as DiscoverListResponse, type DiscoverListParams as DiscoverListParams };
 }

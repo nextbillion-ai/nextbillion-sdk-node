@@ -9,8 +9,8 @@ const client = new NextbillionSDK({
 
 describe('resource discover', () => {
   // skipped: tests are disabled for the time being
-  test.skip('retrieve: only required params', async () => {
-    const responsePromise = client.discover.retrieve({ key: 'key=API_KEY', q: 'q=125, Berliner, berlin' });
+  test.skip('list: only required params', async () => {
+    const responsePromise = client.discover.list({ key: 'key=API_KEY', q: 'q=125, Berliner, berlin' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,8 +21,8 @@ describe('resource discover', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('retrieve: required and optional params', async () => {
-    const response = await client.discover.retrieve({
+  test.skip('list: required and optional params', async () => {
+    const response = await client.discover.list({
       key: 'key=API_KEY',
       q: 'q=125, Berliner, berlin',
       at: 'at=52.5308,13.3856',
