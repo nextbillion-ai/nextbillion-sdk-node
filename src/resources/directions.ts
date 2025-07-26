@@ -425,12 +425,6 @@ export namespace DirectionComputeRouteResponse {
 export interface DirectionComputeRouteParams {
   destination: string;
 
-  /**
-   * A key is a unique identifier that is required to authenticate a request to the
-   * API.
-   */
-  key: string;
-
   origin: string;
 
   /**
