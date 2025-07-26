@@ -29,13 +29,13 @@ const client = new NextbillionSDK({
   apiKey: process.env['NEXTBILLION_SDK_API_KEY'], // This is the default and can be omitted
 });
 
-const route = await client.fleetify.routes.create({
-  key: 'REPLACE_ME',
-  driver_email: 'REPLACE_ME',
-  steps: [{ arrival: 0, location: [0], type: '`start`' }],
+const response = await client.directions.computeRoute({
+  destination: 'REPLACE_ME',
+  key: 'key',
+  origin: 'REPLACE_ME',
 });
 
-console.log(route.data);
+console.log(response.msg);
 ```
 
 ### Request & Response types
@@ -240,7 +240,7 @@ parameter. This library doesn't validate at runtime that the request matches the
 send will be sent as-is.
 
 ```ts
-client.fleetify.routes.create({
+client.directions.computeRoute({
   // ...
   // @ts-expect-error baz is not yet public
   baz: 'undocumented option',
