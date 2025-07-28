@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.0 (2025-07-28)
+
+Full Changelog: [v0.5.0...v0.6.0](https://github.com/nextbillion-ai/nextbillion-sdk-node/compare/v0.5.0...v0.6.0)
+
+### Features
+
+* **api:** update via SDK Studio ([8e6bf71](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/8e6bf71f2a8092af615b440e55d092ce187c9c68))
+
 ## 0.5.0 (2025-07-28)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/nextbillion-ai/nextbillion-sdk-node/compare/v0.4.0...v0.5.0)
