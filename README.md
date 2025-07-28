@@ -26,13 +26,12 @@ const client = new NextbillionSDK({
   apiKey: process.env['NEXTBILLION_SDK_API_KEY'], // This is the default and can be omitted
 });
 
-const route = await client.fleetify.routes.create({
-  key: 'REPLACE_ME',
-  driver_email: 'REPLACE_ME',
-  steps: [{ arrival: 0, location: [0], type: '`start`' }],
+const response = await client.directions.computeRoute({
+  destination: '41.349302,2.136480',
+  origin: '41.349302,2.136480',
 });
 
-console.log(route.data);
+console.log(response.msg);
 ```
 
 ### Request & Response types
@@ -47,12 +46,11 @@ const client = new NextbillionSDK({
   apiKey: process.env['NEXTBILLION_SDK_API_KEY'], // This is the default and can be omitted
 });
 
-const params: NextbillionSDK.Fleetify.RouteCreateParams = {
-  key: 'REPLACE_ME',
-  driver_email: 'REPLACE_ME',
-  steps: [{ arrival: 0, location: [0], type: '`start`' }],
+const params: NextbillionSDK.DirectionComputeRouteParams = {
+  destination: '41.349302,2.136480',
+  origin: '41.349302,2.136480',
 };
-const route: NextbillionSDK.Fleetify.RouteCreateResponse = await client.fleetify.routes.create(params);
+const response: NextbillionSDK.DirectionComputeRouteResponse = await client.directions.computeRoute(params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -65,12 +63,8 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-const route = await client.fleetify.routes
-  .create({
-    key: 'REPLACE_ME',
-    driver_email: 'REPLACE_ME',
-    steps: [{ arrival: 0, location: [0], type: '`start`' }],
-  })
+const response = await client.directions
+  .computeRoute({ destination: '41.349302,2.136480', origin: '41.349302,2.136480' })
   .catch(async (err) => {
     if (err instanceof NextbillionSDK.APIError) {
       console.log(err.status); // 400
@@ -111,7 +105,7 @@ const client = new NextbillionSDK({
 });
 
 // Or, configure per-request:
-await client.fleetify.routes.create({ key: 'REPLACE_ME', driver_email: 'REPLACE_ME', steps: [{ arrival: 0, location: [0], type: '`start`' }] }, {
+await client.directions.computeRoute({ destination: '41.349302,2.136480', origin: '41.349302,2.136480' }, {
   maxRetries: 5,
 });
 ```
@@ -128,7 +122,7 @@ const client = new NextbillionSDK({
 });
 
 // Override per-request:
-await client.fleetify.routes.create({ key: 'REPLACE_ME', driver_email: 'REPLACE_ME', steps: [{ arrival: 0, location: [0], type: '`start`' }] }, {
+await client.directions.computeRoute({ destination: '41.349302,2.136480', origin: '41.349302,2.136480' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -151,25 +145,17 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 ```ts
 const client = new NextbillionSDK();
 
-const response = await client.fleetify.routes
-  .create({
-    key: 'REPLACE_ME',
-    driver_email: 'REPLACE_ME',
-    steps: [{ arrival: 0, location: [0], type: '`start`' }],
-  })
+const response = await client.directions
+  .computeRoute({ destination: '41.349302,2.136480', origin: '41.349302,2.136480' })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: route, response: raw } = await client.fleetify.routes
-  .create({
-    key: 'REPLACE_ME',
-    driver_email: 'REPLACE_ME',
-    steps: [{ arrival: 0, location: [0], type: '`start`' }],
-  })
+const { data: response, response: raw } = await client.directions
+  .computeRoute({ destination: '41.349302,2.136480', origin: '41.349302,2.136480' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(route.data);
+console.log(response.msg);
 ```
 
 ### Logging
@@ -249,7 +235,7 @@ parameter. This library doesn't validate at runtime that the request matches the
 send will be sent as-is.
 
 ```ts
-client.fleetify.routes.create({
+client.directions.computeRoute({
   // ...
   // @ts-expect-error baz is not yet public
   baz: 'undocumented option',
