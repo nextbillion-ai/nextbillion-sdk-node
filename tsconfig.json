@@ -9,8 +9,8 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "@nbai/sdk/*": ["src/*"],
-      "@nbai/sdk": ["src/index.ts"]
+      "nextbillion-sdk/*": ["src/*"],
+      "nextbillion-sdk": ["src/index.ts"]
     },
     "noEmit": true,
 

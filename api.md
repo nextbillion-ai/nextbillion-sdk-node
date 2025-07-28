@@ -4,7 +4,7 @@
 
 Types:
 
-- <code><a href="./src/resources/fleetify/routes/routes.ts">Routing</a></code>
+- <code><a href="./src/resources/fleetify/routes/routes.ts">RoutingResponse</a></code>
 - <code><a href="./src/resources/fleetify/routes/routes.ts">RouteCreateResponse</a></code>
 - <code><a href="./src/resources/fleetify/routes/routes.ts">RouteRedispatchResponse</a></code>
 
@@ -71,15 +71,16 @@ Types:
 - <code><a href="./src/resources/skynet/asset/asset.ts">SimpleResp</a></code>
 - <code><a href="./src/resources/skynet/asset/asset.ts">AssetCreateResponse</a></code>
 - <code><a href="./src/resources/skynet/asset/asset.ts">AssetRetrieveResponse</a></code>
-- <code><a href="./src/resources/skynet/asset/asset.ts">AssetRetrieveListResponse</a></code>
+- <code><a href="./src/resources/skynet/asset/asset.ts">AssetListResponse</a></code>
 
 Methods:
 
 - <code title="post /skynet/asset">client.skynet.asset.<a href="./src/resources/skynet/asset/asset.ts">create</a>({ ...params }) -> AssetCreateResponse</code>
 - <code title="get /skynet/asset/{id}">client.skynet.asset.<a href="./src/resources/skynet/asset/asset.ts">retrieve</a>(id, { ...params }) -> AssetRetrieveResponse</code>
 - <code title="put /skynet/asset/{id}">client.skynet.asset.<a href="./src/resources/skynet/asset/asset.ts">update</a>(id, { ...params }) -> SimpleResp</code>
+- <code title="get /skynet/asset/list">client.skynet.asset.<a href="./src/resources/skynet/asset/asset.ts">list</a>({ ...params }) -> AssetListResponse</code>
 - <code title="delete /skynet/asset/{id}">client.skynet.asset.<a href="./src/resources/skynet/asset/asset.ts">delete</a>(id, { ...params }) -> SimpleResp</code>
-- <code title="get /skynet/asset/list">client.skynet.asset.<a href="./src/resources/skynet/asset/asset.ts">retrieveList</a>({ ...params }) -> AssetRetrieveListResponse</code>
+- <code title="post /skynet/asset/{id}/bind">client.skynet.asset.<a href="./src/resources/skynet/asset/asset.ts">bind</a>(id, { ...params }) -> SimpleResp</code>
 - <code title="post /skynet/asset/{id}/track">client.skynet.asset.<a href="./src/resources/skynet/asset/asset.ts">track</a>(id, { ...params }) -> SimpleResp</code>
 - <code title="put /skynet/asset/{id}/attributes">client.skynet.asset.<a href="./src/resources/skynet/asset/asset.ts">updateAttributes</a>(id, { ...params }) -> SimpleResp</code>
 
@@ -87,24 +88,24 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/skynet/asset/event.ts">EventRetrieveListResponse</a></code>
+- <code><a href="./src/resources/skynet/asset/event.ts">EventListResponse</a></code>
 
 Methods:
 
-- <code title="get /skynet/asset/{id}/event/list">client.skynet.asset.event.<a href="./src/resources/skynet/asset/event.ts">retrieveList</a>(id, { ...params }) -> EventRetrieveListResponse</code>
+- <code title="get /skynet/asset/{id}/event/list">client.skynet.asset.event.<a href="./src/resources/skynet/asset/event.ts">list</a>(id, { ...params }) -> EventListResponse</code>
 
 ### Location
 
 Types:
 
 - <code><a href="./src/resources/skynet/asset/location.ts">TrackLocation</a></code>
-- <code><a href="./src/resources/skynet/asset/location.ts">LocationRetrieveLastResponse</a></code>
-- <code><a href="./src/resources/skynet/asset/location.ts">LocationRetrieveListResponse</a></code>
+- <code><a href="./src/resources/skynet/asset/location.ts">LocationListResponse</a></code>
+- <code><a href="./src/resources/skynet/asset/location.ts">LocationGetLastResponse</a></code>
 
 Methods:
 
-- <code title="get /skynet/asset/{id}/location/last">client.skynet.asset.location.<a href="./src/resources/skynet/asset/location.ts">retrieveLast</a>(id, { ...params }) -> LocationRetrieveLastResponse</code>
-- <code title="get /skynet/asset/{id}/location/list">client.skynet.asset.location.<a href="./src/resources/skynet/asset/location.ts">retrieveList</a>(id, { ...params }) -> LocationRetrieveListResponse</code>
+- <code title="get /skynet/asset/{id}/location/list">client.skynet.asset.location.<a href="./src/resources/skynet/asset/location.ts">list</a>(id, { ...params }) -> LocationListResponse</code>
+- <code title="get /skynet/asset/{id}/location/last">client.skynet.asset.location.<a href="./src/resources/skynet/asset/location.ts">getLast</a>(id, { ...params }) -> LocationGetLastResponse</code>
 
 ## Monitor
 
@@ -115,24 +116,24 @@ Types:
 - <code><a href="./src/resources/skynet/monitor.ts">Pagination</a></code>
 - <code><a href="./src/resources/skynet/monitor.ts">MonitorCreateResponse</a></code>
 - <code><a href="./src/resources/skynet/monitor.ts">MonitorRetrieveResponse</a></code>
-- <code><a href="./src/resources/skynet/monitor.ts">MonitorRetrieveListResponse</a></code>
+- <code><a href="./src/resources/skynet/monitor.ts">MonitorListResponse</a></code>
 
 Methods:
 
 - <code title="post /skynet/monitor">client.skynet.monitor.<a href="./src/resources/skynet/monitor.ts">create</a>({ ...params }) -> MonitorCreateResponse</code>
 - <code title="get /skynet/monitor/{id}">client.skynet.monitor.<a href="./src/resources/skynet/monitor.ts">retrieve</a>(id, { ...params }) -> MonitorRetrieveResponse</code>
 - <code title="put /skynet/monitor/{id}">client.skynet.monitor.<a href="./src/resources/skynet/monitor.ts">update</a>(id, { ...params }) -> SimpleResp</code>
+- <code title="get /skynet/monitor/list">client.skynet.monitor.<a href="./src/resources/skynet/monitor.ts">list</a>({ ...params }) -> MonitorListResponse</code>
 - <code title="delete /skynet/monitor/{id}">client.skynet.monitor.<a href="./src/resources/skynet/monitor.ts">delete</a>(id, { ...params }) -> SimpleResp</code>
-- <code title="get /skynet/monitor/list">client.skynet.monitor.<a href="./src/resources/skynet/monitor.ts">retrieveList</a>({ ...params }) -> MonitorRetrieveListResponse</code>
 
 ## Trip
 
 Types:
 
-- <code><a href="./src/resources/skynet/trip.ts">Asset</a></code>
+- <code><a href="./src/resources/skynet/trip.ts">AssetDetails</a></code>
 - <code><a href="./src/resources/skynet/trip.ts">TripStop</a></code>
 - <code><a href="./src/resources/skynet/trip.ts">TripRetrieveResponse</a></code>
-- <code><a href="./src/resources/skynet/trip.ts">TripRetrieveSummaryResponse</a></code>
+- <code><a href="./src/resources/skynet/trip.ts">TripGetSummaryResponse</a></code>
 - <code><a href="./src/resources/skynet/trip.ts">TripStartResponse</a></code>
 
 Methods:
@@ -141,33 +142,33 @@ Methods:
 - <code title="put /skynet/trip/{id}">client.skynet.trip.<a href="./src/resources/skynet/trip.ts">update</a>(id, { ...params }) -> SimpleResp</code>
 - <code title="delete /skynet/trip/{id}">client.skynet.trip.<a href="./src/resources/skynet/trip.ts">delete</a>(id, { ...params }) -> SimpleResp</code>
 - <code title="post /skynet/trip/end">client.skynet.trip.<a href="./src/resources/skynet/trip.ts">end</a>({ ...params }) -> SimpleResp</code>
-- <code title="get /skynet/trip/{id}/summary">client.skynet.trip.<a href="./src/resources/skynet/trip.ts">retrieveSummary</a>(id, { ...params }) -> TripRetrieveSummaryResponse</code>
+- <code title="get /skynet/trip/{id}/summary">client.skynet.trip.<a href="./src/resources/skynet/trip.ts">getSummary</a>(id, { ...params }) -> TripGetSummaryResponse</code>
 - <code title="post /skynet/trip/start">client.skynet.trip.<a href="./src/resources/skynet/trip.ts">start</a>({ ...params }) -> TripStartResponse</code>
 
 ## NamespacedApikeys
 
 Types:
 
-- <code><a href="./src/resources/skynet/namespaced-apikeys.ts">NamespacedApikeyDeleteNamespacedApikeysResponse</a></code>
-- <code><a href="./src/resources/skynet/namespaced-apikeys.ts">NamespacedApikeyNamespacedApikeysResponse</a></code>
+- <code><a href="./src/resources/skynet/namespaced-apikeys.ts">NamespacedApikeyCreateResponse</a></code>
+- <code><a href="./src/resources/skynet/namespaced-apikeys.ts">NamespacedApikeyDeleteResponse</a></code>
 
 Methods:
 
-- <code title="delete /skynet/namespaced-apikeys">client.skynet.namespacedApikeys.<a href="./src/resources/skynet/namespaced-apikeys.ts">deleteNamespacedApikeys</a>({ ...params }) -> NamespacedApikeyDeleteNamespacedApikeysResponse</code>
-- <code title="post /skynet/namespaced-apikeys">client.skynet.namespacedApikeys.<a href="./src/resources/skynet/namespaced-apikeys.ts">namespacedApikeys</a>({ ...params }) -> NamespacedApikeyNamespacedApikeysResponse</code>
+- <code title="post /skynet/namespaced-apikeys">client.skynet.namespacedApikeys.<a href="./src/resources/skynet/namespaced-apikeys.ts">create</a>({ ...params }) -> NamespacedApikeyCreateResponse</code>
+- <code title="delete /skynet/namespaced-apikeys">client.skynet.namespacedApikeys.<a href="./src/resources/skynet/namespaced-apikeys.ts">delete</a>({ ...params }) -> NamespacedApikeyDeleteResponse</code>
 
 ## Config
 
 Types:
 
-- <code><a href="./src/resources/skynet/config.ts">ConfigListResponse</a></code>
-- <code><a href="./src/resources/skynet/config.ts">ConfigTestwebhookResponse</a></code>
+- <code><a href="./src/resources/skynet/config.ts">ConfigRetrieveResponse</a></code>
+- <code><a href="./src/resources/skynet/config.ts">ConfigTestWebhookResponse</a></code>
 
 Methods:
 
-- <code title="put /skynet/config">client.skynet.config.<a href="./src/resources/skynet/config.ts">create</a>({ ...params }) -> SimpleResp</code>
-- <code title="get /skynet/config">client.skynet.config.<a href="./src/resources/skynet/config.ts">list</a>({ ...params }) -> ConfigListResponse</code>
-- <code title="post /skynet/config/testwebhook">client.skynet.config.<a href="./src/resources/skynet/config.ts">testwebhook</a>({ ...params }) -> ConfigTestwebhookResponse</code>
+- <code title="get /skynet/config">client.skynet.config.<a href="./src/resources/skynet/config.ts">retrieve</a>({ ...params }) -> ConfigRetrieveResponse</code>
+- <code title="put /skynet/config">client.skynet.config.<a href="./src/resources/skynet/config.ts">update</a>({ ...params }) -> SimpleResp</code>
+- <code title="post /skynet/config/testwebhook">client.skynet.config.<a href="./src/resources/skynet/config.ts">testWebhook</a>({ ...params }) -> ConfigTestWebhookResponse</code>
 
 ## Search
 
@@ -177,23 +178,15 @@ Types:
 
 Methods:
 
-- <code title="get /skynet/search/around">client.skynet.search.<a href="./src/resources/skynet/search/search.ts">retrieveAround</a>({ ...params }) -> SearchResponse</code>
-- <code title="get /skynet/search/bound">client.skynet.search.<a href="./src/resources/skynet/search/search.ts">retrieveBound</a>({ ...params }) -> SearchResponse</code>
+- <code title="get /skynet/search/around">client.skynet.search.<a href="./src/resources/skynet/search/search.ts">around</a>({ ...params }) -> SearchResponse</code>
+- <code title="get /skynet/search/bound">client.skynet.search.<a href="./src/resources/skynet/search/search.ts">bound</a>({ ...params }) -> SearchResponse</code>
 
 ### Polygon
 
 Methods:
 
 - <code title="post /skynet/search/polygon">client.skynet.search.polygon.<a href="./src/resources/skynet/search/polygon.ts">create</a>({ ...params }) -> SearchResponse</code>
-- <code title="get /skynet/search/polygon">client.skynet.search.polygon.<a href="./src/resources/skynet/search/polygon.ts">list</a>({ ...params }) -> SearchResponse</code>
-
-## Skynet
-
-### Asset
-
-Methods:
-
-- <code title="post /skynet/skynet/asset/{id}/bind">client.skynet.skynet.asset.<a href="./src/resources/skynet/skynet_/asset.ts">bind</a>(id, { ...params }) -> SimpleResp</code>
+- <code title="get /skynet/search/polygon">client.skynet.search.polygon.<a href="./src/resources/skynet/search/polygon.ts">get</a>({ ...params }) -> SearchResponse</code>
 
 # Geocode
 
@@ -291,23 +284,23 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/geofence/batch.ts">BatchCreateResponse</a></code>
-- <code><a href="./src/resources/geofence/batch.ts">BatchQueryResponse</a></code>
+- <code><a href="./src/resources/geofence/batch.ts">BatchListResponse</a></code>
 
 Methods:
 
 - <code title="post /geofence/batch">client.geofence.batch.<a href="./src/resources/geofence/batch.ts">create</a>({ ...params }) -> BatchCreateResponse</code>
+- <code title="get /geofence/batch">client.geofence.batch.<a href="./src/resources/geofence/batch.ts">list</a>({ ...params }) -> BatchListResponse</code>
 - <code title="delete /geofence/batch">client.geofence.batch.<a href="./src/resources/geofence/batch.ts">delete</a>({ ...params }) -> SimpleResp</code>
-- <code title="get /geofence/batch">client.geofence.batch.<a href="./src/resources/geofence/batch.ts">query</a>({ ...params }) -> BatchQueryResponse</code>
 
 # Discover
 
 Types:
 
-- <code><a href="./src/resources/discover.ts">DiscoverListResponse</a></code>
+- <code><a href="./src/resources/discover.ts">DiscoverRetrieveResponse</a></code>
 
 Methods:
 
-- <code title="get /discover">client.discover.<a href="./src/resources/discover.ts">list</a>({ ...params }) -> DiscoverListResponse</code>
+- <code title="get /discover">client.discover.<a href="./src/resources/discover.ts">retrieve</a>({ ...params }) -> DiscoverRetrieveResponse</code>
 
 # Browse
 
@@ -345,21 +338,21 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/restrictions.ts">RichGroupDtoRequest</a></code>
-- <code><a href="./src/resources/restrictions.ts">RichGroupDtoResponse</a></code>
+- <code><a href="./src/resources/restrictions.ts">RichGroupRequest</a></code>
+- <code><a href="./src/resources/restrictions.ts">RichGroupResponse</a></code>
 - <code><a href="./src/resources/restrictions.ts">RestrictionListResponse</a></code>
 - <code><a href="./src/resources/restrictions.ts">RestrictionDeleteResponse</a></code>
-- <code><a href="./src/resources/restrictions.ts">RestrictionListPaginatedResponse</a></code>
+- <code><a href="./src/resources/restrictions.ts">RestrictionListByBboxResponse</a></code>
 
 Methods:
 
-- <code title="post /restrictions/{restriction_type}">client.restrictions.<a href="./src/resources/restrictions.ts">create</a>(restrictionType, { ...params }) -> RichGroupDtoResponse</code>
-- <code title="get /restrictions/{id}">client.restrictions.<a href="./src/resources/restrictions.ts">retrieve</a>(id, { ...params }) -> RichGroupDtoResponse</code>
-- <code title="patch /restrictions/{id}">client.restrictions.<a href="./src/resources/restrictions.ts">update</a>(id, { ...params }) -> RichGroupDtoResponse</code>
-- <code title="get /restrictions">client.restrictions.<a href="./src/resources/restrictions.ts">list</a>({ ...params }) -> RestrictionListResponse</code>
+- <code title="post /restrictions/{restriction_type}">client.restrictions.<a href="./src/resources/restrictions.ts">create</a>(restrictionType, { ...params }) -> RichGroupResponse</code>
+- <code title="get /restrictions/{id}">client.restrictions.<a href="./src/resources/restrictions.ts">retrieve</a>(id, { ...params }) -> RichGroupResponse</code>
+- <code title="patch /restrictions/{id}">client.restrictions.<a href="./src/resources/restrictions.ts">update</a>(id, { ...params }) -> RichGroupResponse</code>
+- <code title="get /restrictions/list">client.restrictions.<a href="./src/resources/restrictions.ts">list</a>({ ...params }) -> RestrictionListResponse</code>
 - <code title="delete /restrictions/{id}">client.restrictions.<a href="./src/resources/restrictions.ts">delete</a>(id, { ...params }) -> RestrictionDeleteResponse</code>
-- <code title="get /restrictions/list">client.restrictions.<a href="./src/resources/restrictions.ts">listPaginated</a>({ ...params }) -> RestrictionListPaginatedResponse</code>
-- <code title="put /restrictions/{id}/state">client.restrictions.<a href="./src/resources/restrictions.ts">setState</a>(id, { ...params }) -> RichGroupDtoResponse</code>
+- <code title="get /restrictions">client.restrictions.<a href="./src/resources/restrictions.ts">listByBbox</a>({ ...params }) -> RestrictionListByBboxResponse</code>
+- <code title="put /restrictions/{id}/state">client.restrictions.<a href="./src/resources/restrictions.ts">setState</a>(id, { ...params }) -> RichGroupResponse</code>
 
 # RestrictionsItems
 
@@ -523,8 +516,8 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/lookup.ts">LookupRetrieveResponse</a></code>
+- <code><a href="./src/resources/lookup.ts">LookupByIDResponse</a></code>
 
 Methods:
 
-- <code title="get /lookup">client.lookup.<a href="./src/resources/lookup.ts">retrieve</a>({ ...params }) -> LookupRetrieveResponse</code>
+- <code title="get /lookup">client.lookup.<a href="./src/resources/lookup.ts">byID</a>({ ...params }) -> LookupByIDResponse</code>

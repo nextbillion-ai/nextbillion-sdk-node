@@ -47,11 +47,11 @@ export class Trip extends APIResource {
   /**
    * Get summary of an ended trip
    */
-  retrieveSummary(
+  getSummary(
     id: string,
-    query: TripRetrieveSummaryParams,
+    query: TripGetSummaryParams,
     options?: RequestOptions,
-  ): APIPromise<TripRetrieveSummaryResponse> {
+  ): APIPromise<TripGetSummaryResponse> {
     return this._client.get(path`/skynet/trip/${id}/summary`, { query, ...options });
   }
 
@@ -67,7 +67,7 @@ export class Trip extends APIResource {
 /**
  * An object with details of the `asset` properties.
  */
-export interface Asset {
+export interface AssetDetails {
   /**
    * ID of the `asset`. This is the same ID that was generated/provided at the time
    * of creating the `asset`.
@@ -108,7 +108,7 @@ export interface Asset {
   /**
    * An object with details of the last tracked location of the asset.
    */
-  latest_location?: Asset.LatestLocation;
+  latest_location?: AssetDetails.LatestLocation;
 
   /**
    * Any valid json object data. Can be used to save customized data. Max size is
@@ -152,7 +152,7 @@ export interface Asset {
   updated_at?: number;
 }
 
-export namespace Asset {
+export namespace AssetDetails {
   /**
    * An object with details of the last tracked location of the asset.
    */
@@ -357,11 +357,11 @@ export namespace TripRetrieveResponse {
   }
 }
 
-export interface TripRetrieveSummaryResponse {
+export interface TripGetSummaryResponse {
   /**
    * An container for the trip returned by the service.
    */
-  data?: TripRetrieveSummaryResponse.Data;
+  data?: TripGetSummaryResponse.Data;
 
   /**
    * Displays the error message in case of a failed request. If the request is
@@ -377,7 +377,7 @@ export interface TripRetrieveSummaryResponse {
   status?: string;
 }
 
-export namespace TripRetrieveSummaryResponse {
+export namespace TripGetSummaryResponse {
   /**
    * An container for the trip returned by the service.
    */
@@ -401,7 +401,7 @@ export namespace TripRetrieveSummaryResponse {
       /**
        * An object with details of the `asset` properties.
        */
-      asset?: TripAPI.Asset;
+      asset?: TripAPI.AssetDetails;
 
       /**
        * Returns the ID of the asset linked to the trip when the trip was started or
@@ -661,7 +661,7 @@ export interface TripEndParams {
   cluster?: 'america';
 }
 
-export interface TripRetrieveSummaryParams {
+export interface TripGetSummaryParams {
   /**
    * A key is a unique identifier that is required to authenticate a request to the
    * API.
@@ -764,16 +764,16 @@ export namespace TripStartParams {
 
 export declare namespace Trip {
   export {
-    type Asset as Asset,
+    type AssetDetails as AssetDetails,
     type TripStop as TripStop,
     type TripRetrieveResponse as TripRetrieveResponse,
-    type TripRetrieveSummaryResponse as TripRetrieveSummaryResponse,
+    type TripGetSummaryResponse as TripGetSummaryResponse,
     type TripStartResponse as TripStartResponse,
     type TripRetrieveParams as TripRetrieveParams,
     type TripUpdateParams as TripUpdateParams,
     type TripDeleteParams as TripDeleteParams,
     type TripEndParams as TripEndParams,
-    type TripRetrieveSummaryParams as TripRetrieveSummaryParams,
+    type TripGetSummaryParams as TripGetSummaryParams,
     type TripStartParams as TripStartParams,
   };
 }

@@ -1,4 +1,4 @@
-import { createPathTagFunction, encodeURIPath } from '@nbai/sdk/internal/utils/path';
+import { createPathTagFunction, encodeURIPath } from 'nextbillion-sdk/internal/utils/path';
 import { inspect } from 'node:util';
 import { runInNewContext } from 'node:vm';
 

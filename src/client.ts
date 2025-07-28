@@ -37,7 +37,7 @@ import {
   DirectionComputeRouteResponse,
   Directions,
 } from './resources/directions';
-import { Discover, DiscoverListParams, DiscoverListResponse } from './resources/discover';
+import { Discover, DiscoverRetrieveParams, DiscoverRetrieveResponse } from './resources/discover';
 import {
   Access,
   Address,
@@ -55,7 +55,7 @@ import {
   Position,
 } from './resources/geocode';
 import { Isochrone, IsochroneComputeParams, IsochroneComputeResponse } from './resources/isochrone';
-import { Lookup, LookupRetrieveParams, LookupRetrieveResponse } from './resources/lookup';
+import { Lookup, LookupByIDParams, LookupByIDResponse } from './resources/lookup';
 import { Map } from './resources/map';
 import {
   Mdm,
@@ -78,16 +78,16 @@ import {
   RestrictionCreateParams,
   RestrictionDeleteParams,
   RestrictionDeleteResponse,
-  RestrictionListPaginatedParams,
-  RestrictionListPaginatedResponse,
+  RestrictionListByBboxParams,
+  RestrictionListByBboxResponse,
   RestrictionListParams,
   RestrictionListResponse,
   RestrictionRetrieveParams,
   RestrictionSetStateParams,
   RestrictionUpdateParams,
   Restrictions,
-  RichGroupDtoRequest,
-  RichGroupDtoResponse,
+  RichGroupRequest,
+  RichGroupResponse,
 } from './resources/restrictions';
 import {
   RestrictionsItemListParams,
@@ -303,18 +303,27 @@ export class NextbillionSDK {
   }
 
   protected defaultQuery(): Record<string, string | undefined> | undefined {
-    return {
-      key: this.apiKey ?? undefined,
-      ...this._options.defaultQuery,
-    };
+    return this._options.defaultQuery;
   }
 
   protected validateHeaders({ values, nulls }: NullableHeaders) {
-    return;
+    if (this.apiKey && values.get('authorization')) {
+      return;
+    }
+    if (nulls.has('authorization')) {
+      return;
+    }
+
+    throw new Error(
+      'Could not resolve authentication method. Expected the apiKey to be set. Or for the "Authorization" headers to be explicitly omitted',
+    );
   }
 
   protected async authHeaders(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
-    return buildHeaders([]);
+    if (this.apiKey == null) {
+      return undefined;
+    }
+    return buildHeaders([{ Authorization: `Bearer ${this.apiKey}` }]);
   }
 
   protected stringifyQuery(query: Record<string, unknown>): string {
@@ -910,8 +919,8 @@ export declare namespace NextbillionSDK {
 
   export {
     Discover as Discover,
-    type DiscoverListResponse as DiscoverListResponse,
-    type DiscoverListParams as DiscoverListParams,
+    type DiscoverRetrieveResponse as DiscoverRetrieveResponse,
+    type DiscoverRetrieveParams as DiscoverRetrieveParams,
   };
 
   export {
@@ -936,17 +945,17 @@ export declare namespace NextbillionSDK {
 
   export {
     Restrictions as Restrictions,
-    type RichGroupDtoRequest as RichGroupDtoRequest,
-    type RichGroupDtoResponse as RichGroupDtoResponse,
+    type RichGroupRequest as RichGroupRequest,
+    type RichGroupResponse as RichGroupResponse,
     type RestrictionListResponse as RestrictionListResponse,
     type RestrictionDeleteResponse as RestrictionDeleteResponse,
-    type RestrictionListPaginatedResponse as RestrictionListPaginatedResponse,
+    type RestrictionListByBboxResponse as RestrictionListByBboxResponse,
     type RestrictionCreateParams as RestrictionCreateParams,
     type RestrictionRetrieveParams as RestrictionRetrieveParams,
     type RestrictionUpdateParams as RestrictionUpdateParams,
     type RestrictionListParams as RestrictionListParams,
     type RestrictionDeleteParams as RestrictionDeleteParams,
-    type RestrictionListPaginatedParams as RestrictionListPaginatedParams,
+    type RestrictionListByBboxParams as RestrictionListByBboxParams,
     type RestrictionSetStateParams as RestrictionSetStateParams,
   };
 
@@ -1026,7 +1035,7 @@ export declare namespace NextbillionSDK {
 
   export {
     Lookup as Lookup,
-    type LookupRetrieveResponse as LookupRetrieveResponse,
-    type LookupRetrieveParams as LookupRetrieveParams,
+    type LookupByIDResponse as LookupByIDResponse,
+    type LookupByIDParams as LookupByIDParams,
   };
 }
