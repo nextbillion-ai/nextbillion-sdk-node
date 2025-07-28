@@ -21,7 +21,7 @@ export {
   type DirectionComputeRouteParams,
 } from './directions';
 export { Discover, type DiscoverRetrieveResponse, type DiscoverRetrieveParams } from './discover';
-export { Distancematrix } from './distancematrix/distancematrix';
+export { DistanceMatrix } from './distance-matrix/distance-matrix';
 export { Fleetify } from './fleetify/fleetify';
 export {
   Geocode,

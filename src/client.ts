@@ -97,7 +97,7 @@ import {
 import { Revgeocode, RevgeocodeRetrieveParams, RevgeocodeRetrieveResponse } from './resources/revgeocode';
 import { RouteReport, RouteReportCreateParams, RouteReportCreateResponse } from './resources/route-report';
 import { SnapToRoadSnapParams, SnapToRoadSnapResponse, SnapToRoads } from './resources/snap-to-roads';
-import { Distancematrix } from './resources/distancematrix/distancematrix';
+import { DistanceMatrix } from './resources/distance-matrix/distance-matrix';
 import { Fleetify } from './resources/fleetify/fleetify';
 import {
   Geofence,
@@ -822,7 +822,7 @@ export class NextbillionSDK {
   isochrone: API.Isochrone = new API.Isochrone(this);
   restrictions: API.Restrictions = new API.Restrictions(this);
   restrictionsItems: API.RestrictionsItems = new API.RestrictionsItems(this);
-  distancematrix: API.Distancematrix = new API.Distancematrix(this);
+  distanceMatrix: API.DistanceMatrix = new API.DistanceMatrix(this);
   autocomplete: API.Autocomplete = new API.Autocomplete(this);
   navigation: API.Navigation = new API.Navigation(this);
   map: API.Map = new API.Map(this);
@@ -848,7 +848,7 @@ NextbillionSDK.Mdm = Mdm;
 NextbillionSDK.Isochrone = Isochrone;
 NextbillionSDK.Restrictions = Restrictions;
 NextbillionSDK.RestrictionsItems = RestrictionsItems;
-NextbillionSDK.Distancematrix = Distancematrix;
+NextbillionSDK.DistanceMatrix = DistanceMatrix;
 NextbillionSDK.Autocomplete = Autocomplete;
 NextbillionSDK.Navigation = Navigation;
 NextbillionSDK.Map = Map;
@@ -962,7 +962,7 @@ export declare namespace NextbillionSDK {
     type RestrictionsItemListParams as RestrictionsItemListParams,
   };
 
-  export { Distancematrix as Distancematrix };
+  export { DistanceMatrix as DistanceMatrix };
 
   export {
     Autocomplete as Autocomplete,

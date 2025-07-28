@@ -6,7 +6,7 @@ import { Tool } from '@modelcontextprotocol/sdk/types.js';
 import NextbillionSDK from '@nbai/sdk';
 
 export const metadata: Metadata = {
-  resource: 'distancematrix.json',
+  resource: 'distance_matrix.json',
   operation: 'write',
   tags: [],
   httpMethod: 'post',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 export const tool: Tool = {
-  name: 'create_distancematrix_json',
+  name: 'create_distance_matrix_json',
   description:
     "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nasfd\n\n# Response Schema\n```json\n{\n  type: 'object',\n  properties: {}\n}\n```",
   inputSchema: {
@@ -34,7 +34,7 @@ export const tool: Tool = {
 };
 
 export const handler = async (client: NextbillionSDK, args: Record<string, unknown> | undefined) => {
-  const response = await client.distancematrix.json.create().asResponse();
+  const response = await client.distanceMatrix.json.create().asResponse();
   return asTextContentResult(await response.text());
 };
 
