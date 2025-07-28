@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../../core/resource';
+import * as AssetAPI from './asset';
 import * as MonitorAPI from '../monitor';
-import * as TripAPI from '../trip';
 import * as EventAPI from './event';
 import { Event, EventRetrieveListParams, EventRetrieveListResponse } from './event';
 import * as LocationAPI from './location';
@@ -170,7 +170,162 @@ export namespace AssetRetrieveResponse {
     /**
      * An object with details of the `asset` properties.
      */
-    asset?: TripAPI.Asset;
+    asset?: Data.Asset;
+  }
+
+  export namespace Data {
+    /**
+     * An object with details of the `asset` properties.
+     */
+    export interface Asset {
+      /**
+       * ID of the `asset`. This is the same ID that was generated/provided at the time
+       * of creating the `asset`.
+       */
+      id?: string;
+
+      /**
+       * A string dictionary object containing `attributes` of the `asset`. These
+       * `attributes` were associated with the `asset` at the time of creating or
+       * updating it.
+       *
+       * `attributes` can be added to an `asset` using the _Update Asset Attributes_
+       * method.
+       */
+      attributes?: unknown;
+
+      /**
+       * A UNIX epoch timestamp in seconds representing the time at which the `asset` was
+       * created.
+       */
+      created_at?: number;
+
+      /**
+       * Description of the `asset`. The value would be the same as that provided for the
+       * `description` parameter at the time of creating or updating the `asset`.
+       */
+      description?: string;
+
+      /**
+       * ID of the `device` that is linked to this asset. Please note that there can be
+       * multiple `device_id` linked to a single `asset`. An empty response is returned
+       * if no devices are linked to the `asset`.
+       *
+       * User can link a device to an `asset` using the _Bind Asset to Device_ method.
+       */
+      device_id?: string;
+
+      /**
+       * An object with details of the last tracked location of the asset.
+       */
+      latest_location?: Asset.LatestLocation;
+
+      /**
+       * Any valid json object data. Can be used to save customized data. Max size is
+       * 65kb.
+       */
+      meta_data?: AssetAPI.MetaData;
+
+      /**
+       * Name of the `asset`. The value would be the same as that provided for the `name`
+       * parameter at the time of creating or updating the `asset`.
+       */
+      name?: string;
+
+      /**
+       * State of the asset. It will be "active" when the asset is in use or available
+       * for use, and it will be "deleted" in case the asset has been deleted.
+       */
+      state?: string;
+
+      /**
+       * **This parameter will be deprecated soon! Please move existing `tags` to
+       * `attributes` parameter.**
+       *
+       * Tags of the asset. These were associated with the `asset` when it was created or
+       * updated. `tags` can be used for filtering assets in operations like _Get Asset
+       * List_ and asset **Search** methods. They can also be used for monitoring of
+       * assets using **Monitor** methods after linking `tags` and `asset`.
+       */
+      tags?: Array<string>;
+
+      /**
+       * A UNIX epoch timestamp in seconds representing the last time when the `asset`
+       * was tracked.
+       */
+      tracked_at?: number;
+
+      /**
+       * A UNIX epoch timestamp in seconds representing the time at which the `asset` was
+       * last updated.
+       */
+      updated_at?: number;
+    }
+
+    export namespace Asset {
+      /**
+       * An object with details of the last tracked location of the asset.
+       */
+      export interface LatestLocation {
+        /**
+         * If available, this property returns the accuracy of the GPS information received
+         * at the last tracked location. It is represented as an estimated horizontal
+         * accuracy radius, in meters, at the 68th percentile confidence level.
+         */
+        accuracy?: number;
+
+        /**
+         * If available in the GPS information, this property returns the altitude of the
+         * `asset` at the last tracked location. It is represented as height, in meters,
+         * above the WGS84 reference ellipsoid.
+         */
+        altitude?: number;
+
+        /**
+         * If available in the GPS information, this property returns the heading of the
+         * `asset` calculated from true north in clockwise direction at the last tracked
+         * location. Please note that the bearing is not affected by the device
+         * orientation.
+         *
+         * The bearing will always be in the range of [0, 360).
+         */
+        bearing?: number;
+
+        /**
+         * An object with the coordinates of the last tracked location.
+         */
+        location?: LatestLocation.Location;
+
+        /**
+         * If available in the GPS information, this property returns the speed of the
+         * `asset`, in meters per second, at the last tracked location.
+         */
+        speed?: number;
+
+        /**
+         * A UNIX epoch timestamp in milliseconds, representing the time at which the
+         * location was tracked.
+         */
+        timestamp?: number;
+      }
+
+      export namespace LatestLocation {
+        /**
+         * An object with the coordinates of the last tracked location.
+         */
+        export interface Location {
+          /**
+           * Latitude of the tracked location of the `asset`.
+           */
+          lat?: number;
+
+          /**
+           * Longitude of the tracked location of the `asset`.
+           */
+          lon?: number;
+        }
+      }
+    }
   }
 }
 
@@ -202,13 +357,168 @@ export namespace AssetRetrieveListResponse {
     /**
      * An array of objects, with each object representing one `asset`.
      */
-    list?: Array<TripAPI.Asset>;
+    list?: Array<Data.List>;
 
     /**
      * An object with pagination details of the search results. Use this object to
      * implement pagination in your application.
      */
     page?: MonitorAPI.Pagination;
+  }
+
+  export namespace Data {
+    /**
+     * An object with details of the `asset` properties.
+     */
+    export interface List {
+      /**
+       * ID of the `asset`. This is the same ID that was generated/provided at the time
+       * of creating the `asset`.
+       */
+      id?: string;
+
+      /**
+       * A string dictionary object containing `attributes` of the `asset`. These
+       * `attributes` were associated with the `asset` at the time of creating or
+       * updating it.
+       *
+       * `attributes` can be added to an `asset` using the _Update Asset Attributes_
+       * method.
+       */
+      attributes?: unknown;
+
+      /**
+       * A UNIX epoch timestamp in seconds representing the time at which the `asset` was
+       * created.
+       */
+      created_at?: number;
+
+      /**
+       * Description of the `asset`. The value would be the same as that provided for the
+       * `description` parameter at the time of creating or updating the `asset`.
+       */
+      description?: string;
+
+      /**
+       * ID of the `device` that is linked to this asset. Please note that there can be
+       * multiple `device_id` linked to a single `asset`. An empty response is returned
+       * if no devices are linked to the `asset`.
+       *
+       * User can link a device to an `asset` using the _Bind Asset to Device_ method.
+       */
+      device_id?: string;
+
+      /**
+       * An object with details of the last tracked location of the asset.
+       */
+      latest_location?: List.LatestLocation;
+
+      /**
+       * Any valid json object data. Can be used to save customized data. Max size is
+       * 65kb.
+       */
+      meta_data?: AssetAPI.MetaData;
+
+      /**
+       * Name of the `asset`. The value would be the same as that provided for the `name`
+       * parameter at the time of creating or updating the `asset`.
+       */
+      name?: string;
+
+      /**
+       * State of the asset. It will be "active" when the asset is in use or available
+       * for use, and it will be "deleted" in case the asset has been deleted.
+       */
+      state?: string;
+
+      /**
+       * **This parameter will be deprecated soon! Please move existing `tags` to
+       * `attributes` parameter.**
+       *
+       * Tags of the asset. These were associated with the `asset` when it was created or
+       * updated. `tags` can be used for filtering assets in operations like _Get Asset
+       * List_ and asset **Search** methods. They can also be used for monitoring of
+       * assets using **Monitor** methods after linking `tags` and `asset`.
+       */
+      tags?: Array<string>;
+
+      /**
+       * A UNIX epoch timestamp in seconds representing the last time when the `asset`
+       * was tracked.
+       */
+      tracked_at?: number;
+
+      /**
+       * A UNIX epoch timestamp in seconds representing the time at which the `asset` was
+       * last updated.
+       */
+      updated_at?: number;
+    }
+
+    export namespace List {
+      /**
+       * An object with details of the last tracked location of the asset.
+       */
+      export interface LatestLocation {
+        /**
+         * If available, this property returns the accuracy of the GPS information received
+         * at the last tracked location. It is represented as an estimated horizontal
+         * accuracy radius, in meters, at the 68th percentile confidence level.
+         */
+        accuracy?: number;
+
+        /**
+         * If available in the GPS information, this property returns the altitude of the
+         * `asset` at the last tracked location. It is represented as height, in meters,
+         * above the WGS84 reference ellipsoid.
+         */
+        altitude?: number;
+
+        /**
+         * If available in the GPS information, this property returns the heading of the
+         * `asset` calculated from true north in clockwise direction at the last tracked
+         * location. Please note that the bearing is not affected by the device
+         * orientation.
+         *
+         * The bearing will always be in the range of [0, 360).
+         */
+        bearing?: number;
+
+        /**
+         * An object with the coordinates of the last tracked location.
+         */
+        location?: LatestLocation.Location;
+
+        /**
+         * If available in the GPS information, this property returns the speed of the
+         * `asset`, in meters per second, at the last tracked location.
+         */
+        speed?: number;
+
+        /**
+         * A UNIX epoch timestamp in milliseconds, representing the time at which the
+         * location was tracked.
+         */
+        timestamp?: number;
+      }
+
+      export namespace LatestLocation {
+        /**
+         * An object with the coordinates of the last tracked location.
+         */
+        export interface Location {
+          /**
+           * Latitude of the tracked location of the `asset`.
+           */
+          lat?: number;
+
+          /**
+           * Longitude of the tracked location of the `asset`.
+           */
+          lon?: number;
+        }
+      }
+    }
   }
 }
 

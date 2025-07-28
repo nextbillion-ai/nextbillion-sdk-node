@@ -35,7 +35,6 @@ import {
 } from './namespaced-apikeys';
 import * as TripAPI from './trip';
 import {
-  Asset,
   Trip,
   TripDeleteParams,
   TripEndParams,
@@ -50,7 +49,7 @@ import {
 } from './trip';
 import * as AssetAPI from './asset/asset';
 import {
-  Asset as AssetAPIAsset,
+  Asset,
   AssetCreateParams,
   AssetCreateResponse,
   AssetDeleteParams,
@@ -157,7 +156,7 @@ export namespace SkynetSubscribeParams {
   }
 }
 
-Skynet.Asset = AssetAPIAsset;
+Skynet.Asset = Asset;
 Skynet.MonitorResource = MonitorResource;
 Skynet.Trip = Trip;
 Skynet.NamespacedApikeys = NamespacedApikeys;
@@ -172,7 +171,7 @@ export declare namespace Skynet {
   };
 
   export {
-    AssetAPIAsset as Asset,
+    Asset as Asset,
     type MetaData as MetaData,
     type SimpleResp as SimpleResp,
     type AssetCreateResponse as AssetCreateResponse,
@@ -204,7 +203,6 @@ export declare namespace Skynet {
 
   export {
     Trip as Trip,
-    type Asset as Asset,
     type TripStop as TripStop,
     type TripRetrieveResponse as TripRetrieveResponse,
     type TripRetrieveSummaryResponse as TripRetrieveSummaryResponse,
