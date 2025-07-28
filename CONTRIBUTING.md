@@ -55,12 +55,12 @@ $ cd nextbillion-sdk-node
 # With yarn
 $ yarn link
 $ cd ../my-package
-$ yarn link nextbillion-sdk
+$ yarn link @nbai/sdk
 
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global nextbillion-sdk
+$ pnpm link -—global @nbai/sdk
 ```
 
 ## Running tests
