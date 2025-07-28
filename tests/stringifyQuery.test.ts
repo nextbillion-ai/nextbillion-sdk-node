@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { NextbillionSDK } from 'nextbillion-sdk';
+import { NextbillionSDK } from '@nbai/sdk';
 
 const { stringifyQuery } = NextbillionSDK.prototype as any;
 

@@ -1,7 +1,7 @@
 import iconv from 'iconv-lite';
-import { stringify } from 'nextbillion-sdk/internal/qs';
-import { encode } from 'nextbillion-sdk/internal/qs/utils';
-import { StringifyOptions } from 'nextbillion-sdk/internal/qs/types';
+import { stringify } from '@nbai/sdk/internal/qs';
+import { encode } from '@nbai/sdk/internal/qs/utils';
+import { StringifyOptions } from '@nbai/sdk/internal/qs/types';
 import { empty_test_cases } from './empty-keys-cases';
 import assert from 'assert';
 

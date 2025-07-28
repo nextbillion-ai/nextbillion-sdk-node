@@ -1,12 +1,12 @@
 {
-  "name": "nextbillion-sdk",
-  "version": "0.0.1-alpha.0",
+  "name": "@nbai/sdk",
+  "version": "0.1.0",
   "description": "The official TypeScript library for the Nextbillion SDK API",
   "author": "Nextbillion SDK <>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",
-  "repository": "github:stainless-sdks/nextbillion-sdk-typescript",
+  "repository": "github:nextbillion-ai/nextbillion-sdk-node",
   "license": "Apache-2.0",
   "packageManager": "yarn@1.22.22",
   "files": [
@@ -47,8 +47,8 @@
     "typescript-eslint": "8.31.1"
   },
   "imports": {
-    "nextbillion-sdk": ".",
-    "nextbillion-sdk/*": "./src/*"
+    "@nbai/sdk": ".",
+    "@nbai/sdk/*": "./src/*"
   },
   "exports": {
     ".": {

@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "nextbillion-sdk/*": ["dist/src/*"],
-      "nextbillion-sdk": ["dist/src/index.ts"]
+      "@nbai/sdk/*": ["dist/src/*"],
+      "@nbai/sdk": ["dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,
