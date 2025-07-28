@@ -129,7 +129,6 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/skynet/trip.ts">Asset</a></code>
 - <code><a href="./src/resources/skynet/trip.ts">TripStop</a></code>
 - <code><a href="./src/resources/skynet/trip.ts">TripRetrieveResponse</a></code>
 - <code><a href="./src/resources/skynet/trip.ts">TripRetrieveSummaryResponse</a></code>
