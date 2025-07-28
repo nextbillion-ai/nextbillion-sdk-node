@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.7.0 (2025-07-28)
+
+Full Changelog: [v0.6.0...v0.7.0](https://github.com/nextbillion-ai/nextbillion-sdk-node/compare/v0.6.0...v0.7.0)
+
+### Features
+
+* re-order endpoints ([c5ffcad](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/c5ffcadd88d8c01c2b9d4c4d958aaa98f740ab42))
+
 ## 0.6.0 (2025-07-28)
 
 Full Changelog: [v0.5.0...v0.6.0](https://github.com/nextbillion-ai/nextbillion-sdk-node/compare/v0.5.0...v0.6.0)
