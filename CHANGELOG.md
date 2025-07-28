@@ -1,0 +1,30 @@
+# Changelog
+
+## 0.1.0-alpha.1 (2025-07-28)
+
+Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/nextbillion-ai/nextbillion-sdk-node/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
+
+### Features
+
+* **api:** update via SDK Studio ([427189b](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/427189b96f911964ae2a3fea9e3bd9cdaf93f7d2))
+* **api:** update via SDK Studio ([7e37f7c](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/7e37f7c65646d07ee2d523e0996fccc8e3de038f))
+* **api:** update via SDK Studio ([68a1c65](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/68a1c659d2f75c61fa591ad95c5aaa2b2628730c))
+* **api:** update via SDK Studio ([ca6e674](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/ca6e6743ed163fe4d5e078fce7c0e0f67751a63a))
+* **api:** update via SDK Studio ([9a07296](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/9a07296f1b30e63ed3b78b8df9e34d28b1989cc7))
+* **api:** update via SDK Studio ([81f58eb](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/81f58eb031d0abea010d92c6f780e7757936171d))
+* **api:** update via SDK Studio ([1f49e8a](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/1f49e8a4dbe5d48755d26c7618832a8ac35770c5))
+* **api:** update via SDK Studio ([f00b0e5](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/f00b0e51643051dcc84a5da1ba34e9206e5267b3))
+* **api:** update via SDK Studio ([bc12140](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/bc12140c01bd747ebddafecd217e19f7535923dd))
+* **api:** update via SDK Studio ([21468c9](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/21468c925803af725f1442b81ccf940128998866))
+* **api:** update via SDK Studio ([682d5d3](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/682d5d3fe430b9d32ccb38a718efe28556a89bd3))
+* **api:** update via SDK Studio ([2a60db8](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/2a60db873a682ed724408ac6f07de36f3e3a14c9))
+* **api:** update via SDK Studio ([97610c2](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/97610c2ba9e4fc1a7570dce7f0df6afb3104d8a2))
+* **api:** update via SDK Studio ([7949f0f](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/7949f0f21600bb05066076af47c96cb7ce1a381a))
+* **api:** update via SDK Studio ([0d03523](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/0d03523d102ae1b6321bc7fd084af457ca657ddc))
+
+
+### Chores
+
+* configure new SDK language ([2314415](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/2314415b93b275e1effc02af61613e6cb2d92353))
+* configure new SDK language ([98c21b5](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/98c21b52d6d4ec210718d4c9b07e6065bc0d8bff))
+* update SDK settings ([1eea362](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/1eea362c011e4aa6a62a5204b707d95e0e8b2c09))
