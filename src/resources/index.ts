@@ -20,7 +20,7 @@ export {
   type DirectionComputeRouteResponse,
   type DirectionComputeRouteParams,
 } from './directions';
-export { Discover, type DiscoverListResponse, type DiscoverListParams } from './discover';
+export { Discover, type DiscoverRetrieveResponse, type DiscoverRetrieveParams } from './discover';
 export { Distancematrix } from './distancematrix/distancematrix';
 export { Fleetify } from './fleetify/fleetify';
 export {
@@ -55,7 +55,7 @@ export {
   type GeofenceContainsParams,
 } from './geofence/geofence';
 export { Isochrone, type IsochroneComputeResponse, type IsochroneComputeParams } from './isochrone';
-export { Lookup, type LookupRetrieveResponse, type LookupRetrieveParams } from './lookup';
+export { Lookup, type LookupByIDResponse, type LookupByIDParams } from './lookup';
 export { Map } from './map';
 export {
   Mdm,
@@ -88,17 +88,17 @@ export {
 } from './postalcode';
 export {
   Restrictions,
-  type RichGroupDtoRequest,
-  type RichGroupDtoResponse,
+  type RichGroupRequest,
+  type RichGroupResponse,
   type RestrictionListResponse,
   type RestrictionDeleteResponse,
-  type RestrictionListPaginatedResponse,
+  type RestrictionListByBboxResponse,
   type RestrictionCreateParams,
   type RestrictionRetrieveParams,
   type RestrictionUpdateParams,
   type RestrictionListParams,
   type RestrictionDeleteParams,
-  type RestrictionListPaginatedParams,
+  type RestrictionListByBboxParams,
   type RestrictionSetStateParams,
 } from './restrictions';
 export {

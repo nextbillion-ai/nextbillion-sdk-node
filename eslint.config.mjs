@@ -25,7 +25,7 @@ export default tseslint.config(
         {
           patterns: [
             {
-              regex: '^@nbai/sdk(/.*)?',
+              regex: '^nextbillion-sdk(/.*)?',
               message: 'Use a relative import, not a package import.',
             },
           ],

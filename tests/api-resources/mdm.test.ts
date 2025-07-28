@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import NextbillionSDK from '@nbai/sdk';
+import NextbillionSDK from 'nextbillion-sdk';
 
 const client = new NextbillionSDK({
   apiKey: 'My API Key',

@@ -1,6 +1,6 @@
 # Nextbillion SDK TypeScript API Library
 
-[![NPM version](<https://img.shields.io/npm/v/@nbai/sdk.svg?label=npm%20(stable)>)](https://npmjs.org/package/@nbai/sdk) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@nbai/sdk)
+[![NPM version](<https://img.shields.io/npm/v/nextbillion-sdk.svg?label=npm%20(stable)>)](https://npmjs.org/package/nextbillion-sdk) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/nextbillion-sdk)
 
 This library provides convenient access to the Nextbillion SDK REST API from server-side TypeScript or JavaScript.
 
@@ -11,8 +11,11 @@ It is generated with [Stainless](https://www.stainless.com/).
 ## Installation
 
 ```sh
-npm install @nbai/sdk
+npm install git+ssh://git@github.com:nextbillion-ai/nextbillion-sdk-node.git
 ```
+
+> [!NOTE]
+> Once this package is [published to npm](https://www.stainless.com/docs/guides/publish), this will become: `npm install nextbillion-sdk`
 
 ## Usage
 
@@ -20,18 +23,19 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import NextbillionSDK from '@nbai/sdk';
+import NextbillionSDK from 'nextbillion-sdk';
 
 const client = new NextbillionSDK({
   apiKey: process.env['NEXTBILLION_SDK_API_KEY'], // This is the default and can be omitted
 });
 
-const response = await client.directions.computeRoute({
-  destination: '1.304046,103.823580',
-  origin: '1.310611,103.804930',
+const route = await client.fleetify.routes.create({
+  key: 'REPLACE_ME',
+  driver_email: 'REPLACE_ME',
+  steps: [{ arrival: 0, location: [0], type: '`start`' }],
 });
 
-console.log(response.msg);
+console.log(route.data);
 ```
 
 ### Request & Response types
@@ -40,17 +44,18 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import NextbillionSDK from '@nbai/sdk';
+import NextbillionSDK from 'nextbillion-sdk';
 
 const client = new NextbillionSDK({
   apiKey: process.env['NEXTBILLION_SDK_API_KEY'], // This is the default and can be omitted
 });
 
-const params: NextbillionSDK.DirectionComputeRouteParams = {
-  destination: '1.304046,103.823580',
-  origin: '1.310611,103.804930',
+const params: NextbillionSDK.Fleetify.RouteCreateParams = {
+  key: 'REPLACE_ME',
+  driver_email: 'REPLACE_ME',
+  steps: [{ arrival: 0, location: [0], type: '`start`' }],
 };
-const response: NextbillionSDK.DirectionComputeRouteResponse = await client.directions.computeRoute(params);
+const route: NextbillionSDK.Fleetify.RouteCreateResponse = await client.fleetify.routes.create(params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -63,8 +68,12 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-const response = await client.directions
-  .computeRoute({ destination: '1.304046,103.823580', origin: '1.310611,103.804930' })
+const route = await client.fleetify.routes
+  .create({
+    key: 'REPLACE_ME',
+    driver_email: 'REPLACE_ME',
+    steps: [{ arrival: 0, location: [0], type: '`start`' }],
+  })
   .catch(async (err) => {
     if (err instanceof NextbillionSDK.APIError) {
       console.log(err.status); // 400
@@ -105,7 +114,7 @@ const client = new NextbillionSDK({
 });
 
 // Or, configure per-request:
-await client.directions.computeRoute({ destination: '1.304046,103.823580', origin: '1.310611,103.804930' }, {
+await client.fleetify.routes.create({ key: 'REPLACE_ME', driver_email: 'REPLACE_ME', steps: [{ arrival: 0, location: [0], type: '`start`' }] }, {
   maxRetries: 5,
 });
 ```
@@ -122,7 +131,7 @@ const client = new NextbillionSDK({
 });
 
 // Override per-request:
-await client.directions.computeRoute({ destination: '1.304046,103.823580', origin: '1.310611,103.804930' }, {
+await client.fleetify.routes.create({ key: 'REPLACE_ME', driver_email: 'REPLACE_ME', steps: [{ arrival: 0, location: [0], type: '`start`' }] }, {
   timeout: 5 * 1000,
 });
 ```
@@ -145,17 +154,25 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 ```ts
 const client = new NextbillionSDK();
 
-const response = await client.directions
-  .computeRoute({ destination: '1.304046,103.823580', origin: '1.310611,103.804930' })
+const response = await client.fleetify.routes
+  .create({
+    key: 'REPLACE_ME',
+    driver_email: 'REPLACE_ME',
+    steps: [{ arrival: 0, location: [0], type: '`start`' }],
+  })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: response, response: raw } = await client.directions
-  .computeRoute({ destination: '1.304046,103.823580', origin: '1.310611,103.804930' })
+const { data: route, response: raw } = await client.fleetify.routes
+  .create({
+    key: 'REPLACE_ME',
+    driver_email: 'REPLACE_ME',
+    steps: [{ arrival: 0, location: [0], type: '`start`' }],
+  })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(response.msg);
+console.log(route.data);
 ```
 
 ### Logging
@@ -172,7 +189,7 @@ The log level can be configured in two ways:
 2. Using the `logLevel` client option (overrides the environment variable if set)
 
 ```ts
-import NextbillionSDK from '@nbai/sdk';
+import NextbillionSDK from 'nextbillion-sdk';
 
 const client = new NextbillionSDK({
   logLevel: 'debug', // Show all log messages
@@ -200,7 +217,7 @@ When providing a custom logger, the `logLevel` option still controls which messa
 below the configured level will not be sent to your logger.
 
 ```ts
-import NextbillionSDK from '@nbai/sdk';
+import NextbillionSDK from 'nextbillion-sdk';
 import pino from 'pino';
 
 const logger = pino();
@@ -235,7 +252,7 @@ parameter. This library doesn't validate at runtime that the request matches the
 send will be sent as-is.
 
 ```ts
-client.directions.computeRoute({
+client.fleetify.routes.create({
   // ...
   // @ts-expect-error baz is not yet public
   baz: 'undocumented option',
@@ -269,7 +286,7 @@ globalThis.fetch = fetch;
 Or pass it to the client:
 
 ```ts
-import NextbillionSDK from '@nbai/sdk';
+import NextbillionSDK from 'nextbillion-sdk';
 import fetch from 'my-fetch';
 
 const client = new NextbillionSDK({ fetch });
@@ -280,7 +297,7 @@ const client = new NextbillionSDK({ fetch });
 If you want to set custom `fetch` options without overriding the `fetch` function, you can provide a `fetchOptions` object when instantiating the client or making a request. (Request-specific options override client options.)
 
 ```ts
-import NextbillionSDK from '@nbai/sdk';
+import NextbillionSDK from 'nextbillion-sdk';
 
 const client = new NextbillionSDK({
   fetchOptions: {
@@ -297,7 +314,7 @@ options to requests:
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/node.svg" align="top" width="18" height="21"> **Node** <sup>[[docs](https://github.com/nodejs/undici/blob/main/docs/docs/api/ProxyAgent.md#example---proxyagent-with-fetch)]</sup>
 
 ```ts
-import NextbillionSDK from '@nbai/sdk';
+import NextbillionSDK from 'nextbillion-sdk';
 import * as undici from 'undici';
 
 const proxyAgent = new undici.ProxyAgent('http://localhost:8888');
@@ -311,7 +328,7 @@ const client = new NextbillionSDK({
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/bun.svg" align="top" width="18" height="21"> **Bun** <sup>[[docs](https://bun.sh/guides/http/proxy)]</sup>
 
 ```ts
-import NextbillionSDK from '@nbai/sdk';
+import NextbillionSDK from 'nextbillion-sdk';
 
 const client = new NextbillionSDK({
   fetchOptions: {
@@ -323,7 +340,7 @@ const client = new NextbillionSDK({
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/deno.svg" align="top" width="18" height="21"> **Deno** <sup>[[docs](https://docs.deno.com/api/deno/~/Deno.createHttpClient)]</sup>
 
 ```ts
-import NextbillionSDK from 'npm:@nbai/sdk';
+import NextbillionSDK from 'npm:nextbillion-sdk';
 
 const httpClient = Deno.createHttpClient({ proxy: { url: 'http://localhost:8888' } });
 const client = new NextbillionSDK({
