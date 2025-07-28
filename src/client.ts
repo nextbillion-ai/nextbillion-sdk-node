@@ -144,7 +144,7 @@ export interface ClientOptions {
   /**
    * Defaults to process.env['NEXTBILLION_SDK_API_KEY'].
    */
-  apiKey?: string | null | undefined;
+  apiKey?: string | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
@@ -219,7 +219,7 @@ export interface ClientOptions {
  * API Client for interfacing with the Nextbillion SDK API.
  */
 export class NextbillionSDK {
-  apiKey: string | null;
+  apiKey: string;
 
   baseURL: string;
   maxRetries: number;
@@ -236,7 +236,7 @@ export class NextbillionSDK {
   /**
    * API Client for interfacing with the Nextbillion SDK API.
    *
-   * @param {string | null | undefined} [opts.apiKey=process.env['NEXTBILLION_SDK_API_KEY'] ?? null]
+   * @param {string | undefined} [opts.apiKey=process.env['NEXTBILLION_SDK_API_KEY'] ?? undefined]
    * @param {string} [opts.baseURL=process.env['NEXTBILLION_SDK_BASE_URL'] ?? https://api.nextbillion.io] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
@@ -247,9 +247,15 @@ export class NextbillionSDK {
    */
   constructor({
     baseURL = readEnv('NEXTBILLION_SDK_BASE_URL'),
-    apiKey = readEnv('NEXTBILLION_SDK_API_KEY') ?? null,
+    apiKey = readEnv('NEXTBILLION_SDK_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
+    if (apiKey === undefined) {
+      throw new Errors.NextbillionSDKError(
+        "The NEXTBILLION_SDK_API_KEY environment variable is missing or empty; either provide it, or instantiate the NextbillionSDK client with an apiKey option, like new NextbillionSDK({ apiKey: 'My API Key' }).",
+      );
+    }
+
     const options: ClientOptions = {
       apiKey,
       ...opts,
@@ -303,27 +309,18 @@ export class NextbillionSDK {
   }
 
   protected defaultQuery(): Record<string, string | undefined> | undefined {
-    return this._options.defaultQuery;
+    return {
+      key: this.apiKey,
+      ...this._options.defaultQuery,
+    };
   }
 
   protected validateHeaders({ values, nulls }: NullableHeaders) {
-    if (this.apiKey && values.get('authorization')) {
-      return;
-    }
-    if (nulls.has('authorization')) {
-      return;
-    }
-
-    throw new Error(
-      'Could not resolve authentication method. Expected the apiKey to be set. Or for the "Authorization" headers to be explicitly omitted',
-    );
+    return;
   }
 
   protected async authHeaders(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
-    if (this.apiKey == null) {
-      return undefined;
-    }
-    return buildHeaders([{ Authorization: `Bearer ${this.apiKey}` }]);
+    return buildHeaders([]);
   }
 
   protected stringifyQuery(query: Record<string, unknown>): string {
