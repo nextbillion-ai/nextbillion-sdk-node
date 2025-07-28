@@ -7,7 +7,7 @@ import { Tool } from '@modelcontextprotocol/sdk/types.js';
 import NextbillionSDK from '@nbai/sdk';
 
 export const metadata: Metadata = {
-  resource: 'distancematrix.json',
+  resource: 'distance_matrix.json',
   operation: 'read',
   tags: [],
   httpMethod: 'get',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 export const tool: Tool = {
-  name: 'retrieve_distancematrix_json',
+  name: 'retrieve_distance_matrix_json',
   description:
     "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nNextbillion.ai Distance Matrix API computes distances and ETAs between a set of origins and destinations — could be for one-to-many or many-to-many scenarios. The API call returns a matrix of ETAs and distances for each origin and destination pair.   For example, If the set is Origins {A,B} and Destinations {C,D,E} we can get the following set of results with distance (meters) and time (seconds) for each.\nThe GET method can only handle up to 100 locations (1 location is either 1 origin or 1 destination).\n\n# Response Schema\n```json\n{\n  type: 'object',\n  properties: {\n    msg: {\n      type: 'string',\n      description: 'Displays the error message in case of a failed request or operation. Please note that this parameter is not returned in the response in case of a successful request.'\n    },\n    rows: {\n      type: 'array',\n      description: 'Container object for a response with  an array of arrays structure.',\n      items: {\n        type: 'object',\n        properties: {\n          elements: {\n            type: 'array',\n            description: 'An array of objects. Each `elements` array corresponds to a single `origins` coordinate and contains objects with `distance` and `duration` values for each of the `destinations`. The details in the first `elements` array correspond to the first `origins` point and the first object corresponds to the first `destinations` point and so on.',\n            items: {\n              type: 'object',\n              properties: {\n                distance: {\n                  type: 'number',\n                  description: 'Distance of the route from an origin to a destination, in meters.'\n                },\n                duration: {\n                  type: 'number',\n                  description: 'Duration of the trip from an origin to a destination, in seconds.'\n                }\n              }\n            }\n          }\n        }\n      }\n    },\n    status: {\n      type: 'string',\n      description: 'A string indicating the state of the response. On normal responses, the value will be `Ok`. Indicative HTTP error codes are returned for different errors. See the [API Errors Codes](#api-error-codes) section below for more information.'\n    }\n  }\n}\n```",
   inputSchema: {
@@ -80,7 +80,7 @@ export const tool: Tool = {
 
 export const handler = async (client: NextbillionSDK, args: Record<string, unknown> | undefined) => {
   const body = args as any;
-  return asTextContentResult(await maybeFilter(args, await client.distancematrix.json.retrieve(body)));
+  return asTextContentResult(await maybeFilter(args, await client.distanceMatrix.json.retrieve(body)));
 };
 
 export default { metadata, tool, handler };

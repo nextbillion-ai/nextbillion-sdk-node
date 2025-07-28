@@ -331,10 +331,10 @@ The following tools are available in this MCP server.
 
 - `list_restrictions_items` (`read`): Get restriction items by bbox
 
-### Resource `distancematrix.json`:
+### Resource `distance_matrix.json`:
 
-- `create_distancematrix_json` (`write`): asfd
-- `retrieve_distancematrix_json` (`read`): Nextbillion.ai Distance Matrix API computes distances and ETAs between a set of origins and destinations — could be for one-to-many or many-to-many scenarios. The API call returns a matrix of ETAs and distances for each origin and destination pair. For example, If the set is Origins {A,B} and Destinations {C,D,E} we can get the following set of results with distance (meters) and time (seconds) for each.
+- `create_distance_matrix_json` (`write`): asfd
+- `retrieve_distance_matrix_json` (`read`): Nextbillion.ai Distance Matrix API computes distances and ETAs between a set of origins and destinations — could be for one-to-many or many-to-many scenarios. The API call returns a matrix of ETAs and distances for each origin and destination pair. For example, If the set is Origins {A,B} and Destinations {C,D,E} we can get the following set of results with distance (meters) and time (seconds) for each.
   The GET method can only handle up to 100 locations (1 location is either 1 origin or 1 destination).
 
 ### Resource `autocomplete`:
