@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIPromise } from 'nextbillion-ai/core/api-promise';
+import { APIPromise } from '@nbai/sdk/core/api-promise';
 
 import util from 'node:util';
-import NextbillionSDK from 'nextbillion-ai';
-import { APIUserAbortError } from 'nextbillion-ai';
+import NextbillionSDK from '@nbai/sdk';
+import { APIUserAbortError } from '@nbai/sdk';
 const defaultFetch = fetch;
 
 describe('instantiate client', () => {

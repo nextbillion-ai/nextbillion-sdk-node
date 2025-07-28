@@ -1,5 +1,5 @@
 {
-  "name": "nextbillion-ai",
+  "name": "@nbai/sdk",
   "version": "0.0.1-alpha.0",
   "description": "The official TypeScript library for the Nextbillion SDK API",
   "author": "Nextbillion SDK <>",
@@ -47,8 +47,8 @@
     "typescript-eslint": "8.31.1"
   },
   "imports": {
-    "nextbillion-ai": ".",
-    "nextbillion-ai/*": "./src/*"
+    "@nbai/sdk": ".",
+    "@nbai/sdk/*": "./src/*"
   },
   "exports": {
     ".": {
