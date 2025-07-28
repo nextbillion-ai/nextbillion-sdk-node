@@ -364,18 +364,18 @@ Methods:
 
 - <code title="get /restrictions_items">client.restrictionsItems.<a href="./src/resources/restrictions-items.ts">list</a>({ ...params }) -> RestrictionsItemListResponse</code>
 
-# Distancematrix
+# DistanceMatrix
 
 ## Json
 
 Types:
 
-- <code><a href="./src/resources/distancematrix/json.ts">JsonRetrieveResponse</a></code>
+- <code><a href="./src/resources/distance-matrix/json.ts">JsonRetrieveResponse</a></code>
 
 Methods:
 
-- <code title="post /distancematrix/json">client.distancematrix.json.<a href="./src/resources/distancematrix/json.ts">create</a>() -> void</code>
-- <code title="get /distancematrix/json">client.distancematrix.json.<a href="./src/resources/distancematrix/json.ts">retrieve</a>({ ...params }) -> JsonRetrieveResponse</code>
+- <code title="post /distancematrix/json">client.distanceMatrix.json.<a href="./src/resources/distance-matrix/json.ts">create</a>() -> void</code>
+- <code title="get /distancematrix/json">client.distanceMatrix.json.<a href="./src/resources/distance-matrix/json.ts">retrieve</a>({ ...params }) -> JsonRetrieveResponse</code>
 
 # Autocomplete
 

@@ -4,13 +4,13 @@ import { APIResource } from '../../core/resource';
 import * as JsonAPI from './json';
 import { Json, JsonRetrieveParams, JsonRetrieveResponse } from './json';
 
-export class Distancematrix extends APIResource {
+export class DistanceMatrix extends APIResource {
   json: JsonAPI.Json = new JsonAPI.Json(this._client);
 }
 
-Distancematrix.Json = Json;
+DistanceMatrix.Json = Json;
 
-export declare namespace Distancematrix {
+export declare namespace DistanceMatrix {
   export {
     Json as Json,
     type JsonRetrieveResponse as JsonRetrieveResponse,
