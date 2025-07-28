@@ -1,5 +1,5 @@
-import { multipartFormRequestOptions, createForm } from 'nextbillion-sdk/internal/uploads';
-import { toFile } from 'nextbillion-sdk/core/uploads';
+import { multipartFormRequestOptions, createForm } from 'nextbillion-ai/internal/uploads';
+import { toFile } from 'nextbillion-ai/core/uploads';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {
