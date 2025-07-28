@@ -502,16 +502,6 @@ Methods:
 
 - <code title="post /postalcode">client.postalcode.<a href="./src/resources/postalcode.ts">retrieveCoordinates</a>({ ...params }) -> PostalcodeRetrieveCoordinatesResponse</code>
 
-# Areas
-
-Types:
-
-- <code><a href="./src/resources/areas.ts">AreaListResponse</a></code>
-
-Methods:
-
-- <code title="get /areas">client.areas.<a href="./src/resources/areas.ts">list</a>({ ...params }) -> AreaListResponse</code>
-
 # Lookup
 
 Types:
@@ -521,3 +511,13 @@ Types:
 Methods:
 
 - <code title="get /lookup">client.lookup.<a href="./src/resources/lookup.ts">byID</a>({ ...params }) -> LookupByIDResponse</code>
+
+# Areas
+
+Types:
+
+- <code><a href="./src/resources/areas.ts">AreaListResponse</a></code>
+
+Methods:
+
+- <code title="get /areas">client.areas.<a href="./src/resources/areas.ts">list</a>({ ...params }) -> AreaListResponse</code>
