@@ -7,37 +7,37 @@ import { RequestOptions } from '../../internal/request-options';
 
 export class Config extends APIResource {
   /**
+   * Get webhook configuration
+   */
+  retrieve(query: ConfigRetrieveParams, options?: RequestOptions): APIPromise<ConfigRetrieveResponse> {
+    return this._client.get('/skynet/config', { query, ...options });
+  }
+
+  /**
    * Update webhook configuration
    */
-  create(params: ConfigCreateParams, options?: RequestOptions): APIPromise<AssetAPI.SimpleResp> {
+  update(params: ConfigUpdateParams, options?: RequestOptions): APIPromise<AssetAPI.SimpleResp> {
     const { key, cluster, ...body } = params;
     return this._client.put('/skynet/config', { query: { key, cluster }, body, ...options });
   }
 
   /**
-   * Get webhook configuration
-   */
-  list(query: ConfigListParams, options?: RequestOptions): APIPromise<ConfigListResponse> {
-    return this._client.get('/skynet/config', { query, ...options });
-  }
-
-  /**
    * Test webhook configurations
    */
-  testwebhook(
-    params: ConfigTestwebhookParams,
+  testWebhook(
+    params: ConfigTestWebhookParams,
     options?: RequestOptions,
-  ): APIPromise<ConfigTestwebhookResponse> {
+  ): APIPromise<ConfigTestWebhookResponse> {
     const { key } = params;
     return this._client.post('/skynet/config/testwebhook', { query: { key }, ...options });
   }
 }
 
-export interface ConfigListResponse {
+export interface ConfigRetrieveResponse {
   /**
    * A data object containing the `config` response.
    */
-  data?: ConfigListResponse.Data;
+  data?: ConfigRetrieveResponse.Data;
 
   /**
    * Displays the error message in case of a failed request. If the request is
@@ -53,7 +53,7 @@ export interface ConfigListResponse {
   status?: string;
 }
 
-export namespace ConfigListResponse {
+export namespace ConfigRetrieveResponse {
   /**
    * A data object containing the `config` response.
    */
@@ -72,7 +72,7 @@ export namespace ConfigListResponse {
   }
 }
 
-export interface ConfigTestwebhookResponse {
+export interface ConfigTestWebhookResponse {
   /**
    * A string indicating the state of the response. Please note this value will
    * always be `Ok`.
@@ -85,7 +85,20 @@ export interface ConfigTestwebhookResponse {
   status?: string;
 }
 
-export interface ConfigCreateParams {
+export interface ConfigRetrieveParams {
+  /**
+   * A key is a unique identifier that is required to authenticate a request to the
+   * API.
+   */
+  key: string;
+
+  /**
+   * the cluster of the region you want to use
+   */
+  cluster?: 'america';
+}
+
+export interface ConfigUpdateParams {
   /**
    * Query param: A key is a unique identifier that is required to authenticate a
    * request to the API.
@@ -104,20 +117,7 @@ export interface ConfigCreateParams {
   webhook?: Array<string>;
 }
 
-export interface ConfigListParams {
-  /**
-   * A key is a unique identifier that is required to authenticate a request to the
-   * API.
-   */
-  key: string;
-
-  /**
-   * the cluster of the region you want to use
-   */
-  cluster?: 'america';
-}
-
-export interface ConfigTestwebhookParams {
+export interface ConfigTestWebhookParams {
   /**
    * A key is a unique identifier that is required to authenticate a request to the
    * API.
@@ -127,10 +127,10 @@ export interface ConfigTestwebhookParams {
 
 export declare namespace Config {
   export {
-    type ConfigListResponse as ConfigListResponse,
-    type ConfigTestwebhookResponse as ConfigTestwebhookResponse,
-    type ConfigCreateParams as ConfigCreateParams,
-    type ConfigListParams as ConfigListParams,
-    type ConfigTestwebhookParams as ConfigTestwebhookParams,
+    type ConfigRetrieveResponse as ConfigRetrieveResponse,
+    type ConfigTestWebhookResponse as ConfigTestWebhookResponse,
+    type ConfigRetrieveParams as ConfigRetrieveParams,
+    type ConfigUpdateParams as ConfigUpdateParams,
+    type ConfigTestWebhookParams as ConfigTestWebhookParams,
   };
 }

@@ -4,14 +4,14 @@ import { APIResource } from '../../../core/resource';
 import * as MonitorAPI from '../monitor';
 import * as TripAPI from '../trip';
 import * as EventAPI from './event';
-import { Event, EventRetrieveListParams, EventRetrieveListResponse } from './event';
+import { Event, EventListParams, EventListResponse } from './event';
 import * as LocationAPI from './location';
 import {
   Location as LocationAPILocation,
-  LocationRetrieveLastParams,
-  LocationRetrieveLastResponse,
-  LocationRetrieveListParams,
-  LocationRetrieveListResponse,
+  LocationGetLastParams,
+  LocationGetLastResponse,
+  LocationListParams,
+  LocationListResponse,
   TrackLocation,
 } from './location';
 import { APIPromise } from '../../../core/api-promise';
@@ -50,6 +50,13 @@ export class Asset extends APIResource {
   }
 
   /**
+   * Get Asset List
+   */
+  list(query: AssetListParams, options?: RequestOptions): APIPromise<AssetListResponse> {
+    return this._client.get('/skynet/asset/list', { query, ...options });
+  }
+
+  /**
    * Delete an Asset
    */
   delete(id: string, params: AssetDeleteParams, options?: RequestOptions): APIPromise<SimpleResp> {
@@ -58,13 +65,11 @@ export class Asset extends APIResource {
   }
 
   /**
-   * Get Asset List
+   * Bind asset to device
    */
-  retrieveList(
-    query: AssetRetrieveListParams,
-    options?: RequestOptions,
-  ): APIPromise<AssetRetrieveListResponse> {
-    return this._client.get('/skynet/asset/list', { query, ...options });
+  bind(id: string, params: AssetBindParams, options?: RequestOptions): APIPromise<SimpleResp> {
+    const { key, ...body } = params;
+    return this._client.post(path`/skynet/asset/${id}/bind`, { query: { key }, body, ...options });
   }
 
   /**
@@ -170,15 +175,15 @@ export namespace AssetRetrieveResponse {
     /**
      * An object with details of the `asset` properties.
      */
-    asset?: TripAPI.Asset;
+    asset?: TripAPI.AssetDetails;
   }
 }
 
-export interface AssetRetrieveListResponse {
+export interface AssetListResponse {
   /**
    * A data object containing the list of assets.
    */
-  data?: AssetRetrieveListResponse.Data;
+  data?: AssetListResponse.Data;
 
   /**
    * Displays the error message in case of a failed request. If the request is
@@ -194,7 +199,7 @@ export interface AssetRetrieveListResponse {
   status?: string;
 }
 
-export namespace AssetRetrieveListResponse {
+export namespace AssetListResponse {
   /**
    * A data object containing the list of assets.
    */
@@ -202,7 +207,7 @@ export namespace AssetRetrieveListResponse {
     /**
      * An array of objects, with each object representing one `asset`.
      */
-    list?: Array<TripAPI.Asset>;
+    list?: Array<TripAPI.AssetDetails>;
 
     /**
      * An object with pagination details of the search results. Use this object to
@@ -346,20 +351,7 @@ export interface AssetUpdateParams {
   tags?: Array<string>;
 }
 
-export interface AssetDeleteParams {
-  /**
-   * A key is a unique identifier that is required to authenticate a request to the
-   * API.
-   */
-  key: string;
-
-  /**
-   * the cluster of the region you want to use
-   */
-  cluster?: 'america';
-}
-
-export interface AssetRetrieveListParams {
+export interface AssetListParams {
   /**
    * A key is a unique identifier that is required to authenticate a request to the
    * API.
@@ -425,6 +417,36 @@ export interface AssetRetrieveListParams {
    * be specified, use `,` to separate them.
    */
   tags?: string;
+}
+
+export interface AssetDeleteParams {
+  /**
+   * A key is a unique identifier that is required to authenticate a request to the
+   * API.
+   */
+  key: string;
+
+  /**
+   * the cluster of the region you want to use
+   */
+  cluster?: 'america';
+}
+
+export interface AssetBindParams {
+  /**
+   * Query param: A key is a unique identifier that is required to authenticate a
+   * request to the API.
+   */
+  key: string;
+
+  /**
+   * Body param: Device ID to be linked to the `asset` identified by `id`.
+   *
+   * Please note that the device needs to be linked to an `asset` before using it in
+   * the _Upload locations of an Asset_ method for sending GPS information about the
+   * `asset`.
+   */
+  device_id: string;
 }
 
 export interface AssetTrackParams {
@@ -577,28 +599,29 @@ export declare namespace Asset {
     type SimpleResp as SimpleResp,
     type AssetCreateResponse as AssetCreateResponse,
     type AssetRetrieveResponse as AssetRetrieveResponse,
-    type AssetRetrieveListResponse as AssetRetrieveListResponse,
+    type AssetListResponse as AssetListResponse,
     type AssetCreateParams as AssetCreateParams,
     type AssetRetrieveParams as AssetRetrieveParams,
     type AssetUpdateParams as AssetUpdateParams,
+    type AssetListParams as AssetListParams,
     type AssetDeleteParams as AssetDeleteParams,
-    type AssetRetrieveListParams as AssetRetrieveListParams,
+    type AssetBindParams as AssetBindParams,
     type AssetTrackParams as AssetTrackParams,
     type AssetUpdateAttributesParams as AssetUpdateAttributesParams,
   };
 
   export {
     Event as Event,
-    type EventRetrieveListResponse as EventRetrieveListResponse,
-    type EventRetrieveListParams as EventRetrieveListParams,
+    type EventListResponse as EventListResponse,
+    type EventListParams as EventListParams,
   };
 
   export {
     LocationAPILocation as Location,
     type TrackLocation as TrackLocation,
-    type LocationRetrieveLastResponse as LocationRetrieveLastResponse,
-    type LocationRetrieveListResponse as LocationRetrieveListResponse,
-    type LocationRetrieveLastParams as LocationRetrieveLastParams,
-    type LocationRetrieveListParams as LocationRetrieveListParams,
+    type LocationListResponse as LocationListResponse,
+    type LocationGetLastResponse as LocationGetLastResponse,
+    type LocationListParams as LocationListParams,
+    type LocationGetLastParams as LocationGetLastParams,
   };
 }

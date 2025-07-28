@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import NextbillionSDK from '@nbai/sdk';
+import NextbillionSDK from 'nextbillion-sdk';
 
 const client = new NextbillionSDK({
   apiKey: 'My API Key',
@@ -9,8 +9,8 @@ const client = new NextbillionSDK({
 
 describe('resource event', () => {
   // skipped: tests are disabled for the time being
-  test.skip('retrieveList: only required params', async () => {
-    const responsePromise = client.skynet.asset.event.retrieveList('id', { key: 'key=API_KEY' });
+  test.skip('list: only required params', async () => {
+    const responsePromise = client.skynet.asset.event.list('id', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,8 +21,8 @@ describe('resource event', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('retrieveList: required and optional params', async () => {
-    const response = await client.skynet.asset.event.retrieveList('id', {
+  test.skip('list: required and optional params', async () => {
+    const response = await client.skynet.asset.event.list('id', {
       key: 'key=API_KEY',
       cluster: 'america',
       end_time: 0,

@@ -7,8 +7,8 @@ const config: JestConfigWithTsJest = {
     '^.+\\.(t|j)sx?$': ['@swc/jest', { sourceMaps: 'inline' }],
   },
   moduleNameMapper: {
-    '^@nbai/sdk$': '<rootDir>/src/index.ts',
-    '^@nbai/sdk/(.*)$': '<rootDir>/src/$1',
+    '^nextbillion-sdk$': '<rootDir>/src/index.ts',
+    '^nextbillion-sdk/(.*)$': '<rootDir>/src/$1',
   },
   modulePathIgnorePatterns: [
     '<rootDir>/ecosystem-tests/',

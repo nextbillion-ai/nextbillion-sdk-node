@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import NextbillionSDK from '@nbai/sdk';
+import NextbillionSDK from 'nextbillion-sdk';
 
 const client = new NextbillionSDK({
   apiKey: 'My API Key',
@@ -41,8 +41,8 @@ describe('resource polygon', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('list: only required params', async () => {
-    const responsePromise = client.skynet.search.polygon.list({
+  test.skip('get: only required params', async () => {
+    const responsePromise = client.skynet.search.polygon.get({
       key: 'key=API_KEY',
       polygon: 'polygon=17.4239,78.4590|17.4575,78.4624|17.4547,78.5483|17.4076,78.5527|17.4239,78.4590',
     });
@@ -56,8 +56,8 @@ describe('resource polygon', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('list: required and optional params', async () => {
-    const response = await client.skynet.search.polygon.list({
+  test.skip('get: required and optional params', async () => {
+    const response = await client.skynet.search.polygon.get({
       key: 'key=API_KEY',
       polygon: 'polygon=17.4239,78.4590|17.4575,78.4624|17.4547,78.5483|17.4076,78.5527|17.4239,78.4590',
       filter: 'filter=tag:delivery,truck',

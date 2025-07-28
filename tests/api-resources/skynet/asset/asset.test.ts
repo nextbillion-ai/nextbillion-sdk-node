@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import NextbillionSDK from '@nbai/sdk';
+import NextbillionSDK from 'nextbillion-sdk';
 
 const client = new NextbillionSDK({
   apiKey: 'My API Key',
@@ -77,6 +77,32 @@ describe('resource asset', () => {
   });
 
   // skipped: tests are disabled for the time being
+  test.skip('list: only required params', async () => {
+    const responsePromise = client.skynet.asset.list({ key: 'key=API_KEY' });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('list: required and optional params', async () => {
+    const response = await client.skynet.asset.list({
+      key: 'key=API_KEY',
+      cluster: 'america',
+      include_all_of_attributes: 'include_all_of_attributes=vehicle_type:pickup_truck|driver_name:John',
+      include_any_of_attributes: 'include_any_of_attributes=vehicle_type:pickup_truck|driver_name:John',
+      pn: 0,
+      ps: 100,
+      sort: 'updated_at:desc',
+      tags: 'tags=tag_1,tag_2',
+    });
+  });
+
+  // skipped: tests are disabled for the time being
   test.skip('delete: only required params', async () => {
     const responsePromise = client.skynet.asset.delete('id', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -94,8 +120,8 @@ describe('resource asset', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('retrieveList: only required params', async () => {
-    const responsePromise = client.skynet.asset.retrieveList({ key: 'key=API_KEY' });
+  test.skip('bind: only required params', async () => {
+    const responsePromise = client.skynet.asset.bind('id', { key: 'key=API_KEY', device_id: 'device_id' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -106,17 +132,8 @@ describe('resource asset', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('retrieveList: required and optional params', async () => {
-    const response = await client.skynet.asset.retrieveList({
-      key: 'key=API_KEY',
-      cluster: 'america',
-      include_all_of_attributes: 'include_all_of_attributes=vehicle_type:pickup_truck|driver_name:John',
-      include_any_of_attributes: 'include_any_of_attributes=vehicle_type:pickup_truck|driver_name:John',
-      pn: 0,
-      ps: 100,
-      sort: 'updated_at:desc',
-      tags: 'tags=tag_1,tag_2',
-    });
+  test.skip('bind: required and optional params', async () => {
+    const response = await client.skynet.asset.bind('id', { key: 'key=API_KEY', device_id: 'device_id' });
   });
 
   // skipped: tests are disabled for the time being
