@@ -4,7 +4,7 @@
 
 This library provides convenient access to the Nextbillion SDK REST API from server-side TypeScript or JavaScript.
 
-The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [docs.nextbillion.ai](https://docs.nextbillion.ai/). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainless.com/).
 
