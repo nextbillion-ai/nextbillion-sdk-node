@@ -763,7 +763,7 @@ export namespace Shipment {
      *   and cannot be adjusted. As a result, if the cargo’s height exceeds the
      *   vehicle’s available height, it cannot be loaded into the compartment.
      */
-    alignment?: 'strict' | 'parallel' | 'fixed_bottom' | '" "';
+    alignment?: 'strict' | 'parallel' | 'fixed_bottom';
 
     /**
      * Cargo length, in meters.

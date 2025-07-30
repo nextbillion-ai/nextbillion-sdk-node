@@ -404,10 +404,10 @@ The following tools are available in this MCP server.
 
 - `retrieve_coordinates_postalcode` (`write`): Retrieve coordinates by postal code
 
-### Resource `areas`:
-
-- `list_areas` (`read`): Get available areas
-
 ### Resource `lookup`:
 
 - `by_id_lookup` (`read`): Lookup By ID
+
+### Resource `areas`:
+
+- `list_areas` (`read`): Get available areas
