@@ -25,9 +25,9 @@ describe('resource location', () => {
     const response = await client.skynet.asset.location.list('id', {
       key: 'key=API_KEY',
       cluster: 'america',
-      correction: 'correction=mapmatch=1,interpolate=0,mode=`car`',
+      correction: 'correction=mapmatch=1,interpolate=0,mode=car',
       end_time: 0,
-      geometry_type: '`polyline`',
+      geometry_type: 'polyline',
       pn: 0,
       ps: 500,
       start_time: 0,

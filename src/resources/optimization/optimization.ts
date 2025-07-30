@@ -63,7 +63,7 @@ export interface PostResponse {
 
   /**
    * A string indicating the state of the response. On successful responses, the
-   * value will be `Ok`. Indicative error messages/codes are returned in case of
+   * value will be Ok. Indicative error messages/codes are returned in case of
    * errors. See the [API Error Codes](#api-error-codes) section below for more
    * information.
    */
@@ -78,7 +78,7 @@ export interface PostResponse {
 export interface OptimizationComputeResponse {
   /**
    * A string indicating the state of the response. This is a separate code than the
-   * HTTP status code. On normal valid responses, the value will be `Ok`.
+   * HTTP status code. On normal valid responses, the value will be Ok.
    */
   code?: string;
 
@@ -131,7 +131,7 @@ export namespace OptimizationComputeResponse {
     geojson?: Trip.Geojson;
 
     /**
-     * `polyline` or `polyline6` format of route geometry.
+     * polyline or polyline6 format of route geometry.
      */
     geometry?: string;
 
@@ -144,12 +144,12 @@ export namespace OptimizationComputeResponse {
      */
     export interface Geojson {
       /**
-       * The encoded geometry of the geojson in the `trip`.
+       * The encoded geometry of the geojson in the trip.
        */
       geometry?: string;
 
       /**
-       * Additional properties associated with the `trip`.
+       * Additional properties associated with the trip.
        */
       properties?: string;
 
@@ -186,7 +186,7 @@ export namespace OptimizationComputeResponse {
       steps?: Array<Leg.Step>;
 
       /**
-       * Summary of the `leg` object.
+       * Summary of the leg object.
        */
       summary?: string;
     }
@@ -194,38 +194,38 @@ export namespace OptimizationComputeResponse {
     export namespace Leg {
       export interface Step {
         /**
-         * Distance of the `step` object in meters.
+         * Distance of the step object in meters.
          */
         distance?: number;
 
         /**
-         * Duration of the `step` object in seconds.
+         * Duration of the step object in seconds.
          */
         duration?: number;
 
         /**
-         * The GeoJSON representation of the `step`.
+         * The GeoJSON representation of the step.
          */
         geojson?: Step.Geojson;
 
         /**
-         * Encoded geometry of the `step` in the selected format.
+         * Encoded geometry of the step in the selected format.
          */
         geometry?: string;
       }
 
       export namespace Step {
         /**
-         * The GeoJSON representation of the `step`.
+         * The GeoJSON representation of the step.
          */
         export interface Geojson {
           /**
-           * The encoded geometry of the geojson in the `step`.
+           * The encoded geometry of the geojson in the step.
            */
           geometry?: string;
 
           /**
-           * Additional properties associated with the `step`.
+           * Additional properties associated with the step.
            */
           properties?: string;
 
@@ -305,27 +305,26 @@ export interface OptimizationComputeParams {
 
   /**
    * A semicolon-separated list indicating the side of the road from which to
-   * approach waypoints in a requested route. If provided, the number of `approaches`
-   * must be the same as the number of `coordinates`. However, you can skip a
-   * coordinate and show its position in the list with the `;` separator.
+   * approach waypoints in a requested route. If provided, the number of approaches
+   * must be the same as the number of coordinates. However, you can skip a
+   * coordinate and show its position in the list with the ; separator.
    */
-  approaches?: '`unrestricted`' | '`curb`';
+  approaches?: 'unrestricted' | 'curb';
 
   /**
-   * Specify the destination coordinate of the returned route. If the input is
-   * `last`, the last coordinate will be the destination.
+   * Specify the destination coordinate of the returned route. If the input is last,
+   * the last coordinate will be the destination.
    */
-  destination?: '`any`' | '`last`';
+  destination?: 'any' | 'last';
 
   /**
    * Sets the output format of the route geometry in the response.
    *
-   * On providing `polyline` and `polyline6` as input, respective encoded geometry is
-   * returned. However, when `geojson` is provided as the input value, `polyline`
-   * encoded geometry is returned in the response along with a geojson details of the
-   * route.
+   * On providing polyline and polyline6 as input, respective encoded geometry is
+   * returned. However, when geojson is provided as the input value, polyline encoded
+   * geometry is returned in the response along with a geojson details of the route.
    */
-  geometries?: '`polyline`' | '`polyline6`' | '`geojson`';
+  geometries?: 'polyline' | 'polyline6' | 'geojson';
 
   /**
    * Set which driving mode the service should use to determine a route. For example,
@@ -353,7 +352,7 @@ export interface OptimizationComputeParams {
    * [support@nextbillion.ai](mailto:support@nextbillion.ai) in case you need
    * additional profiles.
    */
-  mode?: '`car`' | '`truck`';
+  mode?: 'car' | 'truck';
 
   /**
    * Indicates whether the returned route is a roundtrip.
@@ -364,7 +363,7 @@ export interface OptimizationComputeParams {
    * The coordinate at which to start the returned route. If this is not configured,
    * the return route’s destination will be the first coordinate.
    */
-  source?: '`any`' | '`first`';
+  source?: 'any' | 'first';
 
   /**
    * Indicates whether the return geometry should be computed or not.
@@ -404,7 +403,7 @@ export interface OptimizationReOptimizeParams {
    *
    * As a best practice:
    *
-   * 1.  Don't provide the `locations` input when re-optimizing, if the original set
+   * 1.  Don't provide the locations input when re-optimizing, if the original set
    *     contains all the required location coordinates.
    * 2.  If any new location coordinates are required for re-optimization, copy the
    *     full, original location list and update it in the following manner before

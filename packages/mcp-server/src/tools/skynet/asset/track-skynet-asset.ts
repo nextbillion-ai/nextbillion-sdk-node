@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'track_skynet_asset',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nUpload track info\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/simple_resp',\n  $defs: {\n    simple_resp: {\n      type: 'object',\n      properties: {\n        message: {\n          type: 'string',\n          description: 'Displays the error message in case of a failed request. If the request is successful, this field is not present in the response.'\n        },\n        status: {\n          type: 'string',\n          description: 'A string indicating the state of the response. On successful responses, the value will be `Ok`. Indicative error messages are returned for different errors. See the [API Error Codes](#api-error-codes) section below for more information.'\n        }\n      }\n    }\n  }\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nUpload track info\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/simple_resp',\n  $defs: {\n    simple_resp: {\n      type: 'object',\n      properties: {\n        message: {\n          type: 'string',\n          description: 'Displays the error message in case of a failed request. If the request is successful, this field is not present in the response.'\n        },\n        status: {\n          type: 'string',\n          description: 'A string indicating the state of the response. On successful responses, the value will be Ok. Indicative error messages are returned for different errors. See the [API Error Codes](#api-error-codes) section below for more information.'\n        }\n      }\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
@@ -32,12 +32,12 @@ export const tool: Tool = {
       device_id: {
         type: 'string',
         description:
-          'ID of the device used to upload the tracking information of the `asset`.\n\nPlease note that the `device_id` used here must already be linked to the `asset`. Use the *Bind Device to Asset* method to link a device with your `asset`.',
+          'ID of the device used to upload the tracking information of the asset.\n\nPlease note that the device_id used here must already be linked to the asset. Use the *Bind Device to Asset* method to link a device with your asset.',
       },
       locations: {
         type: 'object',
         description:
-          'An array of objects to collect the location tracking information for an `asset`. Each object must correspond to details of only one location.',
+          'An array of objects to collect the location tracking information for an asset. Each object must correspond to details of only one location.',
         properties: {
           location: {
             type: 'object',
@@ -46,11 +46,11 @@ export const tool: Tool = {
             properties: {
               lat: {
                 type: 'number',
-                description: 'Latitude of the tracked location of the `asset`.',
+                description: 'Latitude of the tracked location of the asset.',
               },
               lon: {
                 type: 'number',
-                description: 'Longitude of the tracked location of the `asset`.',
+                description: 'Longitude of the tracked location of the asset.',
               },
             },
             required: ['lat', 'lon'],
@@ -68,7 +68,7 @@ export const tool: Tool = {
           altitude: {
             type: 'number',
             description:
-              'Use this parameter to provide the altitude, in meters, of the `asset` at the tracked location.',
+              'Use this parameter to provide the altitude, in meters, of the asset at the tracked location.',
           },
           battery_level: {
             type: 'integer',
@@ -78,17 +78,17 @@ export const tool: Tool = {
           bearing: {
             type: 'number',
             description:
-              'Use this parameter to provide the heading of the `asset`, in radians, calculated from true north in clockwise direction. This should always be in the range of [0, 360).',
+              'Use this parameter to provide the heading of the asset, in radians, calculated from true north in clockwise direction. This should always be in the range of [0, 360).',
           },
           meta_data: {
             type: 'object',
             description:
-              'Use this object to add any custom data about the location that is being uploaded. Recommended to use the `key`:`value` format for adding the desired information.\n\nPlease note that the maximum size of `meta_data` object should not exceed 65Kb.',
+              'Use this object to add any custom data about the location that is being uploaded. Recommended to use the key:value format for adding the desired information.\n\nPlease note that the maximum size of meta_data object should not exceed 65Kb.',
           },
           speed: {
             type: 'number',
             description:
-              'Use this parameter to provide the speed of the `asset`, in meters per second, at the tracked location.',
+              'Use this parameter to provide the speed of the asset, in meters per second, at the tracked location.',
           },
           tracking_mode: {
             type: 'string',
