@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'complete_routes_fleetify_steps',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nComplete a route step with document submission, or update the document of a completed route step.\n\nWhen all steps are completed, the encapsulating route’s status will change to `completed` automatically.\n\nEither `Session Token` must be provided to authenticate the request.\n\n# Response Schema\n```json\n{\n  type: 'object',\n  properties: {}\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nComplete a route step with document submission, or update the document of a completed route step.\n\nWhen all steps are completed, the encapsulating route’s status will change to completed automatically.\n\nEither Session Token must be provided to authenticate the request.\n\n# Response Schema\n```json\n{\n  type: 'object',\n  properties: {}\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
@@ -37,12 +37,12 @@ export const tool: Tool = {
       mode: {
         type: 'string',
         description:
-          'Sets the status of the route step. Currently only `completed` is supported.\n\nNote: once marked `completed`, a step cannot transition to other statuses. You can only update the document afterwards.',
+          'Sets the status of the route step. Currently only completed is supported.\n\nNote: once marked completed, a step cannot transition to other statuses. You can only update the document afterwards.',
       },
       status: {
         type: 'string',
         description:
-          'Sets the status of the route step. Currently only `completed` is supported.\n\nNote: once marked `completed`, a step cannot transition to other statuses. You can only update the document afterwards.',
+          'Sets the status of the route step. Currently only completed is supported.\n\nNote: once marked completed, a step cannot transition to other statuses. You can only update the document afterwards.',
       },
       jq_filter: {
         type: 'string',

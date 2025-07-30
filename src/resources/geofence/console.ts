@@ -33,7 +33,7 @@ export interface PolygonGeojson {
   coordinates?: Array<Array<number>>;
 
   /**
-   * Type of the geoJSON geometry. Will always be `Polygon`.
+   * Type of the geoJSON geometry. Will always be Polygon.
    */
   type?: string;
 }
@@ -59,7 +59,7 @@ export interface ConsoleSearchResponse {
 
   /**
    * A string indicating the state of the response. On successful responses, the
-   * value will be `Ok`. Indicative error messages are returned for different errors.
+   * value will be Ok. Indicative error messages are returned for different errors.
    * See the [API Error Codes](#api-error-codes) section below for more information.
    */
   status: string;
@@ -89,19 +89,19 @@ export interface ConsolePreviewParams {
   /**
    * Specify the type of the geofence that is being created.
    */
-  type: '`circle`' | '`polygon`' | '`isochrone`';
+  type: 'circle' | 'polygon' | 'isochrone';
 
   /**
    * Provide the details to create a circular geofence. Please note that this object
-   * is mandatory when `type` is `circle`. When the `type` is not `circle`, the
-   * properties of this object will be ignored while creating the geofence.
+   * is mandatory when type is circle. When the type is not circle, the properties of
+   * this object will be ignored while creating the geofence.
    */
   circle?: ConsolePreviewParams.Circle;
 
   /**
    * Set an unique ID for the new geofence. If not provided, an ID will be
-   * automatically generated in UUID format. A valid `custom_id` can contain letters,
-   * numbers, "-", & "\_" only.
+   * automatically generated in UUID format. A valid custom*id can contain letters,
+   * numbers, "-", & "*" only.
    *
    * Please note that the ID of a geofence can not be changed once it is created.
    */
@@ -109,8 +109,8 @@ export interface ConsolePreviewParams {
 
   /**
    * Provide the details to create an isochrone based geofence. Use this object when
-   * `type` is `isochrone`. When the `type` is not `isochrone`, the properties of
-   * this object will be ignored while creating the geofence.
+   * type is isochrone. When the type is not isochrone, the properties of this object
+   * will be ignored while creating the geofence.
    */
   isochrone?: ConsolePreviewParams.Isochrone;
 
@@ -119,8 +119,8 @@ export interface ConsolePreviewParams {
    * provide more context and information about the geofence being created like
    * country, group ID etc.
    *
-   * The data being added should be in valid JSON object format (i.e. `key` and
-   * `value` pairs). Max size allowed for the object is 65kb.
+   * The data being added should be in valid JSON object format (i.e. key and value
+   * pairs). Max size allowed for the object is 65kb.
    */
   meta_data?: unknown;
 
@@ -132,8 +132,8 @@ export interface ConsolePreviewParams {
 
   /**
    * Provide the details to create a custom polygon type of geofence. Please note
-   * that this object is mandatory when `type` is `polygon`. When the `type` is not
-   * `polygon`, the properties of this object will be ignored while creating the
+   * that this object is mandatory when type is polygon. When the type is not
+   * polygon, the properties of this object will be ignored while creating the
    * geofence.
    *
    * Self-intersecting polygons or polygons containing other polygons are invalid and
@@ -144,10 +144,10 @@ export interface ConsolePreviewParams {
   polygon?: ConsolePreviewParams.Polygon;
 
   /**
-   * An array of strings to associate multiple tags to the geofence. `tags` can be
-   * used to search or filter geofences (using `Get Geofence List` method).
+   * An array of strings to associate multiple tags to the geofence. tags can be used
+   * to search or filter geofences (using Get Geofence List method).
    *
-   * Create valid `tags` using a string consisting of alphanumeric characters (A-Z,
+   * Create valid tags using a string consisting of alphanumeric characters (A-Z,
    * a-z, 0-9) along with the underscore ('\_') and hyphen ('-') symbols.
    */
   tags?: Array<string>;
@@ -156,8 +156,8 @@ export interface ConsolePreviewParams {
 export namespace ConsolePreviewParams {
   /**
    * Provide the details to create a circular geofence. Please note that this object
-   * is mandatory when `type` is `circle`. When the `type` is not `circle`, the
-   * properties of this object will be ignored while creating the geofence.
+   * is mandatory when type is circle. When the type is not circle, the properties of
+   * this object will be ignored while creating the geofence.
    */
   export interface Circle {
     /**
@@ -178,12 +178,12 @@ export namespace ConsolePreviewParams {
      */
     export interface Center {
       /**
-       * Latitude of the `center` location.
+       * Latitude of the center location.
        */
       lat: number;
 
       /**
-       * Longitude of the `center` location.
+       * Longitude of the center location.
        */
       lon: number;
     }
@@ -191,14 +191,14 @@ export namespace ConsolePreviewParams {
 
   /**
    * Provide the details to create an isochrone based geofence. Use this object when
-   * `type` is `isochrone`. When the `type` is not `isochrone`, the properties of
-   * this object will be ignored while creating the geofence.
+   * type is isochrone. When the type is not isochrone, the properties of this object
+   * will be ignored while creating the geofence.
    */
   export interface Isochrone {
     /**
      * Coordinates of the location, in [latitude,longitude] format, which would act as
      * the starting point for identifying the isochrone polygon or the boundary of
-     * reachable area. This parameter is mandatory when `type` is `isochrone`.
+     * reachable area. This parameter is mandatory when type is isochrone.
      */
     coordinates: string;
 
@@ -206,12 +206,12 @@ export namespace ConsolePreviewParams {
      * The distance, in meters, for which an isochrone polygon needs to be determined.
      * When provided, the API would create a geofence representing the area that can be
      * reached after driving the given number of meters starting from the point
-     * specified in `coordinates`.
+     * specified in coordinates.
      *
      * The maximum distance that can be specified is 60000 meters (60km).
      *
-     * At least one of `contours_meter` or `contours_minute` is mandatory when `type`
-     * is `isochrone`.
+     * At least one of contours_meter or contours_minute is mandatory when type is
+     * isochrone.
      */
     contours_meter?: number;
 
@@ -219,12 +219,12 @@ export namespace ConsolePreviewParams {
      * The duration, in minutes, for which an isochrone polygon needs to be determined.
      * When provided, the API would create a geofence representing the area that can be
      * reached after driving for the given number of minutes starting from the point
-     * specified in `coordinates`.
+     * specified in coordinates.
      *
      * The maximum duration that can be specified is 40 minutes.
      *
-     * At least one of `contours_meter` or `contours_minute` is mandatory when `type`
-     * is `isochrone`.
+     * At least one of contours_meter or contours_minute is mandatory when type is
+     * isochrone.
      */
     contours_minute?: number;
 
@@ -247,18 +247,18 @@ export namespace ConsolePreviewParams {
     /**
      * Set which driving mode the service should use to determine the isochrone line.
      *
-     * For example, if you use `car`, the API will return an isochrone polygon that a
-     * car can cover within the specified time or after driving the specified distance.
-     * Using `truck` will return an isochrone that a truck can reach after taking into
+     * For example, if you use car, the API will return an isochrone polygon that a car
+     * can cover within the specified time or after driving the specified distance.
+     * Using truck will return an isochrone that a truck can reach after taking into
      * account appropriate truck routing restrictions.
      */
-    mode?: '`car`' | '`truck`';
+    mode?: 'car' | 'truck';
   }
 
   /**
    * Provide the details to create a custom polygon type of geofence. Please note
-   * that this object is mandatory when `type` is `polygon`. When the `type` is not
-   * `polygon`, the properties of this object will be ignored while creating the
+   * that this object is mandatory when type is polygon. When the type is not
+   * polygon, the properties of this object will be ignored while creating the
    * geofence.
    *
    * Self-intersecting polygons or polygons containing other polygons are invalid and
@@ -289,7 +289,7 @@ export namespace ConsolePreviewParams {
       coordinates: Array<Array<number>>;
 
       /**
-       * Type of the geoJSON geometry. Should always be `Polygon`.
+       * Type of the geoJSON geometry. Should always be Polygon.
        */
       type: string;
     }

@@ -36,7 +36,7 @@ describe('resource isochrone', () => {
       denoise: 0,
       departure_time: 0,
       generalize: 0,
-      mode: '`car`',
+      mode: 'car',
       polygons: true,
     });
   });

@@ -32,7 +32,7 @@ describe('resource restrictions', () => {
       name: 'name',
       latlon: true,
       comment: 'comment',
-      direction: '`forward`',
+      direction: 'forward',
       end_time: 0,
       geofence: [[0]],
       height: 0,
@@ -87,7 +87,7 @@ describe('resource restrictions', () => {
       name: 'name',
       latlon: true,
       comment: 'comment',
-      direction: '`forward`',
+      direction: 'forward',
       end_time: 0,
       geofence: [[0]],
       height: 0,
@@ -129,12 +129,12 @@ describe('resource restrictions', () => {
       key: 'key=API_KEY',
       limit: 0,
       offset: 0,
-      mode: '`0w`',
+      mode: '0w',
       name: 'name',
-      restriction_type: '`turn`',
+      restriction_type: 'turn',
       source: 'rrt',
-      state: '`enabled`',
-      status: '`active`',
+      state: 'enabled',
+      status: 'active',
       transform: true,
     });
   });
@@ -185,15 +185,15 @@ describe('resource restrictions', () => {
       mode: ['0w'],
       restriction_type: 'turn',
       source: 'rrt',
-      state: '`enabled`',
-      status: '`active`',
+      state: 'enabled',
+      status: 'active',
       transform: true,
     });
   });
 
   // skipped: tests are disabled for the time being
   test.skip('setState: only required params', async () => {
-    const responsePromise = client.restrictions.setState(0, { key: 'key=API_KEY', state: '`enabled`' });
+    const responsePromise = client.restrictions.setState(0, { key: 'key=API_KEY', state: 'enabled' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -205,6 +205,6 @@ describe('resource restrictions', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('setState: required and optional params', async () => {
-    const response = await client.restrictions.setState(0, { key: 'key=API_KEY', state: '`enabled`' });
+    const response = await client.restrictions.setState(0, { key: 'key=API_KEY', state: 'enabled' });
   });
 });

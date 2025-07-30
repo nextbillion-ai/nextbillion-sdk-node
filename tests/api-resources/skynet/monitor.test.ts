@@ -13,7 +13,7 @@ describe('resource monitor', () => {
     const responsePromise = client.skynet.monitor.create({
       key: 'key=API_KEY',
       tags: ['string'],
-      type: '`enter`',
+      type: 'enter',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -29,7 +29,7 @@ describe('resource monitor', () => {
     const response = await client.skynet.monitor.create({
       key: 'key=API_KEY',
       tags: ['string'],
-      type: '`enter`',
+      type: 'enter',
       cluster: 'america',
       custom_id: 'custom_id',
       description: 'description',
@@ -95,7 +95,7 @@ describe('resource monitor', () => {
         use_admin_speed_limit: true,
       },
       tags: ['string'],
-      type: '`enter`',
+      type: 'enter',
     });
   });
 

@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.7.0 (2025-07-30)
+
+Full Changelog: [v0.6.0...v0.7.0](https://github.com/nextbillion-ai/nextbillion-sdk-node/compare/v0.6.0...v0.7.0)
+
+### Features
+
+* **api:** manual updates ([89a229b](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/89a229be1f4919cfa0880ce797090828bfc86682))
+* Fix for ruby ([70a9085](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/70a90856f9a4e8e27275f55783574cee67006f64))
+* re-order endpoints ([c5ffcad](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/c5ffcadd88d8c01c2b9d4c4d958aaa98f740ab42))
+
+
+### Chores
+
+* **internal:** remove redundant imports config ([ee4fba9](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/ee4fba92528ca05ad240910ab2f04f6ae5838576))
+
 ## 0.6.0 (2025-07-28)
 
 Full Changelog: [v0.5.0...v0.6.0](https://github.com/nextbillion-ai/nextbillion-sdk-node/compare/v0.5.0...v0.6.0)

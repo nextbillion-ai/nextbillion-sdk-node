@@ -1,8 +1,8 @@
 {
   "name": "@nbai/sdk",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "The official TypeScript library for the Nextbillion SDK API",
-  "author": "Nextbillion SDK <>",
+  "author": "Nextbillion SDK <yun@nextbillion.ai>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",
@@ -45,10 +45,6 @@
     "tsconfig-paths": "^4.0.0",
     "typescript": "5.8.3",
     "typescript-eslint": "8.31.1"
-  },
-  "imports": {
-    "@nbai/sdk": ".",
-    "@nbai/sdk/*": "./src/*"
   },
   "exports": {
     ".": {
