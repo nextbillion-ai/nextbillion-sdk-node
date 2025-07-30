@@ -12,7 +12,7 @@ describe('resource documentTemplates', () => {
   test.skip('create: only required params', async () => {
     const responsePromise = client.fleetify.documentTemplates.create({
       key: 'key',
-      content: [{ label: '"label": "Specify Completion Time"', type: 'string' }],
+      content: [{ label: '"label": "Specify Completion Time"', type: '`string`' }],
       name: 'name',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -31,7 +31,7 @@ describe('resource documentTemplates', () => {
       content: [
         {
           label: '"label": "Specify Completion Time"',
-          type: 'string',
+          type: '`string`',
           meta: { options: [{ label: '"label": "Option 1"', value: '"value": "Car"' }] },
           name: '"name" : "Completion DateTime"',
           required: true,
@@ -78,7 +78,7 @@ describe('resource documentTemplates', () => {
       content: [
         {
           label: '"label": "Specify Completion Time"',
-          type: 'string',
+          type: '`string`',
           meta: { options: [{ label: '"label": "Option 1"', value: '"value": "Car"' }] },
           name: '"name" : "Completion DateTime"',
           required: true,

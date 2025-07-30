@@ -41,7 +41,7 @@ export interface SearchResponse {
 
   /**
    * A string indicating the state of the response. On successful responses, the
-   * value will be Ok. Indicative error messages are returned for different errors.
+   * value will be `Ok`. Indicative error messages are returned for different errors.
    * See the [API Error Codes](#api-error-codes) section below for more information.
    */
   status?: string;
@@ -54,7 +54,7 @@ export namespace SearchResponse {
   export interface Data {
     /**
      * An array of objects with details of the asset(s) returned in the search result.
-     * Each object represents one asset
+     * Each object represents one `asset`
      */
     assets?: Array<Data.Asset>;
 
@@ -68,21 +68,21 @@ export namespace SearchResponse {
   export namespace Data {
     export interface Asset {
       /**
-       * ID of asset which was last located inside the specified area in the input
+       * ID of `asset` which was last located inside the specified area in the input
        * request. This is the same ID that was generated/provided at the time of creating
-       * the asset.
+       * the `asset`.
        */
       id?: string;
 
       /**
-       * A UNIX timestamp in seconds representing the time at which the asset was
+       * A UNIX timestamp in seconds representing the time at which the `asset` was
        * created.
        */
       created_at?: number;
 
       /**
-       * Description of the asset. The value would be the same as that provided for the
-       * description parameter at the time of creating or updating the asset.
+       * Description of the `asset`. The value would be the same as that provided for the
+       * `description` parameter at the time of creating or updating the `asset`.
        */
       description?: string;
 
@@ -99,8 +99,8 @@ export namespace SearchResponse {
       meta_data?: AssetAPI.MetaData;
 
       /**
-       * Name of asset. The value would be the same as that provided for the name
-       * parameter at the time of creating or updating the asset.
+       * Name of `asset`. The value would be the same as that provided for the `name`
+       * parameter at the time of creating or updating the `asset`.
        */
       name?: string;
 
@@ -111,21 +111,21 @@ export namespace SearchResponse {
       ranking_info?: Asset.RankingInfo;
 
       /**
-       * **This parameter will be deprecated soon! Please move existing tags to
-       * attributes parameter.**
+       * **This parameter will be deprecated soon! Please move existing `tags` to
+       * `attributes` parameter.**
        *
-       * Tags associated with the asset.
+       * Tags associated with the `asset`.
        */
       tags?: Array<string>;
 
       /**
-       * A UNIX epoch timestamp in seconds representing the last time when the asset was
-       * tracked.
+       * A UNIX epoch timestamp in seconds representing the last time when the `asset`
+       * was tracked.
        */
       tracked_at?: number;
 
       /**
-       * A UNIX timestamp in seconds representing the time at which the asset was last
+       * A UNIX timestamp in seconds representing the time at which the `asset` was last
        * updated.
        */
       updated_at?: number;
@@ -138,13 +138,13 @@ export namespace SearchResponse {
        */
       export interface RankingInfo {
         /**
-         * Driving distance between the asset and the sort_destination.
+         * Driving distance between the asset and the `sort_destination`.
          */
         distance?: number;
 
         /**
-         * Driving duration between the asset and the sort_destination. Please note this
-         * field in not returned in the response when sort_by = straight_distance .
+         * Driving duration between the asset and the `sort_destination`. Please note this
+         * field in not returned in the response when `sort_by = straight_distance` .
          */
         duration?: number;
 
@@ -176,12 +176,12 @@ export interface SearchAroundParams {
   radius: number;
 
   /**
-   * **tags parameter will be deprecated soon! Please use the
-   * include_any_of_attributes or include_all_of_attributes parameters to match
+   * **`tags` parameter will be deprecated soon! Please use the
+   * `include_any_of_attributes` or `include_all_of_attributes` parameters to match
    * assets based on their labels or markers.**
    *
    * Use this parameter to filter the assets found inside the specified area by their
-   * tags. Multiple tags can be separated using commas (,).
+   * `tags`. Multiple `tags` can be separated using commas (`,`).
    *
    * Please note the tags are case sensitive.
    */
@@ -189,23 +189,23 @@ export interface SearchAroundParams {
 
   /**
    * Use this parameter to filter the assets found inside the specified area by their
-   * attributes. Only the assets having all the attributes that are added to this
-   * parameter, will be returned in the search results. Multiple attributes can be
-   * separated using pipes (|).
+   * `attributes`. Only the assets having all the `attributes` that are added to this
+   * parameter, will be returned in the search results. Multiple `attributes` can be
+   * separated using pipes (`|`).
    *
    * Please note the attributes are case sensitive. Also, this parameter can not be
-   * used in conjunction with include_any_of_attributes parameter.
+   * used in conjunction with `include_any_of_attributes` parameter.
    */
   include_all_of_attributes?: string;
 
   /**
    * Use this parameter to filter the assets found inside the specified area by their
-   * attributes. Assets having at least one of the attributes added to this
-   * parameter, will be returned in the search results. Multiple attributes can be
-   * separated using pipes (|).
+   * `attributes`. Assets having at least one of the `attributes` added to this
+   * parameter, will be returned in the search results. Multiple `attributes` can be
+   * separated using pipes (`|`).
    *
    * Please note the attributes are case sensitive. Also, this parameter can not be
-   * used in conjunction with include_all_of_attributes parameter.
+   * used in conjunction with `include_all_of_attributes` parameter.
    */
   include_any_of_attributes?: string;
 
@@ -216,7 +216,7 @@ export interface SearchAroundParams {
   max_search_limit?: boolean;
 
   /**
-   * Denotes page number. Use this along with the ps parameter to implement
+   * Denotes page number. Use this along with the `ps` parameter to implement
    * pagination for your searched results. This parameter does not have a maximum
    * limit but would return an empty response in case a higher value is provided when
    * the result-set itself is smaller.
@@ -224,8 +224,8 @@ export interface SearchAroundParams {
   pn?: number;
 
   /**
-   * Denotes number of search results per page. Use this along with the pn parameter
-   * to implement pagination for your searched results.
+   * Denotes number of search results per page. Use this along with the `pn`
+   * parameter to implement pagination for your searched results.
    */
   ps?: number;
 
@@ -234,20 +234,21 @@ export interface SearchAroundParams {
    * values are:
    *
    * - **distance** : Sorts the assets by driving distance to the given
-   *   sort_destination .
-   * - **duration** : Sorts the assets by travel time to the given sort_destination .
+   *   `sort_destination` .
+   * - **duration** : Sorts the assets by travel time to the given `sort_destination`
+   *   .
    * - **straight_distance** : Sort the assets by straight-line distance to the given
-   *   sort-destination .
+   *   `sort-destination` .
    */
-  sort_by?: 'distance' | 'duration' | 'straight_distance';
+  sort_by?: '`distance`' | '`duration`' | '`straight_distance`';
 
   /**
    * Specifies the location coordinates of the point which acts as destination for
    * sorting the assets in the search results. The service will sort each asset based
    * on the driving distance or travel time to this destination, from its current
-   * location. Use the sort_by parameter to configure the metric that should be used
-   * for sorting the assets. Please note that sort_destination is required when
-   * sort_by is provided.
+   * location. Use the `sort_by` parameter to configure the metric that should be
+   * used for sorting the assets. Please note that `sort_destination` is required
+   * when `sort_by` is provided.
    */
   sort_destination?: string;
 
@@ -255,15 +256,15 @@ export interface SearchAroundParams {
    * Specifies the driving mode to be used for determining travel duration or driving
    * distance for sorting the assets in search result.
    */
-  sort_driving_mode?: 'car' | 'truck';
+  sort_driving_mode?: '`car`' | '`truck`';
 }
 
 export interface SearchBoundParams {
   /**
    * Specify two, pipe (|) delimited location coordinates which would act as corners
    * of the bounding box area to be searched. The first one should be the southwest
-   * coordinate of the bounds and the second one should be the northeast coordinate
-   * of the bounds.
+   * coordinate of the `bounds` and the second one should be the northeast coordinate
+   * of the `bounds`.
    */
   bound: string;
 
@@ -274,12 +275,12 @@ export interface SearchBoundParams {
   key: string;
 
   /**
-   * **tags parameter will be deprecated soon! Please use the
-   * include_any_of_attributes or include_all_of_attributes parameters to match
+   * **`tags` parameter will be deprecated soon! Please use the
+   * `include_any_of_attributes` or `include_all_of_attributes` parameters to match
    * assets based on their labels or markers.**
    *
    * Use this parameter to filter the assets found inside the specified area by their
-   * tags. Multiple tags can be separated using commas (,).
+   * `tags`. Multiple `tags` can be separated using commas (`,`).
    *
    * Please note the tags are case sensitive.
    */
@@ -287,23 +288,23 @@ export interface SearchBoundParams {
 
   /**
    * Use this parameter to filter the assets found inside the specified area by their
-   * attributes. Only the assets having all the attributes that are added to this
-   * parameter, will be returned in the search results. Multiple attributes can be
-   * separated using pipes (|).
+   * `attributes`. Only the assets having all the `attributes` that are added to this
+   * parameter, will be returned in the search results. Multiple `attributes` can be
+   * separated using pipes (`|`).
    *
    * Please note the attributes are case sensitive. Also, this parameter can not be
-   * used in conjunction with include_any_of_attributes parameter.
+   * used in conjunction with `include_any_of_attributes` parameter.
    */
   include_all_of_attributes?: string;
 
   /**
    * Use this parameter to filter the assets found inside the specified area by their
-   * attributes. Assets having at least one of the attributes added to this
-   * parameter, will be returned in the search results. Multiple attributes can be
-   * separated using pipes (|).
+   * `attributes`. Assets having at least one of the `attributes` added to this
+   * parameter, will be returned in the search results. Multiple `attributes` can be
+   * separated using pipes (`|`).
    *
    * Please note the attributes are case sensitive. Also, this parameter can not be
-   * used in conjunction with include_all_of_attributes parameter.
+   * used in conjunction with `include_all_of_attributes` parameter.
    */
   include_any_of_attributes?: string;
 
@@ -314,7 +315,7 @@ export interface SearchBoundParams {
   max_search_limit?: boolean;
 
   /**
-   * Denotes page number. Use this along with the ps parameter to implement
+   * Denotes page number. Use this along with the `ps` parameter to implement
    * pagination for your searched results. This parameter does not have a maximum
    * limit but would return an empty response in case a higher value is provided when
    * the result-set itself is smaller.
@@ -322,8 +323,8 @@ export interface SearchBoundParams {
   pn?: number;
 
   /**
-   * Denotes number of search results per page. Use this along with the pn parameter
-   * to implement pagination for your searched results.
+   * Denotes number of search results per page. Use this along with the `pn`
+   * parameter to implement pagination for your searched results.
    */
   ps?: number;
 
@@ -332,20 +333,21 @@ export interface SearchBoundParams {
    * values are:
    *
    * - **distance** : Sorts the assets by driving distance to the given
-   *   sort_destination .
-   * - **duration** : Sorts the assets by travel time to the given sort_destination .
+   *   `sort_destination` .
+   * - **duration** : Sorts the assets by travel time to the given `sort_destination`
+   *   .
    * - **straight_distance** : Sort the assets by straight-line distance to the given
-   *   sort-destination .
+   *   `sort-destination` .
    */
-  sort_by?: 'distance' | 'duration' | 'straight_distance';
+  sort_by?: '`distance`' | '`duration`' | '`straight_distance`';
 
   /**
    * Specifies the location coordinates of the point which acts as destination for
    * sorting the assets in the search results. The service will sort each asset based
    * on the driving distance or travel time to this destination, from its current
-   * location. Use the sort_by parameter to configure the metric that should be used
-   * for sorting the assets. Please note that sort_destination is required when
-   * sort_by is provided.
+   * location. Use the `sort_by` parameter to configure the metric that should be
+   * used for sorting the assets. Please note that `sort_destination` is required
+   * when `sort_by` is provided.
    */
   sort_destination?: string;
 
@@ -353,7 +355,7 @@ export interface SearchBoundParams {
    * Specifies the driving mode to be used for determining travel duration or driving
    * distance for sorting the assets in search result.
    */
-  sort_driving_mode?: 'car' | 'truck';
+  sort_driving_mode?: '`car`' | '`truck`';
 }
 
 Search.Polygon = Polygon;

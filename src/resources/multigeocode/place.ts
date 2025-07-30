@@ -204,7 +204,7 @@ export interface PlaceRetrieveResponse {
    * It returns the system calculated weighted score of the place. It depends on how
    * ‘richly’ the place was defined at the time of creation. In order to modify the
    * score, use “Update Place” method and update information for parameters which are
-   * not set currently. As an alternative, you can directly update the score to a
+   * not set currently. As an alternative, you can directly update the `score` to a
    * custom value.
    */
   score?: number;
@@ -285,9 +285,9 @@ export interface PlaceCreateParams {
    * Body param: When 2 places are located within 100 meters of each other and have
    * more than 90% of matching attributes (at least 11 out of 12 attributes in the
    * “place” object), they will be considered duplicates and any requests to add such
-   * a new place would be rejected. Set force=true to override this duplicate check.
-   * You can use this to create closely located POIs. For instance, places inside a
-   * mall, university or a government building etc.
+   * a new place would be rejected. Set `force=true` to override this duplicate
+   * check. You can use this to create closely located POIs. For instance, places
+   * inside a mall, university or a government building etc.
    */
   force?: boolean;
 
@@ -491,7 +491,7 @@ export namespace PlaceUpdateParams {
     source?: string;
 
     /**
-     * Set this to either enable or disable to allow the place to be retrieved by a
+     * Set this to either `enable` or `disable` to allow the place to be retrieved by a
      * search API or block it respectively.
      */
     status?: 'enable' | 'disable';
