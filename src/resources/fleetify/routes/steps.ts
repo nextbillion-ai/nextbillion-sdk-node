@@ -48,9 +48,9 @@ export class Steps extends APIResource {
    * completed route step.
    *
    * When all steps are completed, the encapsulating route’s status will change to
-   * `completed` automatically.
+   * completed automatically.
    *
-   * Either `Session Token` must be provided to authenticate the request.
+   * Either Session Token must be provided to authenticate the request.
    */
   complete(stepID: string, params: StepCompleteParams, options?: RequestOptions): APIPromise<void> {
     const { routeID, key, ...body } = params;
@@ -74,32 +74,31 @@ export type DocumentSubmission = unknown;
  * Specify the mode of completion to be used for the step. Currently, following
  * values are allowed:
  *
- * - `manual`: Steps must be marked as completed manually through the Driver App.
- * - `geofence`: Steps are marked as completed automatically based on the entry
+ * - manual: Steps must be marked as completed manually through the Driver App.
+ * - geofence: Steps are marked as completed automatically based on the entry
  *   conditions and geofence specified.
- * - `geofence_manual_fallback`: Steps will be marked as completed automatically
+ * - geofence_manual_fallback: Steps will be marked as completed automatically
  *   based on geofence and entry condition configurations but there will also be a
  *   provision for manually updating the status in case, geofence detection fails.
  */
-export type RouteStepCompletionMode = '`manual`' | '`geofence`' | '`geofence_manual_fallback`';
+export type RouteStepCompletionMode = 'manual' | 'geofence' | 'geofence_manual_fallback';
 
 /**
  * Specify the configurations of the geofence which will be used to detect presence
  * of the driver and complete the tasks automatically. Please note that this
- * attribute is required when `completion_mode` is either "geofence" or
+ * attribute is required when completion_mode is either "geofence" or
  * "geofence_manual_fallback".
  */
 export interface RouteStepGeofenceConfig {
   /**
    * Specify the radius of the cicular geofence, in meters. Once specified, the
    * service will create a geofence with task's location as the center of the circle
-   * having the given radius. Valid values for `radius` are \[10, 5000\].
+   * having the given radius. Valid values for radius are \[10, 5000\].
    */
   radius?: number;
 
   /**
-   * Specify the type of the geofence. Currently, `circle` is the only suppoeted
-   * value.
+   * Specify the type of the geofence. Currently, circle is the only suppoeted value.
    */
   type?: 'circle';
 }
@@ -119,16 +118,16 @@ export interface RouteStepsRequest {
 
   /**
    * Specify the location coordinates where the steps should be performed in
-   * `[latitude, longitude]`.
+   * [latitude, longitude].
    */
   location: Array<number>;
 
   /**
-   * Specify the step type. It can belong to one of the following: `start`, `job` ,
-   * `pickup`, `delivery`, `end`. A `duration` is mandatory when the step type is
-   * either `layover` or a `break`.
+   * Specify the step type. It can belong to one of the following: start, job ,
+   * pickup, delivery, end. A duration is mandatory when the step type is either
+   * layover or a break.
    */
-  type: '`start`' | '`job`' | '`pickup`' | '`delivery`' | '`break`' | '`layover`' | '`end`';
+  type: 'start' | 'job' | 'pickup' | 'delivery' | 'break' | 'layover' | 'end';
 
   /**
    * Specify the postal address for the step.
@@ -139,10 +138,10 @@ export interface RouteStepsRequest {
    * Specify the mode of completion to be used for the step. Currently, following
    * values are allowed:
    *
-   * - `manual`: Steps must be marked as completed manually through the Driver App.
-   * - `geofence`: Steps are marked as completed automatically based on the entry
+   * - manual: Steps must be marked as completed manually through the Driver App.
+   * - geofence: Steps are marked as completed automatically based on the entry
    *   conditions and geofence specified.
-   * - `geofence_manual_fallback`: Steps will be marked as completed automatically
+   * - geofence_manual_fallback: Steps will be marked as completed automatically
    *   based on geofence and entry condition configurations but there will also be a
    *   provision for manually updating the status in case, geofence detection fails.
    */
@@ -156,20 +155,20 @@ export interface RouteStepsRequest {
    * create, read and manage the document templates.
    *
    * Please note that the document template ID can not be assigned to following step
-   * types - `start`, `end`, `break`, `layover`.
+   * types - start, end, break, layover.
    */
   document_template_id?: string;
 
   /**
-   * Specify the duration of the `layover` or `break` type steps, in seconds. Please
-   * note it is mandatory when step type is either "layover" or "break".
+   * Specify the duration of the layover or break type steps, in seconds. Please note
+   * it is mandatory when step type is either "layover" or "break".
    */
   duration?: number;
 
   /**
    * Specify the configurations of the geofence which will be used to detect presence
    * of the driver and complete the tasks automatically. Please note that this
-   * attribute is required when `completion_mode` is either "geofence" or
+   * attribute is required when completion_mode is either "geofence" or
    * "geofence_manual_fallback".
    */
   geofence_config?: RouteStepGeofenceConfig;
@@ -234,20 +233,20 @@ export interface RouteStepsResponse {
 
   /**
    * Represents the timestamp of the creation in seconds since the Unix epoch.
-   * Example: `1738743999`.
+   * Example: 1738743999.
    */
   created_at?: number;
 
   /**
    * Returns the details of the document that was used for collecting the proof of
    * completion for the step. In case no document template ID was provided for the
-   * given step, then a `null` value is returned. Each object represents a new field
-   * in the document.
+   * given step, then a null value is returned. Each object represents a new field in
+   * the document.
    */
   document_snapshot?: Array<unknown>;
 
   /**
-   * Returns the duration for `layover` or `break` type steps.
+   * Returns the duration for layover or break type steps.
    */
   duration?: number;
 
@@ -270,16 +269,15 @@ export interface RouteStepsResponse {
   short_id?: string;
 
   /**
-   * Returns the step type. It can belong to one of the following: `start`, `job` ,
-   * `pickup`, `delivery`, `break`, `layover` , and `end`. For any given step, it
-   * would be the same as that specified in the input request while configuring the
-   * step details.
+   * Returns the step type. It can belong to one of the following: start, job ,
+   * pickup, delivery, break, layover , and end. For any given step, it would be the
+   * same as that specified in the input request while configuring the step details.
    */
   type?: string;
 
   /**
    * Represents the timestamp of the last update in seconds since the Unix epoch.
-   * Example: `1738743999`.
+   * Example: 1738743999.
    */
   updated_at?: number;
 }
@@ -288,7 +286,7 @@ export namespace RouteStepsResponse {
   export interface Completion {
     /**
      * Represents the timestamp of the completion in seconds since the Unix epoch.
-     * Example: `1738743999`.
+     * Example: 1738743999.
      */
     completed_at?: number;
 
@@ -296,10 +294,10 @@ export namespace RouteStepsResponse {
      * Specify the mode of completion to be used for the step. Currently, following
      * values are allowed:
      *
-     * - `manual`: Steps must be marked as completed manually through the Driver App.
-     * - `geofence`: Steps are marked as completed automatically based on the entry
+     * - manual: Steps must be marked as completed manually through the Driver App.
+     * - geofence: Steps are marked as completed automatically based on the entry
      *   conditions and geofence specified.
-     * - `geofence_manual_fallback`: Steps will be marked as completed automatically
+     * - geofence_manual_fallback: Steps will be marked as completed automatically
      *   based on geofence and entry condition configurations but there will also be a
      *   provision for manually updating the status in case, geofence detection fails.
      */
@@ -309,10 +307,10 @@ export namespace RouteStepsResponse {
      * Specify the mode of completion to be used for the step. Currently, following
      * values are allowed:
      *
-     * - `manual`: Steps must be marked as completed manually through the Driver App.
-     * - `geofence`: Steps are marked as completed automatically based on the entry
+     * - manual: Steps must be marked as completed manually through the Driver App.
+     * - geofence: Steps are marked as completed automatically based on the entry
      *   conditions and geofence specified.
-     * - `geofence_manual_fallback`: Steps will be marked as completed automatically
+     * - geofence_manual_fallback: Steps will be marked as completed automatically
      *   based on geofence and entry condition configurations but there will also be a
      *   provision for manually updating the status in case, geofence detection fails.
      */
@@ -327,14 +325,14 @@ export namespace RouteStepsResponse {
 
     /**
      * Represents the timestamp of the last doc modification in seconds since the Unix
-     * epoch. Example: `1738743999`.
+     * epoch. Example: 1738743999.
      */
     document_modified_at?: number;
 
     /**
      * Specify the configurations of the geofence which will be used to detect presence
      * of the driver and complete the tasks automatically. Please note that this
-     * attribute is required when `completion_mode` is either "geofence" or
+     * attribute is required when completion_mode is either "geofence" or
      * "geofence_manual_fallback".
      */
     geofence_config?: StepsAPI.RouteStepGeofenceConfig;
@@ -353,13 +351,13 @@ export namespace RouteStepsResponse {
   export interface Meta {
     /**
      * Returns the customer name associated with the step. It can configured in the
-     * input request using the `metadata` attribute of the step.
+     * input request using the metadata attribute of the step.
      */
     customer_name?: string;
 
     /**
      * Returns the customer's phone number associated with the step. It can configured
-     * in the input request using the `metadata` attribute of the step.
+     * in the input request using the metadata attribute of the step.
      */
     customer_phone_number?: string;
 
@@ -436,7 +434,7 @@ export interface StepCreateParams {
 
   /**
    * Body param: Specify the location coordinates where the steps should be performed
-   * in `[latitude, longitude]`.
+   * in [latitude, longitude].
    */
   location: Array<number>;
 
@@ -447,11 +445,11 @@ export interface StepCreateParams {
   position: number;
 
   /**
-   * Body param: Specify the step type. It can belong to one of the following:
-   * `start`, `job` , `pickup`, `delivery`, `end`. A `duration` is mandatory when the
-   * step type is either `layover` or a `break`.
+   * Body param: Specify the step type. It can belong to one of the following: start,
+   * job , pickup, delivery, end. A duration is mandatory when the step type is
+   * either layover or a break.
    */
-  type: '`start`' | '`job`' | '`pickup`' | '`delivery`' | '`break`' | '`layover`' | '`end`';
+  type: 'start' | 'job' | 'pickup' | 'delivery' | 'break' | 'layover' | 'end';
 
   /**
    * Body param: Specify the postal address for the step.
@@ -462,10 +460,10 @@ export interface StepCreateParams {
    * Body param: Specify the mode of completion to be used for the step. Currently,
    * following values are allowed:
    *
-   * - `manual`: Steps must be marked as completed manually through the Driver App.
-   * - `geofence`: Steps are marked as completed automatically based on the entry
+   * - manual: Steps must be marked as completed manually through the Driver App.
+   * - geofence: Steps are marked as completed automatically based on the entry
    *   conditions and geofence specified.
-   * - `geofence_manual_fallback`: Steps will be marked as completed automatically
+   * - geofence_manual_fallback: Steps will be marked as completed automatically
    *   based on geofence and entry condition configurations but there will also be a
    *   provision for manually updating the status in case, geofence detection fails.
    */
@@ -479,21 +477,20 @@ export interface StepCreateParams {
    * create, read and manage the document templates.
    *
    * Please note that the document template ID can not be assigned to following step
-   * types - `start`, `end`, `break`, `layover`.
+   * types - start, end, break, layover.
    */
   document_template_id?: string;
 
   /**
-   * Body param: Specify the duration of the `layover` or `break` type steps, in
-   * seconds. Please note it is mandatory when step type is either "layover" or
-   * "break".
+   * Body param: Specify the duration of the layover or break type steps, in seconds.
+   * Please note it is mandatory when step type is either "layover" or "break".
    */
   duration?: number;
 
   /**
    * Body param: Specify the configurations of the geofence which will be used to
    * detect presence of the driver and complete the tasks automatically. Please note
-   * that this attribute is required when `completion_mode` is either "geofence" or
+   * that this attribute is required when completion_mode is either "geofence" or
    * "geofence_manual_fallback".
    */
   geofence_config?: RouteStepGeofenceConfig;
@@ -535,7 +532,7 @@ export namespace StepCreateParams {
 export interface StepUpdateParams {
   /**
    * Path param: Provide the ID of a previously dispatched route which needs to be
-   * modified. Both the `id` and `short_id` of the route are a valid input.
+   * modified. Both the id and short_id of the route are a valid input.
    */
   routeID: string;
 
@@ -573,10 +570,10 @@ export interface StepUpdateParams {
    * Body param: Specify the mode of completion to be used for the step. Currently,
    * following values are allowed:
    *
-   * - `manual`: Steps must be marked as completed manually through the Driver App.
-   * - `geofence`: Steps are marked as completed automatically based on the entry
+   * - manual: Steps must be marked as completed manually through the Driver App.
+   * - geofence: Steps are marked as completed automatically based on the entry
    *   conditions and geofence specified.
-   * - `geofence_manual_fallback`: Steps will be marked as completed automatically
+   * - geofence_manual_fallback: Steps will be marked as completed automatically
    *   based on geofence and entry condition configurations but there will also be a
    *   provision for manually updating the status in case, geofence detection fails.
    */
@@ -590,23 +587,22 @@ export interface StepUpdateParams {
   document_template_id?: string;
 
   /**
-   * Body param: Specify the duration of the `layover` or `break` type steps, in
-   * seconds. Please note it is mandatory when step type is either "layover" or
-   * "break".
+   * Body param: Specify the duration of the layover or break type steps, in seconds.
+   * Please note it is mandatory when step type is either "layover" or "break".
    */
   duration?: number;
 
   /**
    * Body param: Specify the configurations of the geofence which will be used to
    * detect presence of the driver and complete the tasks automatically. Please note
-   * that this attribute is required when `completion_mode` is either "geofence" or
+   * that this attribute is required when completion_mode is either "geofence" or
    * "geofence_manual_fallback".
    */
   geofence_config?: RouteStepGeofenceConfig;
 
   /**
    * Body param: Specify the location coordinates where the steps should be performed
-   * in `[latitude, longitude]`.
+   * in [latitude, longitude].
    */
   location?: Array<number>;
 
@@ -619,11 +615,11 @@ export interface StepUpdateParams {
   meta?: StepUpdateParams.Meta;
 
   /**
-   * Body param: Specify the step type. It can belong to one of the following:
-   * `start`, `job` , `pickup`, `delivery`, `end`. A `duration` is mandatory when the
-   * step type is either `layover` or a `break`.
+   * Body param: Specify the step type. It can belong to one of the following: start,
+   * job , pickup, delivery, end. A duration is mandatory when the step type is
+   * either layover or a break.
    */
-  type?: '`start`' | '`job`' | '`pickup`' | '`delivery`' | '`break`' | '`layover`' | '`end`';
+  type?: 'start' | 'job' | 'pickup' | 'delivery' | 'break' | 'layover' | 'end';
 }
 
 export namespace StepUpdateParams {
@@ -654,7 +650,7 @@ export namespace StepUpdateParams {
 export interface StepDeleteParams {
   /**
    * Path param: Provide the ID of a previously dispatched route which needs to be
-   * modified. Both the `id` and `short_id` of the route are a valid input.
+   * modified. Both the id and short_id of the route are a valid input.
    */
   routeID: string;
 
@@ -668,7 +664,7 @@ export interface StepDeleteParams {
 export interface StepCompleteParams {
   /**
    * Path param: Provide the ID of a previously dispatched route which needs to be
-   * modified. Both the `id` and `short_id` of the route are a valid input.
+   * modified. Both the id and short_id of the route are a valid input.
    */
   routeID: string;
 
@@ -686,20 +682,20 @@ export interface StepCompleteParams {
   document?: DocumentSubmission;
 
   /**
-   * Body param: Sets the status of the route step. Currently only `completed` is
+   * Body param: Sets the status of the route step. Currently only completed is
    * supported.
    *
-   * Note: once marked `completed`, a step cannot transition to other statuses. You
-   * can only update the document afterwards.
+   * Note: once marked completed, a step cannot transition to other statuses. You can
+   * only update the document afterwards.
    */
   mode?: string;
 
   /**
-   * Body param: Sets the status of the route step. Currently only `completed` is
+   * Body param: Sets the status of the route step. Currently only completed is
    * supported.
    *
-   * Note: once marked `completed`, a step cannot transition to other statuses. You
-   * can only update the document afterwards.
+   * Note: once marked completed, a step cannot transition to other statuses. You can
+   * only update the document afterwards.
    */
   status?: string;
 }
