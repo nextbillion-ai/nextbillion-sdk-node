@@ -177,9 +177,9 @@ The following tools are available in this MCP server.
 - `delete_routes_fleetify_steps` (`write`): Delete a step
 - `complete_routes_fleetify_steps` (`write`): Complete a route step with document submission, or update the document of a completed route step.
 
-  When all steps are completed, the encapsulating route’s status will change to `completed` automatically.
+  When all steps are completed, the encapsulating route’s status will change to completed automatically.
 
-  Either `Session Token` must be provided to authenticate the request.
+  Either Session Token must be provided to authenticate the request.
 
 ### Resource `fleetify.document_templates`:
 
@@ -404,10 +404,10 @@ The following tools are available in this MCP server.
 
 - `retrieve_coordinates_postalcode` (`write`): Retrieve coordinates by postal code
 
-### Resource `lookup`:
-
-- `by_id_lookup` (`read`): Lookup By ID
-
 ### Resource `areas`:
 
 - `list_areas` (`read`): Get available areas
+
+### Resource `lookup`:
+
+- `by_id_lookup` (`read`): Lookup By ID

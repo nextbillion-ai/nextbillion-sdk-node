@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'update_skynet_trip',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nUpdates the data of a specified trip with the provided data.\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/simple_resp',\n  $defs: {\n    simple_resp: {\n      type: 'object',\n      properties: {\n        message: {\n          type: 'string',\n          description: 'Displays the error message in case of a failed request. If the request is successful, this field is not present in the response.'\n        },\n        status: {\n          type: 'string',\n          description: 'A string indicating the state of the response. On successful responses, the value will be `Ok`. Indicative error messages are returned for different errors. See the [API Error Codes](#api-error-codes) section below for more information.'\n        }\n      }\n    }\n  }\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nUpdates the data of a specified trip with the provided data.\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/simple_resp',\n  $defs: {\n    simple_resp: {\n      type: 'object',\n      properties: {\n        message: {\n          type: 'string',\n          description: 'Displays the error message in case of a failed request. If the request is successful, this field is not present in the response.'\n        },\n        status: {\n          type: 'string',\n          description: 'A string indicating the state of the response. On successful responses, the value will be Ok. Indicative error messages are returned for different errors. See the [API Error Codes](#api-error-codes) section below for more information.'\n        }\n      }\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
@@ -42,7 +42,7 @@ export const tool: Tool = {
       attributes: {
         type: 'object',
         description:
-          'Use this field to update the `attributes` of the trip. Please note that when updating the `attributes` field, previously added information will be overwritten.',
+          'Use this field to update the attributes of the trip. Please note that when updating the attributes field, previously added information will be overwritten.',
       },
       description: {
         type: 'string',
@@ -51,7 +51,7 @@ export const tool: Tool = {
       meta_data: {
         type: 'object',
         description:
-          'Use this JSON object to update additional details about the trip. This property is used to add any custom information / context about the trip.\n\nPlease note that updating the `meta_data` field will overwrite the previously added information.',
+          'Use this JSON object to update additional details about the trip. This property is used to add any custom information / context about the trip.\n\nPlease note that updating the meta_data field will overwrite the previously added information.',
       },
       name: {
         type: 'string',
@@ -72,7 +72,7 @@ export const tool: Tool = {
             meta_data: {
               type: 'object',
               description:
-                'Use this JSON object to update additional details about the stop. This property is used to add any custom information / context about the stop.\n\nPlease note that updating the `meta_data` field will overwrite the previously added information.',
+                'Use this JSON object to update additional details about the stop. This property is used to add any custom information / context about the stop.\n\nPlease note that updating the meta_data field will overwrite the previously added information.',
             },
             name: {
               type: 'string',
