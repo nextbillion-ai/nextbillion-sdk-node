@@ -33,7 +33,7 @@ export interface PolygonCreateParams {
    * Body param: An object to collect geoJSON details of a custom polygon. Please
    * ensure that:
    *
-   * - the polygon provided is enclosed. This can be achieved by making the last
+   * - the `polygon` provided is enclosed. This can be achieved by making the last
    *   location coordinate in the list equal to the first location coordinate of the
    *   list.
    *
@@ -48,20 +48,20 @@ export interface PolygonCreateParams {
   polygon: PolygonCreateParams.Polygon;
 
   /**
-   * Body param: **tags parameter will be deprecated soon! Please use the
-   * include_any_of_attributes or include_all_of_attributes parameters to match
+   * Body param: **`tags` parameter will be deprecated soon! Please use the
+   * `include_any_of_attributes` or `include_all_of_attributes` parameters to match
    * assets based on their labels or markers.**
    *
    * Use this parameter to filter the assets found inside the specified area by their
-   * tag. Multiple tag can be separated using comma (,).
+   * `tag`. Multiple `tag` can be separated using comma (`,`).
    *
    * Please note the tags are case sensitive.
    */
   filter?: string;
 
   /**
-   * Body param: An object to define the attributes which will be used to filter the
-   * assets found within the polygon.
+   * Body param: An object to define the `attributes` which will be used to filter
+   * the assets found within the `polygon`.
    */
   match_filter?: PolygonCreateParams.MatchFilter;
 
@@ -71,7 +71,7 @@ export interface PolygonCreateParams {
   max_search_limit?: boolean;
 
   /**
-   * Body param: Denotes page number. Use this along with the ps parameter to
+   * Body param: Denotes page number. Use this along with the `ps` parameter to
    * implement pagination for your searched results. This parameter does not have a
    * maximum limit but would return an empty response in case a higher value is
    * provided when the result-set itself is smaller.
@@ -80,8 +80,9 @@ export interface PolygonCreateParams {
 
   /**
    * Body param: Denotes number of search results per page. Use this along with the
-   * pn parameter to implement pagination for your searched results. Please note that
-   * ps has a default value of 20 and accepts integers only in the range of [1, 100].
+   * `pn` parameter to implement pagination for your searched results. Please note
+   * that `ps` has a default value of 20 and accepts integers only in the range of
+   * [1, 100].
    */
   ps?: number;
 
@@ -95,7 +96,7 @@ export namespace PolygonCreateParams {
   /**
    * An object to collect geoJSON details of a custom polygon. Please ensure that:
    *
-   * - the polygon provided is enclosed. This can be achieved by making the last
+   * - the `polygon` provided is enclosed. This can be achieved by making the last
    *   location coordinate in the list equal to the first location coordinate of the
    *   list.
    *
@@ -115,35 +116,35 @@ export namespace PolygonCreateParams {
     coordinates: Array<number>;
 
     /**
-     * Type of the geoJSON geometry. Should always be polygon.
+     * Type of the geoJSON geometry. Should always be `polygon`.
      */
     type: string;
   }
 
   /**
-   * An object to define the attributes which will be used to filter the assets found
-   * within the polygon.
+   * An object to define the `attributes` which will be used to filter the assets
+   * found within the `polygon`.
    */
   export interface MatchFilter {
     /**
      * Use this parameter to filter the assets found inside the specified area by their
-     * attributes. Only the assets having all the attributes that are added to this
-     * parameter, will be returned in the search results. Multiple attributes can be
-     * separated using commas (,).
+     * `attributes`. Only the assets having all the `attributes` that are added to this
+     * parameter, will be returned in the search results. Multiple `attributes` can be
+     * separated using commas (`,`).
      *
      * Please note the attributes are case sensitive. Also, this parameter can not be
-     * used in conjunction with include_any_of_attributes parameter.
+     * used in conjunction with `include_any_of_attributes` parameter.
      */
     include_all_of_attributes?: string;
 
     /**
      * Use this parameter to filter the assets found inside the specified area by their
-     * attributes. Assets having at least one of the attributes added to this
-     * parameter, will be returned in the search results. Multiple attributes can be
-     * separated using commas (,).
+     * `attributes`. Assets having at least one of the `attributes` added to this
+     * parameter, will be returned in the search results. Multiple `attributes` can be
+     * separated using commas (`,`).
      *
      * Please note the attributes are case sensitive. Also, this parameter can not be
-     * used in conjunction with include_all_of_attributes parameter.
+     * used in conjunction with `include_all_of_attributes` parameter.
      */
     include_any_of_attributes?: string;
   }
@@ -154,20 +155,21 @@ export namespace PolygonCreateParams {
      * values are:
      *
      * - **distance** : Sorts the assets by driving distance to the given
-     *   sort_destination .
-     * - **duration** : Sorts the assets by travel time to the given sort_destination .
+     *   `sort_destination` .
+     * - **duration** : Sorts the assets by travel time to the given `sort_destination`
+     *   .
      * - **straight_distance** : Sort the assets by straight-line distance to the given
-     *   sort-destination .
+     *   `sort-destination` .
      */
-    sort_by?: 'distance' | 'duration' | 'straight_distance';
+    sort_by?: '`distance`' | '`duration`' | '`straight_distance`';
 
     /**
      * Specifies the location coordinates of the point which acts as destination for
      * sorting the assets in the search results. The service will sort each asset based
      * on the driving distance or travel time to this destination, from its current
-     * location. Use the sort_by parameter to configure the metric that should be used
-     * for sorting the assets. Please note that sort_destination is required when
-     * sort_by is provided.
+     * location. Use the `sort_by` parameter to configure the metric that should be
+     * used for sorting the assets. Please note that `sort_destination` is required
+     * when `sort_by` is provided.
      */
     sort_destination?: Sort.SortDestination;
 
@@ -175,7 +177,7 @@ export namespace PolygonCreateParams {
      * Specifies the driving mode to be used for determining travel duration or driving
      * distance for sorting the assets in search result.
      */
-    sort_driving_mode?: 'car' | 'truck';
+    sort_driving_mode?: '`car`' | '`truck`';
   }
 
   export namespace Sort {
@@ -183,9 +185,9 @@ export namespace PolygonCreateParams {
      * Specifies the location coordinates of the point which acts as destination for
      * sorting the assets in the search results. The service will sort each asset based
      * on the driving distance or travel time to this destination, from its current
-     * location. Use the sort_by parameter to configure the metric that should be used
-     * for sorting the assets. Please note that sort_destination is required when
-     * sort_by is provided.
+     * location. Use the `sort_by` parameter to configure the metric that should be
+     * used for sorting the assets. Please note that `sort_destination` is required
+     * when `sort_by` is provided.
      */
     export interface SortDestination {
       /**
@@ -210,9 +212,9 @@ export interface PolygonGetParams {
 
   /**
    * Define a custom polygon enclosing the area to be searched. It should be a pipe
-   * (|) delimited list of location coordinates.
+   * (`|`) delimited list of location coordinates.
    *
-   * Please ensure that the polygon provided is enclosed. This can be achieved by
+   * Please ensure that the `polygon` provided is enclosed. This can be achieved by
    * making the last location coordinate in the list equal to the first location
    * coordinate of the list.
    *
@@ -222,12 +224,12 @@ export interface PolygonGetParams {
   polygon: string;
 
   /**
-   * **tags parameter will be deprecated soon! Please use the
-   * include_any_of_attributes or include_all_of_attributes parameters to match
+   * **`tags` parameter will be deprecated soon! Please use the
+   * `include_any_of_attributes` or `include_all_of_attributes` parameters to match
    * assets based on their labels or markers.**
    *
    * Use this parameter to filter the assets found inside the specified area by their
-   * tags. Multiple tags can be separated using commas (,).
+   * `tags`. Multiple `tags` can be separated using commas (`,`).
    *
    * Please note the tags are case sensitive.
    */
@@ -235,23 +237,23 @@ export interface PolygonGetParams {
 
   /**
    * Use this parameter to filter the assets found inside the specified area by their
-   * attributes. Only the assets having all the attributes that are added to this
-   * parameter, will be returned in the search results. Multiple attributes can be
-   * separated using pipes (|).
+   * `attributes`. Only the assets having all the `attributes` that are added to this
+   * parameter, will be returned in the search results. Multiple `attributes` can be
+   * separated using pipes (`|`).
    *
    * Please note the attributes are case sensitive. Also, this parameter can not be
-   * used in conjunction with include_any_of_attributes parameter.
+   * used in conjunction with `include_any_of_attributes` parameter.
    */
   include_all_of_attributes?: string;
 
   /**
    * Use this parameter to filter the assets found inside the specified area by their
-   * attributes. Assets having at least one of the attributes added to this
-   * parameter, will be returned in the search results. Multiple attributes can be
-   * separated using pipes (|).
+   * `attributes`. Assets having at least one of the `attributes` added to this
+   * parameter, will be returned in the search results. Multiple `attributes` can be
+   * separated using pipes (`|`).
    *
    * Please note the attributes are case sensitive. Also, this parameter can not be
-   * used in conjunction with include_all_of_attributes parameter.
+   * used in conjunction with `include_all_of_attributes` parameter.
    */
   include_any_of_attributes?: string;
 
@@ -262,7 +264,7 @@ export interface PolygonGetParams {
   max_search_limit?: boolean;
 
   /**
-   * Denotes page number. Use this along with the ps parameter to implement
+   * Denotes page number. Use this along with the `ps` parameter to implement
    * pagination for your searched results. This parameter does not have a maximum
    * limit but would return an empty response in case a higher value is provided when
    * the result-set itself is smaller.
@@ -270,8 +272,8 @@ export interface PolygonGetParams {
   pn?: number;
 
   /**
-   * Denotes number of search results per page. Use this along with the pn parameter
-   * to implement pagination for your searched results.
+   * Denotes number of search results per page. Use this along with the `pn`
+   * parameter to implement pagination for your searched results.
    */
   ps?: number;
 
@@ -280,20 +282,21 @@ export interface PolygonGetParams {
    * values are:
    *
    * - **distance** : Sorts the assets by driving distance to the given
-   *   sort_destination .
-   * - **duration** : Sorts the assets by travel time to the given sort_destination .
+   *   `sort_destination` .
+   * - **duration** : Sorts the assets by travel time to the given `sort_destination`
+   *   .
    * - **straight_distance** : Sort the assets by straight-line distance to the given
-   *   sort-destination .
+   *   `sort-destination` .
    */
-  sort_by?: 'distance' | 'duration' | 'straight_distance';
+  sort_by?: '`distance`' | '`duration`' | '`straight_distance`';
 
   /**
    * Specifies the location coordinates of the point which acts as destination for
    * sorting the assets in the search results. The service will sort each asset based
    * on the driving distance or travel time to this destination, from its current
-   * location. Use the sort_by parameter to configure the metric that should be used
-   * for sorting the assets. Please note that sort_destination is required when
-   * sort_by is provided.
+   * location. Use the `sort_by` parameter to configure the metric that should be
+   * used for sorting the assets. Please note that `sort_destination` is required
+   * when `sort_by` is provided.
    */
   sort_destination?: string;
 
@@ -301,7 +304,7 @@ export interface PolygonGetParams {
    * Specifies the driving mode to be used for determining travel duration or driving
    * distance for sorting the assets in search result.
    */
-  sort_driving_mode?: 'car' | 'truck';
+  sort_driving_mode?: '`car`' | '`truck`';
 }
 
 export declare namespace Polygon {

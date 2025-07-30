@@ -51,7 +51,7 @@ export const tool: Tool = {
       in: {
         type: 'string',
         description:
-          "Search within a geographic area. This is a hard filter. Results will be returned if they are located within the specified area.\n\nA geographic area can be\n\n*   a circular area, provided as latitude, longitude, and radius (an integer with meters as unit)\n    \n    Format: circle:{latitude},{longitude};r={radius}\n\n\n\n    \n*   a bounding box, provided as _west longitude_, _south latitude_, _east longitude_, _north latitude_\n    \n    Format: bbox:{west longitude},{south latitude},{east longitude},{north latitude}\n\n\n\n    \n\nPlease provide one of 'at', 'in=circle' or 'in=bbox' input for a relevant result.",
+          "Search within a geographic area. This is a hard filter. Results will be returned if they are located within the specified area.\n\nA geographic area can be\n\n*   a circular area, provided as latitude, longitude, and radius (an integer with meters as unit)\n    \n    Format: `circle:{latitude},{longitude};r={radius}`\n\n\n    \n*   a bounding box, provided as _west longitude_, _south latitude_, _east longitude_, _north latitude_\n    \n    Format: `bbox:{west longitude},{south latitude},{east longitude},{north latitude}`\n\n\n    \n\nPlease provide one of 'at', 'in=circle' or 'in=bbox' input for a relevant result.",
       },
       limit: {
         type: 'integer',

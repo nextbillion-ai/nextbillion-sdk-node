@@ -45,7 +45,7 @@ describe('resource v2', () => {
   test.skip('submit: required and optional params', async () => {
     const response = await client.optimization.v2.submit({
       key: 'key=API_KEY',
-      locations: { location: ['string'], id: 0, approaches: ['unrestricted'] },
+      locations: { location: ['string'], id: 0, approaches: ['`unrestricted`'] },
       vehicles: [
         {
           id: 'id',
@@ -91,7 +91,7 @@ describe('resource v2', () => {
           setup: 0,
           skills: [1],
           time_windows: [[0]],
-          volume: { alignment: 'strict', depth: 0, height: 0, width: 0 },
+          volume: { alignment: '`strict`', depth: 0, height: 0, width: 0 },
           zones: [0],
         },
       ],
@@ -100,24 +100,24 @@ describe('resource v2', () => {
         grouping: {
           order_grouping: { grouping_diameter: 0 },
           proximity_factor: 0,
-          route_grouping: { penalty_factor: 0, zone_diameter: 0, zone_source: 'system_generated' },
+          route_grouping: { penalty_factor: 0, zone_diameter: 0, zone_source: '`system_generated`' },
         },
         objective: {
           allow_early_arrival: true,
-          custom: { type: 'min', value: 'vehicles' },
+          custom: { type: '`min`', value: '`vehicles`' },
           minimise_num_depots: true,
-          solver_mode: 'flexible',
+          solver_mode: '`flexible`',
           solving_time_limit: 0,
-          travel_cost: 'duration',
+          travel_cost: '`duration`',
         },
         routing: {
           allow: ['taxi'],
-          avoid: ['toll'],
-          context: 'avgspeed',
+          avoid: ['`toll`'],
+          context: '`avgspeed`',
           cross_border: true,
           disable_cache: true,
-          hazmat_type: ['general'],
-          mode: 'car',
+          hazmat_type: ['`general`'],
+          mode: '`car`',
           profiles:
             '"profiles":{\n    "mini-van":{\n        "mode": "car",\n        "avoid":["highway, toll"]\n        },\n    "trailer":{\n        "mode": "truck",\n        "truck_weight":12000,\n        "truck_size":"200, 210, 600",\n        "hazmat_type": ["general", "harmful_to_water"]\n        }\n    }\n',
           traffic_timestamp: 0,
@@ -128,8 +128,8 @@ describe('resource v2', () => {
       },
       relations: [
         {
-          steps: [{ type: 'start', id: '"id":"Job 1"' }],
-          type: 'in_same_route',
+          steps: [{ type: '`start`', id: '"id":"Job 1"' }],
+          type: '`in_same_route`',
           id: 0,
           max_duration: 0,
           min_duration: 0,
@@ -172,7 +172,7 @@ describe('resource v2', () => {
           priority: 0,
           revenue: 0,
           skills: [0],
-          volume: { alignment: 'strict', depth: 0, height: 0, width: 0 },
+          volume: { alignment: '`strict`', depth: 0, height: 0, width: 0 },
           zones: [0],
         },
       ],
@@ -183,7 +183,7 @@ describe('resource v2', () => {
             {
               id: '"id": "Job 10"',
               arrival: 0,
-              type: 'start',
+              type: '`start`',
               description: 'description',
               distance: 0,
               duration: 0,
@@ -213,7 +213,7 @@ describe('resource v2', () => {
         {
           id: 0,
           geofence_id: 'geofence_id',
-          geometry: { coordinates: [[0]], description: 'description', type: 'Polygon' },
+          geometry: { coordinates: [[0]], description: 'description', type: '`Polygon`' },
         },
       ],
     });

@@ -43,7 +43,7 @@ export interface RouteReportCreateResponse {
 
   /**
    * A string indicating the state of the response. On normal responses, the value
-   * will be Ok. Indicative HTTP error codes are returned for different errors. See
+   * will be `Ok`. Indicative HTTP error codes are returned for different errors. See
    * the
    * [**API Errors Codes**](https://app.reapi.com/ws/hmx8aL45B5jjrJa8/p/vNNilNksLVz675pI/s/ealJmVGjTQv4x5Wi/edit/path/VYzo7gOlRsQQZo0U#api-error-codes)
    * section below for more information.
@@ -94,8 +94,8 @@ export namespace RouteReportCreateResponse {
 
         /**
          * Represents a sequence of ‘n’ consecutive vertices in the route geometry starting
-         * from the offset, forming a continuous section of route with a distance indicated
-         * in distancefield.
+         * from the `offset`, forming a continuous section of route with a distance
+         * indicated in `distance`field.
          */
         length?: number;
 
@@ -119,8 +119,8 @@ export namespace RouteReportCreateResponse {
 
         /**
          * Represents a sequence of ‘n’ consecutive vertices in the route geometry starting
-         * from the offset, forming a continuous section of route with a distance indicated
-         * in distancefield.
+         * from the `offset`, forming a continuous section of route with a distance
+         * indicated in `distance`field.
          */
         length?: number;
 
@@ -143,14 +143,14 @@ export namespace RouteReportCreateResponse {
      */
     export interface Summary {
       /**
-       * A break up of country-wise distances that the route covers in key:value pair
+       * A break up of country-wise distances that the route covers in `key:value` pair
        * format.
        */
       country?: unknown;
 
       /**
-       * A break up of state-wise distances that the route covers specified in key:value
-       * pair format.
+       * A break up of state-wise distances that the route covers specified in
+       * `key:value` pair format.
        */
       state?: unknown;
     }
@@ -197,8 +197,8 @@ export namespace RouteReportCreateResponse {
 
         /**
          * Represents a sequence of ‘n’ consecutive vertices in the route geometry starting
-         * from the offset, forming a continuous section of route where the maximum speed
-         * is same and is indicated in value.
+         * from the `offset`, forming a continuous section of route where the maximum speed
+         * is same and is indicated in `value`.
          */
         length?: number;
 
@@ -225,8 +225,8 @@ export namespace RouteReportCreateResponse {
 
         /**
          * Represents a sequence of ‘n’ consecutive vertices in the route geometry starting
-         * from the offset, forming a continuous section of route with a distance indicated
-         * in distancefield.
+         * from the `offset`, forming a continuous section of route with a distance
+         * indicated in `distance`field.
          */
         length?: number;
 
@@ -281,13 +281,13 @@ export namespace RouteReportCreateResponse {
       /**
        * An object with details about the different types of road classes that the route
        * goes through. Distance traversed on a given road class is also returned. The
-       * contents of this object follow the key:value pair format.
+       * contents of this object follow the `key:value` pair format.
        */
       road_class?: unknown;
 
       /**
        * Returns the total distance travelled on toll roads. This field is present in the
-       * response only when the has_toll property is true.
+       * response only when the `has_toll` property is true.
        */
       toll_distance?: number;
     }
@@ -303,7 +303,7 @@ export interface RouteReportCreateParams {
 
   /**
    * Body param: Takes a route geometry as input and returns the route details.
-   * Accepts polyline and polyline6 encoded geometry as input.
+   * Accepts `polyline` and `polyline6` encoded geometry as input.
    *
    * **Note**: Route geometries generated from sources other than
    * [NextBillion.ai](http://NextBillion.ai) services, are not supported in this
@@ -313,10 +313,11 @@ export interface RouteReportCreateParams {
 
   /**
    * Body param: Specify the encoding type of route geometry provided in
-   * original_shape input. Please note that an error is returned when this parameter
-   * is not specified while an input is added to original_shape parameter.
+   * `original_shape` input. Please note that an error is returned when this
+   * parameter is not specified while an input is added to `original_shape`
+   * parameter.
    */
-  original_shape_type: 'polyline' | 'polyline6';
+  original_shape_type: '`polyline`' | '`polyline6`';
 }
 
 export declare namespace RouteReport {

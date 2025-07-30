@@ -45,7 +45,7 @@ export interface JsonRetrieveResponse {
 
   /**
    * A string indicating the state of the response. On normal responses, the value
-   * will be Ok. Indicative HTTP error codes are returned for different errors. See
+   * will be `Ok`. Indicative HTTP error codes are returned for different errors. See
    * the [API Errors Codes](#api-error-codes) section below for more information.
    */
   status?: string;
@@ -54,11 +54,11 @@ export interface JsonRetrieveResponse {
 export namespace JsonRetrieveResponse {
   export interface Row {
     /**
-     * An array of objects. Each elements array corresponds to a single origins
-     * coordinate and contains objects with distance and duration values for each of
-     * the destinations. The details in the first elements array correspond to the
-     * first origins point and the first object corresponds to the first destinations
-     * point and so on.
+     * An array of objects. Each `elements` array corresponds to a single `origins`
+     * coordinate and contains objects with `distance` and `duration` values for each
+     * of the `destinations`. The details in the first `elements` array correspond to
+     * the first `origins` point and the first object corresponds to the first
+     * `destinations` point and so on.
      */
     elements?: Array<Row.Element>;
   }
@@ -111,7 +111,7 @@ export interface JsonRetrieveParams {
    * curbside restriction on the "destinations" points provided at the first and
    * third index.
    */
-  approaches?: 'unrestricted' | 'curb';
+  approaches?: '`unrestricted`' | '`curb`';
 
   /**
    * Setting this will ensure the route avoids ferries, tolls, highways or nothing.
@@ -161,7 +161,7 @@ export interface JsonRetrieveParams {
    * [support@nextbillion.ai](mailto:support@nextbillion.ai) in case you need
    * additional profiles.
    */
-  mode?: 'car' | 'truck';
+  mode?: '`car`' | '`truck`';
 
   /**
    * A prompt to modify the response in case no feasible route is available for a
