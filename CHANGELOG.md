@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0 (2025-07-30)
+
+Full Changelog: [v0.7.0...v0.8.0](https://github.com/nextbillion-ai/nextbillion-sdk-node/compare/v0.7.0...v0.8.0)
+
+### Features
+
+* publish to ruby gem and align namings ([75041fd](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/75041fd81422ded16937eeaf21b588d636f4d6ba))
+
 ## 0.7.0 (2025-07-30)
 
 Full Changelog: [v0.6.0...v0.7.0](https://github.com/nextbillion-ai/nextbillion-sdk-node/compare/v0.6.0...v0.7.0)
