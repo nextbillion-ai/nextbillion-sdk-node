@@ -66,7 +66,7 @@ export const tool: Tool = {
       radius: {
         type: 'string',
         description:
-          "Filters the results to places within the specified radius from the 'at' location.\n\nNote: Supports 'meter' (m) and 'kilometer' (km) units. If no radius is given, the search method returns as many results as specified in `limit`.",
+          "Filters the results to places within the specified radius from the 'at' location.\n\nNote: Supports 'meter' (m) and 'kilometer' (km) units. If no radius is given, the search method returns as many results as specified in limit.",
       },
       state: {
         type: 'string',

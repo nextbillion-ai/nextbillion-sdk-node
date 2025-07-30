@@ -35,7 +35,7 @@ export class Config extends APIResource {
 
 export interface ConfigRetrieveResponse {
   /**
-   * A data object containing the `config` response.
+   * A data object containing the config response.
    */
   data?: ConfigRetrieveResponse.Data;
 
@@ -47,7 +47,7 @@ export interface ConfigRetrieveResponse {
 
   /**
    * A string indicating the state of the response. On successful responses, the
-   * value will be `Ok`. Indicative error messages are returned for different errors.
+   * value will be Ok. Indicative error messages are returned for different errors.
    * See the [API Error Codes](#api-error-codes) section below for more information.
    */
   status?: string;
@@ -55,7 +55,7 @@ export interface ConfigRetrieveResponse {
 
 export namespace ConfigRetrieveResponse {
   /**
-   * A data object containing the `config` response.
+   * A data object containing the config response.
    */
   export interface Data {
     config?: Data.Config;
@@ -75,7 +75,7 @@ export namespace ConfigRetrieveResponse {
 export interface ConfigTestWebhookResponse {
   /**
    * A string indicating the state of the response. Please note this value will
-   * always be `Ok`.
+   * always be Ok.
    *
    * The sample event information will be received on the webhook, if they were
    * successfully configured. If no event information is received by the webhook,
