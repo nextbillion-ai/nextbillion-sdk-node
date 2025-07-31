@@ -26,7 +26,7 @@ export { endpoints } from './tools';
 export const server = new McpServer(
   {
     name: 'nbai_sdk_api',
-    version: '0.8.3',
+    version: '0.9.0',
   },
   { capabilities: { tools: {} } },
 );
