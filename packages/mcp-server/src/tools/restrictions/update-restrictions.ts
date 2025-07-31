@@ -49,7 +49,7 @@ export const tool: Tool = {
         type: 'string',
         description:
           'Represents the traffic direction on the segments to which the restriction will be applied.',
-        enum: ['`forward`', '`backward`', '`both`'],
+        enum: ['forward', 'backward', 'both'],
       },
       end_time: {
         type: 'number',
@@ -59,7 +59,7 @@ export const tool: Tool = {
       geofence: {
         type: 'array',
         description:
-          'An array of coordinates denoting the boundary of an area in which the restrictions are to be applied. The format in which coordinates should be listed is defined by the `latlon` field.\n\nGeofences can be used to create all restriction types, except for a `turn` type restriction. Please note that `segments` is not required when using `geofence` to create restrictions.',
+          'An array of coordinates denoting the boundary of an area in which the restrictions are to be applied. The format in which coordinates should be listed is defined by the latlon field.\n\nGeofences can be used to create all restriction types, except for a turn type restriction. Please note that segments is not required when using geofence to create restrictions.',
         items: {
           type: 'array',
           items: {
@@ -70,12 +70,12 @@ export const tool: Tool = {
       height: {
         type: 'integer',
         description:
-          'Specify the maximum truck height,  in centimeter, that will be allowed under the restriction. A value of 0 indicates no limit.\n\nPlease note this parameter is effective only when `restriction_type` is `truck`. At least one of truck parameters - `weight`, `height`, `width` and `truck` - needs to be provided when restriction type is `truck`.',
+          'Specify the maximum truck height,  in centimeter, that will be allowed under the restriction. A value of 0 indicates no limit.\n\nPlease note this parameter is effective only when restriction_type is truck. At least one of truck parameters - weight, height, width and truck - needs to be provided when restriction type is truck.',
       },
       length: {
         type: 'integer',
         description:
-          'Specify the maximum truck length,  in centimeter, that will be allowed under the restriction. A value of 0 indicates no limit.\n\nPlease note this parameter is effective only when `restriction_type` is `truck`. At least one of truck parameters - `weight`, `height`, `width` and `truck` - needs to be provided when restriction type is `truck`.',
+          'Specify the maximum truck length,  in centimeter, that will be allowed under the restriction. A value of 0 indicates no limit.\n\nPlease note this parameter is effective only when restriction_type is truck. At least one of truck parameters - weight, height, width and truck - needs to be provided when restriction type is truck.',
       },
       mode: {
         type: 'array',
@@ -94,7 +94,7 @@ export const tool: Tool = {
       segments: {
         type: 'array',
         description:
-          'An array of objects to collect the details of the segments of a road on which the restriction has to be applied. Each object corresponds to a new segment.\n\nPlease note that `segments` is mandatory for all `restrtiction_type` except `turn`.',
+          'An array of objects to collect the details of the segments of a road on which the restriction has to be applied. Each object corresponds to a new segment.\n\nPlease note that segments is mandatory for all restrtiction_type except turn.',
         items: {
           type: 'object',
           properties: {
@@ -112,12 +112,12 @@ export const tool: Tool = {
       speed: {
         type: 'number',
         description:
-          'Provide the the fixed speed of the segment where the restriction needs to be applied. Please note that this parameter is mandatory when the `restrictionType` is `fixedspeed`.',
+          'Provide the the fixed speed of the segment where the restriction needs to be applied. Please note that this parameter is mandatory when the restrictionType is fixedspeed.',
       },
       speed_limit: {
         type: 'number',
         description:
-          'Provide the the maximum speed of the segment where the restriction needs to be applied. Please note that this parameter is mandatory when the `restrictionType` is `maxspeed`.',
+          'Provide the the maximum speed of the segment where the restriction needs to be applied. Please note that this parameter is mandatory when the restrictionType is maxspeed.',
       },
       start_time: {
         type: 'number',
@@ -127,7 +127,7 @@ export const tool: Tool = {
       tracks: {
         type: 'array',
         description:
-          'Specify a sequence of coordinates (track) where the restriction is to be applied. The coordinates will be snapped to nearest road. Please note when using `tracks`, `segments` and `turns` are not required.',
+          'Specify a sequence of coordinates (track) where the restriction is to be applied. The coordinates will be snapped to nearest road. Please note when using tracks, segments and turns are not required.',
         items: {
           type: 'array',
           items: {
@@ -138,7 +138,7 @@ export const tool: Tool = {
       turns: {
         type: 'array',
         description:
-          'An array of objects to collect the details of the turns of a road on which the restriction has to be applied. Each object corresponds to a new turn.\n\nPlease note that `turns` is mandatory for when `restrtiction_type=turn`.',
+          'An array of objects to collect the details of the turns of a road on which the restriction has to be applied. Each object corresponds to a new turn.\n\nPlease note that turns is mandatory for when restrtiction_type=turn.',
         items: {
           type: 'object',
           properties: {
@@ -153,7 +153,7 @@ export const tool: Tool = {
             via: {
               type: 'integer',
               description:
-                'An integer value that represents the ID of a node connecting `from` and `to` nodes of the turn.',
+                'An integer value that represents the ID of a node connecting from and to nodes of the turn.',
             },
           },
         },
@@ -161,12 +161,12 @@ export const tool: Tool = {
       weight: {
         type: 'integer',
         description:
-          'Specify the maximum truck weight, in kilograms, that the restriction will allow. A value of 0 indicates no limit.\n\nPlease note this parameter is effective only when `restriction_type` is `truck`. At least one of truck parameters - `weight`, `height`, `width` and `truck` - needs to be provided for is `truck` restriction type.',
+          'Specify the maximum truck weight, in kilograms, that the restriction will allow. A value of 0 indicates no limit.\n\nPlease note this parameter is effective only when restriction_type is truck. At least one of truck parameters - weight, height, width and truck - needs to be provided for is truck restriction type.',
       },
       width: {
         type: 'integer',
         description:
-          'Specify the maximum truck width,  in centimeter, that will be allowed under the restriction. A value of 0 indicates no limit.\n\n\nPlease note this parameter is effective only when `restriction_type` is `truck`. At least one of truck parameters - `weight`, `height`, `width` and `truck` - needs to be provided when restriction type is `truck`.',
+          'Specify the maximum truck width,  in centimeter, that will be allowed under the restriction. A value of 0 indicates no limit.\n\n\nPlease note this parameter is effective only when restriction_type is truck. At least one of truck parameters - weight, height, width and truck - needs to be provided when restriction type is truck.',
       },
     },
     required: ['id', 'key', 'area', 'name'],

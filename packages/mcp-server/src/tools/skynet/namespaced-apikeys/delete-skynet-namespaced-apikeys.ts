@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'delete_skynet_namespaced_apikeys',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nDelete namespace under a parent key\n\n# Response Schema\n```json\n{\n  type: 'object',\n  properties: {\n    msg: {\n      type: 'string',\n      description: 'Its value is `OK` in case of a successful delete operation. Indicative error messages are returned otherwise, for different errors.'\n    },\n    status: {\n      type: 'integer',\n      description: 'A string indicating the state of the response. A successful delete operation ins indicated by an HTTP code of`200`. See the [API Error Codes](https://docs.nextbillion.ai/docs/tracking/api/live-tracking-api#api-error-codes) section below for possible values in case of errors.'\n    }\n  }\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nDelete namespace under a parent key\n\n# Response Schema\n```json\n{\n  type: 'object',\n  properties: {\n    msg: {\n      type: 'string',\n      description: 'Its value is OK in case of a successful delete operation. Indicative error messages are returned otherwise, for different errors.'\n    },\n    status: {\n      type: 'integer',\n      description: 'A string indicating the state of the response. A successful delete operation ins indicated by an HTTP code of200. See the [API Error Codes](https://docs.nextbillion.ai/docs/tracking/api/live-tracking-api#api-error-codes) section below for possible values in case of errors.'\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
@@ -34,7 +34,7 @@ export const tool: Tool = {
       namespace: {
         type: 'string',
         description:
-          'Specify the name of the `namespace` to which the \\`key\\_to\\_delete\\` belongs. Please note that a namespace key cannot be deleted using another namespace key.',
+          'Specify the name of the namespace to which the \\key\\_to\\_delete\\ belongs. Please note that a namespace key cannot be deleted using another namespace key.',
       },
       jq_filter: {
         type: 'string',

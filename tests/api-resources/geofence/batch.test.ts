@@ -26,7 +26,7 @@ describe('resource batch', () => {
       key: 'key=API_KEY',
       geofences: [
         {
-          type: '`circle`',
+          type: 'circle',
           circle: { center: { lat: 0, lon: 0 }, radius: 0 },
           custom_id: 'custom_id',
           isochrone: {
@@ -35,7 +35,7 @@ describe('resource batch', () => {
             contours_minute: 0,
             denoise: 0,
             departure_time: 0,
-            mode: '`car`',
+            mode: 'car',
           },
           meta_data: '{\n  "country": "USA",\n  "state": "California"\n}',
           name: '"name":"Los Angeles Downtown"',

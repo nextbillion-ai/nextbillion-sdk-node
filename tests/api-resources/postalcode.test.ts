@@ -26,7 +26,7 @@ describe('resource postalcode', () => {
       key: 'key=API_KEY',
       at: { lat: 0, lng: 0 },
       country: 'country',
-      format: '`geojson`',
+      format: 'geojson',
       postalcode: 'postalcode',
     });
   });

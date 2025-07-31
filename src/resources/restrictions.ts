@@ -145,7 +145,7 @@ export class Restrictions extends APIResource {
    * const richGroupResponse =
    *   await client.restrictions.setState(0, {
    *     key: 'key=API_KEY',
-   *     state: '`enabled`',
+   *     state: 'enabled',
    *   });
    * ```
    */
@@ -184,7 +184,7 @@ export interface RichGroupRequest {
    * Represents the traffic direction on the segments to which the restriction will
    * be applied.
    */
-  direction?: '`forward`' | '`backward`' | '`both`';
+  direction?: 'forward' | 'backward' | 'both';
 
   /**
    * Provide a UNIX epoch timestamp in seconds, representing the time when the
@@ -195,11 +195,11 @@ export interface RichGroupRequest {
   /**
    * An array of coordinates denoting the boundary of an area in which the
    * restrictions are to be applied. The format in which coordinates should be listed
-   * is defined by the `latlon` field.
+   * is defined by the latlon field.
    *
-   * Geofences can be used to create all restriction types, except for a `turn` type
-   * restriction. Please note that `segments` is not required when using `geofence`
-   * to create restrictions.
+   * Geofences can be used to create all restriction types, except for a turn type
+   * restriction. Please note that segments is not required when using geofence to
+   * create restrictions.
    */
   geofence?: Array<Array<number>>;
 
@@ -207,9 +207,9 @@ export interface RichGroupRequest {
    * Specify the maximum truck height, in centimeter, that will be allowed under the
    * restriction. A value of 0 indicates no limit.
    *
-   * Please note this parameter is effective only when `restriction_type` is `truck`.
-   * At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-   * needs to be provided when restriction type is `truck`.
+   * Please note this parameter is effective only when restriction_type is truck. At
+   * least one of truck parameters - weight, height, width and truck - needs to be
+   * provided when restriction type is truck.
    */
   height?: number;
 
@@ -217,9 +217,9 @@ export interface RichGroupRequest {
    * Specify the maximum truck length, in centimeter, that will be allowed under the
    * restriction. A value of 0 indicates no limit.
    *
-   * Please note this parameter is effective only when `restriction_type` is `truck`.
-   * At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-   * needs to be provided when restriction type is `truck`.
+   * Please note this parameter is effective only when restriction_type is truck. At
+   * least one of truck parameters - weight, height, width and truck - needs to be
+   * provided when restriction type is truck.
    */
   length?: number;
 
@@ -245,22 +245,21 @@ export interface RichGroupRequest {
    * An array of objects to collect the details of the segments of a road on which
    * the restriction has to be applied. Each object corresponds to a new segment.
    *
-   * Please note that `segments` is mandatory for all `restrtiction_type` except
-   * `turn`.
+   * Please note that segments is mandatory for all restrtiction_type except turn.
    */
   segments?: Array<RichGroupRequest.Segment>;
 
   /**
    * Provide the the fixed speed of the segment where the restriction needs to be
-   * applied. Please note that this parameter is mandatory when the `restrictionType`
-   * is `fixedspeed`.
+   * applied. Please note that this parameter is mandatory when the restrictionType
+   * is fixedspeed.
    */
   speed?: number;
 
   /**
    * Provide the the maximum speed of the segment where the restriction needs to be
-   * applied. Please note that this parameter is mandatory when the `restrictionType`
-   * is `maxspeed`.
+   * applied. Please note that this parameter is mandatory when the restrictionType
+   * is maxspeed.
    */
   speed_limit?: number;
 
@@ -273,7 +272,7 @@ export interface RichGroupRequest {
   /**
    * Specify a sequence of coordinates (track) where the restriction is to be
    * applied. The coordinates will be snapped to nearest road. Please note when using
-   * `tracks`, `segments` and `turns` are not required.
+   * tracks, segments and turns are not required.
    */
   tracks?: Array<Array<number>>;
 
@@ -281,7 +280,7 @@ export interface RichGroupRequest {
    * An array of objects to collect the details of the turns of a road on which the
    * restriction has to be applied. Each object corresponds to a new turn.
    *
-   * Please note that `turns` is mandatory for when `restrtiction_type=turn`.
+   * Please note that turns is mandatory for when restrtiction_type=turn.
    */
   turns?: Array<RichGroupRequest.Turn>;
 
@@ -289,9 +288,9 @@ export interface RichGroupRequest {
    * Specify the maximum truck weight, in kilograms, that the restriction will allow.
    * A value of 0 indicates no limit.
    *
-   * Please note this parameter is effective only when `restriction_type` is `truck`.
-   * At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-   * needs to be provided for is `truck` restriction type.
+   * Please note this parameter is effective only when restriction_type is truck. At
+   * least one of truck parameters - weight, height, width and truck - needs to be
+   * provided for is truck restriction type.
    */
   weight?: number;
 
@@ -299,9 +298,9 @@ export interface RichGroupRequest {
    * Specify the maximum truck width, in centimeter, that will be allowed under the
    * restriction. A value of 0 indicates no limit.
    *
-   * Please note this parameter is effective only when `restriction_type` is `truck`.
-   * At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-   * needs to be provided when restriction type is `truck`.
+   * Please note this parameter is effective only when restriction_type is truck. At
+   * least one of truck parameters - weight, height, width and truck - needs to be
+   * provided when restriction type is truck.
    */
   width?: number;
 }
@@ -331,8 +330,8 @@ export namespace RichGroupRequest {
     to?: number;
 
     /**
-     * An integer value that represents the ID of a node connecting `from` and `to`
-     * nodes of the turn.
+     * An integer value that represents the ID of a node connecting from and to nodes
+     * of the turn.
      */
     via?: number;
   }
@@ -417,13 +416,13 @@ export interface RichGroupResponse {
 
   /**
    * Returns the fixed speed of segments. This field is not present in the response
-   * if the restriction type is not `fixedspeed`
+   * if the restriction type is not fixedspeed
    */
   speed?: number;
 
   /**
    * Returns the maximum speed of segments. This field is not present in the response
-   * if the restriction type is not `maxspeed`
+   * if the restriction type is not maxspeed
    */
   speed_limit?: number;
 
@@ -441,11 +440,10 @@ export interface RichGroupResponse {
   /**
    * Returns the status of the restriction at the time of making the request i.e.
    * whether the restriction is in force or not. It will have one of the following
-   * values: `active` or `inactive`.
+   * values: active or inactive.
    *
    * Please note that this field can not be directly influenced by the users. It will
-   * always be calculated using the `start_time`, `end_time` and `repeat_on`
-   * parameters.
+   * always be calculated using the start_time, end_time and repeat_on parameters.
    */
   status?: 'active' | 'inactive';
 
@@ -469,7 +467,7 @@ export namespace RestrictionListResponse {
   export interface Meta {
     /**
      * An integer value indicating the maximum number of items retrieved per "page".
-     * This is the same number as provided for the `limit` parameter in input.
+     * This is the same number as provided for the limit parameter in input.
      */
     limit?: number;
 
@@ -494,7 +492,7 @@ export interface RestrictionDeleteResponse {
   id?: number;
 
   /**
-   * Returns the state of the restriction. It would always be `deleted`.
+   * Returns the state of the restriction. It would always be deleted.
    */
   state?: string;
 }
@@ -540,7 +538,7 @@ export interface RestrictionCreateParams {
    * Body param: Represents the traffic direction on the segments to which the
    * restriction will be applied.
    */
-  direction?: '`forward`' | '`backward`' | '`both`';
+  direction?: 'forward' | 'backward' | 'both';
 
   /**
    * Body param: Provide a UNIX epoch timestamp in seconds, representing the time
@@ -551,11 +549,11 @@ export interface RestrictionCreateParams {
   /**
    * Body param: An array of coordinates denoting the boundary of an area in which
    * the restrictions are to be applied. The format in which coordinates should be
-   * listed is defined by the `latlon` field.
+   * listed is defined by the latlon field.
    *
-   * Geofences can be used to create all restriction types, except for a `turn` type
-   * restriction. Please note that `segments` is not required when using `geofence`
-   * to create restrictions.
+   * Geofences can be used to create all restriction types, except for a turn type
+   * restriction. Please note that segments is not required when using geofence to
+   * create restrictions.
    */
   geofence?: Array<Array<number>>;
 
@@ -563,9 +561,9 @@ export interface RestrictionCreateParams {
    * Body param: Specify the maximum truck height, in centimeter, that will be
    * allowed under the restriction. A value of 0 indicates no limit.
    *
-   * Please note this parameter is effective only when `restriction_type` is `truck`.
-   * At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-   * needs to be provided when restriction type is `truck`.
+   * Please note this parameter is effective only when restriction_type is truck. At
+   * least one of truck parameters - weight, height, width and truck - needs to be
+   * provided when restriction type is truck.
    */
   height?: number;
 
@@ -573,9 +571,9 @@ export interface RestrictionCreateParams {
    * Body param: Specify the maximum truck length, in centimeter, that will be
    * allowed under the restriction. A value of 0 indicates no limit.
    *
-   * Please note this parameter is effective only when `restriction_type` is `truck`.
-   * At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-   * needs to be provided when restriction type is `truck`.
+   * Please note this parameter is effective only when restriction_type is truck. At
+   * least one of truck parameters - weight, height, width and truck - needs to be
+   * provided when restriction type is truck.
    */
   length?: number;
 
@@ -602,22 +600,21 @@ export interface RestrictionCreateParams {
    * on which the restriction has to be applied. Each object corresponds to a new
    * segment.
    *
-   * Please note that `segments` is mandatory for all `restrtiction_type` except
-   * `turn`.
+   * Please note that segments is mandatory for all restrtiction_type except turn.
    */
   segments?: Array<RestrictionCreateParams.Segment>;
 
   /**
    * Body param: Provide the the fixed speed of the segment where the restriction
    * needs to be applied. Please note that this parameter is mandatory when the
-   * `restrictionType` is `fixedspeed`.
+   * restrictionType is fixedspeed.
    */
   speed?: number;
 
   /**
    * Body param: Provide the the maximum speed of the segment where the restriction
    * needs to be applied. Please note that this parameter is mandatory when the
-   * `restrictionType` is `maxspeed`.
+   * restrictionType is maxspeed.
    */
   speed_limit?: number;
 
@@ -630,7 +627,7 @@ export interface RestrictionCreateParams {
   /**
    * Body param: Specify a sequence of coordinates (track) where the restriction is
    * to be applied. The coordinates will be snapped to nearest road. Please note when
-   * using `tracks`, `segments` and `turns` are not required.
+   * using tracks, segments and turns are not required.
    */
   tracks?: Array<Array<number>>;
 
@@ -638,7 +635,7 @@ export interface RestrictionCreateParams {
    * Body param: An array of objects to collect the details of the turns of a road on
    * which the restriction has to be applied. Each object corresponds to a new turn.
    *
-   * Please note that `turns` is mandatory for when `restrtiction_type=turn`.
+   * Please note that turns is mandatory for when restrtiction_type=turn.
    */
   turns?: Array<RestrictionCreateParams.Turn>;
 
@@ -646,9 +643,9 @@ export interface RestrictionCreateParams {
    * Body param: Specify the maximum truck weight, in kilograms, that the restriction
    * will allow. A value of 0 indicates no limit.
    *
-   * Please note this parameter is effective only when `restriction_type` is `truck`.
-   * At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-   * needs to be provided for is `truck` restriction type.
+   * Please note this parameter is effective only when restriction_type is truck. At
+   * least one of truck parameters - weight, height, width and truck - needs to be
+   * provided for is truck restriction type.
    */
   weight?: number;
 
@@ -656,9 +653,9 @@ export interface RestrictionCreateParams {
    * Body param: Specify the maximum truck width, in centimeter, that will be allowed
    * under the restriction. A value of 0 indicates no limit.
    *
-   * Please note this parameter is effective only when `restriction_type` is `truck`.
-   * At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-   * needs to be provided when restriction type is `truck`.
+   * Please note this parameter is effective only when restriction_type is truck. At
+   * least one of truck parameters - weight, height, width and truck - needs to be
+   * provided when restriction type is truck.
    */
   width?: number;
 }
@@ -688,8 +685,8 @@ export namespace RestrictionCreateParams {
     to?: number;
 
     /**
-     * An integer value that represents the ID of a node connecting `from` and `to`
-     * nodes of the turn.
+     * An integer value that represents the ID of a node connecting from and to nodes
+     * of the turn.
      */
     via?: number;
   }
@@ -747,7 +744,7 @@ export interface RestrictionUpdateParams {
    * Body param: Represents the traffic direction on the segments to which the
    * restriction will be applied.
    */
-  direction?: '`forward`' | '`backward`' | '`both`';
+  direction?: 'forward' | 'backward' | 'both';
 
   /**
    * Body param: Provide a UNIX epoch timestamp in seconds, representing the time
@@ -758,11 +755,11 @@ export interface RestrictionUpdateParams {
   /**
    * Body param: An array of coordinates denoting the boundary of an area in which
    * the restrictions are to be applied. The format in which coordinates should be
-   * listed is defined by the `latlon` field.
+   * listed is defined by the latlon field.
    *
-   * Geofences can be used to create all restriction types, except for a `turn` type
-   * restriction. Please note that `segments` is not required when using `geofence`
-   * to create restrictions.
+   * Geofences can be used to create all restriction types, except for a turn type
+   * restriction. Please note that segments is not required when using geofence to
+   * create restrictions.
    */
   geofence?: Array<Array<number>>;
 
@@ -770,9 +767,9 @@ export interface RestrictionUpdateParams {
    * Body param: Specify the maximum truck height, in centimeter, that will be
    * allowed under the restriction. A value of 0 indicates no limit.
    *
-   * Please note this parameter is effective only when `restriction_type` is `truck`.
-   * At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-   * needs to be provided when restriction type is `truck`.
+   * Please note this parameter is effective only when restriction_type is truck. At
+   * least one of truck parameters - weight, height, width and truck - needs to be
+   * provided when restriction type is truck.
    */
   height?: number;
 
@@ -780,9 +777,9 @@ export interface RestrictionUpdateParams {
    * Body param: Specify the maximum truck length, in centimeter, that will be
    * allowed under the restriction. A value of 0 indicates no limit.
    *
-   * Please note this parameter is effective only when `restriction_type` is `truck`.
-   * At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-   * needs to be provided when restriction type is `truck`.
+   * Please note this parameter is effective only when restriction_type is truck. At
+   * least one of truck parameters - weight, height, width and truck - needs to be
+   * provided when restriction type is truck.
    */
   length?: number;
 
@@ -809,22 +806,21 @@ export interface RestrictionUpdateParams {
    * on which the restriction has to be applied. Each object corresponds to a new
    * segment.
    *
-   * Please note that `segments` is mandatory for all `restrtiction_type` except
-   * `turn`.
+   * Please note that segments is mandatory for all restrtiction_type except turn.
    */
   segments?: Array<RestrictionUpdateParams.Segment>;
 
   /**
    * Body param: Provide the the fixed speed of the segment where the restriction
    * needs to be applied. Please note that this parameter is mandatory when the
-   * `restrictionType` is `fixedspeed`.
+   * restrictionType is fixedspeed.
    */
   speed?: number;
 
   /**
    * Body param: Provide the the maximum speed of the segment where the restriction
    * needs to be applied. Please note that this parameter is mandatory when the
-   * `restrictionType` is `maxspeed`.
+   * restrictionType is maxspeed.
    */
   speed_limit?: number;
 
@@ -837,7 +833,7 @@ export interface RestrictionUpdateParams {
   /**
    * Body param: Specify a sequence of coordinates (track) where the restriction is
    * to be applied. The coordinates will be snapped to nearest road. Please note when
-   * using `tracks`, `segments` and `turns` are not required.
+   * using tracks, segments and turns are not required.
    */
   tracks?: Array<Array<number>>;
 
@@ -845,7 +841,7 @@ export interface RestrictionUpdateParams {
    * Body param: An array of objects to collect the details of the turns of a road on
    * which the restriction has to be applied. Each object corresponds to a new turn.
    *
-   * Please note that `turns` is mandatory for when `restrtiction_type=turn`.
+   * Please note that turns is mandatory for when restrtiction_type=turn.
    */
   turns?: Array<RestrictionUpdateParams.Turn>;
 
@@ -853,9 +849,9 @@ export interface RestrictionUpdateParams {
    * Body param: Specify the maximum truck weight, in kilograms, that the restriction
    * will allow. A value of 0 indicates no limit.
    *
-   * Please note this parameter is effective only when `restriction_type` is `truck`.
-   * At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-   * needs to be provided for is `truck` restriction type.
+   * Please note this parameter is effective only when restriction_type is truck. At
+   * least one of truck parameters - weight, height, width and truck - needs to be
+   * provided for is truck restriction type.
    */
   weight?: number;
 
@@ -863,9 +859,9 @@ export interface RestrictionUpdateParams {
    * Body param: Specify the maximum truck width, in centimeter, that will be allowed
    * under the restriction. A value of 0 indicates no limit.
    *
-   * Please note this parameter is effective only when `restriction_type` is `truck`.
-   * At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-   * needs to be provided when restriction type is `truck`.
+   * Please note this parameter is effective only when restriction_type is truck. At
+   * least one of truck parameters - weight, height, width and truck - needs to be
+   * provided when restriction type is truck.
    */
   width?: number;
 }
@@ -895,8 +891,8 @@ export namespace RestrictionUpdateParams {
     to?: number;
 
     /**
-     * An integer value that represents the ID of a node connecting `from` and `to`
-     * nodes of the turn.
+     * An integer value that represents the ID of a node connecting from and to nodes
+     * of the turn.
      */
     via?: number;
   }
@@ -918,7 +914,7 @@ export interface RestrictionListParams {
 
   /**
    * The number of restrictions to be returned in the response. Please note that if
-   * the `limit` is set to a number more than the total number of available
+   * the limit is set to a number more than the total number of available
    * restrictions, then all restrictions would be returned together.
    */
   limit: number;
@@ -929,14 +925,14 @@ export interface RestrictionListParams {
    * first item returned in the result would be the item at (offset + 1) position in
    * collection.
    *
-   * Users can use `offset` along with `limit` to implement paginated result.
+   * Users can use offset along with limit to implement paginated result.
    */
   offset: number;
 
   /**
    * Specify the modes of travel that the restriction pertains to.
    */
-  mode?: '`0w`' | '`2w`' | '`3w`' | '`4w`' | '`6w`';
+  mode?: '0w' | '2w' | '3w' | '4w' | '6w';
 
   /**
    * The name of the restriction. This should be same as that provided while creating
@@ -947,7 +943,7 @@ export interface RestrictionListParams {
   /**
    * Specify the type of restrictions to fetch.
    */
-  restriction_type?: '`turn`' | '`parking`' | '`fixedspeed`' | '`maxspeed`' | '`closure`' | '`truck`';
+  restriction_type?: 'turn' | 'parking' | 'fixedspeed' | 'maxspeed' | 'closure' | 'truck';
 
   /**
    * It represents where it comes from, currently the possible values include "rrt",
@@ -958,9 +954,9 @@ export interface RestrictionListParams {
   /**
    * This parameter is used to filter restrictions based on their state i.e. whether
    * the restriction is currently enabled, disabled, or deleted. For example, users
-   * can retrieve a list of all the deleted restrictions by setting `state=deleted`.
+   * can retrieve a list of all the deleted restrictions by setting state=deleted.
    */
-  state?: '`enabled`' | '`disabled`' | '`deleted`';
+  state?: 'enabled' | 'disabled' | 'deleted';
 
   /**
    * Restrictions can be active or inactive at a given time by virtue of their
@@ -971,7 +967,7 @@ export interface RestrictionListParams {
    * Use this parameter to filter the restrictions based on their status at the time
    * of making the request i.e. whether they are in force or not.
    */
-  status?: '`active`' | '`inactive`';
+  status?: 'active' | 'inactive';
 
   /**
    * a internal parameter
@@ -1037,9 +1033,9 @@ export interface RestrictionListByBboxParams {
   /**
    * This parameter is used to filter restrictions based on their state i.e. whether
    * the restriction is currently enabled, disabled, or deleted. For example, users
-   * can retrieve a list of all the deleted restrictions by setting `state=deleted`.
+   * can retrieve a list of all the deleted restrictions by setting state=deleted.
    */
-  state?: '`enabled`' | '`disabled`' | '`deleted`';
+  state?: 'enabled' | 'disabled' | 'deleted';
 
   /**
    * Restrictions can be active or inactive at a given time by virtue of their
@@ -1050,10 +1046,10 @@ export interface RestrictionListByBboxParams {
    * Use this parameter to filter the restrictions based on their status at the time
    * of making the request i.e. whether they are in force or not.
    */
-  status?: '`active`' | '`inactive`';
+  status?: 'active' | 'inactive';
 
   /**
-   * This is internal parameter with a default value as `false`.
+   * This is internal parameter with a default value as false.
    */
   transform?: boolean;
 }
@@ -1066,11 +1062,11 @@ export interface RestrictionSetStateParams {
   key: string;
 
   /**
-   * Body param: Use this field to specify the new `state` of the restriction. Please
+   * Body param: Use this field to specify the new state of the restriction. Please
    * note that this method cannot update the state of restrictions that are currently
    * in 'deleted' state.
    */
-  state: '`enabled`' | '`disabled`' | '`deleted`';
+  state: 'enabled' | 'disabled' | 'deleted';
 }
 
 export declare namespace Restrictions {
