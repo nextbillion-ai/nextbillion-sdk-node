@@ -1,4 +1,4 @@
 configured_endpoints: 95
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/nextbillion-ai%2Fnextbillion-sdk-b79d96775b1351ac088e936d393b74d818565ad159cb4ccc0aff86e3fb0679ae.yml
-openapi_spec_hash: 1bd99a1a02a1ebabfc4329d74e478a94
-config_hash: 918b8633ad92b65f384231d7c09f1b93
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/nextbillion-ai%2Fnextbillion-sdk-0a5d42d01e3b5464f0f4f5db4bc1bf8024bd991b86a7024e974c64484f9b08a4.yml
+openapi_spec_hash: 2d4885cbe8b11ac58f7c47471c8cde07
+config_hash: f86f4dd0dcad9c0643da32fa4b11c7f2
