@@ -1,6 +1,6 @@
 {
   "name": "@nbai/sdk",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "The official TypeScript library for the Nextbillion SDK API",
   "author": "Nextbillion SDK <yun@nextbillion.ai>",
   "types": "dist/index.d.ts",
