@@ -27,8 +27,8 @@ const client = new NextbillionSDK({
 });
 
 const response = await client.directions.computeRoute({
-  destination: '41.349302,2.136480',
-  origin: '41.349302,2.136480',
+  destination: '1.335368,103.785517',
+  origin: '1.312164,103.841063',
 });
 
 console.log(response.msg);
@@ -47,8 +47,8 @@ const client = new NextbillionSDK({
 });
 
 const params: NextbillionSDK.DirectionComputeRouteParams = {
-  destination: '41.349302,2.136480',
-  origin: '41.349302,2.136480',
+  destination: '1.335368,103.785517',
+  origin: '1.312164,103.841063',
 };
 const response: NextbillionSDK.DirectionComputeRouteResponse = await client.directions.computeRoute(params);
 ```
@@ -64,7 +64,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 const response = await client.directions
-  .computeRoute({ destination: '41.349302,2.136480', origin: '41.349302,2.136480' })
+  .computeRoute({ destination: '1.335368,103.785517', origin: '1.312164,103.841063' })
   .catch(async (err) => {
     if (err instanceof NextbillionSDK.APIError) {
       console.log(err.status); // 400
@@ -105,7 +105,7 @@ const client = new NextbillionSDK({
 });
 
 // Or, configure per-request:
-await client.directions.computeRoute({ destination: '41.349302,2.136480', origin: '41.349302,2.136480' }, {
+await client.directions.computeRoute({ destination: '1.335368,103.785517', origin: '1.312164,103.841063' }, {
   maxRetries: 5,
 });
 ```
@@ -122,7 +122,7 @@ const client = new NextbillionSDK({
 });
 
 // Override per-request:
-await client.directions.computeRoute({ destination: '41.349302,2.136480', origin: '41.349302,2.136480' }, {
+await client.directions.computeRoute({ destination: '1.335368,103.785517', origin: '1.312164,103.841063' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -146,13 +146,13 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 const client = new NextbillionSDK();
 
 const response = await client.directions
-  .computeRoute({ destination: '41.349302,2.136480', origin: '41.349302,2.136480' })
+  .computeRoute({ destination: '1.335368,103.785517', origin: '1.312164,103.841063' })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
 const { data: response, response: raw } = await client.directions
-  .computeRoute({ destination: '41.349302,2.136480', origin: '41.349302,2.136480' })
+  .computeRoute({ destination: '1.335368,103.785517', origin: '1.312164,103.841063' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(response.msg);

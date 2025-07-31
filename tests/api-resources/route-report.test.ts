@@ -12,8 +12,8 @@ describe('resource routeReport', () => {
   test.skip('create: only required params', async () => {
     const responsePromise = client.routeReport.create({
       key: 'key=API_KEY',
-      original_shape: 'original_shape=sbp}_Almgp`FnLuToKmKviB{eDlcGhpFvj@qbAwoA_mA',
-      original_shape_type: '`polyline`',
+      original_shape: 'original_shape=sbp}_AlmgpFnLuToKmKviB{eDlcGhpFvj@qbAwoA_mA',
+      original_shape_type: 'polyline',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -28,8 +28,8 @@ describe('resource routeReport', () => {
   test.skip('create: required and optional params', async () => {
     const response = await client.routeReport.create({
       key: 'key=API_KEY',
-      original_shape: 'original_shape=sbp}_Almgp`FnLuToKmKviB{eDlcGhpFvj@qbAwoA_mA',
-      original_shape_type: '`polyline`',
+      original_shape: 'original_shape=sbp}_AlmgpFnLuToKmKviB{eDlcGhpFvj@qbAwoA_mA',
+      original_shape_type: 'polyline',
     });
   });
 });

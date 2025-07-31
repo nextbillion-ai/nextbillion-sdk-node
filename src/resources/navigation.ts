@@ -37,7 +37,7 @@ export interface NavigationRetrieveRouteResponse {
 
   /**
    * A string indicating the state of the response. On normal responses, the value
-   * will be `Ok`. Indicative HTTP error codes are returned for different errors. See
+   * will be Ok. Indicative HTTP error codes are returned for different errors. See
    * the [API Errors Codes](#api-error-codes) section below for more information.
    */
   status?: string;
@@ -77,15 +77,15 @@ export namespace NavigationRetrieveRouteResponse {
     geojson?: Route.Geojson;
 
     /**
-     * Encoded geometry of the returned route as per the selected format in `geometry`
-     * and specified `overview` verbosity. Please note the `overview` will always be
-     * `full` when `original_shape` parameter is used in the input request.
+     * Encoded geometry of the returned route as per the selected format in geometry
+     * and specified overview verbosity. Please note the overview will always be full
+     * when original_shape parameter is used in the input request.
      */
     geometry?: string;
 
     /**
-     * An array of objects returning the details about each `leg` of the route.
-     * `waypoints` split the route into legs.
+     * An array of objects returning the details about each leg of the route. waypoints
+     * split the route into legs.
      */
     legs?: Array<Route.Leg>;
 
@@ -121,12 +121,12 @@ export namespace NavigationRetrieveRouteResponse {
      */
     export interface EndLocation {
       /**
-       * Latitude of the `end_location`.
+       * Latitude of the end_location.
        */
       latitude?: number;
 
       /**
-       * Longitude of the `end_location`.
+       * Longitude of the end_location.
        */
       longitude?: number;
     }
@@ -169,7 +169,7 @@ export namespace NavigationRetrieveRouteResponse {
       end_location?: Leg.EndLocation;
 
       /**
-       * The raw estimated duration of the `leg` in seconds.
+       * The raw estimated duration of the leg in seconds.
        */
       raw_duration?: unknown;
 
@@ -204,12 +204,12 @@ export namespace NavigationRetrieveRouteResponse {
        */
       export interface EndLocation {
         /**
-         * Latitude of `end_location` of the `leg`.
+         * Latitude of end_location of the leg.
          */
         latitude?: number;
 
         /**
-         * Longitude of `end_location` of the `leg`.
+         * Longitude of end_location of the leg.
          */
         longitude?: number;
       }
@@ -219,12 +219,12 @@ export namespace NavigationRetrieveRouteResponse {
        */
       export interface StartLocation {
         /**
-         * Latitude of `start_location` of the `leg`.
+         * Latitude of start_location of the leg.
          */
         latitude?: number;
 
         /**
-         * Longitude of `start_location` of the `leg`.
+         * Longitude of start_location of the leg.
          */
         longitude?: number;
       }
@@ -247,40 +247,40 @@ export namespace NavigationRetrieveRouteResponse {
         duration?: Step.Duration;
 
         /**
-         * Location coordinates of the point where the `step` ends.
+         * Location coordinates of the point where the step ends.
          */
         end_location?: Step.EndLocation;
 
         /**
-         * The GeoJSON representation of the `step`.
+         * The GeoJSON representation of the step.
          */
         geojson?: Step.Geojson;
 
         /**
-         * Encoded geometry of the `step` in the selected format.
+         * Encoded geometry of the step in the selected format.
          */
         geometry?: string;
 
         /**
          * An array of objects representing intersections (or cross-way) that the route
-         * passes by along the `step`. For every `step`, the very first `intersection`
-         * corresponds to the location of the `maneuver`. All intersections until the next
-         * `maneuver` are listed in this object.
+         * passes by along the step. For every step, the very first intersection
+         * corresponds to the location of the maneuver. All intersections until the next
+         * maneuver are listed in this object.
          */
         intersections?: Array<Step.Intersection>;
 
         /**
-         * An object with maneuver details for the `step`.
+         * An object with maneuver details for the step.
          */
         maneuver?: Step.Maneuver;
 
         /**
-         * The name of the `step`.
+         * The name of the step.
          */
         name?: string;
 
         /**
-         * A reference for the `step`.
+         * A reference for the step.
          */
         reference?: string;
 
@@ -290,7 +290,7 @@ export namespace NavigationRetrieveRouteResponse {
         road_shield_type?: Step.RoadShieldType;
 
         /**
-         * Location coordinates of the point where the `step` starts.
+         * Location coordinates of the point where the step starts.
          */
         start_location?: Step.StartLocation;
       }
@@ -311,22 +311,22 @@ export namespace NavigationRetrieveRouteResponse {
         }
 
         /**
-         * Location coordinates of the point where the `step` ends.
+         * Location coordinates of the point where the step ends.
          */
         export interface EndLocation {
           /**
-           * Latitude of the `end_location` of the `step`.
+           * Latitude of the end_location of the step.
            */
           latitude?: number;
 
           /**
-           * Longitude of the `end_location` of the `step`.
+           * Longitude of the end_location of the step.
            */
           longitude?: number;
         }
 
         /**
-         * The GeoJSON representation of the `step`.
+         * The GeoJSON representation of the step.
          */
         export interface Geojson {
           geometry?: string;
@@ -337,7 +337,7 @@ export namespace NavigationRetrieveRouteResponse {
         export interface Intersection {
           /**
            * A list of bearing values (e.g. [0,90,180,270]) that are available at the
-           * intersection. The `bearings` describe all available roads at the intersection.
+           * intersection. The bearings describe all available roads at the intersection.
            */
           bearings?: Array<number>;
 
@@ -349,27 +349,27 @@ export namespace NavigationRetrieveRouteResponse {
           classes?: Array<string>;
 
           /**
-           * A value of `true` indicates that the respective road could be entered on a valid
-           * route. `false` indicates that the turn onto the respective road would violate a
+           * A value of true indicates that the respective road could be entered on a valid
+           * route. false indicates that the turn onto the respective road would violate a
            * restriction. Each entry value corresponds to the bearing angle at the same
            * index.
            */
           entry?: Array<boolean>;
 
           /**
-           * The number of incoming roads or paths at the `intersection`.
+           * The number of incoming roads or paths at the intersection.
            */
           intersection_in?: number;
 
           /**
-           * The number of outgoing roads or paths from the `intersection`.
+           * The number of outgoing roads or paths from the intersection.
            */
           intersection_out?: number;
 
           /**
            * An array of lane objects representing the lanes available at the intersection.
-           * If no lane information is available for an `intersection`, the `lanes` property
-           * will not be present.
+           * If no lane information is available for an intersection, the lanes property will
+           * not be present.
            */
           lanes?: Array<Intersection.Lane>;
 
@@ -402,40 +402,40 @@ export namespace NavigationRetrieveRouteResponse {
            */
           export interface Location {
             /**
-             * The latitude coordinate of the `intersection`.
+             * The latitude coordinate of the intersection.
              */
             latitude?: number;
 
             /**
-             * The longitude coordinate of the `intersection`.
+             * The longitude coordinate of the intersection.
              */
             longitude?: number;
 
             /**
-             * The name or description of the `intersection`.
+             * The name or description of the intersection.
              */
             name?: string;
           }
         }
 
         /**
-         * An object with maneuver details for the `step`.
+         * An object with maneuver details for the step.
          */
         export interface Maneuver {
           /**
            * The clockwise angle from true north to the direction of travel immediately after
-           * the `maneuver`. Range of values is between 0-359.
+           * the maneuver. Range of values is between 0-359.
            */
           bearing_after?: number;
 
           /**
            * The clockwise angle from true north to the direction of travel immediately
-           * before the `maneuver`. Range of values is between 0-359.
+           * before the maneuver. Range of values is between 0-359.
            */
           bearing_before?: number;
 
           /**
-           * A coordinate pair describing the location of the `maneuver`.
+           * A coordinate pair describing the location of the maneuver.
            */
           coordinate?: Maneuver.Coordinate;
 
@@ -447,7 +447,7 @@ export namespace NavigationRetrieveRouteResponse {
           instruction?: string;
 
           /**
-           * A string indicating the type of `maneuver`.
+           * A string indicating the type of maneuver.
            */
           maneuver_type?: string;
 
@@ -465,26 +465,26 @@ export namespace NavigationRetrieveRouteResponse {
           roundabout_count?: number;
 
           /**
-           * An array of voice instruction objects associated with the `maneuver`. Each
-           * object provides additional details about the voice instruction, including the
-           * distance along the geometry where the instruction applies, the instruction text,
-           * and the unit of measurement.
+           * An array of voice instruction objects associated with the maneuver. Each object
+           * provides additional details about the voice instruction, including the distance
+           * along the geometry where the instruction applies, the instruction text, and the
+           * unit of measurement.
            */
           voice_instruction?: Array<Maneuver.VoiceInstruction>;
         }
 
         export namespace Maneuver {
           /**
-           * A coordinate pair describing the location of the `maneuver`.
+           * A coordinate pair describing the location of the maneuver.
            */
           export interface Coordinate {
             /**
-             * The latitude coordinate of the `maneuver`.
+             * The latitude coordinate of the maneuver.
              */
             latitude?: number;
 
             /**
-             * The longitude coordinate of the `maneuver`.
+             * The longitude coordinate of the maneuver.
              */
             longitude?: number;
 
@@ -498,12 +498,12 @@ export namespace NavigationRetrieveRouteResponse {
             distance_along_geometry?: number;
 
             /**
-             * The guidance instructions for the upcoming `maneuver`
+             * The guidance instructions for the upcoming maneuver
              */
             instruction?: string;
 
             /**
-             * Unit of the `distance_along_geometry` metric
+             * Unit of the distance_along_geometry metric
              */
             unit?: string;
           }
@@ -526,16 +526,16 @@ export namespace NavigationRetrieveRouteResponse {
         }
 
         /**
-         * Location coordinates of the point where the `step` starts.
+         * Location coordinates of the point where the step starts.
          */
         export interface StartLocation {
           /**
-           * Latitude of `start_location` of the `step`.
+           * Latitude of start_location of the step.
            */
           latitude?: number;
 
           /**
-           * Longitude of `start_location` of the `step`.
+           * Longitude of start_location of the step.
            */
           longitude?: number;
         }
@@ -547,12 +547,12 @@ export namespace NavigationRetrieveRouteResponse {
      */
     export interface StartLocation {
       /**
-       * Latitude of the`start_location`.
+       * Latitude of thestart_location.
        */
       latitude?: number;
 
       /**
-       * Longitude of the `start_location`.
+       * Longitude of the start_location.
        */
       longitude?: number;
     }
@@ -591,7 +591,7 @@ export interface NavigationRetrieveRouteParams {
    * "destination". However, you can skip a coordinate and show its position in the
    * list with the ";" separator.
    */
-  approaches?: '`unrestricted`' | '`curb`';
+  approaches?: 'unrestricted' | 'curb';
 
   /**
    * Setting this will ensure the route avoids ferries, tolls, highways or nothing.
@@ -629,7 +629,7 @@ export interface NavigationRetrieveRouteParams {
    * geometry is returned in the response along with the geojson details of the
    * route.
    */
-  geometry?: '`polyline`' | '`polyline6`' | '`geojson`';
+  geometry?: 'polyline' | 'polyline6' | 'geojson';
 
   /**
    * Select the language to be used for result rendering from a list of
@@ -664,7 +664,7 @@ export interface NavigationRetrieveRouteParams {
    * [support@nextbillion.ai](mailto:support@nextbillion.ai) in case you need
    * additional profiles.
    */
-  mode?: '`car`' | '`truck`';
+  mode?: 'car' | 'truck';
 
   /**
    * "origin" is the starting point of your route. Ensure that "origin" is a routable
@@ -698,7 +698,7 @@ export interface NavigationRetrieveRouteParams {
    * of the full geometry is returned. No overview geometry is returned when set to
    * "false".
    */
-  overview?: '`full`' | '`simplified`' | '`false`';
+  overview?: 'full' | 'simplified' | 'false';
 
   /**
    * "waypoints" are coordinates along the route between the "origin" and

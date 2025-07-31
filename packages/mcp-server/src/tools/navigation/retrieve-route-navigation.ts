@@ -39,7 +39,7 @@ export const tool: Tool = {
         type: 'string',
         description:
           'A semicolon-separated list indicating the side of the road from which to approach "waypoints" in a requested route. When set to "unrestricted" a route can arrive at the waypoint from either side of the road and when set to "curb" the route will arrive at the waypoint on the driving side of the region. Please note the number of values provided must be one more than the number of "waypoints". The last value of "approaches" will determine the approach for the "destination". However, you can skip a coordinate and show its position in the list with the ";" separator.',
-        enum: ['`unrestricted`', '`curb`'],
+        enum: ['unrestricted', 'curb'],
       },
       avoid: {
         type: 'string',
@@ -61,7 +61,7 @@ export const tool: Tool = {
         type: 'string',
         description:
           'Sets the output format of the route geometry in the response. On providing “polyline“ and “polyline6“ as input, respective encoded geometry is returned. However, when “geojson“ is provided as the input value, “polyline“ encoded geometry is returned in the response along with the geojson details of the route.',
-        enum: ['`polyline`', '`polyline6`', '`geojson`'],
+        enum: ['polyline', 'polyline6', 'geojson'],
       },
       lang: {
         type: 'string',
@@ -72,7 +72,7 @@ export const tool: Tool = {
         type: 'string',
         description:
           'Set which driving mode the service should use to determine a route. For example, if you use "car", the API will return a route that a car can take. Using "truck" will return a route a truck can use, taking into account appropriate truck routing restrictions.\n\nWhen "mode=truck", following are the default dimensions that are used:\n\n\\- truck\\_height = 214 centimeters\n\n\\- truck\\_width = 183 centimeters\n\n\\- truck\\_length = 519 centimeters\n\n\\- truck\\_weight = 5000 kg\n\nPlease use the Navigation Flexible version if you want to use custom truck dimensions.\n\nNote: Only the "car" profile is enabled by default. Please note that customized profiles (including "truck") might not be available for all regions. Please contact your [NextBillion.ai](http://NextBillion.ai) account manager, sales representative or reach out at [support@nextbillion.ai](mailto:support@nextbillion.ai) in case you need additional profiles.',
-        enum: ['`car`', '`truck`'],
+        enum: ['car', 'truck'],
       },
       origin: {
         type: 'string',
@@ -94,7 +94,7 @@ export const tool: Tool = {
         type: 'string',
         description:
           'Specify the verbosity of route geometry. When set to "full", the most detailed geometry available is returned. When set to "simplified", a simplified version of the full geometry is returned. No overview geometry is returned when set to "false".',
-        enum: ['`full`', '`simplified`', '`false`'],
+        enum: ['full', 'simplified', 'false'],
       },
       waypoints: {
         type: 'string',

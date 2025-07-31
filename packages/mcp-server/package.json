@@ -1,8 +1,8 @@
 {
   "name": "@nbai/sdk-mcp",
-  "version": "0.8.3",
+  "version": "0.9.0",
   "description": "The official MCP Server for the Nextbillion SDK API",
-  "author": "Nextbillion SDK <>",
+  "author": "Nextbillion SDK <yun@nextbillion.ai>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",
