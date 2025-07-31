@@ -65,41 +65,43 @@ export class Trip extends APIResource {
 }
 
 /**
- * An object with details of the asset properties.
+ * An object with details of the `asset` properties.
  */
 export interface AssetDetails {
   /**
-   * ID of the asset. This is the same ID that was generated/provided at the time of
-   * creating the asset.
+   * ID of the `asset`. This is the same ID that was generated/provided at the time
+   * of creating the `asset`.
    */
   id?: string;
 
   /**
-   * A string dictionary object containing attributes of the asset. These attributes
-   * were associated with the asset at the time of creating or updating it.
+   * A string dictionary object containing `attributes` of the `asset`. These
+   * `attributes` were associated with the `asset` at the time of creating or
+   * updating it.
    *
-   * attributes can be added to an asset using the _Update Asset Attributes_ method.
+   * `attributes` can be added to an `asset` using the _Update Asset Attributes_
+   * method.
    */
   attributes?: unknown;
 
   /**
-   * A UNIX epoch timestamp in seconds representing the time at which the asset was
+   * A UNIX epoch timestamp in seconds representing the time at which the `asset` was
    * created.
    */
   created_at?: number;
 
   /**
-   * Description of the asset. The value would be the same as that provided for the
-   * description parameter at the time of creating or updating the asset.
+   * Description of the `asset`. The value would be the same as that provided for the
+   * `description` parameter at the time of creating or updating the `asset`.
    */
   description?: string;
 
   /**
-   * ID of the device that is linked to this asset. Please note that there can be
-   * multiple device_id linked to a single asset. An empty response is returned if no
-   * devices are linked to the asset.
+   * ID of the `device` that is linked to this asset. Please note that there can be
+   * multiple `device_id` linked to a single `asset`. An empty response is returned
+   * if no devices are linked to the `asset`.
    *
-   * User can link a device to an asset using the _Bind Asset to Device_ method.
+   * User can link a device to an `asset` using the _Bind Asset to Device_ method.
    */
   device_id?: string;
 
@@ -115,8 +117,8 @@ export interface AssetDetails {
   meta_data?: AssetAPI.MetaData;
 
   /**
-   * Name of the asset. The value would be the same as that provided for the name
-   * parameter at the time of creating or updating the asset.
+   * Name of the `asset`. The value would be the same as that provided for the `name`
+   * parameter at the time of creating or updating the `asset`.
    */
   name?: string;
 
@@ -127,24 +129,24 @@ export interface AssetDetails {
   state?: string;
 
   /**
-   * **This parameter will be deprecated soon! Please move existing tags to
-   * attributes parameter.**
+   * **This parameter will be deprecated soon! Please move existing `tags` to
+   * `attributes` parameter.**
    *
-   * Tags of the asset. These were associated with the asset when it was created or
-   * updated. tags can be used for filtering assets in operations like _Get Asset
+   * Tags of the asset. These were associated with the `asset` when it was created or
+   * updated. `tags` can be used for filtering assets in operations like _Get Asset
    * List_ and asset **Search** methods. They can also be used for monitoring of
-   * assets using **Monitor** methods after linking tags and asset.
+   * assets using **Monitor** methods after linking `tags` and `asset`.
    */
   tags?: Array<string>;
 
   /**
-   * A UNIX epoch timestamp in seconds representing the last time when the asset was
-   * tracked.
+   * A UNIX epoch timestamp in seconds representing the last time when the `asset`
+   * was tracked.
    */
   tracked_at?: number;
 
   /**
-   * A UNIX epoch timestamp in seconds representing the time at which the asset was
+   * A UNIX epoch timestamp in seconds representing the time at which the `asset` was
    * last updated.
    */
   updated_at?: number;
@@ -164,14 +166,14 @@ export namespace AssetDetails {
 
     /**
      * If available in the GPS information, this property returns the altitude of the
-     * asset at the last tracked location. It is represented as height, in meters,
+     * `asset` at the last tracked location. It is represented as height, in meters,
      * above the WGS84 reference ellipsoid.
      */
     altitude?: number;
 
     /**
      * If available in the GPS information, this property returns the heading of the
-     * asset calculated from true north in clockwise direction at the last tracked
+     * `asset` calculated from true north in clockwise direction at the last tracked
      * location. Please note that the bearing is not affected by the device
      * orientation.
      *
@@ -186,7 +188,7 @@ export namespace AssetDetails {
 
     /**
      * If available in the GPS information, this property returns the speed of the
-     * asset, in meters per second, at the last tracked location.
+     * `asset`, in meters per second, at the last tracked location.
      */
     speed?: number;
 
@@ -203,12 +205,12 @@ export namespace AssetDetails {
      */
     export interface Location {
       /**
-       * Latitude of the tracked location of the asset.
+       * Latitude of the tracked location of the `asset`.
        */
       lat?: number;
 
       /**
-       * Longitude of the tracked location of the asset.
+       * Longitude of the tracked location of the `asset`.
        */
       lon?: number;
     }
@@ -249,7 +251,7 @@ export interface TripRetrieveResponse {
 
   /**
    * A string indicating the state of the response. On successful responses, the
-   * value will be Ok. Indicative error messages are returned for different errors.
+   * value will be `Ok`. Indicative error messages are returned for different errors.
    * See the [API Error Codes](#api-error-codes) section below for more information.
    */
   status?: string;
@@ -283,8 +285,8 @@ export namespace TripRetrieveResponse {
       asset_id?: string;
 
       /**
-       * Returns the attributes provided for the trip at the time of starting or updating
-       * it.
+       * Returns the `attributes` provided for the trip at the time of starting or
+       * updating it.
        */
       attributes?: unknown;
 
@@ -369,7 +371,7 @@ export interface TripGetSummaryResponse {
 
   /**
    * A string indicating the state of the response. On successful responses, the
-   * value will be Ok. Indicative error messages are returned for different errors.
+   * value will be `Ok`. Indicative error messages are returned for different errors.
    * See the [API Error Codes](#api-error-codes) section below for more information.
    */
   status?: string;
@@ -397,7 +399,7 @@ export namespace TripGetSummaryResponse {
       id?: string;
 
       /**
-       * An object with details of the asset properties.
+       * An object with details of the `asset` properties.
        */
       asset?: TripAPI.AssetDetails;
 
@@ -408,8 +410,8 @@ export namespace TripGetSummaryResponse {
       asset_id?: string;
 
       /**
-       * Returns the attributes provided for the trip at the time of starting or updating
-       * it.
+       * Returns the `attributes` provided for the trip at the time of starting or
+       * updating it.
        */
       attributes?: unknown;
 
@@ -512,7 +514,7 @@ export interface TripStartResponse {
 
   /**
    * A string indicating the state of the response. On successful responses, the
-   * value will be Ok. Indicative error messages are returned for different errors.
+   * value will be `Ok`. Indicative error messages are returned for different errors.
    * See the [API Error Codes](#api-error-codes) section below for more information.
    */
   status?: string;
@@ -521,7 +523,7 @@ export interface TripStartResponse {
 export namespace TripStartResponse {
   export interface Data {
     /**
-     * Returns the ID of the newly created trip. It will be same as the custom_id if
+     * Returns the ID of the newly created trip. It will be same as the `custom_id` if
      * that input was provided in the input request. Use this ID to manage this trip
      * using other available Trip methods.
      */
@@ -563,8 +565,8 @@ export interface TripUpdateParams {
   cluster?: 'america';
 
   /**
-   * Body param: Use this field to update the attributes of the trip. Please note
-   * that when updating the attributes field, previously added information will be
+   * Body param: Use this field to update the `attributes` of the trip. Please note
+   * that when updating the `attributes` field, previously added information will be
    * overwritten.
    */
   attributes?: unknown;
@@ -578,7 +580,7 @@ export interface TripUpdateParams {
    * Body param: Use this JSON object to update additional details about the trip.
    * This property is used to add any custom information / context about the trip.
    *
-   * Please note that updating the meta_data field will overwrite the previously
+   * Please note that updating the `meta_data` field will overwrite the previously
    * added information.
    */
   meta_data?: unknown;
@@ -616,7 +618,7 @@ export namespace TripUpdateParams {
      * Use this JSON object to update additional details about the stop. This property
      * is used to add any custom information / context about the stop.
      *
-     * Please note that updating the meta_data field will overwrite the previously
+     * Please note that updating the `meta_data` field will overwrite the previously
      * added information.
      */
     meta_data?: unknown;
@@ -691,22 +693,22 @@ export interface TripStartParams {
   cluster?: 'america';
 
   /**
-   * Body param: attributes can be used to store custom information about a trip in
-   * key:value format. Use attributes to add any useful information or context to
-   * your trips like the driver name, destination etc.
+   * Body param: `attributes` can be used to store custom information about a trip in
+   * `key`:`value` format. Use `attributes` to add any useful information or context
+   * to your trips like the driver name, destination etc.
    *
-   * Please note that the maximum number of key:value pairs that can be added to an
-   * attributes object is 100. Also, the overall size of attributes object should not
-   * exceed 65kb.
+   * Please note that the maximum number of `key`:`value` pairs that can be added to
+   * an `attributes` object is 100. Also, the overall size of `attributes` object
+   * should not exceed 65kb.
    */
   attributes?: unknown;
 
   /**
-   * Body param: Set a unique ID for the new trip. If not provided, an ID will be
-   * automatically generated in UUID format. A valid custom_id can contain letters,
+   * Body param: Set a unique ID for the new `trip`. If not provided, an ID will be
+   * automatically generated in UUID format. A valid `custom_id` can contain letters,
    * numbers, “-”, & “\_” only.
    *
-   * Please note that the ID of a trip can not be changed once it is created.
+   * Please note that the ID of a `trip` can not be changed once it is created.
    */
   custom_id?: string;
 

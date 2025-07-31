@@ -28,13 +28,13 @@ describe('resource snapToRoads', () => {
     const response = await client.snapToRoads.snap({
       key: 'key=API_KEY',
       path: 'path=41.38602272,2.17621539|41.38312885,2.17207083|41.38157854,2.17906668|41.38288511,2.18186215',
-      approaches: 'unrestricted',
+      approaches: '`unrestricted`',
       avoid: 'toll',
-      geometry: 'polyline',
-      mode: 'car',
-      option: 'flexible',
+      geometry: '`polyline`',
+      mode: '`car`',
+      option: '`flexible`',
       radiuses: 'radiuses=14|16|14',
-      road_info: 'max_speed',
+      road_info: '`max_speed`',
       timestamps: 'timestamps=1656570000|1656570015|1656570030',
       tolerate_outlier: true,
     });

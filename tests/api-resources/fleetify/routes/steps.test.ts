@@ -15,7 +15,7 @@ describe('resource steps', () => {
       arrival: 0,
       location: [0],
       position: 0,
-      type: 'start',
+      type: '`start`',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -33,9 +33,9 @@ describe('resource steps', () => {
       arrival: 0,
       location: [0],
       position: 0,
-      type: 'start',
+      type: '`start`',
       address: '"address": "503, Dublin Drive, Los Angeles, California - 500674",',
-      completion_mode: 'manual',
+      completion_mode: '`manual`',
       document_template_id: 'document_template_id',
       duration: 0,
       geofence_config: { radius: 0, type: 'circle' },
@@ -72,7 +72,7 @@ describe('resource steps', () => {
       arrival: 0,
       position: 0,
       address: '"address": "503, Dublin Drive, Los Angeles, California - 500674",',
-      completion_mode: 'manual',
+      completion_mode: '`manual`',
       document_template_id: 'document_template_id',
       duration: 0,
       geofence_config: { radius: 0, type: 'circle' },
@@ -82,7 +82,7 @@ describe('resource steps', () => {
         customer_phone_number: '"customer_phone_number": "+1 707 234 1234"',
         instructions: '"instructions": "Customer asked not to ring the doorbell."',
       },
-      type: 'start',
+      type: '`start`',
     });
   });
 

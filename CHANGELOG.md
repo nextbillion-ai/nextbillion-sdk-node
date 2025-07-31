@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.3 (2025-07-31)
+
+Full Changelog: [v0.8.2...v0.8.3](https://github.com/nextbillion-ai/nextbillion-sdk-node/compare/v0.8.2...v0.8.3)
+
+### Bug Fixes
+
+* List&lt;List&gt; problem in java by naming dto.Event ([1d8b217](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/1d8b21703c747cc0e810534bda726474eef1bf9f))
+
 ## 0.8.2 (2025-07-31)
 
 Full Changelog: [v0.8.1...v0.8.2](https://github.com/nextbillion-ai/nextbillion-sdk-node/compare/v0.8.1...v0.8.2)

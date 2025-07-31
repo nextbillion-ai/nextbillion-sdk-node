@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'start_skynet_trip',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nAdd a new trip to the system with the provided data.\n\n# Response Schema\n```json\n{\n  type: 'object',\n  properties: {\n    data: {\n      type: 'object',\n      properties: {\n        id: {\n          type: 'string',\n          description: 'Returns the ID of the newly created trip. It will be same as the custom_id if that input was provided in the input request. Use this ID to manage this trip using other available Trip methods.'\n        }\n      }\n    },\n    message: {\n      type: 'string',\n      description: 'Displays the error message in case of a failed request. If the request is successful, this field is not present in the response.'\n    },\n    status: {\n      type: 'string',\n      description: 'A string indicating the state of the response. On successful responses, the value will be Ok. Indicative error messages are returned for different errors. See the [API Error Codes](#api-error-codes) section below for more information.'\n    }\n  }\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nAdd a new trip to the system with the provided data.\n\n# Response Schema\n```json\n{\n  type: 'object',\n  properties: {\n    data: {\n      type: 'object',\n      properties: {\n        id: {\n          type: 'string',\n          description: 'Returns the ID of the newly created trip. It will be same as the `custom_id` if that input was provided in the input request. Use this ID to manage this trip using other available Trip methods.'\n        }\n      }\n    },\n    message: {\n      type: 'string',\n      description: 'Displays the error message in case of a failed request. If the request is successful, this field is not present in the response.'\n    },\n    status: {\n      type: 'string',\n      description: 'A string indicating the state of the response. On successful responses, the value will be `Ok`. Indicative error messages are returned for different errors. See the [API Error Codes](#api-error-codes) section below for more information.'\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
@@ -39,12 +39,12 @@ export const tool: Tool = {
       attributes: {
         type: 'object',
         description:
-          'attributes can be used to store custom information about a trip in key:value format. Use attributes to add any useful information or context to your trips like the driver name, destination etc.\n\nPlease note that the maximum number of key:value pairs that can be added to an attributes object is 100. Also, the overall size of attributes object should not exceed 65kb.',
+          '`attributes` can be used to store custom information about a trip in `key`:`value` format. Use `attributes` to add any useful information or context to your trips like the driver name, destination etc.\n\nPlease note that the maximum number of `key`:`value` pairs that can be added to an `attributes` object is 100. Also, the overall size of `attributes` object should not exceed 65kb.',
       },
       custom_id: {
         type: 'string',
         description:
-          'Set a unique ID for the new trip. If not provided, an ID will be automatically generated in UUID format. A valid custom_id can contain letters, numbers, “-”, & “\\_” only.\n\nPlease note that the ID of a trip can not be changed once it is created.',
+          'Set a unique ID for the new `trip`. If not provided, an ID will be automatically generated in UUID format. A valid `custom_id` can contain letters, numbers, “-”, & “\\_” only.\n\nPlease note that the ID of a `trip` can not be changed once it is created.',
       },
       description: {
         type: 'string',

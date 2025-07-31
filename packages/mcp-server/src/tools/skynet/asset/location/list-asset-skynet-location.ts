@@ -35,31 +35,31 @@ export const tool: Tool = {
       correction: {
         type: 'string',
         description:
-          'Describe the geometry characteristics through a , separated list of properties.\n\nSetting mapmatch to 1 returns the geometry of the tracked points, snapped to the nearest road.\n\nSetting interpolate to 1 smoothens the snapped geometry by adding more points, as needed. Please note, mapmatch should be set to 1 for interpolate to be effective.\n\nmode is used to set the transport mode for which the snapped route will be determined. Allowed values for mode are car and truck.',
+          'Describe the geometry characteristics through a `,` separated list of properties.\n\nSetting `mapmatch` to 1 returns the geometry of the tracked points, snapped to the nearest road.\n\nSetting `interpolate` to 1 smoothens the snapped geometry by adding more points, as needed. Please note, `mapmatch` should be set to 1 for `interpolate` to be effective.\n\n`mode` is used to set the transport mode for which the snapped route will be determined. Allowed values for `mode` are `car` and `truck`.',
       },
       end_time: {
         type: 'integer',
-        description: 'Time until which the tracked locations of the asset need to be retrieved.',
+        description: 'Time until which the tracked locations of the `asset` need to be retrieved.',
       },
       geometry_type: {
         type: 'string',
         description:
-          'Set the geometry format to encode the path linking the tracked locations of the asset.\n\nPlease note that geometry_type is effective only when mapmatch property of correction parameter is set to 1.',
-        enum: ['polyline', 'polyline6', 'geojson'],
+          'Set the geometry format to encode the path linking the tracked locations of the `asset`.\n\nPlease note that `geometry_type` is effective only when `mapmatch` property of `correction` parameter is set to 1.',
+        enum: ['`polyline`', '`polyline6`', '`geojson`'],
       },
       pn: {
         type: 'integer',
         description:
-          'Denotes page number. Use this along with the ps parameter to implement pagination for your searched results. This parameter does not have a maximum limit but would return an empty response in case a higher value is provided when the result-set itself is smaller.',
+          'Denotes page number. Use this along with the `ps` parameter to implement pagination for your searched results. This parameter does not have a maximum limit but would return an empty response in case a higher value is provided when the result-set itself is smaller.',
       },
       ps: {
         type: 'integer',
         description:
-          'Denotes number of search results per page. Use this along with the pn parameter to implement pagination for your searched results.',
+          'Denotes number of search results per page. Use this along with the `pn` parameter to implement pagination for your searched results.',
       },
       start_time: {
         type: 'integer',
-        description: 'Time after which the tracked locations of the asset need to be retrieved.',
+        description: 'Time after which the tracked locations of the `asset` need to be retrieved.',
       },
     },
     required: ['id', 'key'],

@@ -834,8 +834,8 @@ export class NextbillionSDK {
   routeReport: API.RouteReport = new API.RouteReport(this);
   snapToRoads: API.SnapToRoads = new API.SnapToRoads(this);
   postalcode: API.Postalcode = new API.Postalcode(this);
-  lookup: API.Lookup = new API.Lookup(this);
   areas: API.Areas = new API.Areas(this);
+  lookup: API.Lookup = new API.Lookup(this);
 }
 NextbillionSDK.Fleetify = Fleetify;
 NextbillionSDK.Skynet = Skynet;
@@ -860,8 +860,8 @@ NextbillionSDK.Revgeocode = Revgeocode;
 NextbillionSDK.RouteReport = RouteReport;
 NextbillionSDK.SnapToRoads = SnapToRoads;
 NextbillionSDK.Postalcode = Postalcode;
-NextbillionSDK.Lookup = Lookup;
 NextbillionSDK.Areas = Areas;
+NextbillionSDK.Lookup = Lookup;
 export declare namespace NextbillionSDK {
   export type RequestOptions = Opts.RequestOptions;
 
@@ -1028,11 +1028,11 @@ export declare namespace NextbillionSDK {
     type PostalcodeRetrieveCoordinatesParams as PostalcodeRetrieveCoordinatesParams,
   };
 
+  export { Areas as Areas, type AreaListResponse as AreaListResponse, type AreaListParams as AreaListParams };
+
   export {
     Lookup as Lookup,
     type LookupByIDResponse as LookupByIDResponse,
     type LookupByIDParams as LookupByIDParams,
   };
-
-  export { Areas as Areas, type AreaListResponse as AreaListResponse, type AreaListParams as AreaListParams };
 }

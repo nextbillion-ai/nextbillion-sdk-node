@@ -34,7 +34,7 @@ export const tool: Tool = {
         type: 'string',
         description:
           'A semicolon-separated list indicating the side of the road from which to approach the locations on the snapped route. When set to "unrestricted" a route can arrive at the snapped location from either side of the road and when set to "curb" the route will arrive at the snapped location on the driving side of the region. Please note the number of values provided must be equal to the number of coordinate points provided in the "path" parameter. However, you can skip a coordinate and show its position in the list with the ";" separator.',
-        enum: ['unrestricted', 'curb'],
+        enum: ['`unrestricted`', '`curb`'],
       },
       avoid: {
         type: 'string',
@@ -46,19 +46,19 @@ export const tool: Tool = {
         type: 'string',
         description:
           'Sets the output format of the route geometry in the response. Only the "polyline" or "polyline6" encoded "geometry" of the snapped path is returned in the response depending on the value provided in the input. When "geojson" is selected as the input value, "polyline6" encoded geometry of the snapped path is returned along with a "geojson" object.',
-        enum: ['polyline', 'polyline6', 'geojson'],
+        enum: ['`polyline`', '`polyline6`', '`geojson`'],
       },
       mode: {
         type: 'string',
         description:
           'Set which driving mode the service should use to determine a route. For example, if you use "car", the API will return a route that a car can take. Using "truck" will return a route a truck can use, taking into account appropriate truck routing restrictions.\n\nNote: Only the "car" profile is enabled by default. Please note that customized profiles (including "truck") might not be available for all regions. Please contact your [NextBillion.ai](http://NextBillion.ai) account manager, sales representative or reach out at [support@nextbillion.ai](mailto:support@nextbillion.ai) in case you need additional profiles.',
-        enum: ['car', 'truck'],
+        enum: ['`car`', '`truck`'],
       },
       option: {
         type: 'string',
         description:
           'Include this parameter in the request to return segment-wise speed information of the route returned in the response.\n\nPlease note that returning speed information is a function of "road\\_info" parameter, which is effective only when "option=flexible". However, the resultant route might not contain all the locations provided in "path" input.',
-        enum: ['flexible'],
+        enum: ['`flexible`'],
       },
       radiuses: {
         type: 'string',
@@ -69,7 +69,7 @@ export const tool: Tool = {
         type: 'string',
         description:
           'Use this parameter to receive segment-wise maximum speed information of the route in the response. "max\\_speed" is the only allowed value.',
-        enum: ['max_speed'],
+        enum: ['`max_speed`'],
       },
       timestamps: {
         type: 'string',
