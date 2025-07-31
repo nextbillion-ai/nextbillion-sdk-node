@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.1 (2025-07-31)
+
+Full Changelog: [v0.8.0...v0.8.1](https://github.com/nextbillion-ai/nextbillion-sdk-node/compare/v0.8.0...v0.8.1)
+
+### Bug Fixes
+
+* **mcp:** fix tool description of jq_filter ([0e09070](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/0e090707e06aa9097d80e638b63193dfd4af8cf0))
+
 ## 0.8.0 (2025-07-30)
 
 Full Changelog: [v0.7.0...v0.8.0](https://github.com/nextbillion-ai/nextbillion-sdk-node/compare/v0.7.0...v0.8.0)

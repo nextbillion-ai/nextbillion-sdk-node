@@ -16,8 +16,7 @@ export const metadata: Metadata = {
 
 export const tool: Tool = {
   name: 'compute_route_directions',
-  description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nDirections API is a service that computes a route with given coordinates.",
+  description: 'Directions API is a service that computes a route with given coordinates.',
   inputSchema: {
     type: 'object',
     properties: {

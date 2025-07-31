@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'snap_snap_to_roads',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nNextbillion.ai Snap To Roads API takes a series of locations along a route, and returns the new locations on this route that are snapped to the best-matched roads where the trip took place. You can set various parameters, such as timestamps or radius, to optimize the result.",
+    'Nextbillion.ai Snap To Roads API takes a series of locations along a route, and returns the new locations on this route that are snapped to the best-matched roads where the trip took place. You can set various parameters, such as timestamps or radius, to optimize the result.',
   inputSchema: {
     type: 'object',
     properties: {
