@@ -27,13 +27,13 @@ export const tool: Tool = {
       original_shape: {
         type: 'string',
         description:
-          'Takes a route geometry as input and returns the route details. Accepts polyline and polyline6 encoded geometry as input.\n\n**Note**: Route geometries generated from sources other than [NextBillion.ai](http://NextBillion.ai) services, are not supported in this version.',
+          'Takes a route geometry as input and returns the route details. Accepts `polyline` and `polyline6` encoded geometry as input.\n\n**Note**: Route geometries generated from sources other than [NextBillion.ai](http://NextBillion.ai) services, are not supported in this version.',
       },
       original_shape_type: {
         type: 'string',
         description:
-          'Specify the encoding type of route geometry provided in original_shape input. Please note that an error is returned when this parameter is not specified while an input is added to original_shape parameter.',
-        enum: ['polyline', 'polyline6'],
+          'Specify the encoding type of route geometry provided in `original_shape` input. Please note that an error is returned when this parameter is not specified while an input is added to `original_shape` parameter.',
+        enum: ['`polyline`', '`polyline6`'],
       },
     },
     required: ['key', 'original_shape', 'original_shape_type'],

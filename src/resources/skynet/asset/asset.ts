@@ -108,7 +108,7 @@ export interface SimpleResp {
 
   /**
    * A string indicating the state of the response. On successful responses, the
-   * value will be Ok. Indicative error messages are returned for different errors.
+   * value will be `Ok`. Indicative error messages are returned for different errors.
    * See the [API Error Codes](#api-error-codes) section below for more information.
    */
   status?: string;
@@ -116,7 +116,7 @@ export interface SimpleResp {
 
 export interface AssetCreateResponse {
   /**
-   * An object containing the ID of the asset created.
+   * An object containing the ID of the `asset` created.
    */
   data?: AssetCreateResponse.Data;
 
@@ -128,7 +128,7 @@ export interface AssetCreateResponse {
 
   /**
    * A string indicating the state of the response. On successful responses, the
-   * value will be Ok. Indicative error messages are returned for different errors.
+   * value will be `Ok`. Indicative error messages are returned for different errors.
    * See the [API Error Codes](#api-error-codes) section below for more information.
    */
   status?: string;
@@ -136,11 +136,11 @@ export interface AssetCreateResponse {
 
 export namespace AssetCreateResponse {
   /**
-   * An object containing the ID of the asset created.
+   * An object containing the ID of the `asset` created.
    */
   export interface Data {
     /**
-     * Unique ID of the asset created. It will be the same as custom_id, if provided.
+     * Unique ID of the asset created. It will be the same as `custom_id`, if provided.
      * Else it will be an auto generated UUID. Please note this ID cannot be updated.
      */
     id?: string;
@@ -149,7 +149,7 @@ export namespace AssetCreateResponse {
 
 export interface AssetRetrieveResponse {
   /**
-   * An object containing the information about the asset returned.
+   * An object containing the information about the `asset` returned.
    */
   data?: AssetRetrieveResponse.Data;
 
@@ -161,7 +161,7 @@ export interface AssetRetrieveResponse {
 
   /**
    * A string indicating the state of the response. On successful responses, the
-   * value will be Ok. Indicative error messages are returned for different errors.
+   * value will be `Ok`. Indicative error messages are returned for different errors.
    * See the [API Error Codes](#api-error-codes) section below for more information.
    */
   status?: string;
@@ -169,11 +169,11 @@ export interface AssetRetrieveResponse {
 
 export namespace AssetRetrieveResponse {
   /**
-   * An object containing the information about the asset returned.
+   * An object containing the information about the `asset` returned.
    */
   export interface Data {
     /**
-     * An object with details of the asset properties.
+     * An object with details of the `asset` properties.
      */
     asset?: TripAPI.AssetDetails;
   }
@@ -193,7 +193,7 @@ export interface AssetListResponse {
 
   /**
    * A string indicating the state of the response. On successful responses, the
-   * value will be Ok. Indicative error messages are returned for different errors.
+   * value will be `Ok`. Indicative error messages are returned for different errors.
    * See the [API Error Codes](#api-error-codes) section below for more information.
    */
   status?: string;
@@ -205,7 +205,7 @@ export namespace AssetListResponse {
    */
   export interface Data {
     /**
-     * An array of objects, with each object representing one asset.
+     * An array of objects, with each object representing one `asset`.
      */
     list?: Array<TripAPI.AssetDetails>;
 
@@ -230,29 +230,29 @@ export interface AssetCreateParams {
   cluster?: 'america';
 
   /**
-   * Body param: attributes can be used to store custom information about an asset in
-   * key:value format. Use attributes to add any useful information or context to
-   * your assets like the vehicle type, shift timing etc. Moreover, these attributes
-   * can be used to filter assets in **Search**, **Monitor**, and _Get Asset List_
-   * queries.
+   * Body param: `attributes` can be used to store custom information about an asset
+   * in `key`:`value` format. Use `attributes` to add any useful information or
+   * context to your assets like the vehicle type, shift timing etc. Moreover, these
+   * attributes can be used to filter `assets` in **Search**, **Monitor**, and _Get
+   * Asset List_ queries.
    *
-   * Please note that the maximum number of key:value pairs that can be added to an
-   * attributes object is 100. Also, the overall size of attributes object should not
-   * exceed 65kb.
+   * Please note that the maximum number of `key`:`value` pairs that can be added to
+   * an `attributes` object is 100. Also, the overall size of `attributes` object
+   * should not exceed 65kb.
    */
   attributes?: unknown;
 
   /**
-   * Body param: Set a unique ID for the new asset. If not provided, an ID will be
-   * automatically generated in UUID format. A valid custom*id can contain letters,
-   * numbers, "-", & "*" only.
+   * Body param: Set a unique ID for the new `asset`. If not provided, an ID will be
+   * automatically generated in UUID format. A valid `custom_id` can contain letters,
+   * numbers, "-", & "\_" only.
    *
-   * Please note that the ID of an asset can not be changed once it is created.
+   * Please note that the ID of an `asset` can not be changed once it is created.
    */
   custom_id?: string;
 
   /**
-   * Body param: Description for the asset.
+   * Body param: Description for the `asset`.
    */
   description?: string;
 
@@ -263,20 +263,21 @@ export interface AssetCreateParams {
   meta_data?: MetaData;
 
   /**
-   * Body param: Name of the asset. Use this field to assign a meaningful, custom
-   * name to the asset being created.
+   * Body param: Name of the `asset`. Use this field to assign a meaningful, custom
+   * name to the `asset` being created.
    */
   name?: string;
 
   /**
-   * Body param: **This parameter will be deprecated soon! Please use the attributes
-   * parameter to add labels or markers for the asset.**
+   * Body param: **This parameter will be deprecated soon! Please use the
+   * `attributes` parameter to add labels or markers for the asset.**
    *
-   * Tags of the asset. tags can be used for filtering assets in operations like _Get
-   * Asset List_ and asset **Search** methods. They can also be used for monitoring
-   * of assets using the **Monitor** methods after linking tags and asset.
+   * Tags of the `asset`. `tags` can be used for filtering assets in operations like
+   * _Get Asset List_ and asset **Search** methods. They can also be used for
+   * monitoring of assets using the **Monitor** methods after linking `tags` and
+   * `asset`.
    *
-   * Valid tags are strings consisting of alphanumeric characters (A-Z, a-z, 0-9)
+   * Valid `tags` are strings consisting of alphanumeric characters (A-Z, a-z, 0-9)
    * along with the underscore ('\_') and hyphen ('-') symbols.
    */
   tags?: Array<string>;
@@ -308,23 +309,23 @@ export interface AssetUpdateParams {
   cluster?: 'america';
 
   /**
-   * Body param: Use this param to update the attributes of an asset in key:value
-   * format. Users can maintain any useful information or context about the assets by
-   * utilising this parameter.
+   * Body param: Use this param to update the `attributes` of an asset in
+   * `key`:`value` format. Users can maintain any useful information or context about
+   * the assets by utilising this parameter.
    *
-   * Please be careful when using this parameter while updating an asset as the new
-   * attributes object provided will completely overwrite the old attributes object.
-   * Use the _Update Asset Attributes_ method to add new or modify existing
+   * Please be careful when using this parameter while updating an `asset` as the new
+   * `attributes` object provided will completely overwrite the old `attributes`
+   * object. Use the _Update Asset Attributes_ method to add new or modify existing
    * attributes.
    *
-   * Another point to note is that the overall size of the attributes object cannot
-   * exceed 65kb and the maximum number of key:value pairs that can be added to this
-   * object is 100.
+   * Another point to note is that the overall size of the `attributes` object cannot
+   * exceed 65kb and the maximum number of `key`:`value` pairs that can be added to
+   * this object is 100.
    */
   attributes?: unknown;
 
   /**
-   * Body param: Use this param to update the description of an asset.
+   * Body param: Use this param to update the `description` of an `asset`.
    */
   description?: string;
 
@@ -335,17 +336,17 @@ export interface AssetUpdateParams {
   meta_data?: MetaData;
 
   /**
-   * Body param: Use this param to update the name of an asset. Users can assign
+   * Body param: Use this param to update the `name` of an `asset`. Users can assign
    * meaningful custom names to their assets.
    */
   name?: string;
 
   /**
-   * Body param: **This parameter will be deprecated soon! Please use the attributes
-   * parameter to add labels or markers for the asset.**
+   * Body param: **This parameter will be deprecated soon! Please use the
+   * `attributes` parameter to add labels or markers for the asset.**
    *
-   * Use this param to update the tags of an asset. tags can be used to filter asset
-   * in _Get Asset List_, **Search** and **Monitor** queries.
+   * Use this param to update the `tags` of an `asset`. `tags` can be used to filter
+   * `asset` in _Get Asset List_, **Search** and **Monitor** queries.
    */
   tags?: Array<string>;
 }
@@ -363,27 +364,27 @@ export interface AssetListParams {
   cluster?: 'america';
 
   /**
-   * Use this parameter to filter the assets by their attributes. Only the assets
-   * having all the attributes added to this parameter, will be returned in the
-   * response. Multiple attributes can be separated using pipes (|).
+   * Use this parameter to filter the assets by their `attributes`. Only the assets
+   * having all the `attributes` added to this parameter, will be returned in the
+   * response. Multiple `attributes` can be separated using pipes (`|`).
    *
    * Please note the attributes are case sensitive. Also, this parameter can not be
-   * used in conjunction with include_any_of_attributes parameter.
+   * used in conjunction with `include_any_of_attributes` parameter.
    */
   include_all_of_attributes?: string;
 
   /**
-   * Use this parameter to filter the assets by their attributes. Assets having at
-   * least one of the attributes added to this parameter, will be returned in the
-   * response. Multiple attributes can be separated using pipes (|).
+   * Use this parameter to filter the assets by their `attributes`. Assets having at
+   * least one of the `attributes` added to this parameter, will be returned in the
+   * response. Multiple `attributes` can be separated using pipes (`|`).
    *
    * Please note the attributes are case sensitive. Also, this parameter can not be
-   * used in conjunction with include_all_of_attributes parameter.
+   * used in conjunction with `include_all_of_attributes` parameter.
    */
   include_any_of_attributes?: string;
 
   /**
-   * Denotes page number. Use this along with the ps parameter to implement
+   * Denotes page number. Use this along with the `ps` parameter to implement
    * pagination for your searched results. This parameter does not have a maximum
    * limit but would return an empty response in case a higher value is provided when
    * the result-set itself is smaller.
@@ -391,29 +392,29 @@ export interface AssetListParams {
   pn?: number;
 
   /**
-   * Denotes number of search results per page. Use this along with the pn parameter
-   * to implement pagination for your searched results.
+   * Denotes number of search results per page. Use this along with the `pn`
+   * parameter to implement pagination for your searched results.
    */
   ps?: number;
 
   /**
-   * Provide a single field to sort the results by. Only updated_at or created_at
+   * Provide a single field to sort the results by. Only `updated_at` or `created_at`
    * fields can be selected for ordering the results.
    *
-   * By default, the result is sorted by created_at field in the descending order.
-   * Allowed values for specifying the order are asc for ascending order and desc for
-   * descending order.
+   * By default, the result is sorted by `created_at` field in the descending order.
+   * Allowed values for specifying the order are `asc` for ascending order and `desc`
+   * for descending order.
    */
   sort?: string;
 
   /**
    * **This parameter will be deprecated soon! Please use the
-   * include_all_of_attributes or include_any_of_attributes parameters to provide
+   * `include_all_of_attributes` or `include_any_of_attributes` parameters to provide
    * labels or markers for the assets to be retrieved.**
    *
-   * tags can be used to filter the assets. Only those assets which have all the tags
-   * provided, will be included in the result. In case multiple tags need to be
-   * specified, use , to separate them.
+   * `tags` can be used to filter the assets. Only those assets which have all the
+   * `tags` provided, will be included in the result. In case multiple `tags` need to
+   * be specified, use `,` to separate them.
    */
   tags?: string;
 }
@@ -439,11 +440,11 @@ export interface AssetBindParams {
   key: string;
 
   /**
-   * Body param: Device ID to be linked to the asset identified by id.
+   * Body param: Device ID to be linked to the `asset` identified by `id`.
    *
-   * Please note that the device needs to be linked to an asset before using it in
+   * Please note that the device needs to be linked to an `asset` before using it in
    * the _Upload locations of an Asset_ method for sending GPS information about the
-   * asset.
+   * `asset`.
    */
   device_id: string;
 }
@@ -457,16 +458,17 @@ export interface AssetTrackParams {
 
   /**
    * Body param: ID of the device used to upload the tracking information of the
-   * asset.
+   * `asset`.
    *
-   * Please note that the device_id used here must already be linked to the asset.
-   * Use the _Bind Device to Asset_ method to link a device with your asset.
+   * Please note that the `device_id` used here must already be linked to the
+   * `asset`. Use the _Bind Device to Asset_ method to link a device with your
+   * `asset`.
    */
   device_id: string;
 
   /**
    * Body param: An array of objects to collect the location tracking information for
-   * an asset. Each object must correspond to details of only one location.
+   * an `asset`. Each object must correspond to details of only one location.
    */
   locations: AssetTrackParams.Locations;
 
@@ -478,7 +480,7 @@ export interface AssetTrackParams {
 
 export namespace AssetTrackParams {
   /**
-   * An array of objects to collect the location tracking information for an asset.
+   * An array of objects to collect the location tracking information for an `asset`.
    * Each object must correspond to details of only one location.
    */
   export interface Locations {
@@ -502,7 +504,7 @@ export namespace AssetTrackParams {
     accuracy?: number;
 
     /**
-     * Use this parameter to provide the altitude, in meters, of the asset at the
+     * Use this parameter to provide the altitude, in meters, of the `asset` at the
      * tracked location.
      */
     altitude?: number;
@@ -515,7 +517,7 @@ export namespace AssetTrackParams {
     battery_level?: number;
 
     /**
-     * Use this parameter to provide the heading of the asset, in radians, calculated
+     * Use this parameter to provide the heading of the `asset`, in radians, calculated
      * from true north in clockwise direction. This should always be in the range of
      * [0, 360).
      */
@@ -523,15 +525,15 @@ export namespace AssetTrackParams {
 
     /**
      * Use this object to add any custom data about the location that is being
-     * uploaded. Recommended to use the key:value format for adding the desired
+     * uploaded. Recommended to use the `key`:`value` format for adding the desired
      * information.
      *
-     * Please note that the maximum size of meta_data object should not exceed 65Kb.
+     * Please note that the maximum size of `meta_data` object should not exceed 65Kb.
      */
     meta_data?: unknown;
 
     /**
-     * Use this parameter to provide the speed of the asset, in meters per second, at
+     * Use this parameter to provide the speed of the `asset`, in meters per second, at
      * the tracked location.
      */
     speed?: number;
@@ -549,12 +551,12 @@ export namespace AssetTrackParams {
      */
     export interface Location {
       /**
-       * Latitude of the tracked location of the asset.
+       * Latitude of the tracked location of the `asset`.
        */
       lat: number;
 
       /**
-       * Longitude of the tracked location of the asset.
+       * Longitude of the tracked location of the `asset`.
        */
       lon: number;
     }
@@ -569,20 +571,21 @@ export interface AssetUpdateAttributesParams {
   key: string;
 
   /**
-   * Body param: attributes can be used to add any useful information or context to
+   * Body param: `attributes` can be used to add any useful information or context to
    * your assets like the vehicle type, shift timing etc. These attributes can also
    * be used to filter assets in **Search**, **Monitor**, and _Get Asset List_
    * queries.
    *
-   * Provide the attributes to be added or updated, in key:value format. If an
-   * existing key is provided in the input, then the value will be modified as per
-   * the input value. If a new key is provided in the input, then the key would be
-   * added to the existing set. The contents of any value field are neither altered
-   * nor removed unless specifically referred to by its key in the input request.
+   * Provide the attributes to be added or updated, in `key`:`value` format. If an
+   * existing `key` is provided in the input, then the `value` will be modified as
+   * per the input value. If a new `key` is provided in the input, then the `key`
+   * would be added to the existing set. The contents of any `value` field are
+   * neither altered nor removed unless specifically referred to by its `key` in the
+   * input request.
    *
-   * Please note that the maximum number of key:value pairs that can be added to an
-   * attributes object is 100. Also, the overall size of attributes object should not
-   * exceed 65kb.
+   * Please note that the maximum number of `key`:`value` pairs that can be added to
+   * an `attributes` object is 100. Also, the overall size of `attributes` object
+   * should not exceed 65kb.
    */
   attributes: unknown;
 }

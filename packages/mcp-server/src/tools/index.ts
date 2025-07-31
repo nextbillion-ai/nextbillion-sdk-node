@@ -97,8 +97,8 @@ import retrieve_revgeocode from './revgeocode/retrieve-revgeocode';
 import create_route_report from './route-report/create-route-report';
 import snap_snap_to_roads from './snap-to-roads/snap-snap-to-roads';
 import retrieve_coordinates_postalcode from './postalcode/retrieve-coordinates-postalcode';
-import by_id_lookup from './lookup/by-id-lookup';
 import list_areas from './areas/list-areas';
+import by_id_lookup from './lookup/by-id-lookup';
 
 export const endpoints: Endpoint[] = [];
 
@@ -199,8 +199,8 @@ addEndpoint(retrieve_revgeocode);
 addEndpoint(create_route_report);
 addEndpoint(snap_snap_to_roads);
 addEndpoint(retrieve_coordinates_postalcode);
-addEndpoint(by_id_lookup);
 addEndpoint(list_areas);
+addEndpoint(by_id_lookup);
 
 export type Filter = {
   type: 'resource' | 'operation' | 'tag' | 'tool';

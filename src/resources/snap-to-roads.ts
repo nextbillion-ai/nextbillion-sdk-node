@@ -27,15 +27,15 @@ export interface SnapToRoadSnapResponse {
 
   /**
    * A GeoJSON object with details of the snapped path. This object is returned when
-   * the geometry field is set to geojson in the input request, otherwise it is not
-   * present in the response. The contents of this object follow the
+   * the `geometry` field is set to `geojson` in the input request, otherwise it is
+   * not present in the response. The contents of this object follow the
    * [geoJSON standard](https://datatracker.ietf.org/doc/html/rfc7946).
    */
   geojson?: SnapToRoadSnapResponse.Geojson;
 
   /**
    * An array of strings containing the encoded geometries of snapped paths in
-   * polyline or polyline6 format.
+   * `polyline` or `polyline6` format.
    */
   geometry?: Array<string>;
 
@@ -53,14 +53,14 @@ export interface SnapToRoadSnapResponse {
   road_info?: SnapToRoadSnapResponse.RoadInfo;
 
   /**
-   * An array of objects. Each object provides the details of a path coordinate point
-   * snapped to the nearest road.
+   * An array of objects. Each object provides the details of a `path` coordinate
+   * point snapped to the nearest road.
    */
   snappedPoints?: Array<SnapToRoadSnapResponse.SnappedPoint>;
 
   /**
    * A string indicating the state of the response. On normal responses, the value
-   * will be Ok. Indicative HTTP error codes are returned for different errors. See
+   * will be `Ok`. Indicative HTTP error codes are returned for different errors. See
    * the [API Errors Codes](#api-error-codes) section below for more information.
    */
   status?: string;
@@ -69,8 +69,8 @@ export interface SnapToRoadSnapResponse {
 export namespace SnapToRoadSnapResponse {
   /**
    * A GeoJSON object with details of the snapped path. This object is returned when
-   * the geometry field is set to geojson in the input request, otherwise it is not
-   * present in the response. The contents of this object follow the
+   * the `geometry` field is set to `geojson` in the input request, otherwise it is
+   * not present in the response. The contents of this object follow the
    * [geoJSON standard](https://datatracker.ietf.org/doc/html/rfc7946).
    */
   export interface Geojson {
@@ -123,20 +123,20 @@ export namespace SnapToRoadSnapResponse {
   export namespace RoadInfo {
     export interface MaxSpeed {
       /**
-       * length refers to a sequence of 'n' consecutive vertices in the route geometry
-       * starting from the offset, forming a continuous section of route where the
-       * maximum speed is the same and is indicated in value.
+       * `length` refers to a sequence of 'n' consecutive vertices in the route geometry
+       * starting from the `offset`, forming a continuous section of route where the
+       * maximum speed is the same and is indicated in `value`.
        */
       length?: number;
 
       /**
-       * offset is the index value of the vertex of route geometry, which is the starting
-       * point of the segment.
+       * `offset` is the index value of the vertex of route geometry, which is the
+       * starting point of the segment.
        */
       offset?: number;
 
       /**
-       * value denotes the maximum speed of this segment, in kilometers per hour.
+       * `value` denotes the maximum speed of this segment, in kilometers per hour.
        *
        * - A value of "-1" indicates that the speed is unlimited for this road segment.
        * - A value of "0" indicates that there is no information about the maximum speed
@@ -149,9 +149,9 @@ export namespace SnapToRoadSnapResponse {
   export interface SnappedPoint {
     /**
      * The bearing, calculated as the angle from true north in clockwise direction, of
-     * the route leading to the next snapped point from the current snapped_point, in
-     * radians. In case of the last snapped_point of the route, the bearing indicates
-     * the direction of the route to the previous snapped_location.
+     * the route leading to the next snapped point from the current `snapped_point`, in
+     * radians. In case of the last `snapped_point` of the route, the bearing indicates
+     * the direction of the route to the previous `snapped_location`.
      */
     bearing: number;
 
@@ -171,7 +171,7 @@ export namespace SnapToRoadSnapResponse {
     name: string;
 
     /**
-     * The index of the input path coordinate point to which this snapped point
+     * The index of the input `path` coordinate point to which this snapped point
      * corresponds to.
      */
     originalIndex: number;
@@ -217,7 +217,7 @@ export interface SnapToRoadSnapParams {
    * coordinate points provided in the "path" parameter. However, you can skip a
    * coordinate and show its position in the list with the ";" separator.
    */
-  approaches?: 'unrestricted' | 'curb';
+  approaches?: '`unrestricted`' | '`curb`';
 
   /**
    * Setting this will ensure the route avoids ferries, tolls, highways or nothing.
@@ -236,7 +236,7 @@ export interface SnapToRoadSnapParams {
    * selected as the input value, "polyline6" encoded geometry of the snapped path is
    * returned along with a "geojson" object.
    */
-  geometry?: 'polyline' | 'polyline6' | 'geojson';
+  geometry?: '`polyline`' | '`polyline6`' | '`geojson`';
 
   /**
    * Set which driving mode the service should use to determine a route. For example,
@@ -251,7 +251,7 @@ export interface SnapToRoadSnapParams {
    * [support@nextbillion.ai](mailto:support@nextbillion.ai) in case you need
    * additional profiles.
    */
-  mode?: 'car' | 'truck';
+  mode?: '`car`' | '`truck`';
 
   /**
    * Include this parameter in the request to return segment-wise speed information
@@ -261,7 +261,7 @@ export interface SnapToRoadSnapParams {
    * parameter, which is effective only when "option=flexible". However, the
    * resultant route might not contain all the locations provided in "path" input.
    */
-  option?: 'flexible';
+  option?: '`flexible`';
 
   /**
    * Pipe separated radiuses, in meters (m), up to which a coordinate point can be
@@ -277,7 +277,7 @@ export interface SnapToRoadSnapParams {
    * Use this parameter to receive segment-wise maximum speed information of the
    * route in the response. "max_speed" is the only allowed value.
    */
-  road_info?: 'max_speed';
+  road_info?: '`max_speed`';
 
   /**
    * Pipe-separated UNIX epoch timestamp in seconds for each location. If used, the

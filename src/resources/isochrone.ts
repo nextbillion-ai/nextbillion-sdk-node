@@ -19,7 +19,7 @@ export interface IsochroneComputeResponse {
   /**
    * A
    * [GeoJSON FeatureCollection](https://datatracker.ietf.org/doc/html/rfc7946#section-3.3)
-   * object with details of the isochrone contours. Each feature object in this
+   * object with details of the isochrone contours. Each `feature` object in this
    * collection represents an isochrone.
    */
   features?: Array<IsochroneComputeResponse.Feature>;
@@ -33,7 +33,7 @@ export interface IsochroneComputeResponse {
 
   /**
    * A string indicating the state of the response. On normal responses, the value
-   * will be Ok. Indicative HTTP error codes are returned for different errors. See
+   * will be `Ok`. Indicative HTTP error codes are returned for different errors. See
    * the [API Errors Codes](#api-error-codes) section below for more information.
    */
   status?: string;
@@ -41,7 +41,7 @@ export interface IsochroneComputeResponse {
   /**
    * Type of the GeoJSON object. As prescribed in
    * [GeoJSON standard](https://datatracker.ietf.org/doc/html/rfc7946#section-1.4),
-   * its value is FeatureCollection as the feature property contains a list of
+   * its value is `FeatureCollection` as the `feature` property contains a list of
    * geoJSON feature objects.
    */
   type?: string;
@@ -61,7 +61,7 @@ export namespace IsochroneComputeResponse {
     properties?: Feature.Properties;
 
     /**
-     * Type of the GeoJSON object. Its value is Feature as per the
+     * Type of the GeoJSON object. Its value is `Feature` as per the
      * [GeoJSON standard](https://datatracker.ietf.org/doc/html/rfc7946#section-1.4)
      * object.
      */
@@ -96,10 +96,10 @@ export namespace IsochroneComputeResponse {
       color?: string;
 
       /**
-       * The value of the metric used in this contour. See the metric property to
-       * determine whether this is a time or distance contour. When the metric is time
-       * this value denotes the travel time in minutes and when the metric is distance
-       * this value denotes the travel distance in kilometers.
+       * The value of the metric used in this contour. See the `metric` property to
+       * determine whether this is a `time` or `distance` contour. When the `metric` is
+       * `time` this value denotes the travel time in minutes and when the `metric` is
+       * `distance` this value denotes the travel distance in kilometers.
        */
       contour?: number;
 
@@ -120,7 +120,7 @@ export namespace IsochroneComputeResponse {
       fillOpacity?: number;
 
       /**
-       * The metric that the contour represents - either distance or time
+       * The metric that the contour represents - either `distance` or `time`
        */
       metric?: string;
 
@@ -209,7 +209,7 @@ export interface IsochroneComputeParams {
    * [support@nextbillion.ai](mailto:support@nextbillion.ai) in case you need
    * additional profiles.
    */
-  mode?: 'car' | 'truck';
+  mode?: '`car`' | '`truck`';
 
   /**
    * Specify whether to return the contours as GeoJSON polygons (true) or linestrings
