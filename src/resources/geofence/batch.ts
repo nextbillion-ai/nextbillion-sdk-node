@@ -39,7 +39,7 @@ export interface BatchCreateResponse {
 
   /**
    * A string indicating the state of the response. On successful responses, the
-   * value will be `Ok`. Indicative error messages are returned for different errors.
+   * value will be Ok. Indicative error messages are returned for different errors.
    * See the [API Error Codes](#api-error-codes) section below for more information.
    */
   status?: string;
@@ -59,7 +59,7 @@ export interface BatchListResponse {
 
   /**
    * A string indicating the state of the response. On successful responses, the
-   * value will be `Ok`. Indicative error messages are returned for different errors.
+   * value will be Ok. Indicative error messages are returned for different errors.
    * See the [API Error Codes](#api-error-codes) section below for more information.
    */
   status: string;
@@ -91,7 +91,7 @@ export interface BatchCreateParams {
 
 export interface BatchListParams {
   /**
-   * Comma(`,`) separated list of IDs of the geofences to be searched.
+   * Comma(,) separated list of IDs of the geofences to be searched.
    */
   ids: string;
 

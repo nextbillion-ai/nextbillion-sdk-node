@@ -28,29 +28,29 @@ export const tool: Tool = {
       filter: {
         type: 'object',
         description:
-          "Specify the filtering criterion for the vehicles with respect to each order's location. `filter` is a mandatory input for all requests.",
+          "Specify the filtering criterion for the vehicles with respect to each order's location. filter is a mandatory input for all requests.",
         properties: {
           driving_distance: {
             type: 'number',
             description:
-              'Defines a `driving_distance` filter, in meters. If a vehicle needs to drive further than this distance to reach a pickup location, it will not be assigned to that order. Valid range of values for this filter is \\[1, 10000\\].',
+              'Defines a driving_distance filter, in meters. If a vehicle needs to drive further than this distance to reach a pickup location, it will not be assigned to that order. Valid range of values for this filter is \\[1, 10000\\].',
           },
           pickup_eta: {
             type: 'integer',
             description:
-              'Specify a duration, in seconds, which will be used to filter out ineligible vehicles for each order. Any vehicle which would take more time than specified here, to reach the pickup location of a given order, will be ruled out for assignment for that particular order. Valid values for `pickup_eta` are \\[1, 3600\\].',
+              'Specify a duration, in seconds, which will be used to filter out ineligible vehicles for each order. Any vehicle which would take more time than specified here, to reach the pickup location of a given order, will be ruled out for assignment for that particular order. Valid values for pickup_eta are \\[1, 3600\\].',
           },
           radius: {
             type: 'number',
             description:
-              'Specify a radius, in meters, which will be used to filter out ineligible vehicles for each order. The pickup location of an order will act as the center of the circle when identifying eligible vehicles. Valid values for `radius` are \\[1, 10000\\].',
+              'Specify a radius, in meters, which will be used to filter out ineligible vehicles for each order. The pickup location of an order will act as the center of the circle when identifying eligible vehicles. Valid values for radius are \\[1, 10000\\].',
           },
         },
       },
       orders: {
         type: 'array',
         description:
-          'Collects the details of open orders to be fulfilled. Each object represents one order. All requests must include `orders` as a mandatory input. A maximum of 200 orders is allowed per request.',
+          'Collects the details of open orders to be fulfilled. Each object represents one order. All requests must include orders as a mandatory input. A maximum of 200 orders is allowed per request.',
         items: {
           type: 'object',
           properties: {
@@ -76,12 +76,12 @@ export const tool: Tool = {
             attributes: {
               type: 'object',
               description:
-                'Specify custom attributes for the orders. Each attribute should be created as a `key:value` pair. The **keys** provided can be used in `options.order_attribute_priority_mappings` to assign a custom priority for this order based on its attributes.\n\nThe maximum number of key:value pairs that can be specified under `attributes` for a given order, is limited to 30.',
+                'Specify custom attributes for the orders. Each attribute should be created as a key:value pair. The **keys** provided can be used in options.order_attribute_priority_mappings to assign a custom priority for this order based on its attributes.\n\nThe maximum number of key:value pairs that can be specified under attributes for a given order, is limited to 30.',
             },
             dropoffs: {
               type: 'array',
               description:
-                'Use this parameter to specify the location coordinates of the destination of the trip or the intermediate stops to be completed before it.\n\nPlease note\n\n*   The last location provided is treated as the destination of the trip.\n    \n*   `dropoffs` is mandatory when `dropoff_details` is set to **true**.',
+                'Use this parameter to specify the location coordinates of the destination of the trip or the intermediate stops to be completed before it.\n\nPlease note\n\n*   The last location provided is treated as the destination of the trip.\n    \n*   dropoffs is mandatory when dropoff_details is set to **true**.',
               items: {
                 type: 'object',
                 properties: {
@@ -99,7 +99,7 @@ export const tool: Tool = {
             priority: {
               type: 'integer',
               description:
-                'Specify the priority for this order. A higher value indicates a higher priority. When specified, it will override any priority score deduced from `order_attribute_priority_mappings` for this order. Valid values are \\[1, 10\\] and default is 0.',
+                'Specify the priority for this order. A higher value indicates a higher priority. When specified, it will override any priority score deduced from order_attribute_priority_mappings for this order. Valid values are \\[1, 10\\] and default is 0.',
             },
             service_time: {
               type: 'integer',
@@ -109,7 +109,7 @@ export const tool: Tool = {
             vehicle_preferences: {
               type: 'object',
               description:
-                "Define custom preferences for task assignment based on vehicle's attributes. If multiple criteria are provided, they are evaluated using an AND condition—meaning all specified criteria must be met individually for a vehicle to be considered.\n\nFor example, if `required_all_of_attributes`, `required_any_of_attributes`, and `exclude_all_of_attributes` are all provided, an eligible vehicle must satisfy the following to be considered for assignments:\n\n1.  Meet all conditions specified in `required_all_of_attributes`.\n    \n2.  Meet at least one of the conditions listed in `required_any_of_attributes`.\n    \n3.  Not meet any conditions mentioned in `exclude_all_of_attributes`.\n    \n\nConsequently, a vehicle which does not have any `attributes` defined can't be assigned to an order which has `vehicle_preferences` configured.",
+                "Define custom preferences for task assignment based on vehicle's attributes. If multiple criteria are provided, they are evaluated using an AND condition—meaning all specified criteria must be met individually for a vehicle to be considered.\n\nFor example, if required_all_of_attributes, required_any_of_attributes, and exclude_all_of_attributes are all provided, an eligible vehicle must satisfy the following to be considered for assignments:\n\n1.  Meet all conditions specified in required_all_of_attributes.\n    \n2.  Meet at least one of the conditions listed in required_any_of_attributes.\n    \n3.  Not meet any conditions mentioned in exclude_all_of_attributes.\n    \n\nConsequently, a vehicle which does not have any attributes defined can't be assigned to an order which has vehicle_preferences configured.",
               properties: {
                 exclude_all_of_attributes: {
                   type: 'array',
@@ -121,17 +121,17 @@ export const tool: Tool = {
                       attribute: {
                         type: 'string',
                         description:
-                          'Specify the name of the attribute. The `attribute` is compared to the keys (of each `key:value` pair) in `vehicles.attributes` during evaluation.',
+                          'Specify the name of the attribute. The attribute is compared to the keys (of each key:value pair) in vehicles.attributes during evaluation.',
                       },
                       operator: {
                         type: 'string',
                         description:
-                          'Specify the operator to denote the relation between `attribute` and the `value` specified above. The `attribute` , `operator` and `value` together constitute the condition that a vehicle must meet to be eligible for assignment. Currently, we support following operators currently:\n\n*   Equal to (==)\n    \n*   Less than (<)\n    \n*   Less tha equal to (<=)\n    \n*   Greater than (>)\n    \n*   Greater than equal to (>=)\n    \n*   Contains (contains)\n    \n\nPlease note that when using "contains" operator only one `value` can be specified and the corresponding `attribute` must contain multiple values when defined for a vehicle.',
+                          'Specify the operator to denote the relation between attribute and the value specified above. The attribute , operator and value together constitute the condition that a vehicle must meet to be eligible for assignment. Currently, we support following operators currently:\n\n*   Equal to (==)\n    \n*   Less than (<)\n    \n*   Less tha equal to (<=)\n    \n*   Greater than (>)\n    \n*   Greater than equal to (>=)\n    \n*   Contains (contains)\n    \n\nPlease note that when using "contains" operator only one value can be specified and the corresponding attribute must contain multiple values when defined for a vehicle.',
                       },
                       value: {
                         type: 'string',
                         description:
-                          'Specify the desired value of the attribute to be applied for this order. `value` provided here is compared to the values (of each `key:value` pair) in `vehicles.attributes` during evaluation.',
+                          'Specify the desired value of the attribute to be applied for this order. value provided here is compared to the values (of each key:value pair) in vehicles.attributes during evaluation.',
                       },
                     },
                     required: ['attribute', 'operator', 'value'],
@@ -147,17 +147,17 @@ export const tool: Tool = {
                       attribute: {
                         type: 'string',
                         description:
-                          'Specify the name of the attribute. The `attribute` is compared to the keys (of each `key:value` pair) in `vehicles.attributes` during evaluation.',
+                          'Specify the name of the attribute. The attribute is compared to the keys (of each key:value pair) in vehicles.attributes during evaluation.',
                       },
                       operator: {
                         type: 'string',
                         description:
-                          'Specify the operator to denote the relation between `attribute` and the `value` specified above. The `attribute` , `operator` and `value` together constitute the condition that a vehicle must meet to be eligible for assignment. Currently, we support following operators currently:\n\n*   Equal to (==)\n    \n*   Less than (<)\n    \n*   Less tha equal to (<=)\n    \n*   Greater than (>)\n    \n*   Greater than equal to (>=)\n    \n*   Contains (contains)\n    \n\nPlease note that when using "contains" operator only one `value` can be specified and the corresponding `attribute` must contain multiple values when defined for a vehicle.',
+                          'Specify the operator to denote the relation between attribute and the value specified above. The attribute , operator and value together constitute the condition that a vehicle must meet to be eligible for assignment. Currently, we support following operators currently:\n\n*   Equal to (==)\n    \n*   Less than (<)\n    \n*   Less tha equal to (<=)\n    \n*   Greater than (>)\n    \n*   Greater than equal to (>=)\n    \n*   Contains (contains)\n    \n\nPlease note that when using "contains" operator only one value can be specified and the corresponding attribute must contain multiple values when defined for a vehicle.',
                       },
                       value: {
                         type: 'string',
                         description:
-                          'Specify the desired value of the attribute to be applied for this order. `value` provided here is compared to the values (of each `key:value` pair) in `vehicles.attributes` during evaluation.',
+                          'Specify the desired value of the attribute to be applied for this order. value provided here is compared to the values (of each key:value pair) in vehicles.attributes during evaluation.',
                       },
                     },
                     required: ['attribute', 'operator', 'value'],
@@ -173,17 +173,17 @@ export const tool: Tool = {
                       attribute: {
                         type: 'string',
                         description:
-                          'Specify the name of the attribute. The `attribute` is compared to the keys (of each `key:value` pair) in `vehicles.attributes` during evaluation.',
+                          'Specify the name of the attribute. The attribute is compared to the keys (of each key:value pair) in vehicles.attributes during evaluation.',
                       },
                       operator: {
                         type: 'string',
                         description:
-                          'Specify the operator to denote the relation between `attribute` and the `value` specified above. The `attribute` , `operator` and `value` together constitute the condition that a vehicle must meet to be eligible for assignment. Currently, we support following operators currently:\n\n*   Equal to (==)\n    \n*   Less than (<)\n    \n*   Less tha equal to (<=)\n    \n*   Greater than (>)\n    \n*   Greater than equal to (>=)\n    \n*   Contains (contains)\n    \n\nPlease note that when using "contains" operator only one `value` can be specified and the corresponding `attribute` must contain multiple values when defined for a vehicle.',
+                          'Specify the operator to denote the relation between attribute and the value specified above. The attribute , operator and value together constitute the condition that a vehicle must meet to be eligible for assignment. Currently, we support following operators currently:\n\n*   Equal to (==)\n    \n*   Less than (<)\n    \n*   Less tha equal to (<=)\n    \n*   Greater than (>)\n    \n*   Greater than equal to (>=)\n    \n*   Contains (contains)\n    \n\nPlease note that when using "contains" operator only one value can be specified and the corresponding attribute must contain multiple values when defined for a vehicle.',
                       },
                       value: {
                         type: 'string',
                         description:
-                          'Specify the desired value of the attribute to be applied for this order. `value` provided here is compared to the values (of each `key:value` pair) in `vehicles.attributes` during evaluation.',
+                          'Specify the desired value of the attribute to be applied for this order. value provided here is compared to the values (of each key:value pair) in vehicles.attributes during evaluation.',
                       },
                     },
                     required: ['attribute', 'operator', 'value'],
@@ -198,7 +198,7 @@ export const tool: Tool = {
       vehicles: {
         type: 'array',
         description:
-          'Collects the details of vehicles available to fulfill the orders. Each object represents one vehicle. All requests must include `vehicles` as a mandatory input. A maximum of 100 vehicles is allowed per request.',
+          'Collects the details of vehicles available to fulfill the orders. Each object represents one vehicle. All requests must include vehicles as a mandatory input. A maximum of 100 vehicles is allowed per request.',
         items: {
           $ref: '#/$defs/vehicle',
         },
@@ -210,7 +210,7 @@ export const tool: Tool = {
           alternate_assignments: {
             type: 'integer',
             description:
-              'Specify the maximum number of potential, alternate vehicle assignments to be returned for each order, apart from the vehicle which was assigned as recommended. Please note that:\n\n*   The maximum number of alternate assignments that can be requested are 3.\n    \n*   It is not necessary that the service will return the specified number of alternate assignments for each order. The number of alternate assignments returned will depend on the number of vehicles provided in the input.\n    \n*   Order which could not be assigned to any vehicles due to their `filter` or attribute matching criteria will not be eligible for alternate assignments as well.',
+              'Specify the maximum number of potential, alternate vehicle assignments to be returned for each order, apart from the vehicle which was assigned as recommended. Please note that:\n\n*   The maximum number of alternate assignments that can be requested are 3.\n    \n*   It is not necessary that the service will return the specified number of alternate assignments for each order. The number of alternate assignments returned will depend on the number of vehicles provided in the input.\n    \n*   Order which could not be assigned to any vehicles due to their filter or attribute matching criteria will not be eligible for alternate assignments as well.',
           },
           dropoff_details: {
             type: 'boolean',
@@ -227,12 +227,12 @@ export const tool: Tool = {
                 attribute: {
                   type: 'string',
                   description:
-                    'Specify the name of the attribute. The `attribute` is compared to the keys (of each `key:value` pair) in `orders.attributes` during evaluation.',
+                    'Specify the name of the attribute. The attribute is compared to the keys (of each key:value pair) in orders.attributes during evaluation.',
                 },
                 operator: {
                   type: 'string',
                   description:
-                    'Specify the operator to denote the relation between `attribute` and the `value` specified above. The `attribute` , `operator` and `value` together constitute the condition that an order must meet to assume the specified priority. We support the following operators currently:\n\n*   Equal to (==)\n    \n*   Less than (<)\n    \n*   Less tha equal to (<=)\n    \n*   Greater than (>)\n    \n*   Greater than equal to (>=)\n    \n*   Contains (contains)\n    \n\nPlease note that when using "contains" operator only one `value` can be specified and the corresponding `attribute` must contain multiple values when defined for an order.',
+                    'Specify the operator to denote the relation between attribute and the value specified above. The attribute , operator and value together constitute the condition that an order must meet to assume the specified priority. We support the following operators currently:\n\n*   Equal to (==)\n    \n*   Less than (<)\n    \n*   Less tha equal to (<=)\n    \n*   Greater than (>)\n    \n*   Greater than equal to (>=)\n    \n*   Contains (contains)\n    \n\nPlease note that when using "contains" operator only one value can be specified and the corresponding attribute must contain multiple values when defined for an order.',
                 },
                 priority: {
                   type: 'string',
@@ -242,7 +242,7 @@ export const tool: Tool = {
                 value: {
                   type: 'string',
                   description:
-                    'Specify the desired value of the attribute to be applied for this order. `value` provided here is compared to the values (of each `key:value` pair) in `orders.attributes` during evaluation.',
+                    'Specify the desired value of the attribute to be applied for this order. value provided here is compared to the values (of each key:value pair) in orders.attributes during evaluation.',
                 },
               },
               required: ['attribute', 'operator', 'priority', 'value'],
@@ -264,12 +264,12 @@ export const tool: Tool = {
                 attribute: {
                   type: 'string',
                   description:
-                    'Specify the name of the attribute. The `attribute` is compared to the keys (of each `key:value` pair) in `vehicles.attributes` during evaluation.',
+                    'Specify the name of the attribute. The attribute is compared to the keys (of each key:value pair) in vehicles.attributes during evaluation.',
                 },
                 operator: {
                   type: 'string',
                   description:
-                    'Specify the operator to denote the relation between `attribute` and the `value` specified above. The `attribute` , `operator` and `value` together constitute the condition that a vehicle must meet to assume the specified priority. We support the following operators currently:\n\n*   Equal to (==)\n    \n*   Less than (<)\n    \n*   Less tha equal to (<=)\n    \n*   Greater than (>)\n    \n*   Greater than equal to (>=)\n    \n*   Contains (contains)\n    \n\nPlease note that when using "contains" operator only one `value` can be specified and the corresponding `attribute` must contain multiple values when defined for a vehicle.',
+                    'Specify the operator to denote the relation between attribute and the value specified above. The attribute , operator and value together constitute the condition that a vehicle must meet to assume the specified priority. We support the following operators currently:\n\n*   Equal to (==)\n    \n*   Less than (<)\n    \n*   Less tha equal to (<=)\n    \n*   Greater than (>)\n    \n*   Greater than equal to (>=)\n    \n*   Contains (contains)\n    \n\nPlease note that when using "contains" operator only one value can be specified and the corresponding attribute must contain multiple values when defined for a vehicle.',
                 },
                 priority: {
                   type: 'string',
@@ -279,7 +279,7 @@ export const tool: Tool = {
                 value: {
                   type: 'string',
                   description:
-                    'Specify the desired value of the attribute to be applied for this vehicle. `value` provided here is compared to the values (of each `key:value` pair) in `vehicles.attributes` during evaluation.',
+                    'Specify the desired value of the attribute to be applied for this vehicle. value provided here is compared to the values (of each key:value pair) in vehicles.attributes during evaluation.',
                 },
               },
               required: ['attribute', 'operator', 'priority', 'value'],
@@ -315,12 +315,12 @@ export const tool: Tool = {
           attributes: {
             type: 'object',
             description:
-              'Specify custom attributes for the vehicle. Each attribute should be created as a `key:value` pair. These attributes can be used in the `orders.vehicle_preferences` input to refine the search of vehicles for each order.\n\nThe maximum number of key:value pairs that can be specified under `attributes` for a given vehicle, is limited to 30.',
+              'Specify custom attributes for the vehicle. Each attribute should be created as a key:value pair. These attributes can be used in the orders.vehicle_preferences input to refine the search of vehicles for each order.\n\nThe maximum number of key:value pairs that can be specified under attributes for a given vehicle, is limited to 30.',
           },
           priority: {
             type: 'integer',
             description:
-              'Specify the priority for this vehicle. A higher value indicates a higher priority. When specified, it will override any priority score deduced from `vehicle_attribute_priority_mappings` for this vehicle. Valid values are \\[1, 10\\] and default is 0.',
+              'Specify the priority for this vehicle. A higher value indicates a higher priority. When specified, it will override any priority score deduced from vehicle_attribute_priority_mappings for this vehicle. Valid values are \\[1, 10\\] and default is 0.',
           },
           remaining_waypoints: {
             type: 'array',

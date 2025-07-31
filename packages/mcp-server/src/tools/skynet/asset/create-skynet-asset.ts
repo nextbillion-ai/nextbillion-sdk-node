@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'create_skynet_asset',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nCreate an Asset\n\n# Response Schema\n```json\n{\n  type: 'object',\n  properties: {\n    data: {\n      type: 'object',\n      description: 'An object containing the ID of the `asset` created.',\n      properties: {\n        id: {\n          type: 'string',\n          description: 'Unique ID of the asset created. It will be the same as `custom_id`, if provided. Else it will be an auto generated UUID. Please note this ID cannot be updated.'\n        }\n      }\n    },\n    message: {\n      type: 'string',\n      description: 'Displays the error message in case of a failed request. If the request is successful, this field is not present in the response.'\n    },\n    status: {\n      type: 'string',\n      description: 'A string indicating the state of the response. On successful responses, the value will be `Ok`. Indicative error messages are returned for different errors. See the [API Error Codes](#api-error-codes) section below for more information.'\n    }\n  }\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nCreate an Asset\n\n# Response Schema\n```json\n{\n  type: 'object',\n  properties: {\n    data: {\n      type: 'object',\n      description: 'An object containing the ID of the asset created.',\n      properties: {\n        id: {\n          type: 'string',\n          description: 'Unique ID of the asset created. It will be the same as custom_id, if provided. Else it will be an auto generated UUID. Please note this ID cannot be updated.'\n        }\n      }\n    },\n    message: {\n      type: 'string',\n      description: 'Displays the error message in case of a failed request. If the request is successful, this field is not present in the response.'\n    },\n    status: {\n      type: 'string',\n      description: 'A string indicating the state of the response. On successful responses, the value will be Ok. Indicative error messages are returned for different errors. See the [API Error Codes](#api-error-codes) section below for more information.'\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
@@ -34,16 +34,16 @@ export const tool: Tool = {
       attributes: {
         type: 'object',
         description:
-          '`attributes` can be used to store custom information about an asset in `key`:`value` format. Use `attributes` to add any useful information or context to your assets like the vehicle type, shift timing etc. Moreover, these attributes can be used to filter `assets` in **Search**, **Monitor**, and *Get Asset List* queries. \n\nPlease note that the maximum number of `key`:`value` pairs that can be added to an `attributes` object is 100. Also, the overall size of `attributes` object should not exceed 65kb.',
+          'attributes can be used to store custom information about an asset in key:value format. Use attributes to add any useful information or context to your assets like the vehicle type, shift timing etc. Moreover, these attributes can be used to filter assets in **Search**, **Monitor**, and *Get Asset List* queries. \n\nPlease note that the maximum number of key:value pairs that can be added to an attributes object is 100. Also, the overall size of attributes object should not exceed 65kb.',
       },
       custom_id: {
         type: 'string',
         description:
-          'Set a unique ID for the new `asset`. If not provided, an ID will be automatically generated in UUID format. A valid `custom_id` can contain letters, numbers, "-", & "_" only.\n\nPlease note that the ID of an `asset` can not be changed once it is created.',
+          'Set a unique ID for the new asset. If not provided, an ID will be automatically generated in UUID format. A valid custom_id can contain letters, numbers, "-", & "_" only.\n\nPlease note that the ID of an asset can not be changed once it is created.',
       },
       description: {
         type: 'string',
-        description: 'Description for the `asset`.',
+        description: 'Description for the asset.',
       },
       meta_data: {
         $ref: '#/$defs/meta_data',
@@ -51,12 +51,12 @@ export const tool: Tool = {
       name: {
         type: 'string',
         description:
-          'Name of the `asset`. Use this field to assign a meaningful, custom name to the `asset` being created.',
+          'Name of the asset. Use this field to assign a meaningful, custom name to the asset being created.',
       },
       tags: {
         type: 'array',
         description:
-          "**This parameter will be deprecated soon! Please use the `attributes` parameter to add labels or markers for the asset.**\n\nTags of the `asset`. `tags` can be used for filtering assets in operations like *Get Asset List* and asset **Search** methods. They can also be used for monitoring of assets using the **Monitor** methods after linking `tags` and `asset`.\n\nValid `tags` are strings consisting of alphanumeric characters (A-Z, a-z, 0-9) along with the underscore ('_') and hyphen ('-') symbols.",
+          "**This parameter will be deprecated soon! Please use the attributes parameter to add labels or markers for the asset.**\n\nTags of the asset. tags can be used for filtering assets in operations like *Get Asset List* and asset **Search** methods. They can also be used for monitoring of assets using the **Monitor** methods after linking tags and asset.\n\nValid tags are strings consisting of alphanumeric characters (A-Z, a-z, 0-9) along with the underscore ('_') and hyphen ('-') symbols.",
         items: {
           type: 'string',
         },

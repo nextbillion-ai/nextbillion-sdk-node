@@ -89,7 +89,7 @@ export const tool: Tool = {
       exclude: {
         type: 'string',
         description:
-          'Requires option=flexible.\n\nThis parameter serves as a mandatory filter, ensuring the service returns only those routes that strictly avoid the object(s) indicated. Multiple values should be separated by a pipe `|`). If no routes can be found that exclude the specified object(s), the service will return an error. For a less strict filtering approach, consider using the avoid parameter.\n\n\\- This parameter is effective only when route\\_type=fastest.  \n\\- When using exclude=sharp\\_turn, default range of permissible turn angles is \\[120,240\\]. In order to override default range, please use turn\\_angle\\_range parameter.  \n\\- If none is provided along with other values, an error is returned as a valid route is not feasible.',
+          'Requires option=flexible.\n\nThis parameter serves as a mandatory filter, ensuring the service returns only those routes that strictly avoid the object(s) indicated. Multiple values should be separated by a pipe |). If no routes can be found that exclude the specified object(s), the service will return an error. For a less strict filtering approach, consider using the avoid parameter.\n\n\\- This parameter is effective only when route\\_type=fastest.  \n\\- When using exclude=sharp\\_turn, default range of permissible turn angles is \\[120,240\\]. In order to override default range, please use turn\\_angle\\_range parameter.  \n\\- If none is provided along with other values, an error is returned as a valid route is not feasible.',
         enum: [
           'toll',
           'ferry',

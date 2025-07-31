@@ -41,8 +41,8 @@ export interface TrackLocation {
 
   /**
    * If available in the GPS information, this property returns the altitude of the
-   * `asset` at the tracked location. It is represented as height, in meters, above
-   * the WGS84 reference ellipsoid.
+   * asset at the tracked location. It is represented as height, in meters, above the
+   * WGS84 reference ellipsoid.
    */
   altitude?: number;
 
@@ -54,9 +54,8 @@ export interface TrackLocation {
 
   /**
    * If available in the GPS information, this property returns the heading of the
-   * `asset` calculated from true north in clockwise direction at the tracked
-   * location. Please note that the bearing is not affected by the device
-   * orientation.
+   * asset calculated from true north in clockwise direction at the tracked location.
+   * Please note that the bearing is not affected by the device orientation.
    *
    * The bearing will always be in the range of [0, 360).
    */
@@ -75,7 +74,7 @@ export interface TrackLocation {
 
   /**
    * If available in the GPS information, this property returns the speed of the
-   * `asset`, in meters per second, at the tracked location.
+   * asset, in meters per second, at the tracked location.
    */
   speed?: number;
 
@@ -97,12 +96,12 @@ export namespace TrackLocation {
    */
   export interface Location {
     /**
-     * Latitude of the tracked location of the `asset`.
+     * Latitude of the tracked location of the asset.
      */
     lat?: number;
 
     /**
-     * Longitude of the tracked location of the `asset`.
+     * Longitude of the tracked location of the asset.
      */
     lon?: number;
   }
@@ -119,7 +118,7 @@ export interface LocationListResponse {
 
   /**
    * A string indicating the state of the response. On successful responses, the
-   * value will be `Ok`. Indicative error messages are returned for different errors.
+   * value will be Ok. Indicative error messages are returned for different errors.
    * See the [API Error Codes](#api-error-codes) section below for more information.
    */
   status?: string;
@@ -131,28 +130,28 @@ export namespace LocationListResponse {
      * Distance of the path, in meters, formed by connecting all tracked locations
      * returned.
      *
-     * Please note that `distance` is returned only when the `mapmatch` property of
-     * `correction` parameter is set to 1.
+     * Please note that distance is returned only when the mapmatch property of
+     * correction parameter is set to 1.
      */
     distance?: number;
 
     /**
      * An object with geoJSON details of the route. It is returned only when the
-     * `mapmatch` property of the `correction` parameter is set to 1 and
-     * `geometry_type` is `geojson, otherwise it is not present in the response. The
-     * contents of this object follow the
+     * mapmatch property of the correction parameter is set to 1 and geometry_type is
+     * geojson, otherwise it is not present in the response. The contents of this
+     * object follow the
      * [geoJSON standard](https://datatracker.ietf.org/doc/html/rfc7946).
      */
     geojson?: Data.Geojson;
 
     /**
      * Geometry of tracked locations in the requested format. It is returned only if
-     * the `mapmatch` property of the ‘correction’ parameter is set to 1.
+     * the mapmatch property of the ‘correction’ parameter is set to 1.
      */
     geometry?: Array<string>;
 
     /**
-     * An array of objects with details of the tracked locations of the `asset`. Each
+     * An array of objects with details of the tracked locations of the asset. Each
      * object represents one tracked location.
      */
     list?: Array<LocationAPI.TrackLocation>;
@@ -165,10 +164,10 @@ export namespace LocationListResponse {
 
     /**
      * An array of objects with details about the snapped points for each of the
-     * tracked locations returned for the `asset`.
+     * tracked locations returned for the asset.
      *
-     * Please note that this property is returned only when the `mapmatch` property of
-     * `correction` parameter is set to 1.
+     * Please note that this property is returned only when the mapmatch property of
+     * correction parameter is set to 1.
      */
     snapped_points?: Array<Data.SnappedPoint>;
   }
@@ -176,9 +175,9 @@ export namespace LocationListResponse {
   export namespace Data {
     /**
      * An object with geoJSON details of the route. It is returned only when the
-     * `mapmatch` property of the `correction` parameter is set to 1 and
-     * `geometry_type` is `geojson, otherwise it is not present in the response. The
-     * contents of this object follow the
+     * mapmatch property of the correction parameter is set to 1 and geometry_type is
+     * geojson, otherwise it is not present in the response. The contents of this
+     * object follow the
      * [geoJSON standard](https://datatracker.ietf.org/doc/html/rfc7946).
      */
     export interface Geojson {
@@ -261,7 +260,7 @@ export namespace LocationListResponse {
 export interface LocationGetLastResponse {
   /**
    * An object containing the information about the last tracked location of the
-   * requested `asset`.
+   * requested asset.
    */
   data?: LocationGetLastResponse.Data;
 
@@ -273,7 +272,7 @@ export interface LocationGetLastResponse {
 
   /**
    * A string indicating the state of the response. On successful responses, the
-   * value will be `Ok`. Indicative error messages are returned for different errors.
+   * value will be Ok. Indicative error messages are returned for different errors.
    * See the [API Error Codes](#api-error-codes) section below for more information.
    */
   status?: string;
@@ -282,7 +281,7 @@ export interface LocationGetLastResponse {
 export namespace LocationGetLastResponse {
   /**
    * An object containing the information about the last tracked location of the
-   * requested `asset`.
+   * requested asset.
    */
   export interface Data {
     /**
@@ -306,37 +305,36 @@ export interface LocationListParams {
   cluster?: 'america';
 
   /**
-   * Describe the geometry characteristics through a `,` separated list of
-   * properties.
+   * Describe the geometry characteristics through a , separated list of properties.
    *
-   * Setting `mapmatch` to 1 returns the geometry of the tracked points, snapped to
-   * the nearest road.
+   * Setting mapmatch to 1 returns the geometry of the tracked points, snapped to the
+   * nearest road.
    *
-   * Setting `interpolate` to 1 smoothens the snapped geometry by adding more points,
-   * as needed. Please note, `mapmatch` should be set to 1 for `interpolate` to be
+   * Setting interpolate to 1 smoothens the snapped geometry by adding more points,
+   * as needed. Please note, mapmatch should be set to 1 for interpolate to be
    * effective.
    *
-   * `mode` is used to set the transport mode for which the snapped route will be
-   * determined. Allowed values for `mode` are `car` and `truck`.
+   * mode is used to set the transport mode for which the snapped route will be
+   * determined. Allowed values for mode are car and truck.
    */
   correction?: string;
 
   /**
-   * Time until which the tracked locations of the `asset` need to be retrieved.
+   * Time until which the tracked locations of the asset need to be retrieved.
    */
   end_time?: number;
 
   /**
    * Set the geometry format to encode the path linking the tracked locations of the
-   * `asset`.
+   * asset.
    *
-   * Please note that `geometry_type` is effective only when `mapmatch` property of
-   * `correction` parameter is set to 1.
+   * Please note that geometry_type is effective only when mapmatch property of
+   * correction parameter is set to 1.
    */
-  geometry_type?: '`polyline`' | '`polyline6`' | '`geojson`';
+  geometry_type?: 'polyline' | 'polyline6' | 'geojson';
 
   /**
-   * Denotes page number. Use this along with the `ps` parameter to implement
+   * Denotes page number. Use this along with the ps parameter to implement
    * pagination for your searched results. This parameter does not have a maximum
    * limit but would return an empty response in case a higher value is provided when
    * the result-set itself is smaller.
@@ -344,13 +342,13 @@ export interface LocationListParams {
   pn?: number;
 
   /**
-   * Denotes number of search results per page. Use this along with the `pn`
-   * parameter to implement pagination for your searched results.
+   * Denotes number of search results per page. Use this along with the pn parameter
+   * to implement pagination for your searched results.
    */
   ps?: number;
 
   /**
-   * Time after which the tracked locations of the `asset` need to be retrieved.
+   * Time after which the tracked locations of the asset need to be retrieved.
    */
   start_time?: number;
 }

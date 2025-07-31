@@ -61,7 +61,7 @@ export namespace RevgeocodeRetrieveResponse {
 
     /**
      * The bounding box enclosing the geometric shape (area or line) that an individual
-     * result covers. `place` typed results have no `mapView`.
+     * result covers. place typed results have no mapView.
      */
     mapView?: GeocodeAPI.MapView;
 
@@ -160,13 +160,13 @@ export namespace RevgeocodeRetrieveResponse {
     export interface Scoring {
       /**
        * A breakdown of how closely individual field of the result matched with the
-       * provided query `q`.
+       * provided query q.
        */
       fieldScore?: unknown;
 
       /**
        * A score, out of 1, indicating how closely the result matches with the provided
-       * query `q` .
+       * query q .
        */
       queryScore?: number;
     }
@@ -200,18 +200,18 @@ export interface RevgeocodeRetrieveParams {
    *
    *   The country codes are to be provided in all uppercase.
    *
-   *   Format: `countryCode:{countryCode}[,{countryCode}]`
+   *   Format: countryCode:{countryCode}[,{countryCode}]
    *
    * - a circular area, provided as latitude, longitude, and radius (an integer with
    *   meters as unit)
    *
-   *   Format: `circle:{latitude},{longitude};r={radius}`
+   *   Format: circle:{latitude},{longitude};r={radius}
    *
    * - a bounding box, provided as _west longitude_, _south latitude_, _east
    *   longitude_, _north latitude_
    *
-   *   Format:
-   *   `bbox:{west longitude},{south latitude},{east longitude},{north latitude}`
+   *   Format: bbox:{west longitude},{south latitude},{east longitude},{north
+   *   latitude}
    */
   in?: string;
 
