@@ -16,8 +16,7 @@ export const metadata: Metadata = {
 
 export const tool: Tool = {
   name: 'retrieve_result_optimization_v2',
-  description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nFlexible GET",
+  description: 'Flexible GET',
   inputSchema: {
     type: 'object',
     properties: {

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'retrieve_route_navigation',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nNextbillion.ai’s Navigation API is a service that computes a route between 2 places, and also returns detailed turn by turn instructions for the route.\n\nThe Navigation API can be used as an input into your Navigation app. Alternatively, you can directly use Nextbillion.ai’s Navigation SDK for a complete turn by turn navigation experience.",
+    'Nextbillion.ai’s Navigation API is a service that computes a route between 2 places, and also returns detailed turn by turn instructions for the route.\n\nThe Navigation API can be used as an input into your Navigation app. Alternatively, you can directly use Nextbillion.ai’s Navigation SDK for a complete turn by turn navigation experience.',
   inputSchema: {
     type: 'object',
     properties: {
