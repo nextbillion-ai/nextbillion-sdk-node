@@ -32,22 +32,22 @@ export const tool: Tool = {
       pn: {
         type: 'integer',
         description:
-          'Denotes page number. Use this along with the ps parameter to implement pagination for your searched results. This parameter does not have a maximum limit but would return an empty response in case a higher value is provided when the result-set itself is smaller.',
+          'Denotes page number. Use this along with the `ps` parameter to implement pagination for your searched results. This parameter does not have a maximum limit but would return an empty response in case a higher value is provided when the result-set itself is smaller.',
       },
       ps: {
         type: 'integer',
         description:
-          'Denotes number of search results per page. Use this along with the pn parameter to implement pagination for your searched results.',
+          'Denotes number of search results per page. Use this along with the `pn` parameter to implement pagination for your searched results.',
       },
       sort: {
         type: 'string',
         description:
-          'Provide a single field to sort the results by. Only updated_at or created_at fields can be selected for ordering the results.\n\nBy default, the result is sorted by created_at field in the descending order. Allowed values for specifying the order are asc for ascending order and desc for descending order.',
+          'Provide a single field to sort the results by. Only `updated_at` or `created_at` fields can be selected for ordering the results.\n\nBy default, the result is sorted by `created_at` field in the descending order. Allowed values for specifying the order are `asc` for ascending order and `desc` for descending order.',
       },
       tags: {
         type: 'string',
         description:
-          'tags can be used to filter the monitors. Only those monitors which have all the tags provided here, will be included in the search result. In case multiple tags need to be specified, use , to separate them.',
+          '`tags` can be used to filter the monitors. Only those monitors which have all the `tags` provided here, will be included in the search result. In case multiple `tags` need to be specified, use `,` to separate them.',
       },
     },
     required: ['key'],

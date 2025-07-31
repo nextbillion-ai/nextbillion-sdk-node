@@ -10,7 +10,7 @@ const client = new NextbillionSDK({
 describe('resource console', () => {
   // skipped: tests are disabled for the time being
   test.skip('preview: only required params', async () => {
-    const responsePromise = client.geofence.console.preview({ type: 'circle' });
+    const responsePromise = client.geofence.console.preview({ type: '`circle`' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,7 +23,7 @@ describe('resource console', () => {
   // skipped: tests are disabled for the time being
   test.skip('preview: required and optional params', async () => {
     const response = await client.geofence.console.preview({
-      type: 'circle',
+      type: '`circle`',
       circle: { center: { lat: 0, lon: 0 }, radius: 0 },
       custom_id: 'custom_id',
       isochrone: {
@@ -32,7 +32,7 @@ describe('resource console', () => {
         contours_minute: 0,
         denoise: 0,
         departure_time: 0,
-        mode: 'car',
+        mode: '`car`',
       },
       meta_data: '{\n  "country": "USA",\n  "state": "California"\n}',
       name: '"name":"Los Angeles Downtown"',

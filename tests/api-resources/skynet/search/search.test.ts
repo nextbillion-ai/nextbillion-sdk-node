@@ -36,9 +36,9 @@ describe('resource search', () => {
       max_search_limit: true,
       pn: 0,
       ps: 100,
-      sort_by: 'distance',
+      sort_by: '`distance`',
       sort_destination: 'sort_destination= 34.0241,-118.2550',
-      sort_driving_mode: 'car',
+      sort_driving_mode: '`car`',
     });
   });
 
@@ -68,9 +68,9 @@ describe('resource search', () => {
       max_search_limit: true,
       pn: 0,
       ps: 100,
-      sort_by: 'distance',
+      sort_by: '`distance`',
       sort_destination: 'sort_destination= 34.0241,-118.2550',
-      sort_driving_mode: 'car',
+      sort_driving_mode: '`car`',
     });
   });
 });

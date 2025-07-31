@@ -13,7 +13,7 @@ describe('resource routes', () => {
     const responsePromise = client.fleetify.routes.create({
       key: 'key',
       driver_email: 'johndoe@abc.com',
-      steps: [{ arrival: 0, location: [0], type: 'start' }],
+      steps: [{ arrival: 0, location: [0], type: '`start`' }],
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -33,9 +33,9 @@ describe('resource routes', () => {
         {
           arrival: 0,
           location: [0],
-          type: 'start',
+          type: '`start`',
           address: '"address": "503, Dublin Drive, Los Angeles, California - 500674",',
-          completion_mode: 'manual',
+          completion_mode: '`manual`',
           document_template_id: 'document_template_id',
           duration: 0,
           geofence_config: { radius: 0, type: 'circle' },
@@ -50,10 +50,10 @@ describe('resource routes', () => {
       document_template_id: '"document_template_id": "bfbc4799-bc2f-4515-9054-d888560909bf"',
       ro_request_id: 'ro_request_id',
       routing: {
-        approaches: 'unrestricted',
-        avoid: 'toll',
-        hazmat_type: 'general',
-        mode: 'car',
+        approaches: '`unrestricted`',
+        avoid: '`toll`',
+        hazmat_type: '`general`',
+        mode: '`car`',
         truck_axle_load: 0,
         truck_size: '"truck_size": "200, 210, 600"',
         truck_weight: 0,
@@ -65,7 +65,7 @@ describe('resource routes', () => {
   test.skip('redispatch: only required params', async () => {
     const responsePromise = client.fleetify.routes.redispatch('routeID', {
       key: 'key',
-      operations: [{ data: {}, operation: 'create' }],
+      operations: [{ data: {}, operation: '`create`' }],
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -83,14 +83,14 @@ describe('resource routes', () => {
       operations: [
         {
           data: {
-            completion_mode: 'manual',
+            completion_mode: '`manual`',
             document_template_id: 'document_template_id',
             step: {
               arrival: 0,
               location: [0],
-              type: 'start',
+              type: '`start`',
               address: '"address": "503, Dublin Drive, Los Angeles, California - 500674",',
-              completion_mode: 'manual',
+              completion_mode: '`manual`',
               document_template_id: 'document_template_id',
               duration: 0,
               geofence_config: { radius: 0, type: 'circle' },
@@ -102,7 +102,7 @@ describe('resource routes', () => {
             },
             step_id: 'step_id',
           },
-          operation: 'create',
+          operation: '`create`',
         },
       ],
       distance: 0,

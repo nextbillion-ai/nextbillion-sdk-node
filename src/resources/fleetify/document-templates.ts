@@ -71,8 +71,8 @@ export class DocumentTemplates extends APIResource {
  */
 export interface DocumentTemplateContentRequest {
   /**
-   * Specify the label or the name of the field. The label specified here can be used
-   * as field name when rendering the document in the Driver app.
+   * Specify the label or the name of the field. The `label` specified here can be
+   * used as field name when rendering the document in the Driver app.
    */
   label: string;
 
@@ -81,23 +81,23 @@ export interface DocumentTemplateContentRequest {
    * that the driver needs to collect.
    */
   type:
-    | 'string'
-    | 'number'
-    | 'date_time'
-    | 'photos'
-    | 'multi_choices'
-    | 'signature'
-    | 'barcode'
-    | 'single_choice';
+    | '`string`'
+    | '`number`'
+    | '`date_time`'
+    | '`photos`'
+    | '`multi_choices`'
+    | '`signature`'
+    | '`barcode`'
+    | '`single_choice`';
 
   /**
-   * An object to define additional information required for single_choice or
-   * multi_choices type document items.
+   * An object to define additional information required for `single_choice` or
+   * `multi_choices` type document items.
    */
   meta?: DocumentTemplateContentRequest.Meta;
 
   /**
-   * Specify the name of the document field. A field'sname can be used for internal
+   * Specify the name of the document field. A field's`name` can be used for internal
    * references to the document field.
    */
   name?: string;
@@ -110,20 +110,20 @@ export interface DocumentTemplateContentRequest {
   /**
    * Specify the validation rules for the field. This can be used to enforce data
    * quality and integrity checks. For example, if the field is a number type,
-   * validation can define constraints like minimum / maximum number values.
+   * `validation` can define constraints like minimum / maximum number values.
    */
   validation?: DocumentTemplateContentRequest.Validation;
 }
 
 export namespace DocumentTemplateContentRequest {
   /**
-   * An object to define additional information required for single_choice or
-   * multi_choices type document items.
+   * An object to define additional information required for `single_choice` or
+   * `multi_choices` type document items.
    */
   export interface Meta {
     /**
-     * An array of objects to define options for a multi_choices or single_choice type
-     * document field. Each object represents one option.
+     * An array of objects to define options for a `multi_choices` or `single_choice`
+     * type document field. Each object represents one option.
      */
     options: Array<Meta.Option>;
   }
@@ -146,32 +146,32 @@ export namespace DocumentTemplateContentRequest {
   /**
    * Specify the validation rules for the field. This can be used to enforce data
    * quality and integrity checks. For example, if the field is a number type,
-   * validation can define constraints like minimum / maximum number values.
+   * `validation` can define constraints like minimum / maximum number values.
    */
   export interface Validation {
     /**
-     * Specifies the maximum allowed value for number type document field. Input values
-     * must be less than or equal to this threshold.
+     * Specifies the maximum allowed value for `number` type document field. Input
+     * values must be less than or equal to this threshold.
      */
     max?: number;
 
     /**
-     * Specifies the maximum number of items for multi_choices, photos type document
-     * fields. The number of provided input items must be less than or equal to this
-     * threshold.
+     * Specifies the maximum number of items for `multi_choices`, `photos` type
+     * document fields. The number of provided input items must be less than or equal
+     * to this threshold.
      */
     max_items?: number;
 
     /**
-     * Specifies the minimum allowed value for number type document field. Input values
-     * must be greater than or equal to this threshold.
+     * Specifies the minimum allowed value for `number` type document field. Input
+     * values must be greater than or equal to this threshold.
      */
     min?: number;
 
     /**
-     * Specifies the minimum number of items for multi_choices, photos type document
-     * fields. The number of provided input items must be greater than or equal to this
-     * threshold.
+     * Specifies the minimum number of items for `multi_choices`, `photos` type
+     * document fields. The number of provided input items must be greater than or
+     * equal to this threshold.
      */
     min_items?: number;
   }
@@ -189,8 +189,8 @@ export interface DocumentTemplateContentResponse {
   label?: string;
 
   /**
-   * Returns the options configured for single_choice or multi_choices type document
-   * items.
+   * Returns the options configured for `single_choice` or `multi_choices` type
+   * document items.
    */
   meta?: DocumentTemplateContentResponse.Meta;
 
@@ -206,26 +206,26 @@ export interface DocumentTemplateContentResponse {
 
   /**
    * Returns the data type of the document field. It will always belong to one of
-   * string, number, date_time, photos, multi_choices, signature, barcode, and
-   * single_choice.
+   * `string`, `number`, `date_time`, `photos`, `multi_choices`, `signature`,
+   * `barcode`, and `single_choice.`
    */
   type?: string;
 
   /**
-   * Returns the validation rules for number , multi_choices , and photos document
-   * field types.
+   * Returns the validation rules for `number` , `multi_choices` , and `photos`
+   * document field types.
    */
   validation?: DocumentTemplateContentResponse.Validation;
 }
 
 export namespace DocumentTemplateContentResponse {
   /**
-   * Returns the options configured for single_choice or multi_choices type document
-   * items.
+   * Returns the options configured for `single_choice` or `multi_choices` type
+   * document items.
    */
   export interface Meta {
     /**
-     * An array of objects returning the options for multi_choices or single_choice
+     * An array of objects returning the options for `multi_choices` or `single_choice`
      * type document field. Each object represents one configured option.
      */
     options?: Array<Meta.Option>;
@@ -247,33 +247,33 @@ export namespace DocumentTemplateContentResponse {
   }
 
   /**
-   * Returns the validation rules for number , multi_choices , and photos document
-   * field types.
+   * Returns the validation rules for `number` , `multi_choices` , and `photos`
+   * document field types.
    */
   export interface Validation {
     /**
-     * Returns the maximum allowed value for number type document item, as specified at
-     * the time of configuring the field. This parameter is not present in the response
-     * if it was not provided in the input.
+     * Returns the maximum allowed value for `number` type document item, as specified
+     * at the time of configuring the field. This parameter is not present in the
+     * response if it was not provided in the input.
      */
     max?: number;
 
     /**
-     * Returns the maximum number of items required for multi_choices, photos type
+     * Returns the maximum number of items required for `multi_choices`, `photos` type
      * document items. This parameter will not be present in the response if it was not
      * provided in the input.
      */
     max_items?: string;
 
     /**
-     * Returns the minimum allowed value for number type document item, as specified at
-     * the time of configuring the field. This parameter is not present in the response
-     * if it was not provided in the input.
+     * Returns the minimum allowed value for `number` type document item, as specified
+     * at the time of configuring the field. This parameter is not present in the
+     * response if it was not provided in the input.
      */
     min?: number;
 
     /**
-     * Returns the minimum number of items required for multi_choices, photos type
+     * Returns the minimum number of items required for `multi_choices`, `photos` type
      * document items. This parameter will not be present in the response if it was not
      * provided in the input.
      */

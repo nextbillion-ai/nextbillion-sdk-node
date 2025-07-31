@@ -31,8 +31,8 @@ export interface BatchCreateResponse {
 
   /**
    * Returns the overall status of the API request. Its value will belong to one of
-   * success, failed, and pending. It can also contain HTTP error codes in case of a
-   * failed request or operation.
+   * `success`, `failed`, and `pending`. It can also contain HTTP error codes in case
+   * of a failed request or operation.
    */
   status?: string;
 
@@ -60,7 +60,7 @@ export interface BatchRetrieveResponse {
 
   /**
    * Returns the overall status of the API request. Its value will always be one of
-   * success, failed, and pending.
+   * `success`, `failed`, and `pending`.
    */
   status?: string;
 
@@ -74,9 +74,9 @@ export namespace BatchRetrieveResponse {
   export interface Response {
     /**
      * An object returning the routing solution of an individual query. The JSON format
-     * and structure of the response would vary depending on the routing endpoint used
-     * in each individual query. However, it will be consistent with standard response
-     * for a given routing endpoint.
+     * and structure of the `response` would vary depending on the routing endpoint
+     * used in each individual query. However, it will be consistent with standard
+     * response for a given routing endpoint.
      */
     response?: unknown;
 

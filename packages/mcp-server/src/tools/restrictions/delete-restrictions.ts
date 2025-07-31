@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'delete_restrictions',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nDelete a restriction by ID\n\n# Response Schema\n```json\n{\n  type: 'object',\n  properties: {\n    id: {\n      type: 'number',\n      description: 'It is the unique ID of the restriction.'\n    },\n    state: {\n      type: 'string',\n      description: 'Returns the state of the restriction. It would always be deleted.'\n    }\n  }\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nDelete a restriction by ID\n\n# Response Schema\n```json\n{\n  type: 'object',\n  properties: {\n    id: {\n      type: 'number',\n      description: 'It is the unique ID of the restriction.'\n    },\n    state: {\n      type: 'string',\n      description: 'Returns the state of the restriction. It would always be `deleted`.'\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {

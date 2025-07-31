@@ -48,19 +48,20 @@ export interface Vehicle {
 
   /**
    * Specify custom attributes for the vehicle. Each attribute should be created as a
-   * key:value pair. These attributes can be used in the orders.vehicle_preferences
-   * input to refine the search of vehicles for each order.
+   * `key:value` pair. These attributes can be used in the
+   * `orders.vehicle_preferences` input to refine the search of vehicles for each
+   * order.
    *
-   * The maximum number of key:value pairs that can be specified under attributes for
-   * a given vehicle, is limited to 30.
+   * The maximum number of key:value pairs that can be specified under `attributes`
+   * for a given vehicle, is limited to 30.
    */
   attributes?: unknown;
 
   /**
    * Specify the priority for this vehicle. A higher value indicates a higher
    * priority. When specified, it will override any priority score deduced from
-   * vehicle_attribute_priority_mappings for this vehicle. Valid values are \[1, 10\]
-   * and default is 0.
+   * `vehicle_attribute_priority_mappings` for this vehicle. Valid values are \[1,
+   * 10\] and default is 0.
    */
   priority?: number;
 
@@ -123,14 +124,14 @@ export namespace DriverAssignmentAssignResponse {
     /**
      * An array of objects containing the details of the potential, alternate vehicle
      * assignments for the orders in the input. This attribute will not be returned in
-     * the response if the alternate_assignments was not provided in the input. Each
+     * the response if the `alternate_assignments` was not provided in the input. Each
      * object represents alternate assignments for a single order.
      */
     alternate_assignments?: Array<Result.AlternateAssignment>;
 
     /**
-     * A collection of vehicles IDs that were not assigned to any orders. A null value
-     * is returned if there are no vehicles without an order assignment.
+     * A collection of vehicles IDs that were not assigned to any orders. A `null`
+     * value is returned if there are no vehicles without an order assignment.
      */
     available_vehicles?: Array<string>;
 
@@ -142,8 +143,8 @@ export namespace DriverAssignmentAssignResponse {
 
     /**
      * A collection of objects listing the details of orders which remained unassigned.
-     * Each object represents a single order. A null value is returned if there are no
-     * unassigned orders.
+     * Each object represents a single order. A `null` value is returned if there are
+     * no unassigned orders.
      */
     unassigned_orders?: Array<Result.UnassignedOrder>;
   }
@@ -218,15 +219,15 @@ export namespace DriverAssignmentAssignResponse {
         export interface Steps {
           /**
            * Returns the driving distance, in meters, to the step's location from previous
-           * step's location. For the first step of a trip, distance indicates the driving
-           * distance from vehicle_current_location to the step's location.
+           * step's location. For the first step of a trip, `distance` indicates the driving
+           * distance from `vehicle_current_location` to the step's location.
            */
           distance?: number;
 
           /**
            * Returns the driving duration, in seconds, to the step's location from previous
-           * step's location. For the first step of a trip, eta indicates the driving
-           * duration from vehicle_current_location to the step's location.
+           * step's location. For the first step of a trip, `eta` indicates the driving
+           * duration from `vehicle_current_location` to the step's location.
            */
           eta?: number;
 
@@ -246,9 +247,9 @@ export namespace DriverAssignmentAssignResponse {
            *
            * - **pickup:** Indicates the pickup step for an order
            * - **dropoff:** Indicates the dropoff step for an order. It is returned only if
-           *   dropoff_details was **true** in the input request.
+           *   `dropoff_details` was **true** in the input request.
            * - **ongoing:** Indicates a step that the vehicle needs to complete on its
-           *   current trip. This is returned in the response only when remaining_waypoints
+           *   current trip. This is returned in the response only when `remaining_waypoints`
            *   input was provided for the given vehicle.
            * - **intermediate_waypoint:** Indicates an intermediate stop that the vehicle
            *   needs to complete in case multiple dropoffs are provided in the input.
@@ -281,20 +282,20 @@ export interface DriverAssignmentAssignParams {
 
   /**
    * Body param: Specify the filtering criterion for the vehicles with respect to
-   * each order's location. filter is a mandatory input for all requests.
+   * each order's location. `filter` is a mandatory input for all requests.
    */
   filter: DriverAssignmentAssignParams.Filter;
 
   /**
    * Body param: Collects the details of open orders to be fulfilled. Each object
-   * represents one order. All requests must include orders as a mandatory input. A
+   * represents one order. All requests must include `orders` as a mandatory input. A
    * maximum of 200 orders is allowed per request.
    */
   orders: Array<DriverAssignmentAssignParams.Order>;
 
   /**
    * Body param: Collects the details of vehicles available to fulfill the orders.
-   * Each object represents one vehicle. All requests must include vehicles as a
+   * Each object represents one vehicle. All requests must include `vehicles` as a
    * mandatory input. A maximum of 100 vehicles is allowed per request.
    */
   vehicles: Array<Vehicle>;
@@ -308,11 +309,11 @@ export interface DriverAssignmentAssignParams {
 export namespace DriverAssignmentAssignParams {
   /**
    * Specify the filtering criterion for the vehicles with respect to each order's
-   * location. filter is a mandatory input for all requests.
+   * location. `filter` is a mandatory input for all requests.
    */
   export interface Filter {
     /**
-     * Defines a driving_distance filter, in meters. If a vehicle needs to drive
+     * Defines a `driving_distance` filter, in meters. If a vehicle needs to drive
      * further than this distance to reach a pickup location, it will not be assigned
      * to that order. Valid range of values for this filter is \[1, 10000\].
      */
@@ -322,7 +323,7 @@ export namespace DriverAssignmentAssignParams {
      * Specify a duration, in seconds, which will be used to filter out ineligible
      * vehicles for each order. Any vehicle which would take more time than specified
      * here, to reach the pickup location of a given order, will be ruled out for
-     * assignment for that particular order. Valid values for pickup_eta are \[1,
+     * assignment for that particular order. Valid values for `pickup_eta` are \[1,
      * 3600\].
      */
     pickup_eta?: number;
@@ -330,7 +331,7 @@ export namespace DriverAssignmentAssignParams {
     /**
      * Specify a radius, in meters, which will be used to filter out ineligible
      * vehicles for each order. The pickup location of an order will act as the center
-     * of the circle when identifying eligible vehicles. Valid values for radius are
+     * of the circle when identifying eligible vehicles. Valid values for `radius` are
      * \[1, 10000\].
      */
     radius?: number;
@@ -350,12 +351,12 @@ export namespace DriverAssignmentAssignParams {
 
     /**
      * Specify custom attributes for the orders. Each attribute should be created as a
-     * key:value pair. The **keys** provided can be used in
-     * options.order_attribute_priority_mappings to assign a custom priority for this
+     * `key:value` pair. The **keys** provided can be used in
+     * `options.order_attribute_priority_mappings` to assign a custom priority for this
      * order based on its attributes.
      *
-     * The maximum number of key:value pairs that can be specified under attributes for
-     * a given order, is limited to 30.
+     * The maximum number of key:value pairs that can be specified under `attributes`
+     * for a given order, is limited to 30.
      */
     attributes?: unknown;
 
@@ -366,15 +367,15 @@ export namespace DriverAssignmentAssignParams {
      * Please note
      *
      * - The last location provided is treated as the destination of the trip.
-     * - dropoffs is mandatory when dropoff_details is set to **true**.
+     * - `dropoffs` is mandatory when `dropoff_details` is set to **true**.
      */
     dropoffs?: Array<Order.Dropoff>;
 
     /**
      * Specify the priority for this order. A higher value indicates a higher priority.
      * When specified, it will override any priority score deduced from
-     * order_attribute_priority_mappings for this order. Valid values are \[1, 10\] and
-     * default is 0.
+     * `order_attribute_priority_mappings` for this order. Valid values are \[1, 10\]
+     * and default is 0.
      */
     priority?: number;
 
@@ -392,16 +393,16 @@ export namespace DriverAssignmentAssignParams {
      * condition—meaning all specified criteria must be met individually for a vehicle
      * to be considered.
      *
-     * For example, if required_all_of_attributes, required_any_of_attributes, and
-     * exclude_all_of_attributes are all provided, an eligible vehicle must satisfy the
-     * following to be considered for assignments:
+     * For example, if `required_all_of_attributes`, `required_any_of_attributes`, and
+     * `exclude_all_of_attributes` are all provided, an eligible vehicle must satisfy
+     * the following to be considered for assignments:
      *
-     * 1.  Meet all conditions specified in required_all_of_attributes.
-     * 2.  Meet at least one of the conditions listed in required_any_of_attributes.
-     * 3.  Not meet any conditions mentioned in exclude_all_of_attributes.
+     * 1.  Meet all conditions specified in `required_all_of_attributes`.
+     * 2.  Meet at least one of the conditions listed in `required_any_of_attributes`.
+     * 3.  Not meet any conditions mentioned in `exclude_all_of_attributes`.
      *
-     * Consequently, a vehicle which does not have any attributes defined can't be
-     * assigned to an order which has vehicle_preferences configured.
+     * Consequently, a vehicle which does not have any `attributes` defined can't be
+     * assigned to an order which has `vehicle_preferences` configured.
      */
     vehicle_preferences?: Order.VehiclePreferences;
   }
@@ -441,16 +442,16 @@ export namespace DriverAssignmentAssignParams {
      * condition—meaning all specified criteria must be met individually for a vehicle
      * to be considered.
      *
-     * For example, if required_all_of_attributes, required_any_of_attributes, and
-     * exclude_all_of_attributes are all provided, an eligible vehicle must satisfy the
-     * following to be considered for assignments:
+     * For example, if `required_all_of_attributes`, `required_any_of_attributes`, and
+     * `exclude_all_of_attributes` are all provided, an eligible vehicle must satisfy
+     * the following to be considered for assignments:
      *
-     * 1.  Meet all conditions specified in required_all_of_attributes.
-     * 2.  Meet at least one of the conditions listed in required_any_of_attributes.
-     * 3.  Not meet any conditions mentioned in exclude_all_of_attributes.
+     * 1.  Meet all conditions specified in `required_all_of_attributes`.
+     * 2.  Meet at least one of the conditions listed in `required_any_of_attributes`.
+     * 3.  Not meet any conditions mentioned in `exclude_all_of_attributes`.
      *
-     * Consequently, a vehicle which does not have any attributes defined can't be
-     * assigned to an order which has vehicle_preferences configured.
+     * Consequently, a vehicle which does not have any `attributes` defined can't be
+     * assigned to an order which has `vehicle_preferences` configured.
      */
     export interface VehiclePreferences {
       /**
@@ -481,16 +482,16 @@ export namespace DriverAssignmentAssignParams {
     export namespace VehiclePreferences {
       export interface ExcludeAllOfAttribute {
         /**
-         * Specify the name of the attribute. The attribute is compared to the keys (of
-         * each key:value pair) in vehicles.attributes during evaluation.
+         * Specify the name of the attribute. The `attribute` is compared to the keys (of
+         * each `key:value` pair) in `vehicles.attributes` during evaluation.
          */
         attribute: string;
 
         /**
-         * Specify the operator to denote the relation between attribute and the value
-         * specified above. The attribute , operator and value together constitute the
-         * condition that a vehicle must meet to be eligible for assignment. Currently, we
-         * support following operators currently:
+         * Specify the operator to denote the relation between `attribute` and the `value`
+         * specified above. The `attribute` , `operator` and `value` together constitute
+         * the condition that a vehicle must meet to be eligible for assignment. Currently,
+         * we support following operators currently:
          *
          * - Equal to (==)
          * - Less than (<)
@@ -499,32 +500,32 @@ export namespace DriverAssignmentAssignParams {
          * - Greater than equal to (>=)
          * - Contains (contains)
          *
-         * Please note that when using "contains" operator only one value can be specified
-         * and the corresponding attribute must contain multiple values when defined for a
-         * vehicle.
+         * Please note that when using "contains" operator only one `value` can be
+         * specified and the corresponding `attribute` must contain multiple values when
+         * defined for a vehicle.
          */
         operator: string;
 
         /**
-         * Specify the desired value of the attribute to be applied for this order. value
-         * provided here is compared to the values (of each key:value pair) in
-         * vehicles.attributes during evaluation.
+         * Specify the desired value of the attribute to be applied for this order. `value`
+         * provided here is compared to the values (of each `key:value` pair) in
+         * `vehicles.attributes` during evaluation.
          */
         value: string;
       }
 
       export interface RequiredAllOfAttribute {
         /**
-         * Specify the name of the attribute. The attribute is compared to the keys (of
-         * each key:value pair) in vehicles.attributes during evaluation.
+         * Specify the name of the attribute. The `attribute` is compared to the keys (of
+         * each `key:value` pair) in `vehicles.attributes` during evaluation.
          */
         attribute: string;
 
         /**
-         * Specify the operator to denote the relation between attribute and the value
-         * specified above. The attribute , operator and value together constitute the
-         * condition that a vehicle must meet to be eligible for assignment. Currently, we
-         * support following operators currently:
+         * Specify the operator to denote the relation between `attribute` and the `value`
+         * specified above. The `attribute` , `operator` and `value` together constitute
+         * the condition that a vehicle must meet to be eligible for assignment. Currently,
+         * we support following operators currently:
          *
          * - Equal to (==)
          * - Less than (<)
@@ -533,32 +534,32 @@ export namespace DriverAssignmentAssignParams {
          * - Greater than equal to (>=)
          * - Contains (contains)
          *
-         * Please note that when using "contains" operator only one value can be specified
-         * and the corresponding attribute must contain multiple values when defined for a
-         * vehicle.
+         * Please note that when using "contains" operator only one `value` can be
+         * specified and the corresponding `attribute` must contain multiple values when
+         * defined for a vehicle.
          */
         operator: string;
 
         /**
-         * Specify the desired value of the attribute to be applied for this order. value
-         * provided here is compared to the values (of each key:value pair) in
-         * vehicles.attributes during evaluation.
+         * Specify the desired value of the attribute to be applied for this order. `value`
+         * provided here is compared to the values (of each `key:value` pair) in
+         * `vehicles.attributes` during evaluation.
          */
         value: string;
       }
 
       export interface RequiredAnyOfAttribute {
         /**
-         * Specify the name of the attribute. The attribute is compared to the keys (of
-         * each key:value pair) in vehicles.attributes during evaluation.
+         * Specify the name of the attribute. The `attribute` is compared to the keys (of
+         * each `key:value` pair) in `vehicles.attributes` during evaluation.
          */
         attribute: string;
 
         /**
-         * Specify the operator to denote the relation between attribute and the value
-         * specified above. The attribute , operator and value together constitute the
-         * condition that a vehicle must meet to be eligible for assignment. Currently, we
-         * support following operators currently:
+         * Specify the operator to denote the relation between `attribute` and the `value`
+         * specified above. The `attribute` , `operator` and `value` together constitute
+         * the condition that a vehicle must meet to be eligible for assignment. Currently,
+         * we support following operators currently:
          *
          * - Equal to (==)
          * - Less than (<)
@@ -567,16 +568,16 @@ export namespace DriverAssignmentAssignParams {
          * - Greater than equal to (>=)
          * - Contains (contains)
          *
-         * Please note that when using "contains" operator only one value can be specified
-         * and the corresponding attribute must contain multiple values when defined for a
-         * vehicle.
+         * Please note that when using "contains" operator only one `value` can be
+         * specified and the corresponding `attribute` must contain multiple values when
+         * defined for a vehicle.
          */
         operator: string;
 
         /**
-         * Specify the desired value of the attribute to be applied for this order. value
-         * provided here is compared to the values (of each key:value pair) in
-         * vehicles.attributes during evaluation.
+         * Specify the desired value of the attribute to be applied for this order. `value`
+         * provided here is compared to the values (of each `key:value` pair) in
+         * `vehicles.attributes` during evaluation.
          */
         value: string;
       }
@@ -596,7 +597,7 @@ export namespace DriverAssignmentAssignParams {
      * - It is not necessary that the service will return the specified number of
      *   alternate assignments for each order. The number of alternate assignments
      *   returned will depend on the number of vehicles provided in the input.
-     * - Order which could not be assigned to any vehicles due to their filter or
+     * - Order which could not be assigned to any vehicles due to their `filter` or
      *   attribute matching criteria will not be eligible for alternate assignments as
      *   well.
      */
@@ -634,16 +635,16 @@ export namespace DriverAssignmentAssignParams {
   export namespace Options {
     export interface OrderAttributePriorityMapping {
       /**
-       * Specify the name of the attribute. The attribute is compared to the keys (of
-       * each key:value pair) in orders.attributes during evaluation.
+       * Specify the name of the attribute. The `attribute` is compared to the keys (of
+       * each `key:value` pair) in `orders.attributes` during evaluation.
        */
       attribute: string;
 
       /**
-       * Specify the operator to denote the relation between attribute and the value
-       * specified above. The attribute , operator and value together constitute the
-       * condition that an order must meet to assume the specified priority. We support
-       * the following operators currently:
+       * Specify the operator to denote the relation between `attribute` and the `value`
+       * specified above. The `attribute` , `operator` and `value` together constitute
+       * the condition that an order must meet to assume the specified priority. We
+       * support the following operators currently:
        *
        * - Equal to (==)
        * - Less than (<)
@@ -652,9 +653,9 @@ export namespace DriverAssignmentAssignParams {
        * - Greater than equal to (>=)
        * - Contains (contains)
        *
-       * Please note that when using "contains" operator only one value can be specified
-       * and the corresponding attribute must contain multiple values when defined for an
-       * order.
+       * Please note that when using "contains" operator only one `value` can be
+       * specified and the corresponding `attribute` must contain multiple values when
+       * defined for an order.
        */
       operator: string;
 
@@ -666,25 +667,25 @@ export namespace DriverAssignmentAssignParams {
       priority: string;
 
       /**
-       * Specify the desired value of the attribute to be applied for this order. value
-       * provided here is compared to the values (of each key:value pair) in
-       * orders.attributes during evaluation.
+       * Specify the desired value of the attribute to be applied for this order. `value`
+       * provided here is compared to the values (of each `key:value` pair) in
+       * `orders.attributes` during evaluation.
        */
       value: string;
     }
 
     export interface VehicleAttributePriorityMapping {
       /**
-       * Specify the name of the attribute. The attribute is compared to the keys (of
-       * each key:value pair) in vehicles.attributes during evaluation.
+       * Specify the name of the attribute. The `attribute` is compared to the keys (of
+       * each `key:value` pair) in `vehicles.attributes` during evaluation.
        */
       attribute: string;
 
       /**
-       * Specify the operator to denote the relation between attribute and the value
-       * specified above. The attribute , operator and value together constitute the
-       * condition that a vehicle must meet to assume the specified priority. We support
-       * the following operators currently:
+       * Specify the operator to denote the relation between `attribute` and the `value`
+       * specified above. The `attribute` , `operator` and `value` together constitute
+       * the condition that a vehicle must meet to assume the specified priority. We
+       * support the following operators currently:
        *
        * - Equal to (==)
        * - Less than (<)
@@ -693,9 +694,9 @@ export namespace DriverAssignmentAssignParams {
        * - Greater than equal to (>=)
        * - Contains (contains)
        *
-       * Please note that when using "contains" operator only one value can be specified
-       * and the corresponding attribute must contain multiple values when defined for a
-       * vehicle.
+       * Please note that when using "contains" operator only one `value` can be
+       * specified and the corresponding `attribute` must contain multiple values when
+       * defined for a vehicle.
        */
       operator: string;
 
@@ -707,9 +708,9 @@ export namespace DriverAssignmentAssignParams {
       priority: string;
 
       /**
-       * Specify the desired value of the attribute to be applied for this vehicle. value
-       * provided here is compared to the values (of each key:value pair) in
-       * vehicles.attributes during evaluation.
+       * Specify the desired value of the attribute to be applied for this vehicle.
+       * `value` provided here is compared to the values (of each `key:value` pair) in
+       * `vehicles.attributes` during evaluation.
        */
       value: string;
     }

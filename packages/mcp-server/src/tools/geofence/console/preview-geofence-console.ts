@@ -18,19 +18,19 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'preview_geofence_console',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\npreview geofence geojson\n\n# Response Schema\n```json\n{\n  type: 'object',\n  properties: {\n    data: {\n      type: 'object',\n      properties: {\n        geojson: {\n          $ref: '#/$defs/polygon_geojson'\n        }\n      }\n    },\n    message: {\n      type: 'string'\n    }\n  },\n  $defs: {\n    polygon_geojson: {\n      type: 'object',\n      description: 'An object with geoJSON details of the geofence. The contents of this object follow the [geoJSON standard](https://datatracker.ietf.org/doc/html/rfc7946).',\n      properties: {\n        coordinates: {\n          type: 'array',\n          description: 'An array of coordinates in the [longitude, latitude] format, representing the geofence boundary.',\n          items: {\n            type: 'array',\n            description: '[longitude, latitude] format location.',\n            items: {\n              type: 'number'\n            }\n          }\n        },\n        type: {\n          type: 'string',\n          description: 'Type of the geoJSON geometry. Will always be Polygon.'\n        }\n      }\n    }\n  }\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\npreview geofence geojson\n\n# Response Schema\n```json\n{\n  type: 'object',\n  properties: {\n    data: {\n      type: 'object',\n      properties: {\n        geojson: {\n          $ref: '#/$defs/polygon_geojson'\n        }\n      }\n    },\n    message: {\n      type: 'string'\n    }\n  },\n  $defs: {\n    polygon_geojson: {\n      type: 'object',\n      description: 'An object with geoJSON details of the geofence. The contents of this object follow the [geoJSON standard](https://datatracker.ietf.org/doc/html/rfc7946).',\n      properties: {\n        coordinates: {\n          type: 'array',\n          description: 'An array of coordinates in the [longitude, latitude] format, representing the geofence boundary.',\n          items: {\n            type: 'array',\n            description: '[longitude, latitude] format location.',\n            items: {\n              type: 'number'\n            }\n          }\n        },\n        type: {\n          type: 'string',\n          description: 'Type of the geoJSON geometry. Will always be `Polygon`.'\n        }\n      }\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
       type: {
         type: 'string',
         description: 'Specify the type of the geofence that is being created.',
-        enum: ['circle', 'polygon', 'isochrone'],
+        enum: ['`circle`', '`polygon`', '`isochrone`'],
       },
       circle: {
         type: 'object',
         description:
-          'Provide the details to create a circular geofence. Please note that this object is mandatory when type is circle.  When the type is not circle, the properties of this object will be ignored while creating the geofence.',
+          'Provide the details to create a circular geofence. Please note that this object is mandatory when `type` is `circle`.  When the `type` is not `circle`, the properties of this object will be ignored while creating the geofence.',
         properties: {
           center: {
             type: 'object',
@@ -38,11 +38,11 @@ export const tool: Tool = {
             properties: {
               lat: {
                 type: 'number',
-                description: 'Latitude of the center location.',
+                description: 'Latitude of the `center` location.',
               },
               lon: {
                 type: 'number',
-                description: 'Longitude of the center location.',
+                description: 'Longitude of the `center` location.',
               },
             },
             required: ['lat', 'lon'],
@@ -57,27 +57,27 @@ export const tool: Tool = {
       custom_id: {
         type: 'string',
         description:
-          'Set an unique ID for the new geofence. If not provided, an ID will be automatically generated in UUID format. A valid custom_id can contain letters, numbers, "-", & "_" only.\n\nPlease note that the ID of a geofence can not be changed once it is created.',
+          'Set an unique ID for the new geofence. If not provided, an ID will be automatically generated in UUID format. A valid `custom_id` can contain letters, numbers, "-", & "_" only.\n\nPlease note that the ID of a geofence can not be changed once it is created.',
       },
       isochrone: {
         type: 'object',
         description:
-          'Provide the details to create an isochrone based geofence. Use this object when type is isochrone. When the type is not isochrone, the properties of this object will be ignored while creating the geofence.',
+          'Provide the details to create an isochrone based geofence. Use this object when `type` is `isochrone`. When the `type` is not `isochrone`, the properties of this object will be ignored while creating the geofence.',
         properties: {
           coordinates: {
             type: 'string',
             description:
-              'Coordinates of the location, in [latitude,longitude] format, which would act as the starting point for identifying the isochrone polygon or the boundary of reachable area. This parameter is mandatory when type is isochrone.',
+              'Coordinates of the location, in [latitude,longitude] format, which would act as the starting point for identifying the isochrone polygon or the boundary of reachable area. This parameter is mandatory when `type` is `isochrone`.',
           },
           contours_meter: {
             type: 'integer',
             description:
-              'The distance, in meters, for which an isochrone polygon needs to be determined. When provided, the API would create a geofence representing the area that can be reached after driving the given number of meters starting from the point specified in coordinates.\n\nThe maximum distance that can be specified is 60000 meters (60km).\n\nAt least one of contours_meter or contours_minute is mandatory when type is isochrone.',
+              'The distance, in meters, for which an isochrone polygon needs to be determined. When provided, the API would create a geofence representing the area that can be reached after driving the given number of meters starting from the point specified in `coordinates`.\n\nThe maximum distance that can be specified is 60000 meters (60km).\n\nAt least one of `contours_meter` or `contours_minute` is mandatory when `type` is `isochrone`.',
           },
           contours_minute: {
             type: 'integer',
             description:
-              'The duration, in minutes, for which an isochrone polygon needs to be determined. When provided, the API would create a geofence representing the area that can be reached after driving for the given number of minutes starting from the point specified in coordinates.\n\nThe maximum duration that can be specified is 40 minutes.\n\nAt least one of contours_meter or contours_minute is mandatory when type is isochrone.',
+              'The duration, in minutes, for which an isochrone polygon needs to be determined. When provided, the API would create a geofence representing the area that can be reached after driving for the given number of minutes starting from the point specified in `coordinates`.\n\nThe maximum duration that can be specified is 40 minutes.\n\nAt least one of `contours_meter` or `contours_minute` is mandatory when `type` is `isochrone`.',
           },
           denoise: {
             type: 'number',
@@ -92,8 +92,8 @@ export const tool: Tool = {
           mode: {
             type: 'string',
             description:
-              'Set which driving mode the service should use to determine the isochrone line.\n\nFor example, if you use car, the API will return an isochrone polygon that a car can cover within the specified time or after driving the specified distance. Using truck will return an isochrone that a truck can reach after taking into account appropriate truck routing restrictions.',
-            enum: ['car', 'truck'],
+              'Set which driving mode the service should use to determine the isochrone line.\n\nFor example, if you use `car`, the API will return an isochrone polygon that a car can cover within the specified time or after driving the specified distance. Using `truck` will return an isochrone that a truck can reach after taking into account appropriate truck routing restrictions.',
+            enum: ['`car`', '`truck`'],
           },
         },
         required: ['coordinates'],
@@ -101,7 +101,7 @@ export const tool: Tool = {
       meta_data: {
         type: 'object',
         description:
-          'Metadata of the geofence. Use this field to define custom attributes that provide more context and information about the geofence being created like country, group ID etc.\n\nThe data being added should be in valid JSON object format (i.e. key and value pairs). Max size allowed for the object is 65kb.',
+          'Metadata of the geofence. Use this field to define custom attributes that provide more context and information about the geofence being created like country, group ID etc.\n\nThe data being added should be in valid JSON object format (i.e. `key` and `value` pairs). Max size allowed for the object is 65kb.',
       },
       name: {
         type: 'string',
@@ -111,7 +111,7 @@ export const tool: Tool = {
       polygon: {
         type: 'object',
         description:
-          'Provide the details to create a custom polygon type of geofence. Please note that this object is mandatory when type is polygon. When the type is not polygon, the properties of this object will be ignored while creating the geofence.\n\nSelf-intersecting polygons or polygons containing other polygons are invalid and will be removed while processing the request.\n\nArea of the polygon should be less than 2000 km<sup>2</sup>.',
+          'Provide the details to create a custom polygon type of geofence. Please note that this object is mandatory when `type` is `polygon`. When the `type` is not `polygon`, the properties of this object will be ignored while creating the geofence.\n\nSelf-intersecting polygons or polygons containing other polygons are invalid and will be removed while processing the request.\n\nArea of the polygon should be less than 2000 km<sup>2</sup>.',
         properties: {
           geojson: {
             type: 'object',
@@ -131,7 +131,7 @@ export const tool: Tool = {
               },
               type: {
                 type: 'string',
-                description: 'Type of the geoJSON geometry. Should always be Polygon.',
+                description: 'Type of the geoJSON geometry. Should always be `Polygon`.',
               },
             },
             required: ['coordinates', 'type'],
@@ -142,7 +142,7 @@ export const tool: Tool = {
       tags: {
         type: 'array',
         description:
-          "An array of strings to associate multiple tags to the geofence. tags can be used to search or filter geofences (using Get Geofence List method).\n\nCreate valid tags using a string consisting of alphanumeric characters (A-Z, a-z, 0-9) along with the underscore ('_') and hyphen ('-') symbols.",
+          "An array of strings to associate multiple tags to the geofence. `tags` can be used to search or filter geofences (using `Get Geofence List` method).\n\nCreate valid `tags` using a string consisting of alphanumeric characters (A-Z, a-z, 0-9) along with the underscore ('_') and hyphen ('-') symbols.",
         items: {
           type: 'string',
         },

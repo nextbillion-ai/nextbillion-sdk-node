@@ -46,7 +46,7 @@ export const tool: Tool = {
           status: {
             type: 'string',
             description:
-              'Set this to either enable or disable to allow the place to be retrieved by a search API or block it respectively.',
+              'Set this to either `enable` or `disable` to allow the place to be retrieved by a search API or block it respectively.',
             enum: ['enable', 'disable'],
           },
         },

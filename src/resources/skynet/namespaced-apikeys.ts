@@ -61,7 +61,7 @@ export namespace NamespacedApikeyCreateResponse {
    */
   export interface Result {
     /**
-     * Returns the unique key created for the specified namespace.
+     * Returns the unique `key` created for the specified namespace.
      */
     apikey?: string;
 
@@ -78,7 +78,7 @@ export namespace NamespacedApikeyCreateResponse {
     expires_at?: number;
 
     /**
-     * Returns the name of the namespace for which the key is created.
+     * Returns the name of the `namespace` for which the key is created.
      */
     namespace?: string;
 
@@ -91,14 +91,14 @@ export namespace NamespacedApikeyCreateResponse {
 
 export interface NamespacedApikeyDeleteResponse {
   /**
-   * Its value is OK in case of a successful delete operation. Indicative error
+   * Its value is `OK` in case of a successful delete operation. Indicative error
    * messages are returned otherwise, for different errors.
    */
   msg?: string;
 
   /**
    * A string indicating the state of the response. A successful delete operation ins
-   * indicated by an HTTP code of200. See the
+   * indicated by an HTTP code of`200`. See the
    * [API Error Codes](https://docs.nextbillion.ai/docs/tracking/api/live-tracking-api#api-error-codes)
    * section below for possible values in case of errors.
    */
@@ -113,10 +113,11 @@ export interface NamespacedApikeyCreateParams {
   key: string;
 
   /**
-   * Specify a name for the namespace. If the namespace specified is unique then a
+   * Specify a name for the `namespace`. If the namespace specified is unique then a
    * new namespace along with a new key is created. Whereas if the specified
-   * namespace is not unique, a new key will be created in the existing namespace.
-   * Please note that a namespace cannot be created using another namespace key.
+   * `namespace` is not unique, a new key will be created in the existing
+   * `namespace`. Please note that a `namespace` cannot be created using another
+   * namespace key.
    */
   namespace: string;
 }
@@ -139,8 +140,8 @@ export interface NamespacedApikeyDeleteParams {
   key_to_delete: string;
 
   /**
-   * Specify the name of the namespace to which the \key_to_delete\ belongs. Please
-   * note that a namespace key cannot be deleted using another namespace key.
+   * Specify the name of the `namespace` to which the \`key_to_delete\` belongs.
+   * Please note that a namespace key cannot be deleted using another namespace key.
    */
   namespace: string;
 }
