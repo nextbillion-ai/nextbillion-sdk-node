@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.9.1 (2025-08-01)
+
+Full Changelog: [v0.9.0...v0.9.1](https://github.com/nextbillion-ai/nextbillion-sdk-node/compare/v0.9.0...v0.9.1)
+
+### Bug Fixes
+
+* **mcp:** avoid sending `jq_filter` to base API ([59ef1dd](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/59ef1dd3a076c03f859ad9bd7365461e5c33ae92))
+* **mcp:** reverse validJson capability option and limit scope ([34619bc](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/34619bcb7120e98bde2c1b275fadc5339bb5e8af))
+
 ## 0.9.0 (2025-07-31)
 
 Full Changelog: [v0.8.3...v0.9.0](https://github.com/nextbillion-ai/nextbillion-sdk-node/compare/v0.8.3...v0.9.0)
