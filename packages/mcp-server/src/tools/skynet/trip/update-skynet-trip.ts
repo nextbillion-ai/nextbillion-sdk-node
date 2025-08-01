@@ -96,8 +96,8 @@ export const tool: Tool = {
 };
 
 export const handler = async (client: NextbillionSDK, args: Record<string, unknown> | undefined) => {
-  const { id, ...body } = args as any;
-  return asTextContentResult(await maybeFilter(args, await client.skynet.trip.update(id, body)));
+  const { id, jq_filter, ...body } = args as any;
+  return asTextContentResult(await maybeFilter(jq_filter, await client.skynet.trip.update(id, body)));
 };
 
 export default { metadata, tool, handler };

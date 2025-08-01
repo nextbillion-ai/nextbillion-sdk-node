@@ -47,9 +47,9 @@ export const tool: Tool = {
 };
 
 export const handler = async (client: NextbillionSDK, args: Record<string, unknown> | undefined) => {
-  const { stepID, ...body } = args as any;
+  const { stepID, jq_filter, ...body } = args as any;
   return asTextContentResult(
-    await maybeFilter(args, await client.fleetify.routes.steps.delete(stepID, body)),
+    await maybeFilter(jq_filter, await client.fleetify.routes.steps.delete(stepID, body)),
   );
 };
 
