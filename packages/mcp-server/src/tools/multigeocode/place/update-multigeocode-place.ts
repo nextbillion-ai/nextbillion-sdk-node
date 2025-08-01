@@ -153,8 +153,10 @@ export const tool: Tool = {
 };
 
 export const handler = async (client: NextbillionSDK, args: Record<string, unknown> | undefined) => {
-  const { docId, ...body } = args as any;
-  return asTextContentResult(await maybeFilter(args, await client.multigeocode.place.update(docId, body)));
+  const { docId, jq_filter, ...body } = args as any;
+  return asTextContentResult(
+    await maybeFilter(jq_filter, await client.multigeocode.place.update(docId, body)),
+  );
 };
 
 export default { metadata, tool, handler };

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'complete_routes_fleetify_steps',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nComplete a route step with document submission, or update the document of a completed route step.\n\nWhen all steps are completed, the encapsulating route’s status will change to completed automatically.\n\nEither Session Token must be provided to authenticate the request.\n\n# Response Schema\n```json\n{\n  type: 'object',\n  properties: {}\n}\n```",
+    'Complete a route step with document submission, or update the document of a completed route step.\n\nWhen all steps are completed, the encapsulating route’s status will change to completed automatically.\n\nEither Session Token must be provided to authenticate the request.',
   inputSchema: {
     type: 'object',
     properties: {
@@ -43,12 +43,6 @@ export const tool: Tool = {
         type: 'string',
         description:
           'Sets the status of the route step. Currently only completed is supported.\n\nNote: once marked completed, a step cannot transition to other statuses. You can only update the document afterwards.',
-      },
-      jq_filter: {
-        type: 'string',
-        title: 'jq Filter',
-        description:
-          'A jq filter to apply to the response to include certain fields. Consult the output schema in the tool description to see the fields that are available.\n\nFor example: to include only the `name` field in every object of a results array, you can provide ".results[].name".\n\nFor more information, see the [jq documentation](https://jqlang.org/manual/).',
       },
     },
     required: ['routeID', 'stepID', 'key'],
