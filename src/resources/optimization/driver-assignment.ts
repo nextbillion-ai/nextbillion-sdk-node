@@ -44,7 +44,7 @@ export interface Vehicle {
    * Specify the location coordinates where the vehicle is currently located. This
    * input is mandatory for each vehicle.
    */
-  location: Vehicle.Location;
+  location: Location;
 
   /**
    * Specify custom attributes for the vehicle. Each attribute should be created as a
@@ -74,24 +74,6 @@ export interface Vehicle {
    * Please note that a maximum of 10 waypoints can be specified for a given vehicle.
    */
   remaining_waypoints?: Array<Location>;
-}
-
-export namespace Vehicle {
-  /**
-   * Specify the location coordinates where the vehicle is currently located. This
-   * input is mandatory for each vehicle.
-   */
-  export interface Location {
-    /**
-     * Latitude of the vehicle's current location.
-     */
-    lat?: number;
-
-    /**
-     * Longitude of the vehicle's current location.
-     */
-    lng?: number;
-  }
 }
 
 export interface DriverAssignmentAssignResponse {
