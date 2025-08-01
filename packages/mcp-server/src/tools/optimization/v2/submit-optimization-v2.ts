@@ -661,19 +661,7 @@ export const tool: Tool = {
             description: 'Specify a unique ID for the vehicle.',
           },
           location: {
-            type: 'object',
-            description:
-              'Specify the location coordinates where the vehicle is currently located. This input is mandatory for each vehicle.',
-            properties: {
-              lat: {
-                type: 'number',
-                description: "Latitude of the vehicle's current location.",
-              },
-              lng: {
-                type: 'number',
-                description: "Longitude of the vehicle's current location.",
-              },
-            },
+            $ref: '#/$defs/location',
           },
           attributes: {
             type: 'object',

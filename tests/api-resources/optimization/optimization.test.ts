@@ -203,7 +203,7 @@ describe('resource optimization', () => {
         add: [
           {
             id: 'id',
-            location: { lat: 0, lng: 0 },
+            location: { lat: -90, lon: -180 },
             attributes: '"attributes":{\n    "driver_rating": "4.0",\n    "trip_types": "premium"\n  }',
             priority: 0,
             remaining_waypoints: [{ lat: -90, lon: -180 }],
@@ -211,7 +211,7 @@ describe('resource optimization', () => {
         ],
         modify: {
           id: 'id',
-          location: { lat: 0, lng: 0 },
+          location: { lat: -90, lon: -180 },
           attributes: '"attributes":{\n    "driver_rating": "4.0",\n    "trip_types": "premium"\n  }',
           priority: 0,
           remaining_waypoints: [{ lat: -90, lon: -180 }],

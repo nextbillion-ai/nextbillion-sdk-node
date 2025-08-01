@@ -14,7 +14,7 @@ describe('resource driverAssignment', () => {
       key: 'key=API_KEY',
       filter: {},
       orders: [{ id: 'id', pickup: {} }],
-      vehicles: [{ id: 'id', location: {} }],
+      vehicles: [{ id: 'id', location: { lat: -90, lon: -180 } }],
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -66,7 +66,7 @@ describe('resource driverAssignment', () => {
       vehicles: [
         {
           id: 'id',
-          location: { lat: 0, lng: 0 },
+          location: { lat: -90, lon: -180 },
           attributes: '"attributes":{\n    "driver_rating": "4.0",\n    "trip_types": "premium"\n  }',
           priority: 0,
           remaining_waypoints: [{ lat: -90, lon: -180 }],
