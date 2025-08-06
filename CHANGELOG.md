@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.10.0 (2025-08-06)
+
+Full Changelog: [v0.9.1...v0.10.0](https://github.com/nextbillion-ai/nextbillion-sdk-node/compare/v0.9.1...v0.10.0)
+
+### Features
+
+* **mcp:** add logging when environment variable is set ([037c104](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/037c10400ec10de5796b05c660004c63dfadc11d))
+* **mcp:** remote server with passthru auth ([0ff20f7](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/0ff20f752a999ff51c8aeb6343eb418883f02714))
+
+
+### Chores
+
+* **api:** dedupe location types ([7c7b8d4](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/7c7b8d4fdc68999c4d255f74d2a34af149edaa3a))
+
 ## 0.9.1 (2025-08-01)
 
 Full Changelog: [v0.9.0...v0.9.1](https://github.com/nextbillion-ai/nextbillion-sdk-node/compare/v0.9.0...v0.9.1)
