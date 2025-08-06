@@ -26,7 +26,7 @@ export const newMcpServer = () =>
   new McpServer(
     {
       name: 'nbai_sdk_api',
-      version: '0.9.1',
+      version: '0.10.0',
     },
     { capabilities: { tools: {}, logging: {} } },
   );
