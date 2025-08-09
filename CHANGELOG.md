@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.10.1 (2025-08-09)
+
+Full Changelog: [v0.10.0...v0.10.1](https://github.com/nextbillion-ai/nextbillion-sdk-node/compare/v0.10.0...v0.10.1)
+
+### Features
+
+* **mcp:** add unix socket option for remote MCP ([b493336](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/b49333613719f1ed72fda780df4f455fe657e8fc))
+
+
+### Chores
+
+* **internal:** move publish config ([cee091a](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/cee091a9acc761b7e2cbd1c2f6d11045a899521a))
+* **internal:** update comment in script ([ee90f42](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/ee90f42a519607b043665daf70588d59005e7acb))
+* **mcp:** refactor streamable http transport ([852d01e](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/852d01e9cbaec5c9af128bb22c1bc4930eb3f1d1))
+* update @stainless-api/prism-cli to v5.15.0 ([a550f29](https://github.com/nextbillion-ai/nextbillion-sdk-node/commit/a550f295b52096f74b120a7cc5f660c5087909b9))
+
 ## 0.10.0 (2025-08-06)
 
 Full Changelog: [v0.9.1...v0.10.0](https://github.com/nextbillion-ai/nextbillion-sdk-node/compare/v0.9.1...v0.10.0)
