@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource driverAssignment', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('assign: only required params', async () => {
     const responsePromise = client.optimization.driverAssignment.assign({
       key: 'key=API_KEY',
@@ -25,7 +25,7 @@ describe('resource driverAssignment', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('assign: required and optional params', async () => {
     const response = await client.optimization.driverAssignment.assign({
       key: 'key=API_KEY',

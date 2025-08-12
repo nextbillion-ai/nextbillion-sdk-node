@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource mdm', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('createDistanceMatrix: only required params', async () => {
     const responsePromise = client.mdm.createDistanceMatrix({
       key: 'key=API_KEY',
@@ -24,7 +24,7 @@ describe('resource mdm', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('createDistanceMatrix: required and optional params', async () => {
     const response = await client.mdm.createDistanceMatrix({
       key: 'key=API_KEY',
@@ -47,7 +47,7 @@ describe('resource mdm', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('getDistanceMatrixStatus: only required params', async () => {
     const responsePromise = client.mdm.getDistanceMatrixStatus({ id: 'id', key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -59,7 +59,7 @@ describe('resource mdm', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('getDistanceMatrixStatus: required and optional params', async () => {
     const response = await client.mdm.getDistanceMatrixStatus({ id: 'id', key: 'key=API_KEY' });
   });

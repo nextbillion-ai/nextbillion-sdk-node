@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource navigation', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieveRoute: only required params', async () => {
     const responsePromise = client.navigation.retrieveRoute({ key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource navigation', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieveRoute: required and optional params', async () => {
     const response = await client.navigation.retrieveRoute({
       key: 'key=API_KEY',

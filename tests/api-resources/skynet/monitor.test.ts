@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource monitor', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.skynet.monitor.create({
       key: 'key=API_KEY',
@@ -24,7 +24,7 @@ describe('resource monitor', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.skynet.monitor.create({
       key: 'key=API_KEY',
@@ -46,7 +46,7 @@ describe('resource monitor', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.skynet.monitor.retrieve('id', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -58,12 +58,12 @@ describe('resource monitor', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.skynet.monitor.retrieve('id', { key: 'key=API_KEY' });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.skynet.monitor.update('id', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -75,7 +75,7 @@ describe('resource monitor', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.skynet.monitor.update('id', {
       key: 'key=API_KEY',
@@ -99,7 +99,7 @@ describe('resource monitor', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list: only required params', async () => {
     const responsePromise = client.skynet.monitor.list({ key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -111,7 +111,7 @@ describe('resource monitor', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list: required and optional params', async () => {
     const response = await client.skynet.monitor.list({
       key: 'key=API_KEY',
@@ -123,7 +123,7 @@ describe('resource monitor', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('delete: only required params', async () => {
     const responsePromise = client.skynet.monitor.delete('id', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -135,7 +135,7 @@ describe('resource monitor', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('delete: required and optional params', async () => {
     const response = await client.skynet.monitor.delete('id', { key: 'key=API_KEY' });
   });

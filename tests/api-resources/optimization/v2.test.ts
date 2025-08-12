@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource v2', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieveResult: only required params', async () => {
     const responsePromise = client.optimization.v2.retrieveResult({ id: 'id', key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,12 +20,12 @@ describe('resource v2', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieveResult: required and optional params', async () => {
     const response = await client.optimization.v2.retrieveResult({ id: 'id', key: 'key=API_KEY' });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('submit: only required params', async () => {
     const responsePromise = client.optimization.v2.submit({
       key: 'key=API_KEY',
@@ -41,7 +41,7 @@ describe('resource v2', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('submit: required and optional params', async () => {
     const response = await client.optimization.v2.submit({
       key: 'key=API_KEY',

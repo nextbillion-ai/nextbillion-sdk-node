@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource lookup', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('byID: only required params', async () => {
     const responsePromise = client.lookup.byID({ id: 'id', key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource lookup', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('byID: required and optional params', async () => {
     const response = await client.lookup.byID({ id: 'id', key: 'key=API_KEY' });
   });

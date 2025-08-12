@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource location', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list: only required params', async () => {
     const responsePromise = client.skynet.asset.location.list('id', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource location', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list: required and optional params', async () => {
     const response = await client.skynet.asset.location.list('id', {
       key: 'key=API_KEY',
@@ -34,7 +34,7 @@ describe('resource location', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('getLast: only required params', async () => {
     const responsePromise = client.skynet.asset.location.getLast('id', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -46,7 +46,7 @@ describe('resource location', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('getLast: required and optional params', async () => {
     const response = await client.skynet.asset.location.getLast('id', {
       key: 'key=API_KEY',
