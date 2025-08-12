@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource geocode', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.geocode.retrieve({ key: 'key=API_KEY', q: 'q=125, Berliner, berlin' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource geocode', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.geocode.retrieve({
       key: 'key=API_KEY',
@@ -32,7 +32,7 @@ describe('resource geocode', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('batchCreate: only required params', async () => {
     const responsePromise = client.geocode.batchCreate({
       key: 'key=API_KEY',
@@ -47,7 +47,7 @@ describe('resource geocode', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('batchCreate: required and optional params', async () => {
     const response = await client.geocode.batchCreate({
       key: 'key=API_KEY',
@@ -63,7 +63,7 @@ describe('resource geocode', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('structuredRetrieve: only required params', async () => {
     const responsePromise = client.geocode.structuredRetrieve({
       countryCode: 'countryCode',
@@ -78,7 +78,7 @@ describe('resource geocode', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('structuredRetrieve: required and optional params', async () => {
     const response = await client.geocode.structuredRetrieve({
       countryCode: 'countryCode',

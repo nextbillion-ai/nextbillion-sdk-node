@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource postalcode', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieveCoordinates: only required params', async () => {
     const responsePromise = client.postalcode.retrieveCoordinates({ key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource postalcode', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieveCoordinates: required and optional params', async () => {
     const response = await client.postalcode.retrieveCoordinates({
       key: 'key=API_KEY',

@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource autosuggest', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('suggest: only required params', async () => {
     const responsePromise = client.autosuggest.suggest({ key: 'key=API_KEY', q: 'q=125, Berliner, berlin' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource autosuggest', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('suggest: required and optional params', async () => {
     const response = await client.autosuggest.suggest({
       key: 'key=API_KEY',

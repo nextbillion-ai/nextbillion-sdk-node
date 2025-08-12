@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource optimization', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('compute: only required params', async () => {
     const responsePromise = client.optimization.compute({
       coordinates:
@@ -24,7 +24,7 @@ describe('resource optimization', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('compute: required and optional params', async () => {
     const response = await client.optimization.compute({
       coordinates:
@@ -40,7 +40,7 @@ describe('resource optimization', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('reOptimize: only required params', async () => {
     const responsePromise = client.optimization.reOptimize({
       key: 'key=API_KEY',
@@ -55,7 +55,7 @@ describe('resource optimization', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('reOptimize: required and optional params', async () => {
     const response = await client.optimization.reOptimize({
       key: 'key=API_KEY',

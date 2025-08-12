@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource multigeocode', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('search: only required params', async () => {
     const responsePromise = client.multigeocode.search({
       key: 'key=API_KEY',
@@ -24,7 +24,7 @@ describe('resource multigeocode', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('search: required and optional params', async () => {
     const response = await client.multigeocode.search({
       key: 'key=API_KEY',

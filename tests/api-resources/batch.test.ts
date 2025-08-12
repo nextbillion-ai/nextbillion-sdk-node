@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource batch', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.batch.create({ key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,12 +20,12 @@ describe('resource batch', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.batch.create({ key: 'key=API_KEY', requests: [{ query: 'query' }] });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.batch.retrieve({ key: 'key=API_KEY', track_id: 'track_id' });
     const rawResponse = await responsePromise.asResponse();
@@ -37,7 +37,7 @@ describe('resource batch', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.batch.retrieve({ key: 'key=API_KEY', track_id: 'track_id' });
   });
