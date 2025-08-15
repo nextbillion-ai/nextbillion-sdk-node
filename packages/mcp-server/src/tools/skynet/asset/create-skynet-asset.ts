@@ -35,6 +35,7 @@ export const tool: Tool = {
         type: 'object',
         description:
           'attributes can be used to store custom information about an asset in key:value format. Use attributes to add any useful information or context to your assets like the vehicle type, shift timing etc. Moreover, these attributes can be used to filter assets in **Search**, **Monitor**, and *Get Asset List* queries. \n\nPlease note that the maximum number of key:value pairs that can be added to an attributes object is 100. Also, the overall size of attributes object should not exceed 65kb.',
+        additionalProperties: true,
       },
       custom_id: {
         type: 'string',
@@ -73,6 +74,7 @@ export const tool: Tool = {
       meta_data: {
         type: 'object',
         description: 'Any valid json object data. Can be used to save customized data. Max size is 65kb.',
+        additionalProperties: true,
       },
     },
   },

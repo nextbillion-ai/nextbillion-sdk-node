@@ -82,11 +82,13 @@ export const tool: Tool = {
             type: 'object',
             description:
               'A string type dictionary object to specify the attributes. Only the assets having all of the attributes added to this parameter will be linked to this monitor. Once an asset is linked to a monitor, the monitor will be able to create events for that asset whenever an activity specified in type is detected. Multiple attributes should be separated by a comma ,.\n\nPlease note that this parameter can not be used in conjunction with include_any_of_attributes. Also, the maximum number of key:value pairs that this parameter can take is 100 and the overall size of the match_filter object should not exceed 65kb.',
+            additionalProperties: true,
           },
           include_any_of_attributes: {
             type: 'object',
             description:
               'A string type dictionary object to specify the attributes. The assets having at least one of the attributes added to this parameter will be linked to this monitor. Once an asset is linked to a monitor, the monitor will be able to create events for that asset whenever an activity specified in type is detected. Multiple attributes should be separated by a comma ,.\n\nPlease note that this parameter can not be used in conjunction with include_all_of_attributes. Also, the maximum number of key:value pairs that this parameter can take is 100 and the overall size of the match_filter object should not exceed 65kb.',
+            additionalProperties: true,
           },
         },
       },
@@ -140,6 +142,7 @@ export const tool: Tool = {
       metadata: {
         type: 'object',
         description: 'Any valid json object data. Can be used to save customized data. Max size is 65kb.',
+        additionalProperties: true,
       },
     },
   },

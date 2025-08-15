@@ -38,6 +38,7 @@ export const tool: Tool = {
         type: 'object',
         description:
           'Use this param to update the attributes of an asset in key:value format. Users can maintain any useful information or context about the assets by utilising this parameter.\n\nPlease be careful when using this parameter while updating an asset as the new attributes object provided will completely overwrite the old attributes object. Use the *Update Asset Attributes* method to add new or modify existing attributes.\n\nAnother point to note is that the overall size of the attributes object cannot exceed 65kb and the maximum number of key:value pairs that can be added to this object is 100.',
+        additionalProperties: true,
       },
       description: {
         type: 'string',
@@ -71,6 +72,7 @@ export const tool: Tool = {
       meta_data: {
         type: 'object',
         description: 'Any valid json object data. Can be used to save customized data. Max size is 65kb.',
+        additionalProperties: true,
       },
     },
   },

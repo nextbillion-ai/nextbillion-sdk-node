@@ -194,6 +194,7 @@ export const tool: Tool = {
             type: 'object',
             description:
               'Specify any custom data that should be attached along with job fulfilment details in the steps attribute of the optimized solution. Users can leverage this property to provide additional details/context when sharing information about the job with integrated systems (TMS, Fleet Management, Driver dispatch etc).\n\nPlease note that the metadata content must always be specified in akey : value pair format, where the “key” is always a string.',
+            additionalProperties: true,
           },
           outsourcing_cost: {
             type: 'integer',
@@ -319,6 +320,7 @@ export const tool: Tool = {
                 type: 'object',
                 description:
                   'Specify any custom data that should be attached along with delivery fulfilment details in the step attribute of the optimized solution. Users can leverage this property to provide additional details/context when sharing information about the delivery step with integrated systems (TMS, Fleet Management, Driver dispatch etc).\n\nPlease note that the metadata content must always be specified in a key : value pair format, where the “key” is always a string.',
+                additionalProperties: true,
               },
               sequence_order: {
                 type: 'integer',
@@ -376,6 +378,7 @@ export const tool: Tool = {
                 type: 'object',
                 description:
                   'Specify any custom data that should be attached along with pickup fulfilment details in the steps attribute of the optimized solution. Users can leverage this property to provide additional details/context when sharing information about the pickup step with integrated systems (TMS, Fleet Management, Driver dispatch etc).\n\nPlease note that the metadata content must always be specified in akey : value pair format, where the “key” is always a string.',
+                additionalProperties: true,
               },
               sequence_order: {
                 type: 'integer',
@@ -518,6 +521,7 @@ export const tool: Tool = {
             type: 'object',
             description:
               'Specify custom attributes for the vehicle. Each attribute should be created as a key:value pair. These attributes can be used in the orders.vehicle_preferences input to refine the search of vehicles for each order.\n\nThe maximum number of key:value pairs that can be specified under attributes for a given vehicle, is limited to 30.',
+            additionalProperties: true,
           },
           priority: {
             type: 'integer',

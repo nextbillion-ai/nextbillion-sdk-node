@@ -43,6 +43,7 @@ export const tool: Tool = {
         type: 'object',
         description:
           'Use this field to update the attributes of the trip. Please note that when updating the attributes field, previously added information will be overwritten.',
+        additionalProperties: true,
       },
       description: {
         type: 'string',
@@ -52,6 +53,7 @@ export const tool: Tool = {
         type: 'object',
         description:
           'Use this JSON object to update additional details about the trip. This property is used to add any custom information / context about the trip.\n\nPlease note that updating the meta_data field will overwrite the previously added information.',
+        additionalProperties: true,
       },
       name: {
         type: 'string',
@@ -73,6 +75,7 @@ export const tool: Tool = {
               type: 'object',
               description:
                 'Use this JSON object to update additional details about the stop. This property is used to add any custom information / context about the stop.\n\nPlease note that updating the meta_data field will overwrite the previously added information.',
+              additionalProperties: true,
             },
             name: {
               type: 'string',

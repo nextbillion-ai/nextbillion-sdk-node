@@ -98,6 +98,7 @@ export const tool: Tool = {
         type: 'object',
         description:
           'Updated the meta_data associated with a geofence. Use this field to define custom attributes that provide more context and information about the geofence being updated like country, group ID etc.\n\nThe data being added should be in valid JSON object format (i.e. key and value pairs). Max size allowed for the object is 65kb.',
+        additionalProperties: true,
       },
       name: {
         type: 'string',

@@ -77,6 +77,7 @@ export const tool: Tool = {
               type: 'object',
               description:
                 'Specify custom attributes for the orders. Each attribute should be created as a key:value pair. The **keys** provided can be used in options.order_attribute_priority_mappings to assign a custom priority for this order based on its attributes.\n\nThe maximum number of key:value pairs that can be specified under attributes for a given order, is limited to 30.',
+              additionalProperties: true,
             },
             dropoffs: {
               type: 'array',
@@ -304,6 +305,7 @@ export const tool: Tool = {
             type: 'object',
             description:
               'Specify custom attributes for the vehicle. Each attribute should be created as a key:value pair. These attributes can be used in the orders.vehicle_preferences input to refine the search of vehicles for each order.\n\nThe maximum number of key:value pairs that can be specified under attributes for a given vehicle, is limited to 30.',
+            additionalProperties: true,
           },
           priority: {
             type: 'integer',

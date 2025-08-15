@@ -343,6 +343,7 @@ export const tool: Tool = {
                 type: 'object',
                 description:
                   'Defines all the vehicle profiles. profiles is implemented as a dictionary of objects where each profile name is the unique key and the associated value is an object describing the routing properties of that profile. All routing properties available in options.routing can be added as values for a given profile.\n\nPlease note:\n\n*   The routing properties configured using options.routing (and not part of any \\profiles\\) are considered as default route settings i.e. they are applied to vehicles which are not associated with any profile.\n    \n*   The default route settings are independent from those defined for any profiles . Consequently, for vehicles which are tagged to a given profile, only the routing properties configured for the given profile will apply.\n    \n*   If the "mode" is not specified for any profile, by default it is considered to be car .\n    \n*   "default" is a reserved keyword and can not be used as the name for any custom profile.\n    \n*   profiles can\'t be nested in other profiles.\n    \n*   The number of profiles, including default route settings, are limited to\n    \n    *   15, if 0 < number of location <= 100\n        \n    *   6, if 100 < number of location <= 600，\n        \n    *   2, if 600 < number of location <= 1200,\n        \n    *   1, if number of location > 1200\n        \n\nRouting profiles attribute is useful for configuring fleets containing multiple vehicles types. Check [Routing Profiles](https://docs.nextbillion.ai/docs/optimization/api/route-optimization-flexible/tutorials/routing-profiles) tutorial to learn more.',
+                additionalProperties: true,
               },
               traffic_timestamp: {
                 type: 'integer',
@@ -667,6 +668,7 @@ export const tool: Tool = {
             type: 'object',
             description:
               'Specify custom attributes for the vehicle. Each attribute should be created as a key:value pair. These attributes can be used in the orders.vehicle_preferences input to refine the search of vehicles for each order.\n\nThe maximum number of key:value pairs that can be specified under attributes for a given vehicle, is limited to 30.',
+            additionalProperties: true,
           },
           priority: {
             type: 'integer',
@@ -766,6 +768,7 @@ export const tool: Tool = {
             type: 'object',
             description:
               'Specify any custom data that should be attached along with job fulfilment details in the steps attribute of the optimized solution. Users can leverage this property to provide additional details/context when sharing information about the job with integrated systems (TMS, Fleet Management, Driver dispatch etc).\n\nPlease note that the metadata content must always be specified in akey : value pair format, where the “key” is always a string.',
+            additionalProperties: true,
           },
           outsourcing_cost: {
             type: 'integer',
@@ -891,6 +894,7 @@ export const tool: Tool = {
                 type: 'object',
                 description:
                   'Specify any custom data that should be attached along with delivery fulfilment details in the step attribute of the optimized solution. Users can leverage this property to provide additional details/context when sharing information about the delivery step with integrated systems (TMS, Fleet Management, Driver dispatch etc).\n\nPlease note that the metadata content must always be specified in a key : value pair format, where the “key” is always a string.',
+                additionalProperties: true,
               },
               sequence_order: {
                 type: 'integer',
@@ -948,6 +952,7 @@ export const tool: Tool = {
                 type: 'object',
                 description:
                   'Specify any custom data that should be attached along with pickup fulfilment details in the steps attribute of the optimized solution. Users can leverage this property to provide additional details/context when sharing information about the pickup step with integrated systems (TMS, Fleet Management, Driver dispatch etc).\n\nPlease note that the metadata content must always be specified in akey : value pair format, where the “key” is always a string.',
+                additionalProperties: true,
               },
               sequence_order: {
                 type: 'integer',
