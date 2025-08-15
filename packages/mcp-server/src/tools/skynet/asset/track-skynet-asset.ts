@@ -84,6 +84,7 @@ export const tool: Tool = {
             type: 'object',
             description:
               'Use this object to add any custom data about the location that is being uploaded. Recommended to use the key:value format for adding the desired information.\n\nPlease note that the maximum size of meta_data object should not exceed 65Kb.',
+            additionalProperties: true,
           },
           speed: {
             type: 'number',

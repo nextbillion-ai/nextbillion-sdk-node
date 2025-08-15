@@ -51,6 +51,7 @@ export const tool: Tool = {
         type: 'object',
         description:
           'A key-value map storing form submission data, where keys correspond to field labels and values can be of any type depend on the type of according document item.',
+        additionalProperties: true,
       },
     },
   },

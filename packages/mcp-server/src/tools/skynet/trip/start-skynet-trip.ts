@@ -40,6 +40,7 @@ export const tool: Tool = {
         type: 'object',
         description:
           'attributes can be used to store custom information about a trip in key:value format. Use attributes to add any useful information or context to your trips like the driver name, destination etc.\n\nPlease note that the maximum number of key:value pairs that can be added to an attributes object is 100. Also, the overall size of attributes object should not exceed 65kb.',
+        additionalProperties: true,
       },
       custom_id: {
         type: 'string',
@@ -54,6 +55,7 @@ export const tool: Tool = {
         type: 'object',
         description:
           'An JSON object to collect additional details about the trip. Use this property to add any custom information / context about the trip. The input will be passed on to the response as-is and can be used to display useful information on, for example, a UI app.',
+        additionalProperties: true,
       },
       name: {
         type: 'string',
@@ -75,6 +77,7 @@ export const tool: Tool = {
               type: 'object',
               description:
                 'An JSON object to collect additional details about the stop. Use this property to add any custom information / context about the stop. The input will be passed on to the response as-is and can be used to display useful information on, for example, a UI app.',
+              additionalProperties: true,
             },
             name: {
               type: 'string',
