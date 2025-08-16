@@ -837,6 +837,7 @@ export class NextbillionSDK {
   lookup: API.Lookup = new API.Lookup(this);
   areas: API.Areas = new API.Areas(this);
 }
+
 NextbillionSDK.Fleetify = Fleetify;
 NextbillionSDK.Skynet = Skynet;
 NextbillionSDK.Geocode = Geocode;
@@ -862,6 +863,7 @@ NextbillionSDK.SnapToRoads = SnapToRoads;
 NextbillionSDK.Postalcode = Postalcode;
 NextbillionSDK.Lookup = Lookup;
 NextbillionSDK.Areas = Areas;
+
 export declare namespace NextbillionSDK {
   export type RequestOptions = Opts.RequestOptions;
 
