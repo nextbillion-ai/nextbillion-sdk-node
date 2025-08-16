@@ -135,15 +135,15 @@ Authorization can be provided via the following headers:
 | --------------------------- | ------------------------ | --------------- |
 | `x-nextbillion-sdk-api-key` | `apiKey` | apikey |
 
-A configuration JSON for this server might look like this:
+A configuration JSON for this server might look like this, assuming the server is hosted at `http://localhost:3000`:
 
 ```json
 {
   "mcpServers": {
     "nbai_sdk_api": {
-      "url": "http://localhost:3000", # or wherever the server is hosted
+      "url": "http://localhost:3000",
       "headers": {
-        'x-nextbillion-sdk-api-key': 'My API Key'
+        "x-nextbillion-sdk-api-key": "My API Key"
       }
     }
   }
