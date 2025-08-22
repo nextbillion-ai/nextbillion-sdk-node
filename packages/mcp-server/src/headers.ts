@@ -1,8 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { type ClientOptions } from '@nbai/sdk/client';
-
 import { IncomingMessage } from 'node:http';
+import { ClientOptions } from '@nbai/sdk';
 
 export const parseAuthHeaders = (req: IncomingMessage): Partial<ClientOptions> => {
   const apiKey =
