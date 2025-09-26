@@ -7,10 +7,9 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "baseUrl": "./",
     "paths": {
-      "@nbai/sdk/*": ["src/*"],
-      "@nbai/sdk": ["src/index.ts"]
+      "@nbai/sdk/*": ["./src/*"],
+      "@nbai/sdk": ["./src/index.ts"]
     },
     "noEmit": true,
 
