@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { maybeFilter } from '@nbai/sdk-mcp/filtering';
-import { Metadata, asTextContentResult } from '@nbai/sdk-mcp/tools/types';
+import { isJqError, maybeFilter } from '@nbai/sdk-mcp/filtering';
+import { Metadata, asErrorResult, asTextContentResult } from '@nbai/sdk-mcp/tools/types';
 
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
 import NextbillionSDK from '@nbai/sdk';
@@ -93,7 +93,14 @@ export const tool: Tool = {
 
 export const handler = async (client: NextbillionSDK, args: Record<string, unknown> | undefined) => {
   const { jq_filter, ...body } = args as any;
-  return asTextContentResult(await maybeFilter(jq_filter, await client.restrictions.listByBbox(body)));
+  try {
+    return asTextContentResult(await maybeFilter(jq_filter, await client.restrictions.listByBbox(body)));
+  } catch (error) {
+    if (isJqError(error)) {
+      return asErrorResult(error.message);
+    }
+    throw error;
+  }
 };
 
 export default { metadata, tool, handler };
