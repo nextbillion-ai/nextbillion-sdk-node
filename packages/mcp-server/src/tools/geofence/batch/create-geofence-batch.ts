@@ -187,7 +187,7 @@ export const handler = async (client: NextbillionSDK, args: Record<string, unkno
   try {
     return asTextContentResult(await maybeFilter(jq_filter, await client.geofence.batch.create(body)));
   } catch (error) {
-    if (isJqError(error)) {
+    if (error instanceof NextbillionSDK.APIError || isJqError(error)) {
       return asErrorResult(error.message);
     }
     throw error;
