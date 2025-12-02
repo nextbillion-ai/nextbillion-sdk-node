@@ -55,7 +55,7 @@ export const handler = async (client: NextbillionSDK, args: Record<string, unkno
       await maybeFilter(jq_filter, await client.skynet.asset.location.getLast(id, body)),
     );
   } catch (error) {
-    if (isJqError(error)) {
+    if (error instanceof NextbillionSDK.APIError || isJqError(error)) {
       return asErrorResult(error.message);
     }
     throw error;
