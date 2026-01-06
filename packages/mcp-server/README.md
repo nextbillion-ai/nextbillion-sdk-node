@@ -39,7 +39,7 @@ For clients with a configuration JSON, it might look something like this:
 If you use Cursor, you can install the MCP server by using the button below. You will need to set your environment variables
 in Cursor's `mcp.json`, which can be found in Cursor Settings > Tools & MCP > New MCP Server.
 
-[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en-US/install-mcp?name=@nbai/sdk-mcp&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIkBuYmFpL3Nkay1tY3AiXSwiZW52Ijp7Ik5FWFRCSUxMSU9OX1NES19BUElfS0VZIjoiU2V0IHlvdXIgTkVYVEJJTExJT05fU0RLX0FQSV9LRVkgaGVyZS4ifX0)
+[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en-US/install-mcp?name=%40nbai%2Fsdk-mcp&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIkBuYmFpL3Nkay1tY3AiXSwiZW52Ijp7Ik5FWFRCSUxMSU9OX1NES19BUElfS0VZIjoiU2V0IHlvdXIgTkVYVEJJTExJT05fU0RLX0FQSV9LRVkgaGVyZS4ifX0)
 
 ### VS Code
 
@@ -54,7 +54,7 @@ If you use Claude Code, you can install the MCP server by running the command be
 environment variables in Claude Code's `.claude.json`, which can be found in your home directory.
 
 ```
-claude mcp add --transport stdio nbai_sdk_api --env NEXTBILLION_SDK_API_KEY="Your NEXTBILLION_SDK_API_KEY here." -- npx -y @nbai/sdk-mcp
+claude mcp add nbai_sdk_mcp_api --env NEXTBILLION_SDK_API_KEY="Your NEXTBILLION_SDK_API_KEY here." -- npx -y @nbai/sdk-mcp
 ```
 
 ## Code Mode
