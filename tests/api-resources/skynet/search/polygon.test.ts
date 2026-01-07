@@ -36,7 +36,11 @@ describe('resource polygon', () => {
       max_search_limit: true,
       pn: 0,
       ps: 0,
-      sort: { sort_by: 'distance', sort_destination: { lat: 0, lon: 0 }, sort_driving_mode: 'car' },
+      sort: {
+        sort_by: 'distance',
+        sort_destination: { lat: 0, lon: 0 },
+        sort_driving_mode: 'car',
+      },
     });
   });
 

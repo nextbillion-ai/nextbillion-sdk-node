@@ -10,7 +10,12 @@ const client = new NextbillionSDK({
 describe('resource restrictionsItems', () => {
   // Prism tests are disabled
   test.skip('list: only required params', async () => {
-    const responsePromise = client.restrictionsItems.list({ max_lat: 0, max_lon: 0, min_lat: 0, min_lon: 0 });
+    const responsePromise = client.restrictionsItems.list({
+      max_lat: 0,
+      max_lon: 0,
+      min_lat: 0,
+      min_lon: 0,
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;

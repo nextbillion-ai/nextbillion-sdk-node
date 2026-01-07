@@ -27,7 +27,10 @@ describe('resource batch', () => {
       geofences: [
         {
           type: 'circle',
-          circle: { center: { lat: 0, lon: 0 }, radius: 0 },
+          circle: {
+            center: { lat: 0, lon: 0 },
+            radius: 0,
+          },
           custom_id: 'custom_id',
           isochrone: {
             coordinates: '"coordinates": "13.25805884,77.91083661"',

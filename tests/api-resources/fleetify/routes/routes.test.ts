@@ -13,7 +13,13 @@ describe('resource routes', () => {
     const responsePromise = client.fleetify.routes.create({
       key: 'key',
       driver_email: 'johndoe@abc.com',
-      steps: [{ arrival: 0, location: [0], type: 'start' }],
+      steps: [
+        {
+          arrival: 0,
+          location: [0],
+          type: 'start',
+        },
+      ],
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -65,7 +71,12 @@ describe('resource routes', () => {
   test.skip('redispatch: only required params', async () => {
     const responsePromise = client.fleetify.routes.redispatch('routeID', {
       key: 'key',
-      operations: [{ data: {}, operation: 'create' }],
+      operations: [
+        {
+          data: {},
+          operation: 'create',
+        },
+      ],
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
