@@ -44,7 +44,13 @@ describe('resource restrictions', () => {
       speed_limit: 0,
       start_time: 0,
       tracks: [[0]],
-      turns: [{ from: 0, to: 0, via: 0 }],
+      turns: [
+        {
+          from: 0,
+          to: 0,
+          via: 0,
+        },
+      ],
       weight: 0,
       width: 0,
     });
@@ -69,7 +75,11 @@ describe('resource restrictions', () => {
 
   // Prism tests are disabled
   test.skip('update: only required params', async () => {
-    const responsePromise = client.restrictions.update(0, { key: 'key=API_KEY', area: 'area', name: 'name' });
+    const responsePromise = client.restrictions.update(0, {
+      key: 'key=API_KEY',
+      area: 'area',
+      name: 'name',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -99,7 +109,13 @@ describe('resource restrictions', () => {
       speed_limit: 0,
       start_time: 0,
       tracks: [[0]],
-      turns: [{ from: 0, to: 0, via: 0 }],
+      turns: [
+        {
+          from: 0,
+          to: 0,
+          via: 0,
+        },
+      ],
       weight: 0,
       width: 0,
     });

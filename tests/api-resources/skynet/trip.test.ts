@@ -88,7 +88,11 @@ describe('resource trip', () => {
 
   // Prism tests are disabled
   test.skip('end: required and optional params', async () => {
-    const response = await client.skynet.trip.end({ key: 'key=API_KEY', id: 'id', cluster: 'america' });
+    const response = await client.skynet.trip.end({
+      key: 'key=API_KEY',
+      id: 'id',
+      cluster: 'america',
+    });
   });
 
   // Prism tests are disabled

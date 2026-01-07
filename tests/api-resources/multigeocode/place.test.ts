@@ -43,7 +43,11 @@ describe('resource place', () => {
           subDistrict: 'subDistrict',
         },
       ],
-      dataSource: { refId: 'refId', source: 'source', status: 'enable' },
+      dataSource: {
+        refId: 'refId',
+        source: 'source',
+        status: 'enable',
+      },
       force: true,
       score: 0,
     });
@@ -82,7 +86,11 @@ describe('resource place', () => {
   test.skip('update: required and optional params', async () => {
     const response = await client.multigeocode.place.update('docId', {
       key: 'key=API_KEY',
-      dataSource: { refId: 'refId', source: 'source', status: 'enable' },
+      dataSource: {
+        refId: 'refId',
+        source: 'source',
+        status: 'enable',
+      },
       place: [
         {
           address: 'address',

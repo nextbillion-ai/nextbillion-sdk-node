@@ -25,7 +25,10 @@ describe('resource geofence', () => {
     const response = await client.geofence.create({
       key: 'key=API_KEY',
       type: 'circle',
-      circle: { center: { lat: 0, lon: 0 }, radius: 0 },
+      circle: {
+        center: { lat: 0, lon: 0 },
+        radius: 0,
+      },
       custom_id: 'custom_id',
       isochrone: {
         coordinates: '"coordinates": "13.25805884,77.91083661"',
@@ -75,7 +78,10 @@ describe('resource geofence', () => {
   test.skip('update: required and optional params', async () => {
     const response = await client.geofence.update('id', {
       key: 'key=API_KEY',
-      circle: { center: { lat: 0, lon: 0 }, radius: 0 },
+      circle: {
+        center: { lat: 0, lon: 0 },
+        radius: 0,
+      },
       isochrone: {
         contours_meter: 0,
         contours_minute: 0,

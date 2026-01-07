@@ -141,7 +141,10 @@ describe('resource asset', () => {
     const responsePromise = client.skynet.asset.track('id', {
       key: 'key=API_KEY',
       device_id: 'device_id',
-      locations: { location: { lat: 0, lon: 0 }, timestamp: 0 },
+      locations: {
+        location: { lat: 0, lon: 0 },
+        timestamp: 0,
+      },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);

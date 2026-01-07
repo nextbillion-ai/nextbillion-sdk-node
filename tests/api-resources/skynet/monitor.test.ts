@@ -42,7 +42,11 @@ describe('resource monitor', () => {
       },
       meta_data: {},
       name: 'name',
-      speeding_config: { customer_speed_limit: 0, time_tolerance: 0, use_admin_speed_limit: true },
+      speeding_config: {
+        customer_speed_limit: 0,
+        time_tolerance: 0,
+        use_admin_speed_limit: true,
+      },
     });
   });
 

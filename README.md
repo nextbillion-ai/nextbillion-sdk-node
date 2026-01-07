@@ -59,7 +59,9 @@ const params: NextbillionSDK.DirectionComputeRouteParams = {
   destination: '1.335368,103.785517',
   origin: '1.312164,103.841063',
 };
-const response: NextbillionSDK.DirectionComputeRouteResponse = await client.directions.computeRoute(params);
+const response: NextbillionSDK.DirectionComputeRouteResponse = await client.directions.computeRoute(
+  params,
+);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
