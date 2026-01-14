@@ -86,7 +86,7 @@ export interface PolygonCreateParams {
   ps?: number;
 
   /**
-   * Body param:
+   * Body param
    */
   sort?: PolygonCreateParams.Sort;
 }
