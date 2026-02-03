@@ -3,7 +3,7 @@
 import { IncomingMessage } from 'node:http';
 import { ClientOptions } from '@nbai/sdk';
 
-export const parseAuthHeaders = (req: IncomingMessage): Partial<ClientOptions> => {
+export const parseAuthHeaders = (req: IncomingMessage, required?: boolean): Partial<ClientOptions> => {
   const apiKey =
     Array.isArray(req.headers['x-nextbillion-sdk-api-key']) ?
       req.headers['x-nextbillion-sdk-api-key'][0]
