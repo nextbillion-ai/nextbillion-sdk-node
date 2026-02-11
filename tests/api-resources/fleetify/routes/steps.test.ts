@@ -11,7 +11,7 @@ describe('resource steps', () => {
   // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.fleetify.routes.steps.create('routeID', {
-      key: 'key',
+      key: 'key=API_KEY',
       arrival: 0,
       location: [0],
       position: 0,
@@ -29,7 +29,7 @@ describe('resource steps', () => {
   // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.fleetify.routes.steps.create('routeID', {
-      key: 'key',
+      key: 'key=API_KEY',
       arrival: 0,
       location: [0],
       position: 0,
