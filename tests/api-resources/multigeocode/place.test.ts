@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource place', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.multigeocode.place.create({
       key: 'key=API_KEY',
@@ -23,7 +23,7 @@ describe('resource place', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.multigeocode.place.create({
       key: 'key=API_KEY',
@@ -53,7 +53,7 @@ describe('resource place', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.multigeocode.place.retrieve('docId', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -65,12 +65,12 @@ describe('resource place', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.multigeocode.place.retrieve('docId', { key: 'key=API_KEY' });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.multigeocode.place.update('docId', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -82,7 +82,7 @@ describe('resource place', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.multigeocode.place.update('docId', {
       key: 'key=API_KEY',
@@ -111,7 +111,7 @@ describe('resource place', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: only required params', async () => {
     const responsePromise = client.multigeocode.place.delete('docId', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -123,7 +123,7 @@ describe('resource place', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: required and optional params', async () => {
     const response = await client.multigeocode.place.delete('docId', { key: 'key=API_KEY' });
   });

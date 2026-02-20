@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource browse', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('search: only required params', async () => {
     const responsePromise = client.browse.search({ key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource browse', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('search: required and optional params', async () => {
     const response = await client.browse.search({
       key: 'key=API_KEY',

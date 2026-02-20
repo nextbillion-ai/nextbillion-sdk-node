@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource steps', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.fleetify.routes.steps.create('routeID', {
       key: 'key=API_KEY',
@@ -26,7 +26,7 @@ describe('resource steps', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.fleetify.routes.steps.create('routeID', {
       key: 'key=API_KEY',
@@ -47,7 +47,7 @@ describe('resource steps', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.fleetify.routes.steps.update('stepID', {
       routeID: 'routeID',
@@ -64,7 +64,7 @@ describe('resource steps', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.fleetify.routes.steps.update('stepID', {
       routeID: 'routeID',
@@ -86,7 +86,7 @@ describe('resource steps', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: only required params', async () => {
     const responsePromise = client.fleetify.routes.steps.delete('stepID', { routeID: 'routeID', key: 'key' });
     const rawResponse = await responsePromise.asResponse();
@@ -98,12 +98,12 @@ describe('resource steps', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: required and optional params', async () => {
     const response = await client.fleetify.routes.steps.delete('stepID', { routeID: 'routeID', key: 'key' });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('complete: only required params', async () => {
     const responsePromise = client.fleetify.routes.steps.complete('stepID', {
       routeID: 'routeID',
@@ -118,7 +118,7 @@ describe('resource steps', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('complete: required and optional params', async () => {
     const response = await client.fleetify.routes.steps.complete('stepID', {
       routeID: 'routeID',

@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource search', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('around: only required params', async () => {
     const responsePromise = client.skynet.search.around({
       center: '56.597801,43.967836',
@@ -24,7 +24,7 @@ describe('resource search', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('around: required and optional params', async () => {
     const response = await client.skynet.search.around({
       center: '56.597801,43.967836',
@@ -42,7 +42,7 @@ describe('resource search', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('bound: only required params', async () => {
     const responsePromise = client.skynet.search.bound({
       bound: 'bounds=44.7664,-0.6941|44.9206,-0.4639',
@@ -57,7 +57,7 @@ describe('resource search', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('bound: required and optional params', async () => {
     const response = await client.skynet.search.bound({
       bound: 'bounds=44.7664,-0.6941|44.9206,-0.4639',

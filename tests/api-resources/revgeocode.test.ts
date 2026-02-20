@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource revgeocode', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.revgeocode.retrieve({ at: 'at=52.5308,13.3856', key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource revgeocode', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.revgeocode.retrieve({
       at: 'at=52.5308,13.3856',

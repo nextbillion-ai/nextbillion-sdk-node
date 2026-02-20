@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource asset', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.skynet.asset.create({ key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource asset', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.skynet.asset.create({
       key: 'key=API_KEY',
@@ -34,7 +34,7 @@ describe('resource asset', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.skynet.asset.retrieve('id', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -46,12 +46,12 @@ describe('resource asset', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.skynet.asset.retrieve('id', { key: 'key=API_KEY', cluster: 'america' });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.skynet.asset.update('id', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -63,7 +63,7 @@ describe('resource asset', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.skynet.asset.update('id', {
       key: 'key=API_KEY',
@@ -76,7 +76,7 @@ describe('resource asset', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list: only required params', async () => {
     const responsePromise = client.skynet.asset.list({ key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -88,7 +88,7 @@ describe('resource asset', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list: required and optional params', async () => {
     const response = await client.skynet.asset.list({
       key: 'key=API_KEY',
@@ -102,7 +102,7 @@ describe('resource asset', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: only required params', async () => {
     const responsePromise = client.skynet.asset.delete('id', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -114,12 +114,12 @@ describe('resource asset', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: required and optional params', async () => {
     const response = await client.skynet.asset.delete('id', { key: 'key=API_KEY', cluster: 'america' });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('bind: only required params', async () => {
     const responsePromise = client.skynet.asset.bind('id', { key: 'key=API_KEY', device_id: 'device_id' });
     const rawResponse = await responsePromise.asResponse();
@@ -131,12 +131,12 @@ describe('resource asset', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('bind: required and optional params', async () => {
     const response = await client.skynet.asset.bind('id', { key: 'key=API_KEY', device_id: 'device_id' });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('track: only required params', async () => {
     const responsePromise = client.skynet.asset.track('id', {
       key: 'key=API_KEY',
@@ -155,7 +155,7 @@ describe('resource asset', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('track: required and optional params', async () => {
     const response = await client.skynet.asset.track('id', {
       key: 'key=API_KEY',
@@ -175,7 +175,7 @@ describe('resource asset', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('updateAttributes: only required params', async () => {
     const responsePromise = client.skynet.asset.updateAttributes('id', {
       key: 'key=API_KEY',
@@ -190,7 +190,7 @@ describe('resource asset', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('updateAttributes: required and optional params', async () => {
     const response = await client.skynet.asset.updateAttributes('id', {
       key: 'key=API_KEY',

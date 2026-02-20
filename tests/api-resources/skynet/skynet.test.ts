@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource skynet', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('subscribe: only required params', async () => {
     const responsePromise = client.skynet.subscribe({ action: 'TRIP_SUBSCRIBE' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource skynet', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('subscribe: required and optional params', async () => {
     const response = await client.skynet.subscribe({
       action: 'TRIP_SUBSCRIBE',
