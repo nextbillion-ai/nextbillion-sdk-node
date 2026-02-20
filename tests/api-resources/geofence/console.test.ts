@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource console', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('preview: only required params', async () => {
     const responsePromise = client.geofence.console.preview({ type: 'circle' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource console', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('preview: required and optional params', async () => {
     const response = await client.geofence.console.preview({
       type: 'circle',
@@ -44,7 +44,7 @@ describe('resource console', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('search: only required params', async () => {
     const responsePromise = client.geofence.console.search({ query: 'query' });
     const rawResponse = await responsePromise.asResponse();
@@ -56,7 +56,7 @@ describe('resource console', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('search: required and optional params', async () => {
     const response = await client.geofence.console.search({ query: 'query' });
   });

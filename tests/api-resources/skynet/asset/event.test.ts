@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource event', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list: only required params', async () => {
     const responsePromise = client.skynet.asset.event.list('id', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource event', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list: required and optional params', async () => {
     const response = await client.skynet.asset.event.list('id', {
       key: 'key=API_KEY',

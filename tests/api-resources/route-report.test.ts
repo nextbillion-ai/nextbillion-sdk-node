@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource routeReport', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.routeReport.create({
       key: 'key=API_KEY',
@@ -24,7 +24,7 @@ describe('resource routeReport', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.routeReport.create({
       key: 'key=API_KEY',

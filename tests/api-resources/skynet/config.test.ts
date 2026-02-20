@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource config', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.skynet.config.retrieve({ key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,12 +20,12 @@ describe('resource config', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.skynet.config.retrieve({ key: 'key=API_KEY', cluster: 'america' });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.skynet.config.update({ key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -37,7 +37,7 @@ describe('resource config', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.skynet.config.update({
       key: 'key=API_KEY',
@@ -46,7 +46,7 @@ describe('resource config', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('testWebhook: only required params', async () => {
     const responsePromise = client.skynet.config.testWebhook({ key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -58,7 +58,7 @@ describe('resource config', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('testWebhook: required and optional params', async () => {
     const response = await client.skynet.config.testWebhook({ key: 'key=API_KEY' });
   });

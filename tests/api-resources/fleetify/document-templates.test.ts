@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource documentTemplates', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.fleetify.documentTemplates.create({
       key: 'key',
@@ -24,7 +24,7 @@ describe('resource documentTemplates', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.fleetify.documentTemplates.create({
       key: 'key',
@@ -47,7 +47,7 @@ describe('resource documentTemplates', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.fleetify.documentTemplates.retrieve('id', { key: 'key' });
     const rawResponse = await responsePromise.asResponse();
@@ -59,12 +59,12 @@ describe('resource documentTemplates', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.fleetify.documentTemplates.retrieve('id', { key: 'key' });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.fleetify.documentTemplates.update('id', { key: 'key' });
     const rawResponse = await responsePromise.asResponse();
@@ -76,7 +76,7 @@ describe('resource documentTemplates', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.fleetify.documentTemplates.update('id', {
       key: 'key',
@@ -99,7 +99,7 @@ describe('resource documentTemplates', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list: only required params', async () => {
     const responsePromise = client.fleetify.documentTemplates.list({ key: 'key' });
     const rawResponse = await responsePromise.asResponse();
@@ -111,12 +111,12 @@ describe('resource documentTemplates', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list: required and optional params', async () => {
     const response = await client.fleetify.documentTemplates.list({ key: 'key' });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: only required params', async () => {
     const responsePromise = client.fleetify.documentTemplates.delete('id', { key: 'key' });
     const rawResponse = await responsePromise.asResponse();
@@ -128,7 +128,7 @@ describe('resource documentTemplates', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: required and optional params', async () => {
     const response = await client.fleetify.documentTemplates.delete('id', { key: 'key' });
   });

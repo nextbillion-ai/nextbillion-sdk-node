@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource routes', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.fleetify.routes.create({
       key: 'key',
@@ -30,7 +30,7 @@ describe('resource routes', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.fleetify.routes.create({
       key: 'key',
@@ -67,7 +67,7 @@ describe('resource routes', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('redispatch: only required params', async () => {
     const responsePromise = client.fleetify.routes.redispatch('routeID', {
       key: 'key',
@@ -87,7 +87,7 @@ describe('resource routes', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('redispatch: required and optional params', async () => {
     const response = await client.fleetify.routes.redispatch('routeID', {
       key: 'key',

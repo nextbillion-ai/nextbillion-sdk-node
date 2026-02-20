@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource map', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('createSegment', async () => {
     const responsePromise = client.map.createSegment();
     const rawResponse = await responsePromise.asResponse();

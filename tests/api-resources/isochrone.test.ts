@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource isochrone', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('compute: only required params', async () => {
     const responsePromise = client.isochrone.compute({
       contours_meters: 0,
@@ -25,7 +25,7 @@ describe('resource isochrone', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('compute: required and optional params', async () => {
     const response = await client.isochrone.compute({
       contours_meters: 0,

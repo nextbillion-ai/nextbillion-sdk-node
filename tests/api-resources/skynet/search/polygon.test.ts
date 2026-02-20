@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource polygon', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.skynet.search.polygon.create({
       key: 'key=API_KEY',
@@ -23,7 +23,7 @@ describe('resource polygon', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.skynet.search.polygon.create({
       key: 'key=API_KEY',
@@ -44,7 +44,7 @@ describe('resource polygon', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('get: only required params', async () => {
     const responsePromise = client.skynet.search.polygon.get({
       key: 'key=API_KEY',
@@ -59,7 +59,7 @@ describe('resource polygon', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('get: required and optional params', async () => {
     const response = await client.skynet.search.polygon.get({
       key: 'key=API_KEY',
