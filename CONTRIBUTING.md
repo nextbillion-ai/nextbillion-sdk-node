@@ -60,7 +60,7 @@ $ yarn link @nbai/sdk
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global @nbai/sdk
+$ pnpm link --global @nbai/sdk
 ```
 
 ## Running tests
