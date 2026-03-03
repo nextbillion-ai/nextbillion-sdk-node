@@ -4,6 +4,9 @@ import { APIResource } from '../core/resource';
 import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 
+/**
+ * <p>Get travel time and find optimal routes. Add guided navigation and gain trip data insights.</p>
+ */
 export class Navigation extends APIResource {
   /**
    * Nextbillion.ai’s Navigation API is a service that computes a route between 2
