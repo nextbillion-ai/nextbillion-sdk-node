@@ -833,20 +833,41 @@ export class NextbillionSDK {
   geofence: API.GeofenceResource = new API.GeofenceResource(this);
   discover: API.Discover = new API.Discover(this);
   browse: API.Browse = new API.Browse(this);
+  /**
+   * <p>Get travel time and find optimal routes. Add guided navigation and gain trip data insights.</p>
+   */
   mdm: API.Mdm = new API.Mdm(this);
+  /**
+   * <p>Get travel time and find optimal routes. Add guided navigation and gain trip data insights.</p>
+   */
   isochrone: API.Isochrone = new API.Isochrone(this);
   restrictions: API.Restrictions = new API.Restrictions(this);
   restrictionsItems: API.RestrictionsItems = new API.RestrictionsItems(this);
   distanceMatrix: API.DistanceMatrix = new API.DistanceMatrix(this);
   autocomplete: API.Autocomplete = new API.Autocomplete(this);
+  /**
+   * <p>Get travel time and find optimal routes. Add guided navigation and gain trip data insights.</p>
+   */
   navigation: API.Navigation = new API.Navigation(this);
   map: API.Map = new API.Map(this);
   autosuggest: API.Autosuggest = new API.Autosuggest(this);
+  /**
+   * <p>Get travel time and find optimal routes. Add guided navigation and gain trip data insights.</p>
+   */
   directions: API.Directions = new API.Directions(this);
+  /**
+   * <p>Get travel time and find optimal routes. Add guided navigation and gain trip data insights.</p>
+   */
   batch: API.Batch = new API.Batch(this);
   multigeocode: API.Multigeocode = new API.Multigeocode(this);
   revgeocode: API.Revgeocode = new API.Revgeocode(this);
+  /**
+   * <p>Get travel time and find optimal routes. Add guided navigation and gain trip data insights.</p>
+   */
   routeReport: API.RouteReport = new API.RouteReport(this);
+  /**
+   * <p>Get travel time and find optimal routes. Add guided navigation and gain trip data insights.</p>
+   */
   snapToRoads: API.SnapToRoads = new API.SnapToRoads(this);
   postalcode: API.Postalcode = new API.Postalcode(this);
   lookup: API.Lookup = new API.Lookup(this);
