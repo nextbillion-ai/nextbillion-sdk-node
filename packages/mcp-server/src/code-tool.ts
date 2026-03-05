@@ -155,7 +155,7 @@ const remoteStainlessHandler = async ({
     headers: {
       ...(reqContext.stainlessApiKey && { Authorization: reqContext.stainlessApiKey }),
       'Content-Type': 'application/json',
-      client_envs: JSON.stringify({
+      'x-stainless-mcp-client-envs': JSON.stringify({
         NEXTBILLION_SDK_API_KEY: requireValue(
           readEnv('NEXTBILLION_SDK_API_KEY') ?? client.apiKey,
           'set NEXTBILLION_SDK_API_KEY environment variable or provide apiKey client option',
