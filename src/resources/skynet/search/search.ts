@@ -14,6 +14,15 @@ export class Search extends APIResource {
 
   /**
    * Around Search
+   *
+   * @example
+   * ```ts
+   * const searchResponse = await client.skynet.search.around({
+   *   center: '56.597801,43.967836',
+   *   key: 'key=API_KEY',
+   *   radius: 0,
+   * });
+   * ```
    */
   around(query: SearchAroundParams, options?: RequestOptions): APIPromise<SearchResponse> {
     return this._client.get('/skynet/search/around', { query, ...options });
@@ -21,6 +30,14 @@ export class Search extends APIResource {
 
   /**
    * Bound Search
+   *
+   * @example
+   * ```ts
+   * const searchResponse = await client.skynet.search.bound({
+   *   bound: 'bounds=44.7664,-0.6941|44.9206,-0.4639',
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   bound(query: SearchBoundParams, options?: RequestOptions): APIPromise<SearchResponse> {
     return this._client.get('/skynet/search/bound', { query, ...options });

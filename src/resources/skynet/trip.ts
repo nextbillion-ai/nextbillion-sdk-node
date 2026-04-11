@@ -11,6 +11,13 @@ import { path } from '../../internal/utils/path';
 export class Trip extends APIResource {
   /**
    * Retrieves detailed information about a specific trip.
+   *
+   * @example
+   * ```ts
+   * const trip = await client.skynet.trip.retrieve('id', {
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   retrieve(
     id: string,
@@ -22,6 +29,14 @@ export class Trip extends APIResource {
 
   /**
    * Updates the data of a specified trip with the provided data.
+   *
+   * @example
+   * ```ts
+   * const simpleResp = await client.skynet.trip.update('id', {
+   *   key: 'key=API_KEY',
+   *   asset_id: 'asset_id',
+   * });
+   * ```
    */
   update(id: string, params: TripUpdateParams, options?: RequestOptions): APIPromise<AssetAPI.SimpleResp> {
     const { key, cluster, ...body } = params;
@@ -30,6 +45,13 @@ export class Trip extends APIResource {
 
   /**
    * Deletes a specified trip from the system.
+   *
+   * @example
+   * ```ts
+   * const simpleResp = await client.skynet.trip.delete('id', {
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   delete(id: string, params: TripDeleteParams, options?: RequestOptions): APIPromise<AssetAPI.SimpleResp> {
     const { key, cluster } = params;
@@ -38,6 +60,14 @@ export class Trip extends APIResource {
 
   /**
    * End a trip
+   *
+   * @example
+   * ```ts
+   * const simpleResp = await client.skynet.trip.end({
+   *   key: 'key=API_KEY',
+   *   id: 'id',
+   * });
+   * ```
    */
   end(params: TripEndParams, options?: RequestOptions): APIPromise<AssetAPI.SimpleResp> {
     const { key, cluster, ...body } = params;
@@ -46,6 +76,13 @@ export class Trip extends APIResource {
 
   /**
    * Get summary of an ended trip
+   *
+   * @example
+   * ```ts
+   * const response = await client.skynet.trip.getSummary('id', {
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   getSummary(
     id: string,
@@ -57,6 +94,14 @@ export class Trip extends APIResource {
 
   /**
    * Add a new trip to the system with the provided data.
+   *
+   * @example
+   * ```ts
+   * const response = await client.skynet.trip.start({
+   *   key: 'key=API_KEY',
+   *   asset_id: 'asset_id',
+   * });
+   * ```
    */
   start(params: TripStartParams, options?: RequestOptions): APIPromise<TripStartResponse> {
     const { key, cluster, ...body } = params;

@@ -14,6 +14,14 @@ export class Place extends APIResource {
    * added to custom (proprietary) dataset - to the effect of building your own
    * places dataset (s) - or, to a default dataset. Overcome inaccurate ‘POI’ details
    * from default search provider by creating custom, highly accurate ‘POIs’.
+   *
+   * @example
+   * ```ts
+   * const place = await client.multigeocode.place.create({
+   *   key: 'key=API_KEY',
+   *   place: [{ geopoint: {} }],
+   * });
+   * ```
    */
   create(params: PlaceCreateParams, options?: RequestOptions): APIPromise<PlaceCreateResponse> {
     const { key, ...body } = params;
@@ -23,6 +31,14 @@ export class Place extends APIResource {
   /**
    * Use this method to get the details of previously created custom places using its
    * NextBillion ID.
+   *
+   * @example
+   * ```ts
+   * const place = await client.multigeocode.place.retrieve(
+   *   'docId',
+   *   { key: 'key=API_KEY' },
+   * );
+   * ```
    */
   retrieve(
     docID: string,
@@ -46,6 +62,14 @@ export class Place extends APIResource {
    * ‘score’ of that specific place.
    * Alternatively, you can block places which are no longer needed by setting their
    * status: ‘disable’.
+   *
+   * @example
+   * ```ts
+   * const place = await client.multigeocode.place.update(
+   *   'docId',
+   *   { key: 'key=API_KEY' },
+   * );
+   * ```
    */
   update(
     docID: string,
@@ -64,6 +88,14 @@ export class Place extends APIResource {
    * associated with the specified docID only would be deleted. As a result, once a
    * place is deleted, the search API can still return valid results from the default
    * datasets or others, if present.
+   *
+   * @example
+   * ```ts
+   * const place = await client.multigeocode.place.delete(
+   *   'docId',
+   *   { key: 'key=API_KEY' },
+   * );
+   * ```
    */
   delete(
     docID: string,

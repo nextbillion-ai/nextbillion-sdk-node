@@ -27,6 +27,21 @@ export class Routes extends APIResource {
 
   /**
    * Dispatch a new route
+   *
+   * @example
+   * ```ts
+   * const route = await client.fleetify.routes.create({
+   *   key: 'key',
+   *   driver_email: 'johndoe@abc.com',
+   *   steps: [
+   *     {
+   *       arrival: 0,
+   *       location: [0],
+   *       type: 'start',
+   *     },
+   *   ],
+   * });
+   * ```
    */
   create(params: RouteCreateParams, options?: RequestOptions): APIPromise<RouteCreateResponse> {
     const { key, ...body } = params;
@@ -35,6 +50,22 @@ export class Routes extends APIResource {
 
   /**
    * Re-dispatch route
+   *
+   * @example
+   * ```ts
+   * const response = await client.fleetify.routes.redispatch(
+   *   'routeID',
+   *   {
+   *     key: 'key',
+   *     operations: [
+   *       {
+   *         data: {},
+   *         operation: 'create',
+   *       },
+   *     ],
+   *   },
+   * );
+   * ```
    */
   redispatch(
     routeID: string,

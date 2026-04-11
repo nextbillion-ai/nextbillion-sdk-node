@@ -7,6 +7,14 @@ import { RequestOptions } from '../internal/request-options';
 export class Postalcode extends APIResource {
   /**
    * Retrieve coordinates by postal code
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.postalcode.retrieveCoordinates({
+   *     key: 'key=API_KEY',
+   *   });
+   * ```
    */
   retrieveCoordinates(
     params: PostalcodeRetrieveCoordinatesParams,

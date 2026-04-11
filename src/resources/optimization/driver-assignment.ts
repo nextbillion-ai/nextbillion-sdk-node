@@ -9,6 +9,27 @@ export class DriverAssignment extends APIResource {
   /**
    * Assigns available drivers (vehicles) to open orders based on specified criteria
    * and constraints.
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.optimization.driverAssignment.assign({
+   *     key: 'key=API_KEY',
+   *     filter: {},
+   *     orders: [
+   *       {
+   *         id: 'id',
+   *         pickup: {},
+   *       },
+   *     ],
+   *     vehicles: [
+   *       {
+   *         id: 'id',
+   *         location: { lat: -90, lon: -180 },
+   *       },
+   *     ],
+   *   });
+   * ```
    */
   assign(
     params: DriverAssignmentAssignParams,

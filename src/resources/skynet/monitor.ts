@@ -10,6 +10,15 @@ import { path } from '../../internal/utils/path';
 export class MonitorResource extends APIResource {
   /**
    * Create a Monitor
+   *
+   * @example
+   * ```ts
+   * const monitor = await client.skynet.monitor.create({
+   *   key: 'key=API_KEY',
+   *   tags: ['string'],
+   *   type: 'enter',
+   * });
+   * ```
    */
   create(params: MonitorCreateParams, options?: RequestOptions): APIPromise<MonitorCreateResponse> {
     const { key, cluster, ...body } = params;
@@ -18,6 +27,13 @@ export class MonitorResource extends APIResource {
 
   /**
    * Get a Monitor
+   *
+   * @example
+   * ```ts
+   * const monitor = await client.skynet.monitor.retrieve('id', {
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   retrieve(
     id: string,
@@ -29,6 +45,14 @@ export class MonitorResource extends APIResource {
 
   /**
    * Update a Monitor
+   *
+   * @example
+   * ```ts
+   * const simpleResp = await client.skynet.monitor.update(
+   *   'id',
+   *   { key: 'key=API_KEY' },
+   * );
+   * ```
    */
   update(id: string, params: MonitorUpdateParams, options?: RequestOptions): APIPromise<AssetAPI.SimpleResp> {
     const { key, ...body } = params;
@@ -37,6 +61,13 @@ export class MonitorResource extends APIResource {
 
   /**
    * Get Monitor List
+   *
+   * @example
+   * ```ts
+   * const monitors = await client.skynet.monitor.list({
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   list(query: MonitorListParams, options?: RequestOptions): APIPromise<MonitorListResponse> {
     return this._client.get('/skynet/monitor/list', { query, ...options });
@@ -44,6 +75,14 @@ export class MonitorResource extends APIResource {
 
   /**
    * Delete a Monitor
+   *
+   * @example
+   * ```ts
+   * const simpleResp = await client.skynet.monitor.delete(
+   *   'id',
+   *   { key: 'key=API_KEY' },
+   * );
+   * ```
    */
   delete(id: string, params: MonitorDeleteParams, options?: RequestOptions): APIPromise<AssetAPI.SimpleResp> {
     const { key } = params;

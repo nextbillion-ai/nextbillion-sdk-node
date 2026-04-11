@@ -32,6 +32,14 @@ export class GeofenceResource extends APIResource {
 
   /**
    * Create a geofence
+   *
+   * @example
+   * ```ts
+   * const geofence = await client.geofence.create({
+   *   key: 'key=API_KEY',
+   *   type: 'circle',
+   * });
+   * ```
    */
   create(params: GeofenceCreateParams, options?: RequestOptions): APIPromise<GeofenceCreateResponse> {
     const { key, ...body } = params;
@@ -40,6 +48,13 @@ export class GeofenceResource extends APIResource {
 
   /**
    * Get a Geofence
+   *
+   * @example
+   * ```ts
+   * const geofence = await client.geofence.retrieve('id', {
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   retrieve(
     id: string,
@@ -51,6 +66,13 @@ export class GeofenceResource extends APIResource {
 
   /**
    * Update a Geofence
+   *
+   * @example
+   * ```ts
+   * const simpleResp = await client.geofence.update('id', {
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   update(
     id: string,
@@ -63,6 +85,13 @@ export class GeofenceResource extends APIResource {
 
   /**
    * Get Geofence List
+   *
+   * @example
+   * ```ts
+   * const geofences = await client.geofence.list({
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   list(query: GeofenceListParams, options?: RequestOptions): APIPromise<GeofenceListResponse> {
     return this._client.get('/geofence/list', { query, ...options });
@@ -70,6 +99,13 @@ export class GeofenceResource extends APIResource {
 
   /**
    * Delete a Geofence
+   *
+   * @example
+   * ```ts
+   * const simpleResp = await client.geofence.delete('id', {
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   delete(
     id: string,
@@ -82,6 +118,15 @@ export class GeofenceResource extends APIResource {
 
   /**
    * Geofence Contains
+   *
+   * @example
+   * ```ts
+   * const response = await client.geofence.contains({
+   *   key: 'key=API_KEY',
+   *   locations:
+   *     '13.25805884388484,77.91083661048299|13.25805884388484,77.91083661048299',
+   * });
+   * ```
    */
   contains(query: GeofenceContainsParams, options?: RequestOptions): APIPromise<GeofenceContainsResponse> {
     return this._client.get('/geofence/contain', { query, ...options });

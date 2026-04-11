@@ -9,6 +9,13 @@ import { path } from '../../../internal/utils/path';
 export class Event extends APIResource {
   /**
    * Event History of an Asset
+   *
+   * @example
+   * ```ts
+   * const events = await client.skynet.asset.event.list('id', {
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   list(id: string, query: EventListParams, options?: RequestOptions): APIPromise<EventListResponse> {
     return this._client.get(path`/skynet/asset/${id}/event/list`, { query, ...options });

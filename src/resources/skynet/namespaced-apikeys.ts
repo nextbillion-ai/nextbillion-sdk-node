@@ -7,6 +7,15 @@ import { RequestOptions } from '../../internal/request-options';
 export class NamespacedApikeys extends APIResource {
   /**
    * Create namespace under a parent key
+   *
+   * @example
+   * ```ts
+   * const namespacedApikey =
+   *   await client.skynet.namespacedApikeys.create({
+   *     key: 'key=API_KEY',
+   *     namespace: 'namespace=test_name',
+   *   });
+   * ```
    */
   create(
     params: NamespacedApikeyCreateParams,
@@ -18,6 +27,16 @@ export class NamespacedApikeys extends APIResource {
 
   /**
    * Delete namespace under a parent key
+   *
+   * @example
+   * ```ts
+   * const namespacedApikey =
+   *   await client.skynet.namespacedApikeys.delete({
+   *     key: 'key=API_KEY',
+   *     key_to_delete: 'key_to_delete',
+   *     namespace: 'namespace',
+   *   });
+   * ```
    */
   delete(
     params: NamespacedApikeyDeleteParams,

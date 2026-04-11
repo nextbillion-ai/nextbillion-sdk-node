@@ -24,6 +24,13 @@ export class Asset extends APIResource {
 
   /**
    * Create an Asset
+   *
+   * @example
+   * ```ts
+   * const asset = await client.skynet.asset.create({
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   create(params: AssetCreateParams, options?: RequestOptions): APIPromise<AssetCreateResponse> {
     const { key, cluster, ...body } = params;
@@ -32,6 +39,13 @@ export class Asset extends APIResource {
 
   /**
    * Get an Asset
+   *
+   * @example
+   * ```ts
+   * const asset = await client.skynet.asset.retrieve('id', {
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   retrieve(
     id: string,
@@ -43,6 +57,13 @@ export class Asset extends APIResource {
 
   /**
    * Update an Asset
+   *
+   * @example
+   * ```ts
+   * const simpleResp = await client.skynet.asset.update('id', {
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   update(id: string, params: AssetUpdateParams, options?: RequestOptions): APIPromise<SimpleResp> {
     const { key, cluster, ...body } = params;
@@ -51,6 +72,13 @@ export class Asset extends APIResource {
 
   /**
    * Get Asset List
+   *
+   * @example
+   * ```ts
+   * const assets = await client.skynet.asset.list({
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   list(query: AssetListParams, options?: RequestOptions): APIPromise<AssetListResponse> {
     return this._client.get('/skynet/asset/list', { query, ...options });
@@ -58,6 +86,13 @@ export class Asset extends APIResource {
 
   /**
    * Delete an Asset
+   *
+   * @example
+   * ```ts
+   * const simpleResp = await client.skynet.asset.delete('id', {
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   delete(id: string, params: AssetDeleteParams, options?: RequestOptions): APIPromise<SimpleResp> {
     const { key, cluster } = params;
@@ -66,6 +101,14 @@ export class Asset extends APIResource {
 
   /**
    * Bind asset to device
+   *
+   * @example
+   * ```ts
+   * const simpleResp = await client.skynet.asset.bind('id', {
+   *   key: 'key=API_KEY',
+   *   device_id: 'device_id',
+   * });
+   * ```
    */
   bind(id: string, params: AssetBindParams, options?: RequestOptions): APIPromise<SimpleResp> {
     const { key, ...body } = params;
@@ -74,6 +117,18 @@ export class Asset extends APIResource {
 
   /**
    * Upload track info
+   *
+   * @example
+   * ```ts
+   * const simpleResp = await client.skynet.asset.track('id', {
+   *   key: 'key=API_KEY',
+   *   device_id: 'device_id',
+   *   locations: {
+   *     location: { lat: 0, lon: 0 },
+   *     timestamp: 0,
+   *   },
+   * });
+   * ```
    */
   track(id: string, params: AssetTrackParams, options?: RequestOptions): APIPromise<SimpleResp> {
     const { key, cluster, ...body } = params;
@@ -82,6 +137,16 @@ export class Asset extends APIResource {
 
   /**
    * Update asset attributes. (add)
+   *
+   * @example
+   * ```ts
+   * const simpleResp =
+   *   await client.skynet.asset.updateAttributes('id', {
+   *     key: 'key=API_KEY',
+   *     attributes:
+   *       '{\n  "shift_timing": "0800-1700",\n  "driver_name": "John"\n}',
+   *   });
+   * ```
    */
   updateAttributes(
     id: string,
