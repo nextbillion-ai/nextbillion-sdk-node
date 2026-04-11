@@ -10,6 +10,20 @@ import { path } from '../../../internal/utils/path';
 export class Steps extends APIResource {
   /**
    * Insert a new step
+   *
+   * @example
+   * ```ts
+   * const step = await client.fleetify.routes.steps.create(
+   *   'routeID',
+   *   {
+   *     key: 'key=API_KEY',
+   *     arrival: 0,
+   *     location: [0],
+   *     position: 0,
+   *     type: 'start',
+   *   },
+   * );
+   * ```
    */
   create(
     routeID: string,
@@ -22,6 +36,19 @@ export class Steps extends APIResource {
 
   /**
    * Update a step
+   *
+   * @example
+   * ```ts
+   * const step = await client.fleetify.routes.steps.update(
+   *   'stepID',
+   *   {
+   *     routeID: 'routeID',
+   *     key: 'key',
+   *     arrival: 0,
+   *     position: 0,
+   *   },
+   * );
+   * ```
    */
   update(stepID: string, params: StepUpdateParams, options?: RequestOptions): APIPromise<StepUpdateResponse> {
     const { routeID, key, ...body } = params;
@@ -34,6 +61,14 @@ export class Steps extends APIResource {
 
   /**
    * Delete a step
+   *
+   * @example
+   * ```ts
+   * const step = await client.fleetify.routes.steps.delete(
+   *   'stepID',
+   *   { routeID: 'routeID', key: 'key' },
+   * );
+   * ```
    */
   delete(stepID: string, params: StepDeleteParams, options?: RequestOptions): APIPromise<StepDeleteResponse> {
     const { routeID, key } = params;
@@ -51,6 +86,14 @@ export class Steps extends APIResource {
    * completed automatically.
    *
    * Either Session Token must be provided to authenticate the request.
+   *
+   * @example
+   * ```ts
+   * await client.fleetify.routes.steps.complete('stepID', {
+   *   routeID: 'routeID',
+   *   key: 'key',
+   * });
+   * ```
    */
   complete(stepID: string, params: StepCompleteParams, options?: RequestOptions): APIPromise<void> {
     const { routeID, key, ...body } = params;

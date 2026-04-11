@@ -8,6 +8,13 @@ import { RequestOptions } from '../../internal/request-options';
 export class Console extends APIResource {
   /**
    * preview geofence geojson
+   *
+   * @example
+   * ```ts
+   * const response = await client.geofence.console.preview({
+   *   type: 'circle',
+   * });
+   * ```
    */
   preview(body: ConsolePreviewParams, options?: RequestOptions): APIPromise<ConsolePreviewResponse> {
     return this._client.post('/geofence/console/preview', { body, ...options });
@@ -15,6 +22,13 @@ export class Console extends APIResource {
 
   /**
    * Console Geofence Search API
+   *
+   * @example
+   * ```ts
+   * const response = await client.geofence.console.search({
+   *   query: 'query',
+   * });
+   * ```
    */
   search(query: ConsoleSearchParams, options?: RequestOptions): APIPromise<ConsoleSearchResponse> {
     return this._client.get('/geofence/console/search', { query, ...options });

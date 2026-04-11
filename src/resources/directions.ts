@@ -10,6 +10,14 @@ import { RequestOptions } from '../internal/request-options';
 export class Directions extends APIResource {
   /**
    * Directions API is a service that computes a route with given coordinates.
+   *
+   * @example
+   * ```ts
+   * const response = await client.directions.computeRoute({
+   *   destination: '41.349302,2.136480',
+   *   origin: '41.349302,2.136480',
+   * });
+   * ```
    */
   computeRoute(
     body: DirectionComputeRouteParams,

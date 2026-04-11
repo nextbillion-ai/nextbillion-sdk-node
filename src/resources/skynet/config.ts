@@ -8,6 +8,13 @@ import { RequestOptions } from '../../internal/request-options';
 export class Config extends APIResource {
   /**
    * Get webhook configuration
+   *
+   * @example
+   * ```ts
+   * const config = await client.skynet.config.retrieve({
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   retrieve(query: ConfigRetrieveParams, options?: RequestOptions): APIPromise<ConfigRetrieveResponse> {
     return this._client.get('/skynet/config', { query, ...options });
@@ -15,6 +22,13 @@ export class Config extends APIResource {
 
   /**
    * Update webhook configuration
+   *
+   * @example
+   * ```ts
+   * const simpleResp = await client.skynet.config.update({
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   update(params: ConfigUpdateParams, options?: RequestOptions): APIPromise<AssetAPI.SimpleResp> {
     const { key, cluster, ...body } = params;
@@ -23,6 +37,13 @@ export class Config extends APIResource {
 
   /**
    * Test webhook configurations
+   *
+   * @example
+   * ```ts
+   * const response = await client.skynet.config.testWebhook({
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   testWebhook(
     params: ConfigTestWebhookParams,

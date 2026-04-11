@@ -10,6 +10,16 @@ import { RequestOptions } from '../internal/request-options';
 export class RouteReport extends APIResource {
   /**
    * Route Report
+   *
+   * @example
+   * ```ts
+   * const routeReport = await client.routeReport.create({
+   *   key: 'key=API_KEY',
+   *   original_shape:
+   *     'original_shape=sbp}_AlmgpFnLuToKmKviB{eDlcGhpFvj@qbAwoA_mA',
+   *   original_shape_type: 'polyline',
+   * });
+   * ```
    */
   create(params: RouteReportCreateParams, options?: RequestOptions): APIPromise<RouteReportCreateResponse> {
     const { key, ...body } = params;

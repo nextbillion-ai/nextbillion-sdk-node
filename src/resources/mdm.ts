@@ -10,6 +10,15 @@ import { RequestOptions } from '../internal/request-options';
 export class Mdm extends APIResource {
   /**
    * Create a massive distance matrix task
+   *
+   * @example
+   * ```ts
+   * const response = await client.mdm.createDistanceMatrix({
+   *   key: 'key=API_KEY',
+   *   option: 'flexible',
+   *   origins: 'origins',
+   * });
+   * ```
    */
   createDistanceMatrix(
     params: MdmCreateDistanceMatrixParams,
@@ -21,6 +30,14 @@ export class Mdm extends APIResource {
 
   /**
    * Get massive distance matrix task status
+   *
+   * @example
+   * ```ts
+   * const response = await client.mdm.getDistanceMatrixStatus({
+   *   id: 'id',
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   getDistanceMatrixStatus(
     query: MdmGetDistanceMatrixStatusParams,

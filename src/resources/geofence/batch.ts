@@ -9,6 +9,13 @@ import { RequestOptions } from '../../internal/request-options';
 export class Batch extends APIResource {
   /**
    * Batch Creation of Geofence
+   *
+   * @example
+   * ```ts
+   * const batch = await client.geofence.batch.create({
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   create(params: BatchCreateParams, options?: RequestOptions): APIPromise<BatchCreateResponse> {
     const { key, ...body } = params;
@@ -17,6 +24,14 @@ export class Batch extends APIResource {
 
   /**
    * Batch Query of Geofence
+   *
+   * @example
+   * ```ts
+   * const batches = await client.geofence.batch.list({
+   *   ids: 'ids',
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   list(query: BatchListParams, options?: RequestOptions): APIPromise<BatchListResponse> {
     return this._client.get('/geofence/batch', { query, ...options });
@@ -24,6 +39,13 @@ export class Batch extends APIResource {
 
   /**
    * Delete Batch Geofence
+   *
+   * @example
+   * ```ts
+   * const simpleResp = await client.geofence.batch.delete({
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   delete(params: BatchDeleteParams, options?: RequestOptions): APIPromise<AssetAPI.SimpleResp> {
     const { key, ...body } = params;
