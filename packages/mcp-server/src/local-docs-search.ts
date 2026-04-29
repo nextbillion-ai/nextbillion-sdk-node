@@ -2883,7 +2883,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       java: {
         method: 'geofence().console().preview',
         example:
-          'package ai.nextbillion.example;\n\nimport ai.nextbillion.client.NextbillionSdkClient;\nimport ai.nextbillion.client.okhttp.NextbillionSdkOkHttpClient;\nimport ai.nextbillion.models.geofence.GeofenceEntityCreate;\nimport ai.nextbillion.models.geofence.console.ConsolePreviewParams;\nimport ai.nextbillion.models.geofence.console.ConsolePreviewResponse;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        NextbillionSdkClient client = NextbillionSdkOkHttpClient.fromEnv();\n\n        GeofenceEntityCreate params = GeofenceEntityCreate.builder()\n            .type(GeofenceEntityCreate.Type.CIRCLE)\n            .build();\n        ConsolePreviewResponse response = client.geofence().console().preview(params);\n    }\n}',
+          'package ai.nextbillion.example;\n\nimport ai.nextbillion.client.NextbillionSdkClient;\nimport ai.nextbillion.client.okhttp.NextbillionSdkOkHttpClient;\nimport ai.nextbillion.models.geofence.GeofenceEntityCreate;\nimport ai.nextbillion.models.geofence.console.ConsolePreviewResponse;\n\npublic final class Main {\n    private Main() {}\n\n    public static void main(String[] args) {\n        NextbillionSdkClient client = NextbillionSdkOkHttpClient.fromEnv();\n\n        GeofenceEntityCreate params = GeofenceEntityCreate.builder()\n            .type(GeofenceEntityCreate.Type.CIRCLE)\n            .build();\n        ConsolePreviewResponse response = client.geofence().console().preview(params);\n    }\n}',
       },
       go: {
         method: 'client.Geofence.Console.Preview',
