@@ -99,7 +99,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.nextbillion.io/fleetify/routes \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "driver_email": "johndoe@abc.com",\n          "steps": [\n            {\n              "arrival": 0,\n              "location": [\n                0\n              ],\n              "type": "start"\n            }\n          ]\n        }\'',
+          'curl https://api.nextbillion.io/fleetify/routes \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "driver_email": "johndoe@abc.com",\n          "steps": [\n            {\n              "arrival": 0,\n              "location": [\n                0\n              ],\n              "type": "start"\n            }\n          ],\n          "distance": 0,\n          "document_template_id": "\\\\"document_template_id\\\\": \\\\"bfbc4799-bc2f-4515-9054-d888560909bf\\\\""\n        }\'',
       },
     },
   },
@@ -251,7 +251,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.nextbillion.io/fleetify/routes/$ROUTE_ID/steps/$STEP_ID \\\n    -X PUT \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "arrival": 0,\n          "position": 0\n        }\'',
+          'curl https://api.nextbillion.io/fleetify/routes/$ROUTE_ID/steps/$STEP_ID \\\n    -X PUT \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "arrival": 0,\n          "position": 0,\n          "address": "\\\\"address\\\\": \\\\"503, Dublin Drive, Los Angeles, California - 500674\\\\",",\n          "location": [\n            0\n          ]\n        }\'',
       },
     },
   },
@@ -360,7 +360,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.nextbillion.io/fleetify/routes/$ROUTE_ID/steps \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "arrival": 0,\n          "location": [\n            0\n          ],\n          "position": 0,\n          "type": "start"\n        }\'',
+          'curl https://api.nextbillion.io/fleetify/routes/$ROUTE_ID/steps \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "arrival": 0,\n          "location": [\n            0\n          ],\n          "position": 0,\n          "type": "start",\n          "address": "\\\\"address\\\\": \\\\"503, Dublin Drive, Los Angeles, California - 500674\\\\","\n        }\'',
       },
     },
   },
@@ -777,7 +777,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          "curl https://api.nextbillion.io/skynet/asset/$ID \\\n    -X PUT \\\n    -H 'Content-Type: application/json' \\\n    -d '{}'",
+          'curl https://api.nextbillion.io/skynet/asset/$ID \\\n    -X PUT \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "attributes": "{\\\\n  \\\\"shift_timing\\\\": \\\\"0800-1700\\\\",\\\\n  \\\\"driver_name\\\\": \\\\"John\\\\"\\\\n}",\n          "tags": [\n            "string"\n          ]\n        }\'',
       },
     },
   },
@@ -830,7 +830,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          "curl https://api.nextbillion.io/skynet/asset \\\n    -H 'Content-Type: application/json' \\\n    -d '{}'",
+          'curl https://api.nextbillion.io/skynet/asset \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "attributes": "{\\\\n  \\\\"shift_timing\\\\": \\\\"0800-1700\\\\",\\\\n  \\\\"driver_name\\\\": \\\\"John\\\\"\\\\n}",\n          "tags": [\n            "string"\n          ]\n        }\'',
       },
     },
   },
@@ -1363,7 +1363,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          "curl https://api.nextbillion.io/skynet/monitor/$ID \\\n    -X PUT \\\n    -H 'Content-Type: application/json' \\\n    -d '{}'",
+          'curl https://api.nextbillion.io/skynet/monitor/$ID \\\n    -X PUT \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "name": "\\\\"name\\\\":\\\\"warehouse_exit\\\\"",\n          "tags": [\n            "string"\n          ],\n          "type": "enter"\n        }\'',
       },
     },
   },
@@ -1421,7 +1421,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.nextbillion.io/skynet/monitor \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "tags": [\n            "string"\n          ],\n          "type": "enter"\n        }\'',
+          'curl https://api.nextbillion.io/skynet/monitor \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "tags": [\n            "string"\n          ],\n          "type": "enter",\n          "geofence_ids": [\n            "string"\n          ]\n        }\'',
       },
     },
   },
@@ -1519,7 +1519,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.nextbillion.io/skynet/trip/start \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "asset_id": "asset_id"\n        }\'',
+          'curl https://api.nextbillion.io/skynet/trip/start \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "asset_id": "asset_id",\n          "attributes": "{\\\\n  \\\\"shift_timing\\\\": \\\\"0800-1700\\\\",\\\\n  \\\\"driver_name\\\\": \\\\"John\\\\"\\\\n}",\n          "meta_data": "\\\\"meta_data\\\\":[\\\\"Scheduled Trip\\\\", \\\\"Custom Deliveries\\\\"]",\n          "name": "\\\\"name\\\\": \\\\"Employee Pickup\\\\""\n        }\'',
       },
     },
   },
@@ -1660,7 +1660,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.nextbillion.io/skynet/trip/$ID \\\n    -X PUT \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "asset_id": "asset_id"\n        }\'',
+          'curl https://api.nextbillion.io/skynet/trip/$ID \\\n    -X PUT \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "asset_id": "asset_id",\n          "attributes": "{\\\\n  \\\\"shift_timing\\\\": \\\\"0800-1700\\\\",\\\\n  \\\\"driver_name\\\\": \\\\"John\\\\"\\\\n}",\n          "meta_data": "\\\\"meta_data\\\\":[\\\\"Scheduled Trip\\\\", \\\\"Custom Deliveries\\\\"]",\n          "name": "\\\\"name\\\\": \\\\"Employee Pickup\\\\""\n        }\'',
       },
     },
   },
@@ -1879,7 +1879,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          "curl https://api.nextbillion.io/skynet/config \\\n    -X PUT \\\n    -H 'Content-Type: application/json' \\\n    -d '{}'",
+          'curl https://api.nextbillion.io/skynet/config \\\n    -X PUT \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "webhook": [\n            "string"\n          ]\n        }\'',
       },
     },
   },
@@ -2145,7 +2145,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.nextbillion.io/skynet/search/polygon \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "polygon": {\n            "coordinates": [\n              0\n            ],\n            "type": "type"\n          }\n        }\'',
+          'curl https://api.nextbillion.io/skynet/search/polygon \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "polygon": {\n            "coordinates": [\n              0\n            ],\n            "type": "type"\n          },\n          "filter": "\\\\"tag:delivery,truck\\\\"",\n          "pn": 0,\n          "ps": 0\n        }\'',
       },
     },
   },
@@ -2563,7 +2563,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.nextbillion.io/optimization/v2 \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "locations": {\n            "location": [\n              "string"\n            ]\n          },\n          "vehicles": [\n            {\n              "id": "id",\n              "location": {\n                "lat": -90,\n                "lon": -180\n              }\n            }\n          ]\n        }\'',
+          'curl https://api.nextbillion.io/optimization/v2 \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "locations": {\n            "location": [\n              "string"\n            ]\n          },\n          "vehicles": [\n            {\n              "id": "id",\n              "location": {\n                "lat": -90,\n                "lon": -180\n              }\n            }\n          ],\n          "description": "\\\\"description\\\\": \\\\"Sample Optimization\\\\""\n        }\'',
       },
     },
   },
@@ -2617,7 +2617,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.nextbillion.io/geofence \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "type": "circle"\n        }\'',
+          'curl https://api.nextbillion.io/geofence \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "type": "circle",\n          "meta_data": "{\\\\n  \\\\"country\\\\": \\\\"USA\\\\",\\\\n  \\\\"state\\\\": \\\\"California\\\\"\\\\n}",\n          "name": "\\\\"name\\\\":\\\\"Los Angeles Downtown\\\\"",\n          "tags": [\n            "\\\\"tags\\\\":[\\\\"tags_1\\\\", \\\\"O69Am2Y4KL8q5Y5JuD-Fy-tdtEpkTRQo_ZYIK7\\\\"]"\n          ]\n        }\'',
       },
     },
   },
@@ -2801,7 +2801,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          "curl https://api.nextbillion.io/geofence/$ID \\\n    -X PUT \\\n    -H 'Content-Type: application/json' \\\n    -d '{}'",
+          'curl https://api.nextbillion.io/geofence/$ID \\\n    -X PUT \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "meta_data": "",\n          "name": "\\\\"name\\\\":\\\\"Los Angeles Downtown\\\\"",\n          "type": "circle"\n        }\'',
       },
     },
   },
@@ -2897,7 +2897,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.nextbillion.io/geofence/console/preview \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "type": "circle"\n        }\'',
+          'curl https://api.nextbillion.io/geofence/console/preview \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "type": "circle",\n          "meta_data": "{\\\\n  \\\\"country\\\\": \\\\"USA\\\\",\\\\n  \\\\"state\\\\": \\\\"California\\\\"\\\\n}",\n          "name": "\\\\"name\\\\":\\\\"Los Angeles Downtown\\\\"",\n          "tags": [\n            "\\\\"tags\\\\":[\\\\"tags_1\\\\", \\\\"O69Am2Y4KL8q5Y5JuD-Fy-tdtEpkTRQo_ZYIK7\\\\"]"\n          ]\n        }\'',
       },
     },
   },
@@ -3237,7 +3237,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.nextbillion.io/mdm/create \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "origins": "origins"\n        }\'',
+          'curl https://api.nextbillion.io/mdm/create \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "origins": "origins",\n          "avoid": "toll",\n          "departure_time": 0,\n          "destinations_approach": "unrestricted",\n          "hazmat_type": "general",\n          "origins_approach": "unrestricted",\n          "route_type": "fastest",\n          "truck_axle_load": 0,\n          "truck_size": "\\\\"truck_size\\\\"=200,210,600",\n          "truck_weight": 0\n        }\'',
       },
     },
   },
@@ -3505,7 +3505,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.nextbillion.io/restrictions/$RESTRICTION_TYPE \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "area": "area",\n          "name": "name"\n        }\'',
+          'curl https://api.nextbillion.io/restrictions/$RESTRICTION_TYPE \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "area": "area",\n          "name": "name",\n          "end_time": 0,\n          "geofence": [\n            [\n              0\n            ]\n          ],\n          "mode": [\n            "0w"\n          ],\n          "repeat_on": "repeatOn=\\\\"Mo-Fr 07:00-09:00,17:00-19:00\\\\"",\n          "start_time": 0,\n          "tracks": [\n            [\n              0\n            ]\n          ]\n        }\'',
       },
     },
   },
@@ -3659,7 +3659,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.nextbillion.io/restrictions/$ID \\\n    -X PATCH \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "area": "area",\n          "name": "name"\n        }\'',
+          'curl https://api.nextbillion.io/restrictions/$ID \\\n    -X PATCH \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "area": "area",\n          "name": "name",\n          "end_time": 0,\n          "geofence": [\n            [\n              0\n            ]\n          ],\n          "mode": [\n            "0w"\n          ],\n          "repeat_on": "repeatOn=\\\\"Mo-Fr 07:00-09:00,17:00-19:00\\\\"",\n          "start_time": 0,\n          "tracks": [\n            [\n              0\n            ]\n          ]\n        }\'',
       },
     },
   },
@@ -4141,7 +4141,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.nextbillion.io/directions/json \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "destination": "41.349302,2.136480",\n          "origin": "41.349302,2.136480"\n        }\'',
+          'curl https://api.nextbillion.io/directions/json \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "destination": "41.349302,2.136480",\n          "origin": "41.349302,2.136480",\n          "approaches": "unrestricted;;curb;",\n          "avoid": "toll",\n          "bearings": "0,180;0,180",\n          "departure_time": 0,\n          "drive_time_limits": "500,400,400",\n          "exclude": "toll",\n          "hazmat_type": "general",\n          "rest_times": "500,300,100",\n          "truck_size": "200,210,600",\n          "waypoints": "41.349302,2.136480|41.349303,2.136481|41.349304,2.136482"\n        }\'',
       },
     },
   },
@@ -4287,7 +4287,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.nextbillion.io/multigeocode/search \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "at": {\n            "lat": 0,\n            "lng": 0\n          },\n          "query": "“query”: “Taj Mahal”"\n        }\'',
+          'curl https://api.nextbillion.io/multigeocode/search \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "at": {\n            "lat": 0,\n            "lng": 0\n          },\n          "query": "“query”: “Taj Mahal”",\n          "city": "“city”: “Glendale”",\n          "country": "“country”:”IND”",\n          "district": "“district”: “City Center”",\n          "limit": 0,\n          "radius": "“radius”: “10m”",\n          "state": "“state”: “California”",\n          "street": "“street”: “Americana Way”",\n          "subDistrict": "“subDistrict”: “Golkonda”"\n        }\'',
       },
     },
   },
@@ -4675,7 +4675,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          "curl https://api.nextbillion.io/postalcode \\\n    -H 'Content-Type: application/json' \\\n    -d '{}'",
+          'curl https://api.nextbillion.io/postalcode \\\n    -H \'Content-Type: application/json\' \\\n    -d \'{\n          "format": "geojson"\n        }\'',
       },
     },
   },
