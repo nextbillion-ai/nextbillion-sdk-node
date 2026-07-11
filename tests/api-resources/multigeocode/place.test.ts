@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource place', () => {
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.multigeocode.place.create({
       key: 'key=API_KEY',
@@ -23,7 +23,7 @@ describe('resource place', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.multigeocode.place.create({
       key: 'key=API_KEY',
@@ -43,13 +43,17 @@ describe('resource place', () => {
           subDistrict: 'subDistrict',
         },
       ],
-      dataSource: { refId: 'refId', source: 'source', status: 'enable' },
+      dataSource: {
+        refId: 'refId',
+        source: 'source',
+        status: 'enable',
+      },
       force: true,
       score: 0,
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.multigeocode.place.retrieve('docId', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -61,12 +65,12 @@ describe('resource place', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.multigeocode.place.retrieve('docId', { key: 'key=API_KEY' });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.multigeocode.place.update('docId', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -78,11 +82,15 @@ describe('resource place', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.multigeocode.place.update('docId', {
       key: 'key=API_KEY',
-      dataSource: { refId: 'refId', source: 'source', status: 'enable' },
+      dataSource: {
+        refId: 'refId',
+        source: 'source',
+        status: 'enable',
+      },
       place: [
         {
           address: 'address',
@@ -103,7 +111,7 @@ describe('resource place', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('delete: only required params', async () => {
     const responsePromise = client.multigeocode.place.delete('docId', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -115,7 +123,7 @@ describe('resource place', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('delete: required and optional params', async () => {
     const response = await client.multigeocode.place.delete('docId', { key: 'key=API_KEY' });
   });

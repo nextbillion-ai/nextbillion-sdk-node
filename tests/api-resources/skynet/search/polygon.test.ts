@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource polygon', () => {
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.skynet.search.polygon.create({
       key: 'key=API_KEY',
@@ -23,7 +23,7 @@ describe('resource polygon', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.skynet.search.polygon.create({
       key: 'key=API_KEY',
@@ -36,11 +36,15 @@ describe('resource polygon', () => {
       max_search_limit: true,
       pn: 0,
       ps: 0,
-      sort: { sort_by: 'distance', sort_destination: { lat: 0, lon: 0 }, sort_driving_mode: 'car' },
+      sort: {
+        sort_by: 'distance',
+        sort_destination: { lat: 0, lon: 0 },
+        sort_driving_mode: 'car',
+      },
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('get: only required params', async () => {
     const responsePromise = client.skynet.search.polygon.get({
       key: 'key=API_KEY',
@@ -55,7 +59,7 @@ describe('resource polygon', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('get: required and optional params', async () => {
     const response = await client.skynet.search.polygon.get({
       key: 'key=API_KEY',

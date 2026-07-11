@@ -8,13 +8,23 @@ const client = new NextbillionSDK({
 });
 
 describe('resource driverAssignment', () => {
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('assign: only required params', async () => {
     const responsePromise = client.optimization.driverAssignment.assign({
       key: 'key=API_KEY',
       filter: {},
-      orders: [{ id: 'id', pickup: {} }],
-      vehicles: [{ id: 'id', location: { lat: -90, lon: -180 } }],
+      orders: [
+        {
+          id: 'id',
+          pickup: {},
+        },
+      ],
+      vehicles: [
+        {
+          id: 'id',
+          location: { lat: -90, lon: -180 },
+        },
+      ],
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -25,11 +35,15 @@ describe('resource driverAssignment', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('assign: required and optional params', async () => {
     const response = await client.optimization.driverAssignment.assign({
       key: 'key=API_KEY',
-      filter: { driving_distance: 0, pickup_eta: 0, radius: 0 },
+      filter: {
+        driving_distance: 0,
+        pickup_eta: 0,
+        radius: 0,
+      },
       orders: [
         {
           id: 'id',

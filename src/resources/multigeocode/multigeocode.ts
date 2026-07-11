@@ -27,6 +27,15 @@ export class Multigeocode extends APIResource {
    * dataset and get a combined search result. It accepts free-form, partially
    * correct or even incomplete search texts. Results would be ranked based on the
    * search score of a place.
+   *
+   * @example
+   * ```ts
+   * const response = await client.multigeocode.search({
+   *   key: 'key=API_KEY',
+   *   at: { lat: 0, lng: 0 },
+   *   query: '“query”: “Taj Mahal”',
+   * });
+   * ```
    */
   search(params: MultigeocodeSearchParams, options?: RequestOptions): APIPromise<MultigeocodeSearchResponse> {
     const { key, ...body } = params;

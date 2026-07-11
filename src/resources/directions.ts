@@ -4,9 +4,20 @@ import { APIResource } from '../core/resource';
 import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 
+/**
+ * <p>Get travel time and find optimal routes. Add guided navigation and gain trip data insights.</p>
+ */
 export class Directions extends APIResource {
   /**
    * Directions API is a service that computes a route with given coordinates.
+   *
+   * @example
+   * ```ts
+   * const response = await client.directions.computeRoute({
+   *   destination: '41.349302,2.136480',
+   *   origin: '41.349302,2.136480',
+   * });
+   * ```
    */
   computeRoute(
     body: DirectionComputeRouteParams,

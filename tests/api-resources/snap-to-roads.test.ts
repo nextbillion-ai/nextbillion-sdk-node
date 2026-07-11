@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource snapToRoads', () => {
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('snap: only required params', async () => {
     const responsePromise = client.snapToRoads.snap({
       key: 'key=API_KEY',
@@ -23,7 +23,7 @@ describe('resource snapToRoads', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('snap: required and optional params', async () => {
     const response = await client.snapToRoads.snap({
       key: 'key=API_KEY',

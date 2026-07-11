@@ -32,6 +32,15 @@ export class Optimization extends APIResource {
    * Roundtrip optimization with customized destinations
    *
    * A list of all parameters is specified in the next section.
+   *
+   * @example
+   * ```ts
+   * const response = await client.optimization.compute({
+   *   coordinates:
+   *     'coordinates=41.35544869444527,2.0747669962025292|41.37498154684205,2.103705 4530396886|41.38772862000152,2.1311887061315526',
+   *   key: 'key=API_KEY',
+   * });
+   * ```
    */
   compute(
     query: OptimizationComputeParams,
@@ -42,6 +51,14 @@ export class Optimization extends APIResource {
 
   /**
    * Re-optimization
+   *
+   * @example
+   * ```ts
+   * const postResponse = await client.optimization.reOptimize({
+   *   key: 'key=API_KEY',
+   *   existing_request_id: 'existing_request_id',
+   * });
+   * ```
    */
   reOptimize(params: OptimizationReOptimizeParams, options?: RequestOptions): APIPromise<PostResponse> {
     const { key, ...body } = params;

@@ -9,6 +9,21 @@ import { path } from '../../internal/utils/path';
 export class DocumentTemplates extends APIResource {
   /**
    * Create Document template
+   *
+   * @example
+   * ```ts
+   * const documentTemplate =
+   *   await client.fleetify.documentTemplates.create({
+   *     key: 'key',
+   *     content: [
+   *       {
+   *         label: '"label": "Specify Completion Time"',
+   *         type: 'string',
+   *       },
+   *     ],
+   *     name: 'name',
+   *   });
+   * ```
    */
   create(
     params: DocumentTemplateCreateParams,
@@ -20,6 +35,14 @@ export class DocumentTemplates extends APIResource {
 
   /**
    * Retrieve template by ID
+   *
+   * @example
+   * ```ts
+   * const documentTemplate =
+   *   await client.fleetify.documentTemplates.retrieve('id', {
+   *     key: 'key',
+   *   });
+   * ```
    */
   retrieve(
     id: string,
@@ -31,6 +54,14 @@ export class DocumentTemplates extends APIResource {
 
   /**
    * Update a document template
+   *
+   * @example
+   * ```ts
+   * const documentTemplate =
+   *   await client.fleetify.documentTemplates.update('id', {
+   *     key: 'key',
+   *   });
+   * ```
    */
   update(
     id: string,
@@ -43,6 +74,14 @@ export class DocumentTemplates extends APIResource {
 
   /**
    * Get all document templates
+   *
+   * @example
+   * ```ts
+   * const documentTemplates =
+   *   await client.fleetify.documentTemplates.list({
+   *     key: 'key',
+   *   });
+   * ```
    */
   list(
     query: DocumentTemplateListParams,
@@ -53,6 +92,14 @@ export class DocumentTemplates extends APIResource {
 
   /**
    * Delete a document template
+   *
+   * @example
+   * ```ts
+   * const documentTemplate =
+   *   await client.fleetify.documentTemplates.delete('id', {
+   *     key: 'key',
+   *   });
+   * ```
    */
   delete(
     id: string,

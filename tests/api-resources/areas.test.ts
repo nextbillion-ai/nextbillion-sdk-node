@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource areas', () => {
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('list: only required params', async () => {
     const responsePromise = client.areas.list({ key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource areas', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('list: required and optional params', async () => {
     const response = await client.areas.list({ key: 'key=API_KEY' });
   });

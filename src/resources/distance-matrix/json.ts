@@ -5,6 +5,9 @@ import { APIPromise } from '../../core/api-promise';
 import { buildHeaders } from '../../internal/headers';
 import { RequestOptions } from '../../internal/request-options';
 
+/**
+ * <p>Get travel time and find optimal routes. Add guided navigation and gain trip data insights.</p>
+ */
 export class Json extends APIResource {
   /**
    * asfd

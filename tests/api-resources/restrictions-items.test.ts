@@ -8,9 +8,14 @@ const client = new NextbillionSDK({
 });
 
 describe('resource restrictionsItems', () => {
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('list: only required params', async () => {
-    const responsePromise = client.restrictionsItems.list({ max_lat: 0, max_lon: 0, min_lat: 0, min_lon: 0 });
+    const responsePromise = client.restrictionsItems.list({
+      max_lat: 0,
+      max_lon: 0,
+      min_lat: 0,
+      min_lon: 0,
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,7 +25,7 @@ describe('resource restrictionsItems', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('list: required and optional params', async () => {
     const response = await client.restrictionsItems.list({
       max_lat: 0,

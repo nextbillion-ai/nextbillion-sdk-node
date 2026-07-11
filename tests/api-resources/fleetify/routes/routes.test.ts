@@ -8,12 +8,18 @@ const client = new NextbillionSDK({
 });
 
 describe('resource routes', () => {
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.fleetify.routes.create({
       key: 'key',
       driver_email: 'johndoe@abc.com',
-      steps: [{ arrival: 0, location: [0], type: 'start' }],
+      steps: [
+        {
+          arrival: 0,
+          location: [0],
+          type: 'start',
+        },
+      ],
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -24,7 +30,7 @@ describe('resource routes', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.fleetify.routes.create({
       key: 'key',
@@ -61,11 +67,16 @@ describe('resource routes', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('redispatch: only required params', async () => {
     const responsePromise = client.fleetify.routes.redispatch('routeID', {
       key: 'key',
-      operations: [{ data: {}, operation: 'create' }],
+      operations: [
+        {
+          data: {},
+          operation: 'create',
+        },
+      ],
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -76,7 +87,7 @@ describe('resource routes', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('redispatch: required and optional params', async () => {
     const response = await client.fleetify.routes.redispatch('routeID', {
       key: 'key',

@@ -687,7 +687,7 @@ export interface GeocodeBatchCreateParams {
   key: string;
 
   /**
-   * Body param:
+   * Body param
    */
   body: Array<GeocodeBatchCreateParams.Body>;
 }

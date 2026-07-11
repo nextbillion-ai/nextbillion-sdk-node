@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource trip', () => {
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.skynet.trip.retrieve('id', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,12 +20,12 @@ describe('resource trip', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.skynet.trip.retrieve('id', { key: 'key=API_KEY', cluster: 'america' });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.skynet.trip.update('id', { key: 'key=API_KEY', asset_id: 'asset_id' });
     const rawResponse = await responsePromise.asResponse();
@@ -37,7 +37,7 @@ describe('resource trip', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.skynet.trip.update('id', {
       key: 'key=API_KEY',
@@ -57,7 +57,7 @@ describe('resource trip', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('delete: only required params', async () => {
     const responsePromise = client.skynet.trip.delete('id', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -69,12 +69,12 @@ describe('resource trip', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('delete: required and optional params', async () => {
     const response = await client.skynet.trip.delete('id', { key: 'key=API_KEY', cluster: 'america' });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('end: only required params', async () => {
     const responsePromise = client.skynet.trip.end({ key: 'key=API_KEY', id: 'id' });
     const rawResponse = await responsePromise.asResponse();
@@ -86,12 +86,16 @@ describe('resource trip', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('end: required and optional params', async () => {
-    const response = await client.skynet.trip.end({ key: 'key=API_KEY', id: 'id', cluster: 'america' });
+    const response = await client.skynet.trip.end({
+      key: 'key=API_KEY',
+      id: 'id',
+      cluster: 'america',
+    });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('getSummary: only required params', async () => {
     const responsePromise = client.skynet.trip.getSummary('id', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -103,12 +107,12 @@ describe('resource trip', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('getSummary: required and optional params', async () => {
     const response = await client.skynet.trip.getSummary('id', { key: 'key=API_KEY', cluster: 'america' });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('start: only required params', async () => {
     const responsePromise = client.skynet.trip.start({ key: 'key=API_KEY', asset_id: 'asset_id' });
     const rawResponse = await responsePromise.asResponse();
@@ -120,7 +124,7 @@ describe('resource trip', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('start: required and optional params', async () => {
     const response = await client.skynet.trip.start({
       key: 'key=API_KEY',

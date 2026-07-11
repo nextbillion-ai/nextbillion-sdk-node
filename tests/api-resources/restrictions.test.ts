@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource restrictions', () => {
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.restrictions.create('turn', {
       key: 'key=API_KEY',
@@ -24,7 +24,7 @@ describe('resource restrictions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.restrictions.create('turn', {
       key: 'key=API_KEY',
@@ -44,13 +44,19 @@ describe('resource restrictions', () => {
       speed_limit: 0,
       start_time: 0,
       tracks: [[0]],
-      turns: [{ from: 0, to: 0, via: 0 }],
+      turns: [
+        {
+          from: 0,
+          to: 0,
+          via: 0,
+        },
+      ],
       weight: 0,
       width: 0,
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.restrictions.retrieve(0, { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -62,14 +68,18 @@ describe('resource restrictions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.restrictions.retrieve(0, { key: 'key=API_KEY', transform: true });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
-    const responsePromise = client.restrictions.update(0, { key: 'key=API_KEY', area: 'area', name: 'name' });
+    const responsePromise = client.restrictions.update(0, {
+      key: 'key=API_KEY',
+      area: 'area',
+      name: 'name',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -79,7 +89,7 @@ describe('resource restrictions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.restrictions.update(0, {
       key: 'key=API_KEY',
@@ -99,13 +109,19 @@ describe('resource restrictions', () => {
       speed_limit: 0,
       start_time: 0,
       tracks: [[0]],
-      turns: [{ from: 0, to: 0, via: 0 }],
+      turns: [
+        {
+          from: 0,
+          to: 0,
+          via: 0,
+        },
+      ],
       weight: 0,
       width: 0,
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('list: only required params', async () => {
     const responsePromise = client.restrictions.list({
       area: 'area',
@@ -122,7 +138,7 @@ describe('resource restrictions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('list: required and optional params', async () => {
     const response = await client.restrictions.list({
       area: 'area',
@@ -139,7 +155,7 @@ describe('resource restrictions', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('delete: only required params', async () => {
     const responsePromise = client.restrictions.delete(0, { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -151,12 +167,12 @@ describe('resource restrictions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('delete: required and optional params', async () => {
     const response = await client.restrictions.delete(0, { key: 'key=API_KEY' });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('listByBbox: only required params', async () => {
     const responsePromise = client.restrictions.listByBbox({
       key: 'key=API_KEY',
@@ -174,7 +190,7 @@ describe('resource restrictions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('listByBbox: required and optional params', async () => {
     const response = await client.restrictions.listByBbox({
       key: 'key=API_KEY',
@@ -191,7 +207,7 @@ describe('resource restrictions', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('setState: only required params', async () => {
     const responsePromise = client.restrictions.setState(0, { key: 'key=API_KEY', state: 'enabled' });
     const rawResponse = await responsePromise.asResponse();
@@ -203,7 +219,7 @@ describe('resource restrictions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('setState: required and optional params', async () => {
     const response = await client.restrictions.setState(0, { key: 'key=API_KEY', state: 'enabled' });
   });

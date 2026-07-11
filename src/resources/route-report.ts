@@ -4,9 +4,22 @@ import { APIResource } from '../core/resource';
 import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 
+/**
+ * <p>Get travel time and find optimal routes. Add guided navigation and gain trip data insights.</p>
+ */
 export class RouteReport extends APIResource {
   /**
    * Route Report
+   *
+   * @example
+   * ```ts
+   * const routeReport = await client.routeReport.create({
+   *   key: 'key=API_KEY',
+   *   original_shape:
+   *     'original_shape=sbp}_AlmgpFnLuToKmKviB{eDlcGhpFvj@qbAwoA_mA',
+   *   original_shape_type: 'polyline',
+   * });
+   * ```
    */
   create(params: RouteReportCreateParams, options?: RequestOptions): APIPromise<RouteReportCreateResponse> {
     const { key, ...body } = params;

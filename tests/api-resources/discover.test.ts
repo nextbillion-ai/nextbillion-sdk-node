@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource discover', () => {
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.discover.retrieve({ key: 'key=API_KEY', q: 'q=125, Berliner, berlin' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource discover', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.discover.retrieve({
       key: 'key=API_KEY',

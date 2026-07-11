@@ -82,6 +82,13 @@ export class Skynet extends APIResource {
 
   /**
    * POST Action
+   *
+   * @example
+   * ```ts
+   * const response = await client.skynet.subscribe({
+   *   action: 'TRIP_SUBSCRIBE',
+   * });
+   * ```
    */
   subscribe(body: SkynetSubscribeParams, options?: RequestOptions): APIPromise<SkynetSubscribeResponse> {
     return this._client.post('/skynet/subscribe', { body, ...options });

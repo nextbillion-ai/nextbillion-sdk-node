@@ -4,6 +4,9 @@ import { APIResource } from '../core/resource';
 import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 
+/**
+ * <p>Get travel time and find optimal routes. Add guided navigation and gain trip data insights.</p>
+ */
 export class Batch extends APIResource {
   /**
    * Create Batch Routing

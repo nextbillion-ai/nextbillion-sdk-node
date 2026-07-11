@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource directions', () => {
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('computeRoute: only required params', async () => {
     const responsePromise = client.directions.computeRoute({
       destination: '41.349302,2.136480',
@@ -23,7 +23,7 @@ describe('resource directions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('computeRoute: required and optional params', async () => {
     const response = await client.directions.computeRoute({
       destination: '41.349302,2.136480',

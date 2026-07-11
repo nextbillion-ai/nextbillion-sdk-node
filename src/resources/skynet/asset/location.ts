@@ -10,6 +10,14 @@ import { path } from '../../../internal/utils/path';
 export class Location extends APIResource {
   /**
    * Track locations of an asset
+   *
+   * @example
+   * ```ts
+   * const locations = await client.skynet.asset.location.list(
+   *   'id',
+   *   { key: 'key=API_KEY' },
+   * );
+   * ```
    */
   list(id: string, query: LocationListParams, options?: RequestOptions): APIPromise<LocationListResponse> {
     return this._client.get(path`/skynet/asset/${id}/location/list`, { query, ...options });
@@ -17,6 +25,14 @@ export class Location extends APIResource {
 
   /**
    * Track the last location of an asset
+   *
+   * @example
+   * ```ts
+   * const response = await client.skynet.asset.location.getLast(
+   *   'id',
+   *   { key: 'key=API_KEY' },
+   * );
+   * ```
    */
   getLast(
     id: string,

@@ -11,7 +11,7 @@ import type { APIResponseProps } from './internal/parse';
 import { getPlatformHeaders } from './internal/detect-platform';
 import * as Shims from './internal/shims';
 import * as Opts from './internal/request-options';
-import * as qs from './internal/qs';
+import { stringifyQuery } from './internal/utils/query';
 import { VERSION } from './version';
 import * as Errors from './core/error';
 import * as Uploads from './core/uploads';
@@ -224,7 +224,7 @@ export class NextbillionSDK {
   baseURL: string;
   maxRetries: number;
   timeout: number;
-  logger: Logger | undefined;
+  logger: Logger;
   logLevel: LogLevel | undefined;
   fetchOptions: MergedRequestInit | undefined;
 
@@ -277,6 +277,18 @@ export class NextbillionSDK {
     this.fetch = options.fetch ?? Shims.getDefaultFetch();
     this.#encoder = Opts.FallbackEncoder;
 
+    const customHeadersEnv = readEnv('NEXTBILLION_SDK_CUSTOM_HEADERS');
+    if (customHeadersEnv) {
+      const parsed: Record<string, string> = {};
+      for (const line of customHeadersEnv.split('\n')) {
+        const colon = line.indexOf(':');
+        if (colon >= 0) {
+          parsed[line.substring(0, colon).trim()] = line.substring(colon + 1).trim();
+        }
+      }
+      options.defaultHeaders = { ...parsed, ...options.defaultHeaders };
+    }
+
     this._options = options;
 
     this.apiKey = apiKey;
@@ -323,8 +335,8 @@ export class NextbillionSDK {
     return buildHeaders([]);
   }
 
-  protected stringifyQuery(query: Record<string, unknown>): string {
-    return qs.stringify(query, { arrayFormat: 'comma' });
+  protected stringifyQuery(query: object | Record<string, unknown>): string {
+    return stringifyQuery(query);
   }
 
   private getUserAgent(): string {
@@ -356,12 +368,13 @@ export class NextbillionSDK {
       : new URL(baseURL + (baseURL.endsWith('/') && path.startsWith('/') ? path.slice(1) : path));
 
     const defaultQuery = this.defaultQuery();
-    if (!isEmptyObj(defaultQuery)) {
-      query = { ...defaultQuery, ...query };
+    const pathQuery = Object.fromEntries(url.searchParams);
+    if (!isEmptyObj(defaultQuery) || !isEmptyObj(pathQuery)) {
+      query = { ...pathQuery, ...defaultQuery, ...query };
     }
 
     if (typeof query === 'object' && query && !Array.isArray(query)) {
-      url.search = this.stringifyQuery(query as Record<string, unknown>);
+      url.search = this.stringifyQuery(query);
     }
 
     return url.toString();
@@ -465,7 +478,7 @@ export class NextbillionSDK {
     const response = await this.fetchWithTimeout(url, req, timeout, controller).catch(castToError);
     const headersTime = Date.now();
 
-    if (response instanceof Error) {
+    if (response instanceof globalThis.Error) {
       const retryMessage = `retrying, ${retriesRemaining} attempts remaining`;
       if (options.signal?.aborted) {
         throw new Errors.APIUserAbortError();
@@ -545,7 +558,7 @@ export class NextbillionSDK {
       loggerFor(this).info(`${responseInfo} - ${retryMessage}`);
 
       const errText = await response.text().catch((err: any) => castToError(err).message);
-      const errJSON = safeJSON(errText);
+      const errJSON = safeJSON(errText) as any;
       const errMessage = errJSON ? undefined : errText;
 
       loggerFor(this).debug(
@@ -586,9 +599,10 @@ export class NextbillionSDK {
     controller: AbortController,
   ): Promise<Response> {
     const { signal, method, ...options } = init || {};
-    if (signal) signal.addEventListener('abort', () => controller.abort());
+    const abort = this._makeAbort(controller);
+    if (signal) signal.addEventListener('abort', abort, { once: true });
 
-    const timeout = setTimeout(() => controller.abort(), ms);
+    const timeout = setTimeout(abort, ms);
 
     const isReadableBody =
       ((globalThis as any).ReadableStream && options.body instanceof (globalThis as any).ReadableStream) ||
@@ -665,9 +679,9 @@ export class NextbillionSDK {
       }
     }
 
-    // If the API asks us to wait a certain amount of time (and it's a reasonable amount),
-    // just do what it says, but otherwise calculate a default
-    if (!(timeoutMillis && 0 <= timeoutMillis && timeoutMillis < 60 * 1000)) {
+    // If the API asks us to wait a certain amount of time, just do what it
+    // says, but otherwise calculate a default
+    if (timeoutMillis === undefined) {
       const maxRetries = options.maxRetries ?? this.maxRetries;
       timeoutMillis = this.calculateDefaultRetryTimeoutMillis(retriesRemaining, maxRetries);
     }
@@ -755,11 +769,25 @@ export class NextbillionSDK {
     return headers.values;
   }
 
-  private buildBody({ options: { body, headers: rawHeaders } }: { options: FinalRequestOptions }): {
+  private _makeAbort(controller: AbortController) {
+    // note: we can't just inline this method inside `fetchWithTimeout()` because then the closure
+    //       would capture all request options, and cause a memory leak.
+    return () => controller.abort();
+  }
+
+  private buildBody({ options }: { options: FinalRequestOptions }): {
     bodyHeaders: HeadersLike;
     body: BodyInit | undefined;
   } {
+    const { body, headers: rawHeaders } = options;
     if (!body) {
+      // A resource method always passes a `body` key when its operation defines a
+      // request body, even if the caller omitted an optional body param. Keep the
+      // content-type for those, and only elide it for operations with no body at
+      // all (e.g. GET/DELETE).
+      if (body == null && 'body' in options) {
+        return this.#encoder({ body, headers: buildHeaders([rawHeaders]) });
+      }
       return { bodyHeaders: undefined, body: undefined };
     }
     const headers = buildHeaders([rawHeaders]);
@@ -772,7 +800,7 @@ export class NextbillionSDK {
         // Preserve legacy string encoding behavior for now
         headers.values.has('content-type')) ||
       // `Blob` is superset of `File`
-      body instanceof Blob ||
+      ((globalThis as any).Blob && body instanceof (globalThis as any).Blob) ||
       // `FormData` -> `multipart/form-data`
       body instanceof FormData ||
       // `URLSearchParams` -> `application/x-www-form-urlencoded`
@@ -787,6 +815,14 @@ export class NextbillionSDK {
         (Symbol.iterator in body && 'next' in body && typeof body.next === 'function'))
     ) {
       return { bodyHeaders: undefined, body: Shims.ReadableStreamFrom(body as AsyncIterable<Uint8Array>) };
+    } else if (
+      typeof body === 'object' &&
+      headers.values.get('content-type') === 'application/x-www-form-urlencoded'
+    ) {
+      return {
+        bodyHeaders: { 'content-type': 'application/x-www-form-urlencoded' },
+        body: this.stringifyQuery(body),
+      };
     } else {
       return this.#encoder({ body, headers });
     }
@@ -818,25 +854,47 @@ export class NextbillionSDK {
   geofence: API.GeofenceResource = new API.GeofenceResource(this);
   discover: API.Discover = new API.Discover(this);
   browse: API.Browse = new API.Browse(this);
+  /**
+   * <p>Get travel time and find optimal routes. Add guided navigation and gain trip data insights.</p>
+   */
   mdm: API.Mdm = new API.Mdm(this);
+  /**
+   * <p>Get travel time and find optimal routes. Add guided navigation and gain trip data insights.</p>
+   */
   isochrone: API.Isochrone = new API.Isochrone(this);
   restrictions: API.Restrictions = new API.Restrictions(this);
   restrictionsItems: API.RestrictionsItems = new API.RestrictionsItems(this);
   distanceMatrix: API.DistanceMatrix = new API.DistanceMatrix(this);
   autocomplete: API.Autocomplete = new API.Autocomplete(this);
+  /**
+   * <p>Get travel time and find optimal routes. Add guided navigation and gain trip data insights.</p>
+   */
   navigation: API.Navigation = new API.Navigation(this);
   map: API.Map = new API.Map(this);
   autosuggest: API.Autosuggest = new API.Autosuggest(this);
+  /**
+   * <p>Get travel time and find optimal routes. Add guided navigation and gain trip data insights.</p>
+   */
   directions: API.Directions = new API.Directions(this);
+  /**
+   * <p>Get travel time and find optimal routes. Add guided navigation and gain trip data insights.</p>
+   */
   batch: API.Batch = new API.Batch(this);
   multigeocode: API.Multigeocode = new API.Multigeocode(this);
   revgeocode: API.Revgeocode = new API.Revgeocode(this);
+  /**
+   * <p>Get travel time and find optimal routes. Add guided navigation and gain trip data insights.</p>
+   */
   routeReport: API.RouteReport = new API.RouteReport(this);
+  /**
+   * <p>Get travel time and find optimal routes. Add guided navigation and gain trip data insights.</p>
+   */
   snapToRoads: API.SnapToRoads = new API.SnapToRoads(this);
   postalcode: API.Postalcode = new API.Postalcode(this);
   lookup: API.Lookup = new API.Lookup(this);
   areas: API.Areas = new API.Areas(this);
 }
+
 NextbillionSDK.Fleetify = Fleetify;
 NextbillionSDK.Skynet = Skynet;
 NextbillionSDK.Geocode = Geocode;
@@ -862,6 +920,7 @@ NextbillionSDK.SnapToRoads = SnapToRoads;
 NextbillionSDK.Postalcode = Postalcode;
 NextbillionSDK.Lookup = Lookup;
 NextbillionSDK.Areas = Areas;
+
 export declare namespace NextbillionSDK {
   export type RequestOptions = Opts.RequestOptions;
 

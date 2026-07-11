@@ -8,6 +8,15 @@ import { RequestOptions } from '../../../internal/request-options';
 export class Polygon extends APIResource {
   /**
    * Polygon Search
+   *
+   * @example
+   * ```ts
+   * const searchResponse =
+   *   await client.skynet.search.polygon.create({
+   *     key: 'key=API_KEY',
+   *     polygon: { coordinates: [0], type: 'type' },
+   *   });
+   * ```
    */
   create(params: PolygonCreateParams, options?: RequestOptions): APIPromise<SearchAPI.SearchResponse> {
     const { key, ...body } = params;
@@ -16,6 +25,16 @@ export class Polygon extends APIResource {
 
   /**
    * Polygon Search
+   *
+   * @example
+   * ```ts
+   * const searchResponse =
+   *   await client.skynet.search.polygon.get({
+   *     key: 'key=API_KEY',
+   *     polygon:
+   *       'polygon=17.4239,78.4590|17.4575,78.4624|17.4547,78.5483|17.4076,78.5527|17.4239,78.4590',
+   *   });
+   * ```
    */
   get(query: PolygonGetParams, options?: RequestOptions): APIPromise<SearchAPI.SearchResponse> {
     return this._client.get('/skynet/search/polygon', { query, ...options });
@@ -86,7 +105,7 @@ export interface PolygonCreateParams {
   ps?: number;
 
   /**
-   * Body param:
+   * Body param
    */
   sort?: PolygonCreateParams.Sort;
 }

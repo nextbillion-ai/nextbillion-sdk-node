@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource console', () => {
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('preview: only required params', async () => {
     const responsePromise = client.geofence.console.preview({ type: 'circle' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,11 +20,14 @@ describe('resource console', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('preview: required and optional params', async () => {
     const response = await client.geofence.console.preview({
       type: 'circle',
-      circle: { center: { lat: 0, lon: 0 }, radius: 0 },
+      circle: {
+        center: { lat: 0, lon: 0 },
+        radius: 0,
+      },
       custom_id: 'custom_id',
       isochrone: {
         coordinates: '"coordinates": "13.25805884,77.91083661"',
@@ -41,7 +44,7 @@ describe('resource console', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('search: only required params', async () => {
     const responsePromise = client.geofence.console.search({ query: 'query' });
     const rawResponse = await responsePromise.asResponse();
@@ -53,7 +56,7 @@ describe('resource console', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('search: required and optional params', async () => {
     const response = await client.geofence.console.search({ query: 'query' });
   });

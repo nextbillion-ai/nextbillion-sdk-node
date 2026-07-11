@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource batch', () => {
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.geofence.batch.create({ key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,14 +20,17 @@ describe('resource batch', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.geofence.batch.create({
       key: 'key=API_KEY',
       geofences: [
         {
           type: 'circle',
-          circle: { center: { lat: 0, lon: 0 }, radius: 0 },
+          circle: {
+            center: { lat: 0, lon: 0 },
+            radius: 0,
+          },
           custom_id: 'custom_id',
           isochrone: {
             coordinates: '"coordinates": "13.25805884,77.91083661"',
@@ -46,7 +49,7 @@ describe('resource batch', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('list: only required params', async () => {
     const responsePromise = client.geofence.batch.list({ ids: 'ids', key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -58,12 +61,12 @@ describe('resource batch', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('list: required and optional params', async () => {
     const response = await client.geofence.batch.list({ ids: 'ids', key: 'key=API_KEY' });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('delete: only required params', async () => {
     const responsePromise = client.geofence.batch.delete({ key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -75,7 +78,7 @@ describe('resource batch', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('delete: required and optional params', async () => {
     const response = await client.geofence.batch.delete({ key: 'key=API_KEY', ids: ['string'] });
   });

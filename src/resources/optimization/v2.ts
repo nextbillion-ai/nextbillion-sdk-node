@@ -9,6 +9,15 @@ import { RequestOptions } from '../../internal/request-options';
 export class V2 extends APIResource {
   /**
    * Flexible GET
+   *
+   * @example
+   * ```ts
+   * const response =
+   *   await client.optimization.v2.retrieveResult({
+   *     id: 'id',
+   *     key: 'key=API_KEY',
+   *   });
+   * ```
    */
   retrieveResult(
     query: V2RetrieveResultParams,
@@ -19,6 +28,20 @@ export class V2 extends APIResource {
 
   /**
    * Flexible POST
+   *
+   * @example
+   * ```ts
+   * const postResponse = await client.optimization.v2.submit({
+   *   key: 'key=API_KEY',
+   *   locations: { location: ['string'] },
+   *   vehicles: [
+   *     {
+   *       id: 'id',
+   *       location: { lat: -90, lon: -180 },
+   *     },
+   *   ],
+   * });
+   * ```
    */
   submit(params: V2SubmitParams, options?: RequestOptions): APIPromise<OptimizationAPI.PostResponse> {
     const { key, ...body } = params;

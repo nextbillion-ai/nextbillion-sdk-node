@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource optimization', () => {
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('compute: only required params', async () => {
     const responsePromise = client.optimization.compute({
       coordinates:
@@ -24,7 +24,7 @@ describe('resource optimization', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('compute: required and optional params', async () => {
     const response = await client.optimization.compute({
       coordinates:
@@ -40,7 +40,7 @@ describe('resource optimization', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('reOptimize: only required params', async () => {
     const responsePromise = client.optimization.reOptimize({
       key: 'key=API_KEY',
@@ -55,7 +55,7 @@ describe('resource optimization', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('reOptimize: required and optional params', async () => {
     const response = await client.optimization.reOptimize({
       key: 'key=API_KEY',
@@ -83,7 +83,12 @@ describe('resource optimization', () => {
             setup: 0,
             skills: [1],
             time_windows: [[0]],
-            volume: { alignment: 'strict', depth: 0, height: 0, width: 0 },
+            volume: {
+              alignment: 'strict',
+              depth: 0,
+              height: 0,
+              width: 0,
+            },
             zones: [0],
           },
         ],
@@ -109,7 +114,12 @@ describe('resource optimization', () => {
             setup: 0,
             skills: [1],
             time_windows: [[0]],
-            volume: { alignment: 'strict', depth: 0, height: 0, width: 0 },
+            volume: {
+              alignment: 'strict',
+              depth: 0,
+              height: 0,
+              width: 0,
+            },
             zones: [0],
           },
         ],
@@ -153,7 +163,12 @@ describe('resource optimization', () => {
             priority: 0,
             revenue: 0,
             skills: [0],
-            volume: { alignment: 'strict', depth: 0, height: 0, width: 0 },
+            volume: {
+              alignment: 'strict',
+              depth: 0,
+              height: 0,
+              width: 0,
+            },
             zones: [0],
           },
         ],
@@ -193,7 +208,12 @@ describe('resource optimization', () => {
             priority: 0,
             revenue: 0,
             skills: [0],
-            volume: { alignment: 'strict', depth: 0, height: 0, width: 0 },
+            volume: {
+              alignment: 'strict',
+              depth: 0,
+              height: 0,
+              width: 0,
+            },
             zones: [0],
           },
         ],

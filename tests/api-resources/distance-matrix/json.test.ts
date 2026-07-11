@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource json', () => {
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('create', async () => {
     const responsePromise = client.distanceMatrix.json.create();
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource json', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.distanceMatrix.json.retrieve({
       destinations: 'destinations=41.349302,2.136480|41.389925,2.136258|41.357961,2.097878',
@@ -36,7 +36,7 @@ describe('resource json', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.distanceMatrix.json.retrieve({
       destinations: 'destinations=41.349302,2.136480|41.389925,2.136258|41.357961,2.097878',

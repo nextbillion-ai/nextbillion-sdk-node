@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource geofence', () => {
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.geofence.create({ key: 'key=API_KEY', type: 'circle' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,12 +20,15 @@ describe('resource geofence', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.geofence.create({
       key: 'key=API_KEY',
       type: 'circle',
-      circle: { center: { lat: 0, lon: 0 }, radius: 0 },
+      circle: {
+        center: { lat: 0, lon: 0 },
+        radius: 0,
+      },
       custom_id: 'custom_id',
       isochrone: {
         coordinates: '"coordinates": "13.25805884,77.91083661"',
@@ -42,7 +45,7 @@ describe('resource geofence', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.geofence.retrieve('id', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -54,12 +57,12 @@ describe('resource geofence', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.geofence.retrieve('id', { key: 'key=API_KEY' });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.geofence.update('id', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -71,11 +74,14 @@ describe('resource geofence', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.geofence.update('id', {
       key: 'key=API_KEY',
-      circle: { center: { lat: 0, lon: 0 }, radius: 0 },
+      circle: {
+        center: { lat: 0, lon: 0 },
+        radius: 0,
+      },
       isochrone: {
         contours_meter: 0,
         contours_minute: 0,
@@ -92,7 +98,7 @@ describe('resource geofence', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('list: only required params', async () => {
     const responsePromise = client.geofence.list({ key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -104,7 +110,7 @@ describe('resource geofence', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('list: required and optional params', async () => {
     const response = await client.geofence.list({
       key: 'key=API_KEY',
@@ -114,7 +120,7 @@ describe('resource geofence', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('delete: only required params', async () => {
     const responsePromise = client.geofence.delete('id', { key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -126,12 +132,12 @@ describe('resource geofence', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('delete: required and optional params', async () => {
     const response = await client.geofence.delete('id', { key: 'key=API_KEY' });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('contains: only required params', async () => {
     const responsePromise = client.geofence.contains({
       key: 'key=API_KEY',
@@ -146,7 +152,7 @@ describe('resource geofence', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('contains: required and optional params', async () => {
     const response = await client.geofence.contains({
       key: 'key=API_KEY',

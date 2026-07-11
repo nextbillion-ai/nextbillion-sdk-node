@@ -8,7 +8,7 @@ const client = new NextbillionSDK({
 });
 
 describe('resource v2', () => {
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('retrieveResult: only required params', async () => {
     const responsePromise = client.optimization.v2.retrieveResult({ id: 'id', key: 'key=API_KEY' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,17 +20,22 @@ describe('resource v2', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('retrieveResult: required and optional params', async () => {
     const response = await client.optimization.v2.retrieveResult({ id: 'id', key: 'key=API_KEY' });
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('submit: only required params', async () => {
     const responsePromise = client.optimization.v2.submit({
       key: 'key=API_KEY',
       locations: { location: ['string'] },
-      vehicles: [{ id: 'id', location: { lat: -90, lon: -180 } }],
+      vehicles: [
+        {
+          id: 'id',
+          location: { lat: -90, lon: -180 },
+        },
+      ],
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -41,11 +46,15 @@ describe('resource v2', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Mock server tests are disabled
   test.skip('submit: required and optional params', async () => {
     const response = await client.optimization.v2.submit({
       key: 'key=API_KEY',
-      locations: { location: ['string'], id: 0, approaches: ['unrestricted'] },
+      locations: {
+        location: ['string'],
+        id: 0,
+        approaches: ['unrestricted'],
+      },
       vehicles: [
         {
           id: 'id',
@@ -91,16 +100,29 @@ describe('resource v2', () => {
           setup: 0,
           skills: [1],
           time_windows: [[0]],
-          volume: { alignment: 'strict', depth: 0, height: 0, width: 0 },
+          volume: {
+            alignment: 'strict',
+            depth: 0,
+            height: 0,
+            width: 0,
+          },
           zones: [0],
         },
       ],
       options: {
-        constraint: { max_activity_waiting_time: 0, max_vehicle_overtime: 0, max_visit_lateness: 0 },
+        constraint: {
+          max_activity_waiting_time: 0,
+          max_vehicle_overtime: 0,
+          max_visit_lateness: 0,
+        },
         grouping: {
           order_grouping: { grouping_diameter: 0 },
           proximity_factor: 0,
-          route_grouping: { penalty_factor: 0, zone_diameter: 0, zone_source: 'system_generated' },
+          route_grouping: {
+            penalty_factor: 0,
+            zone_diameter: 0,
+            zone_source: 'system_generated',
+          },
         },
         objective: {
           allow_early_arrival: true,
@@ -172,7 +194,12 @@ describe('resource v2', () => {
           priority: 0,
           revenue: 0,
           skills: [0],
-          volume: { alignment: 'strict', depth: 0, height: 0, width: 0 },
+          volume: {
+            alignment: 'strict',
+            depth: 0,
+            height: 0,
+            width: 0,
+          },
           zones: [0],
         },
       ],
@@ -213,7 +240,11 @@ describe('resource v2', () => {
         {
           id: 0,
           geofence_id: 'geofence_id',
-          geometry: { coordinates: [[0]], description: 'description', type: 'Polygon' },
+          geometry: {
+            coordinates: [[0]],
+            description: 'description',
+            type: 'Polygon',
+          },
         },
       ],
     });
